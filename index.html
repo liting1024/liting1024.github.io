@@ -39,7 +39,44 @@
 
     
     
-        
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
     
 
 
@@ -109,7 +146,7 @@
     <div class="container">
     <div class="intro">
         <div class="avatar">
-            <a href="/archives"><img src="/image/avatar.jpeg"></a>
+            <a href="/archives"><img src="/image/JohnLegend.jpg"></a>
         </div>
         <div class="nickname">舒克</div>
         <div class="description"><p>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit.</strong> <br>Fusce eget urna vitae velit <em>eleifend interdum at ac</em> nisi.</p>
@@ -124,17 +161,17 @@
                         
                     </a>
                 
-                    <a class="link-item" title="ZhiHu" href="https://www.zhihu.com/people/james-56-11" target="_blank" rel="noopener">
-                        
-                        
-                            <i class="iconfont icon-zhihu"></i>
-                        
-                    </a>
-                
                     <a class="link-item" title="QQ" href="https://user.qzone.qq.com/1284917479/infocenter" target="_blank" rel="noopener">
                         
                         
                             <i class="iconfont icon-qq"></i>
+                        
+                    </a>
+                
+                    <a class="link-item" title="WeChat" href="https://u.wechat.com/EKme0_4DDABhldOW16UAhuc" target="_blank" rel="noopener">
+                        
+                        
+                            <i class="iconfont icon-wechat"></i>
                         
                     </a>
                 
