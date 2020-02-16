@@ -12,7 +12,7 @@
 
 
 
-<title>Swift语法 | James&#39;s blog</title>
+<title>最短路径 | James&#39;s blog</title>
 
 
 
@@ -211,7 +211,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Swift语法</h1>
+            <h1 class="post-title">最短路径</h1>
             
                 <div class="post-meta">
                     
@@ -220,7 +220,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">February 14, 2020&nbsp;&nbsp;15:35:00</a>
+                        Date: <a href="#">February 16, 2020&nbsp;&nbsp;13:27:02</a>
                         </span>
                     
                     
@@ -236,14 +236,74 @@
         </header>
 
         <div class="post-content">
-            <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func 函数名(外部参数名1 内部参数名1：参数类型，外部参数名2 内部参数名2:参数类型) -&gt; 返回值类型 &#123;</span><br><span class="line">    函数体</span><br><span class="line">    <span class="built_in">return</span> 返回值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>函数名 (  ，)<br>外部参数名为 _ 时是省略的意思</p>
-<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var 元组名 = (参数1，参数2)</span><br><span class="line"><span class="built_in">let</span> z = 元组名(_，b)</span><br></pre></td></tr></table></figure>
-<p>只把参数2赋给z</p>
-<h3 id="范围and循环"><a href="#范围and循环" class="headerlink" title="范围and循环"></a>范围and循环</h3><p>let a = 1…5   //封闭范围<br>let b = 1..&lt;5   //半开范围<br>let c = 1…   //到最大值</p>
-<h4 id="for-in循环"><a href="#for-in循环" class="headerlink" title="for-in循环"></a>for-in循环</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 1...10 &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"第\(i)次循环"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> 循环条件&#123;</span><br><span class="line">   循环体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="可选类型"><a href="#可选类型" class="headerlink" title="可选类型"></a>可选类型</h3>
+            <h1 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h1><h3 id="PTA-L2-001-紧急救援"><a href="#PTA-L2-001-紧急救援" class="headerlink" title="PTA L2-001 紧急救援"></a>PTA L2-001 紧急救援</h3><p>作为一个城市的应急救援队伍的负责人，你有一张特殊的全国地图。在地图上显示有多个分散的城市和一些连接城市的快速道路。每个城市的救援队数量和每一条连接两个城市的快速道路长度都标在地图上。当其他城市有紧急求助电话给你的时候，你的任务是带领你的救援队尽快赶往事发地，同时，一路上召集尽可能多的救援队。</p>
+<h5 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h5><p>输入第一行给出4个正整数N、M、S、D，其中N（2&lt;=N&lt;=500）是城市的个数，顺便假设城市的编号为0~(N-1)；M是快速道路的条数；S是出发地的城市编号；D是目的地的城市编号。第二行给出N个正整数，其中第i个数是第i个城市的救援队的数目，数字间以空格分隔。随后的M行中，每行给出一条快速道路的信息，分别是：城市1、城市2、快速道路的长度，中间用空格分开，数字均为整数且不超过500。输入保证救援可行且最优解唯一。</p>
+<h5 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h5><p>第一行输出不同的最短路径的条数和能够召集的最多的救援队数量。第二行输出从S到D的路径中经过的城市编号。数字间以空格分隔，输出首尾不能有多余空格。</p>
+<h5 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h5><p>4 5 0 3<br>20 30 40 10<br>0 1 1<br>1 3 2<br>0 3 3<br>0 2 2<br>2 3 2</p>
+<h5 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h5><p>2 60<br>0 1 3</p>
+<p>用二维数组map[N][N]储存城市之间的长度，N是城市的代号，数组里的数字是横坐标表示的城市到纵坐标表示的城市的长度</p>
+<table>
+<thead>
+<tr>
+<th>N</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>X</td>
+<td>0</td>
+<td>X</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>用一位数组dis[N]储存出发地到所有地方的长度</p>
+<table>
+<thead>
+<tr>
+<th>N</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dis</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<p>先通过数组dis找到离出发地最近的城市为1号，同时由于没有其他方案能使得0到1之间的距离缩短，所以dis[1]为1，由于0也能出边到2和3，因此dis[2]=2，dis[3]=3，这样dis的初始化将就设置好了。</p>
+<p>然后考虑1号可以出边到3号，所以比较发现dis[1]+map[1][3]==map[0][3]==3，so dis[3]为3。</p>
+<p>然后考虑2号可以出边到3号，比较得出最终结果。</p>
+
         </div>
 
         
@@ -271,7 +331,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/SwiftUI/"># SwiftUI</a>
+                        <a href="/tags/C/"># C++</a>
                     
                         
                 </span>
@@ -284,10 +344,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/02/16/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/">最短路径</a>
             
-            
-            <a class="next" rel="next" href="/2020/02/02/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%A4%9A%E7%A7%8D%E7%AE%97%E6%B3%95%E5%8F%8A%E6%AF%94%E8%BE%83/">求最大公约数的多种算法及比较</a>
+            <a class="next" rel="next" href="/2020/02/14/Swift%E8%AF%AD%E6%B3%95/">Swift语法</a>
             
         </section>
 
