@@ -12,7 +12,7 @@
 
 
 
-<title>SwiftUI | James&#39;s blog</title>
+<title>Swift语法 | James&#39;s blog</title>
 
 
 
@@ -211,7 +211,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">SwiftUI</h1>
+            <h1 class="post-title">Swift语法</h1>
             
                 <div class="post-meta">
                     
@@ -220,7 +220,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">January 28, 2020&nbsp;&nbsp;17:25:41</a>
+                        Date: <a href="#">February 14, 2020&nbsp;&nbsp;15:35:00</a>
                         </span>
                     
                     
@@ -236,15 +236,13 @@
         </header>
 
         <div class="post-content">
-            <h2 id="网站资源"><a href="#网站资源" class="headerlink" title="网站资源"></a>网站资源</h2><h3 id="点击这个-调色网站"><a href="#点击这个-调色网站" class="headerlink" title="点击这个 调色网站"></a>点击这个 <a href="flatuicolors.com">调色网站</a></h3><h3 id="点击这个-图像尺寸变更"><a href="#点击这个-图像尺寸变更" class="headerlink" title="点击这个 图像尺寸变更"></a>点击这个 <a href="appicon.co">图像尺寸变更</a></h3><h3 id="点击这个-图标设计：（选择1024x1024像素）"><a href="#点击这个-图标设计：（选择1024x1024像素）" class="headerlink" title="点击这个 图标设计：（选择1024x1024像素）"></a>点击这个 <a href="www.canva.com">图标设计：（选择1024x1024像素）</a></h3><h3 id="点击这个-SwiftUI官方文档"><a href="#点击这个-SwiftUI官方文档" class="headerlink" title="点击这个 SwiftUI官方文档"></a>点击这个 <a href="https://blog.csdn.net/jiang314/article/details/54134481" target="_blank" rel="noopener">SwiftUI官方文档</a></h3><h2 id="SwiftUI内置控件"><a href="#SwiftUI内置控件" class="headerlink" title="SwiftUI内置控件"></a>SwiftUI内置控件</h2><h3 id="布局容器"><a href="#布局容器" class="headerlink" title="布局容器"></a>布局容器</h3><p>HStack 水平摆放<br>VStack 竖直摆放<br>ZStack 叠加摆放<br>Group</p>
-<h3 id="列表容器"><a href="#列表容器" class="headerlink" title="列表容器"></a>列表容器</h3><p>List 列表展示<br>ScrollView 可滑动<br>NavigitionView 导航栏组件<br>NavigitionButton 点击后跳转组件</p>
-<h3 id="文字、图片"><a href="#文字、图片" class="headerlink" title="文字、图片"></a>文字、图片</h3><p>Text( )<br>TextField(“”, text: )<br>SecureField<br>Image(system name: “ SF中的图标名称”)<br>.cornerRadius( ) 圆形背景<br>修饰语句：<br>.font( ) 字体样式<br>.font(,system(size: )) 自定义字体大小<br>.frame(width: ,height: ) 尺寸<br>.foregroundColor(color: ) 颜色<br>.offset(x: ,y: ) 偏移量（UIScreen.main.bounds.height屏幕的高度）<br>.toggle( ) 在真假之间转换</p>
-<h3 id="动画类"><a href="#动画类" class="headerlink" title="动画类"></a>动画类</h3><p>.rotationEffect 旋转<br>.rotation3DEffect(Angle(degrees: ), axis: (x: , y: , z: ))3D旋转<br>.animation(.spring()) 反弹动画<br>.animation(.basic(duration: 动画时间, curve: <u>.easeInoOut</u>)) 延迟动画  </p>
-<h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h3><p>Button(action: {<br>  //点击后实现的代码<br>}) {<br>  //按钮样式<br>}<br>EditButton</p>
-<h3 id="提示框"><a href="#提示框" class="headerlink" title="提示框"></a>提示框</h3><p>Alert<br>Modal<br>Popover<br>Sheet<br>ActionSheet</p>
-<h3 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h3><p>DatePicker 时间选择器<br>Picker</p>
-<h3 id="形状"><a href="#形状" class="headerlink" title="形状"></a>形状</h3><p>Circle 圆形<br>Edge<br>Rectangle 好看的小方块<br>Path<br>RoundedRectangle </p>
-<p>GeometryReader {  geometry in<br>   Text(“hello”)<br>       .frame(width: geometry.size.width)<br>}  计算屏幕大小的容器</p>
+            <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func 函数名(外部参数名1 内部参数名1：参数类型，外部参数名2 内部参数名2:参数类型) -&gt; 返回值类型 &#123;</span><br><span class="line">    函数体</span><br><span class="line">    <span class="built_in">return</span> 返回值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>函数名 (  ，)<br>外部参数名为 _ 时是省略的意思</p>
+<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var 元组名 = (参数1，参数2)</span><br><span class="line"><span class="built_in">let</span> z = 元组名(_，b)</span><br></pre></td></tr></table></figure>
+<p>只把参数2赋给z</p>
+<h3 id="范围and循环"><a href="#范围and循环" class="headerlink" title="范围and循环"></a>范围and循环</h3><p>let a = 1…5   //封闭范围<br>let b = 1..&lt;5   //半开范围<br>let c = 1…   //到最大值</p>
+<h4 id="for-in循环"><a href="#for-in循环" class="headerlink" title="for-in循环"></a>for-in循环</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 1...10 &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"第\(i)次循环"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> 循环条件&#123;</span><br><span class="line">   循环体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -286,10 +284,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/02/02/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%A4%9A%E7%A7%8D%E7%AE%97%E6%B3%95%E5%8F%8A%E6%AF%94%E8%BE%83/">求最大公约数的多种算法及比较</a>
             
-            
-            <a class="next" rel="next" href="/2020/01/28/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/">Mac搭建个人Blog</a>
+            <a class="next" rel="next" href="/2020/02/02/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%A4%9A%E7%A7%8D%E7%AE%97%E6%B3%95%E5%8F%8A%E6%AF%94%E8%BE%83/">求最大公约数的多种算法及比较</a>
             
         </section>
 
