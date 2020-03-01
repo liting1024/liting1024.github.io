@@ -240,7 +240,31 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br><span class="line">//查看此时所在位置</span><br><span class="line">mkdir blog</span><br><span class="line">//创建blog文件夹</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">//返回上一层目录</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">//进入blog文件夹</span><br></pre></td></tr></table></figure>
 <p><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/2.png" alt="2"></p>
 <h3 id="输入sudo-hexo-init-创建博客"><a href="#输入sudo-hexo-init-创建博客" class="headerlink" title="输入sudo hexo init 创建博客"></a>输入sudo hexo init 创建博客</h3><p><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/3.png" alt="3"></p>
-<h2 id="推送至github"><a href="#推送至github" class="headerlink" title="推送至github"></a>推送至github</h2><h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><h3 id="在-Hexo-中下载主题"><a href="#在-Hexo-中下载主题" class="headerlink" title="在 Hexo  中下载主题"></a>在<a href="https://hexo.io/" target="_blank" rel="noopener"> Hexo </a> 中下载主题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com.....主题地址 themes/主题名字</span><br><span class="line">//将主题下载到themes中</span><br></pre></td></tr></table></figure>
+<h2 id="推送至github和coding-net"><a href="#推送至github和coding-net" class="headerlink" title="推送至github和coding.net"></a>推送至github和coding.net</h2><h4 id="比较github（国外）和coding（腾讯）"><a href="#比较github（国外）和coding（腾讯）" class="headerlink" title="比较github（国外）和coding（腾讯）"></a>比较github（国外）和coding（腾讯）</h4><table>
+<thead>
+<tr>
+<th></th>
+<th>github</th>
+<th>coding.net</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>域名</td>
+<td>自定义</td>
+<td>随机生成</td>
+</tr>
+<tr>
+<td>加载速度</td>
+<td>慢</td>
+<td>其实也不快</td>
+</tr>
+<tr>
+<td>方便的clone方式</td>
+<td>HTTPS</td>
+<td>SSH</td>
+</tr>
+</tbody></table>
+<h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><h3 id="在-Hexo-中下载主题"><a href="#在-Hexo-中下载主题" class="headerlink" title="在 Hexo  中下载主题"></a>在<a href="https://hexo.io/" target="_blank" rel="noopener"> Hexo </a> 中下载主题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com.....主题地址 themes/主题名字</span><br><span class="line">//将主题下载到themes中</span><br></pre></td></tr></table></figure>
 <h3 id="更改theme中的-config-yml"><a href="#更改theme中的-config-yml" class="headerlink" title="更改theme中的_config.yml"></a>更改theme中的_config.yml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim _config.yml 进入编辑模式（注意空格）</span><br><span class="line">按 A 开始编辑</span><br><span class="line">按 esc 退出编辑</span><br><span class="line">输入 :wq 保存并退出</span><br></pre></td></tr></table></figure>
 <p><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/4.png" alt="4"></p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean 清除缓存</span><br><span class="line">hexo g 搭建   </span><br><span class="line">hexo d 提交到github</span><br></pre></td></tr></table></figure>
