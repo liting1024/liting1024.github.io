@@ -236,10 +236,19 @@
         </header>
 
         <div class="post-content">
-            <h2 id="hexo创建一个blog"><a href="#hexo创建一个blog" class="headerlink" title="hexo创建一个blog"></a>hexo创建一个blog</h2><h3 id="终端的一些命令"><a href="#终端的一些命令" class="headerlink" title="终端的一些命令"></a>终端的一些命令</h3><p>注：终端中输入密码时不会显示<br><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/1.png" alt="1"></p>
+            <h1 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h1><h2 id="hexo创建一个blog"><a href="#hexo创建一个blog" class="headerlink" title="hexo创建一个blog"></a>hexo创建一个blog</h2><h3 id="终端的一些命令"><a href="#终端的一些命令" class="headerlink" title="终端的一些命令"></a>终端的一些命令</h3><p>注：终端中输入密码时不会显示<br><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/1.png" alt="1"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br><span class="line">//查看此时所在位置</span><br><span class="line">mkdir blog</span><br><span class="line">//创建blog文件夹</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">//返回上一层目录</span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">//进入blog文件夹</span><br></pre></td></tr></table></figure>
 <p><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/2.png" alt="2"></p>
 <h3 id="输入sudo-hexo-init-创建博客"><a href="#输入sudo-hexo-init-创建博客" class="headerlink" title="输入sudo hexo init 创建博客"></a>输入sudo hexo init 创建博客</h3><p><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/3.png" alt="3"></p>
+<h2 id="如何使用hexo"><a href="#如何使用hexo" class="headerlink" title="如何使用hexo"></a>如何使用hexo</h2><h3 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post XXX</span><br></pre></td></tr></table></figure>
+<h3 id="创建新目录"><a href="#创建新目录" class="headerlink" title="创建新目录"></a>创建新目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tag</span><br></pre></td></tr></table></figure>
+<p>前往blog/source/tag文件夹中更改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: XXX</span><br><span class="line">lyout: tag</span><br><span class="line">date: 2020-02-02 13:07:16</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h3 id="创建新标签"><a href="#创建新标签" class="headerlink" title="创建新标签"></a>创建新标签</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page category</span><br></pre></td></tr></table></figure>
+<p>同理把tag改为category即可</p>
+<h3 id="about页面"><a href="#about页面" class="headerlink" title="about页面"></a>about页面</h3><p>除了不支持Categories和Tags外和写文章的格式一样<br>一般不需要新建页面，只更改blog/source/about/index.md即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page about</span><br></pre></td></tr></table></figure>
+
 <h2 id="推送至github和coding-net"><a href="#推送至github和coding-net" class="headerlink" title="推送至github和coding.net"></a>推送至github和coding.net</h2><h4 id="比较github（国外）和coding（腾讯）"><a href="#比较github（国外）和coding（腾讯）" class="headerlink" title="比较github（国外）和coding（腾讯）"></a>比较github（国外）和coding（腾讯）</h4><table>
 <thead>
 <tr>
@@ -256,7 +265,7 @@
 <tr>
 <td>加载速度</td>
 <td>慢</td>
-<td>其实也不快</td>
+<td>快一些</td>
 </tr>
 <tr>
 <td>方便的clone方式</td>
@@ -264,19 +273,22 @@
 <td>SSH</td>
 </tr>
 </tbody></table>
+<h2 id="如何使用hexo-1"><a href="#如何使用hexo-1" class="headerlink" title="如何使用hexo"></a>如何使用hexo</h2><h3 id="创建新文章-1"><a href="#创建新文章-1" class="headerlink" title="创建新文章"></a>创建新文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post XXX</span><br></pre></td></tr></table></figure>
+<h3 id="创建新目录-1"><a href="#创建新目录-1" class="headerlink" title="创建新目录"></a>创建新目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tag</span><br></pre></td></tr></table></figure>
+<p>前往blog/source/tag文件夹中更改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: XXX</span><br><span class="line">lyout: tag</span><br><span class="line">date: 2020-02-02 13:07:16</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h3 id="创建新标签-1"><a href="#创建新标签-1" class="headerlink" title="创建新标签"></a>创建新标签</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page category</span><br></pre></td></tr></table></figure>
+<p>同理把tag改为category即可</p>
+<h3 id="about页面-1"><a href="#about页面-1" class="headerlink" title="about页面"></a>about页面</h3><p>除了不支持Categories和Tags外和写文章的格式一样<br>一般不需要新建页面，只更改blog/source/about/index.md即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page about</span><br></pre></td></tr></table></figure>
+
+<h1 id="进阶部分"><a href="#进阶部分" class="headerlink" title="进阶部分"></a>进阶部分</h1><h2 id="如何在百度中搜索到自己写的博客内容"><a href="#如何在百度中搜索到自己写的博客内容" class="headerlink" title="如何在百度中搜索到自己写的博客内容"></a>如何在百度中搜索到自己写的博客内容</h2><p>必须在<a href="https://ziyuan.baidu.com/linksubmit/url" target="_blank" rel="noopener">这里提交</a>自己的博客链接才能在百度引擎中搜索到的</p>
 <h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><h3 id="在-Hexo-中下载主题"><a href="#在-Hexo-中下载主题" class="headerlink" title="在 Hexo  中下载主题"></a>在<a href="https://hexo.io/" target="_blank" rel="noopener"> Hexo </a> 中下载主题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com.....主题地址 themes/主题名字</span><br><span class="line">//将主题下载到themes中</span><br></pre></td></tr></table></figure>
 <h3 id="更改theme中的-config-yml"><a href="#更改theme中的-config-yml" class="headerlink" title="更改theme中的_config.yml"></a>更改theme中的_config.yml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim _config.yml 进入编辑模式（注意空格）</span><br><span class="line">按 A 开始编辑</span><br><span class="line">按 esc 退出编辑</span><br><span class="line">输入 :wq 保存并退出</span><br></pre></td></tr></table></figure>
 <p><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/4.png" alt="4"></p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean 清除缓存</span><br><span class="line">hexo g 搭建   </span><br><span class="line">hexo d 提交到github</span><br></pre></td></tr></table></figure>
 
-<h2 id="如何使用hexo"><a href="#如何使用hexo" class="headerlink" title="如何使用hexo"></a>如何使用hexo</h2><h3 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post XXX</span><br></pre></td></tr></table></figure>
-<h3 id="创建新目录"><a href="#创建新目录" class="headerlink" title="创建新目录"></a>创建新目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tag</span><br></pre></td></tr></table></figure>
-<p>前往blog/source/tag文件夹中更改</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: XXX</span><br><span class="line">lyout: tag</span><br><span class="line">date: 2020-02-02 13:07:16</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<h3 id="创建新标签"><a href="#创建新标签" class="headerlink" title="创建新标签"></a>创建新标签</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page category</span><br></pre></td></tr></table></figure>
-<p>同理把tag改为category即可</p>
-<h3 id="about页面"><a href="#about页面" class="headerlink" title="about页面"></a>about页面</h3><p>除了不支持Categories和Tags外和写文章的格式一样<br>一般不需要新建页面，只更改blog/source/about/index.md即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page about</span><br></pre></td></tr></table></figure>
+
 <p>本博客主题为<a href="https://github.com/Siricee/hexo-theme-Chic/blob/master/README-CN.md" target="_blank" rel="noopener">Chic</a></p>
 
         </div>
