@@ -145,6 +145,68 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
@@ -174,7 +236,15 @@
         </header>
 
         <div class="post-content">
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add 文件名1 //添加推送文件</span><br><span class="line">git add 文件名2</span><br><span class="line">git commit -m <span class="string">"add"</span></span><br><span class="line">git push //推送出去</span><br></pre></td></tr></table></figure>
+            <h1 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h1><h2 id="用homebrew安装"><a href="#用homebrew安装" class="headerlink" title="用homebrew安装"></a>用homebrew安装</h2><p><a href="https://brew.sh" target="_blank" rel="noopener">homebrew下载方式</a><br>brew install git</p>
+<h2 id="Xcode"><a href="#Xcode" class="headerlink" title="Xcode"></a>Xcode</h2><p>Xcode中自带了git，只需安装即可</p>
+<h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h5><p>打开Xcode-&gt;Preferences-&gt;Downloads-&gt;Command Line Tools-&gt;Install</p>
+<h1 id="建立库"><a href="#建立库" class="headerlink" title="建立库"></a>建立库</h1><h2 id="建立本地库"><a href="#建立本地库" class="headerlink" title="建立本地库"></a>建立本地库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir 新建项目名字</span><br><span class="line"><span class="built_in">cd</span> 项目名字</span><br><span class="line">git init 把这个项目变成git可管理的项目</span><br><span class="line">//直接把项目写在这个位置就可以了</span><br><span class="line">//在对项目更改后</span><br><span class="line">git add 项目文件名1</span><br><span class="line">git add 项目文件名2</span><br><span class="line">git commit -m “这里输入本次提交的相关说明”</span><br></pre></td></tr></table></figure>
+<h2 id="建立远程仓库"><a href="#建立远程仓库" class="headerlink" title="建立远程仓库"></a>建立远程仓库</h2><h4 id="把SSH关联到github或coding上，在github和coding的设置里有，SSH到本机Users-yourmac-ssh-id-rsa-pub，这个文件默认不可见，必须从终端中进入，可以下载atom并输入atom-id-rsa打开，复制SSH到网页"><a href="#把SSH关联到github或coding上，在github和coding的设置里有，SSH到本机Users-yourmac-ssh-id-rsa-pub，这个文件默认不可见，必须从终端中进入，可以下载atom并输入atom-id-rsa打开，复制SSH到网页" class="headerlink" title="把SSH关联到github或coding上，在github和coding的设置里有，SSH到本机Users/yourmac/.ssh/id_rsa.pub，这个文件默认不可见，必须从终端中进入，可以下载atom并输入atom id_rsa打开，复制SSH到网页"></a>把SSH关联到github或coding上，在github和coding的设置里有，SSH到本机Users/yourmac/.ssh/id_rsa.pub，这个文件默认不可见，必须从终端中进入，可以下载atom并输入atom id_rsa打开，复制SSH到网页</h4><h4 id="在github或coding上建立一个仓库"><a href="#在github或coding上建立一个仓库" class="headerlink" title="在github或coding上建立一个仓库"></a>在github或coding上建立一个仓库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin 地址</span><br><span class="line">//origin是远程库的默认名字</span><br><span class="line">git push -u origin master </span><br><span class="line">//首次推送用这个命令进行关联，master是分支的默认名字</span><br><span class="line">git <span class="built_in">clone</span> github或者coding地址 //抓取分支</span><br><span class="line">git remote //查看远程库的信息</span><br><span class="line">git remote -v //更详细的信息</span><br></pre></td></tr></table></figure>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> 地址 //从远程库克隆</span><br><span class="line">git pull //从远程库抓取</span><br><span class="line">git add 文件名1 //添加推送文件</span><br><span class="line">git add 文件名2</span><br><span class="line">git commit -m <span class="string">"add"</span></span><br><span class="line">git push //进行最新推送</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>更详细的<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">教程</a></p>
+</blockquote>
 
         </div>
 
