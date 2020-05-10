@@ -256,7 +256,28 @@
 
 <h4 id="sort-first-last-greater-lt-gt"><a href="#sort-first-last-greater-lt-gt" class="headerlink" title="sort(first, last, greater&lt;&gt;());"></a>sort(first, last, greater&lt;&gt;());</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int a[5]&#x3D;&#123;5,2,4,3,1&#125;,b[3]&#x3D;&quot;cba&quot;;</span><br><span class="line">sort(a,a+5);&#x2F;&#x2F;正序排列</span><br><span class="line">sort(a,a+5,greater&lt;&gt;());&#x2F;&#x2F;逆序排列数字</span><br><span class="line">sort(b,b+3,greater&lt;char&gt;());&#x2F;&#x2F;逆序排列char</span><br></pre></td></tr></table></figure>
 
-<h4 id="fill-first-last-a"><a href="#fill-first-last-a" class="headerlink" title="fill(first, last. a);"></a>fill(first, last. a);</h4><p>可将数组的值初始化成a</p>
+<h4 id="fill-first-last-a"><a href="#fill-first-last-a" class="headerlink" title="fill(first, last, a);"></a>fill(first, last, a);</h4><p>可将数组的值初始化成a</p>
+<h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p>一个动态申请空间的数组</p>
+<h3 id="定义-vector-lt-typename-gt-name"><a href="#定义-vector-lt-typename-gt-name" class="headerlink" title="定义 vector &lt; typename &gt; name;"></a>定义 vector &lt; typename &gt; name;</h3><p>typename可以是任何基本类型 结构体,STL容器vector,set,queue等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; stu;</span><br><span class="line">vector&lt;double&gt; stu;</span><br><span class="line">vector&lt;char&gt; stu;</span><br><span class="line">vector&lt;node&gt; stu;&#x2F;&#x2F;node是结构体类型</span><br><span class="line">vector&lt;vector&lt;int&gt;&gt; name;</span><br><span class="line">vector&lt;typename&gt; a[arraySize];&#x2F;&#x2F;申请一个二维数组</span><br></pre></td></tr></table></figure>
+
+<h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><h4 id="下标访问"><a href="#下标访问" class="headerlink" title="下标访问"></a>下标访问</h4><p>从0开始</p>
+<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>vector<typename>::iterator it;//it是一个迭代器变量</p>
+<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="push-back-a"><a href="#push-back-a" class="headerlink" title="push_back(a)"></a>push_back(a)</h4><p>在vector后面添加一个元素x</p>
+<h4 id="pop-back-x"><a href="#pop-back-x" class="headerlink" title="pop_back(x)"></a>pop_back(x)</h4><p>删除vector的尾元素x</p>
+<h4 id="size-1"><a href="#size-1" class="headerlink" title="size()"></a>size()</h4><h4 id="clear"><a href="#clear" class="headerlink" title="clear()"></a>clear()</h4><p>清空vector所有的元素</p>
+<h4 id="insert-it-x"><a href="#insert-it-x" class="headerlink" title="insert(it,x)"></a>insert(it,x)</h4><p>向vector的任意迭代器it初传入一个元素x</p>
+<h4 id="erase"><a href="#erase" class="headerlink" title="erase()"></a>erase()</h4><p>erase(x); 删除单个元素</p>
+<p>erase(a,b); 删除左闭右开区间内[a,b)的元素</p>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>一个内部自动升序而且不重复元素的容器</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>和vector一样</p>
+<h3 id="访问-1"><a href="#访问-1" class="headerlink" title="访问"></a>访问</h3><p>只能通过迭代器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set&lt;typename&gt;::iterator it;&#x2F;&#x2F;typename对应定义set时的类型。</span><br><span class="line">set&lt;int&gt;::iterator it;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用函数-1"><a href="#常用函数-1" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="insert-x"><a href="#insert-x" class="headerlink" title="insert(x)"></a>insert(x)</h4><p>将x插入set容器中，并且自动递增排序和去重</p>
+<h4 id="size-2"><a href="#size-2" class="headerlink" title="size()"></a>size()</h4><h4 id="clear-1"><a href="#clear-1" class="headerlink" title="clear()"></a>clear()</h4><h4 id="find-x"><a href="#find-x" class="headerlink" title="find(x)"></a>find(x)</h4><p>查找值为x的元素，返回它的迭代器</p>
+<h4 id="erase-1"><a href="#erase-1" class="headerlink" title="erase()"></a>erase()</h4><p>erase(x); 删除单个元素</p>
+<p>erase(a,b); 删除左闭右开区间内[a,b)的元素</p>
 
         </div>
 
