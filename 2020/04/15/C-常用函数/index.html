@@ -236,7 +236,7 @@
         </header>
 
         <div class="post-content">
-            <h1 id="cstring类型"><a href="#cstring类型" class="headerlink" title="cstring类型"></a>cstring类型</h1><h3 id="比较和计算"><a href="#比较和计算" class="headerlink" title="比较和计算"></a>比较和计算</h3><h4 id="stcmp-a-b"><a href="#stcmp-a-b" class="headerlink" title="stcmp(a,b);"></a>stcmp(a,b);</h4><p>比较返回两个char数组的差异度（-2表示有一个char不同）</p>
+            <h1 id="cstring类型"><a href="#cstring类型" class="headerlink" title="cstring类型"></a>cstring类型</h1><h3 id="比较和计算"><a href="#比较和计算" class="headerlink" title="比较和计算"></a>比较和计算</h3><h4 id="strcmp-a-b"><a href="#strcmp-a-b" class="headerlink" title="strcmp(a,b);"></a>strcmp(a,b);</h4><p>比较返回两个char数组的差异度（-2表示有一个char不同）</p>
 <h4 id="strlen-a"><a href="#strlen-a" class="headerlink" title="strlen(a);"></a>strlen(a);</h4><p>计算string或char数组的长度</p>
 <h4 id="size"><a href="#size" class="headerlink" title="size();"></a>size();</h4><h4 id="lenth"><a href="#lenth" class="headerlink" title="lenth();"></a>lenth();</h4><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h4 id="memset-s-c-n"><a href="#memset-s-c-n" class="headerlink" title="memset(s, c, n);"></a>memset(s, c, n);</h4><p>将以开辟内存s的前n个直接初始化为c</p>
 <h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><h4 id="memcpy-b-a-n"><a href="#memcpy-b-a-n" class="headerlink" title="memcpy(b, a, n);"></a>memcpy(b, a, n);</h4><p>以a开头，长度为n的内存，拷贝到b中</p>
@@ -259,7 +259,7 @@
 <h4 id="fill-first-last-a"><a href="#fill-first-last-a" class="headerlink" title="fill(first, last, a);"></a>fill(first, last, a);</h4><p>可将数组的值初始化成a</p>
 <h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p>一个动态申请空间的数组</p>
 <h3 id="定义-vector-lt-typename-gt-name"><a href="#定义-vector-lt-typename-gt-name" class="headerlink" title="定义 vector &lt; typename &gt; name;"></a>定义 vector &lt; typename &gt; name;</h3><p>typename可以是任何基本类型 结构体,STL容器vector,set,queue等。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; stu;</span><br><span class="line">vector&lt;double&gt; stu;</span><br><span class="line">vector&lt;char&gt; stu;</span><br><span class="line">vector&lt;node&gt; stu;&#x2F;&#x2F;node是结构体类型</span><br><span class="line">vector&lt;vector&lt;int&gt;&gt; name;</span><br><span class="line">vector&lt;typename&gt; a[arraySize];&#x2F;&#x2F;申请一个二维数组</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; stu;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; stu;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; stu;</span><br><span class="line"><span class="built_in">vector</span>&lt;node&gt; stu;<span class="comment">//node是结构体类型</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; name;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; a[arraySize];<span class="comment">//申请一个二维数组</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><h4 id="下标访问"><a href="#下标访问" class="headerlink" title="下标访问"></a>下标访问</h4><p>从0开始</p>
 <h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>vector<typename>::iterator it;//it是一个迭代器变量</p>
@@ -273,14 +273,49 @@
 <h4 id="copy-a-begin-a-end-b-begin-1"><a href="#copy-a-begin-a-end-b-begin-1" class="headerlink" title="copy(a.begin(),a.end(),b.begin()+1);"></a>copy(a.begin(),a.end(),b.begin()+1);</h4><p>把a中的从a.begin()（包括它）到a.end()（不包括它）的元素复制到b中，从b.begin()+1的位置（包括它）开始复制，覆盖掉原有元素</p>
 <h4 id="find-a-begin-a-end-10"><a href="#find-a-begin-a-end-10" class="headerlink" title="find(a.begin(),a.end(),10);"></a>find(a.begin(),a.end(),10);</h4><p>在a中的从a.begin()（包括它）到a.end()（不包括它）的元素中查找10，若存在返回其在向量中的位置</p>
 <h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>一个内部自动升序而且不重复元素的容器</p>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>和vector一样</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>操作</strong></th>
+<th align="center"><strong>效果</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><em>set</em> c</td>
+<td align="center">产生一个空的set/multiset，不含任何元素</td>
+</tr>
+<tr>
+<td align="center">set c(op)</td>
+<td align="center">以op为排序准则，产生一个空的set/multiset</td>
+</tr>
+</tbody></table>
 <h3 id="访问-1"><a href="#访问-1" class="headerlink" title="访问"></a>访问</h3><p>只能通过迭代器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set&lt;typename&gt;::iterator it;&#x2F;&#x2F;typename对应定义set时的类型。</span><br><span class="line">set&lt;int&gt;::iterator it;</span><br></pre></td></tr></table></figure>
-
+<p>set<typename>::iterator it;//typename对应定义set时的类型，auto自动推断定义类型</p>
 <h3 id="常用函数-1"><a href="#常用函数-1" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="insert-x"><a href="#insert-x" class="headerlink" title="insert(x)"></a>insert(x)</h4><p>将x插入set容器中，并且自动递增排序和去重</p>
-<h4 id="size-2"><a href="#size-2" class="headerlink" title="size()"></a>size()</h4><h4 id="clear-1"><a href="#clear-1" class="headerlink" title="clear()"></a>clear()</h4><h4 id="find-x"><a href="#find-x" class="headerlink" title="find(x)"></a>find(x)</h4><p>查找值为x的元素，返回它的迭代器</p>
+<h4 id="size-2"><a href="#size-2" class="headerlink" title="size()"></a>size()</h4><h4 id="clear-1"><a href="#clear-1" class="headerlink" title="clear()"></a>clear()</h4><h3 id="end"><a href="#end" class="headerlink" title="end()"></a>end()</h3><p>返回最后一个的迭代器</p>
+<h4 id="find-x"><a href="#find-x" class="headerlink" title="find(x)"></a>find(x)</h4><p>查找值为x的元素，返回它的迭代器</p>
 <h4 id="erase-1"><a href="#erase-1" class="headerlink" title="erase()"></a>erase()</h4><p>erase(x); 删除单个元素</p>
 <p>erase(a,b); 删除左闭右开区间内[a,b)的元素</p>
+<h3 id="multiset"><a href="#multiset" class="headerlink" title="multiset"></a>multiset</h3><p>有序可重复的容器</p>
+<p>通过重载确定排序规则</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">rec</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x,y;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cmp</span>&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> rec&amp;a,<span class="keyword">const</span> rec&amp;b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a.x&lt;b.x||a.x==b.x&amp;&amp;a.y&lt;b.y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">multiset</span>&lt;rec,cmp&gt;h;</span><br></pre></td></tr></table></figure>
+
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>建立key（第一个值）和value（第二个值） 的对应，以key为标准有序</p>
+<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>map&lt;int , int&gt; maps;</p>
+<h3 id="访问-2"><a href="#访问-2" class="headerlink" title="访问"></a>访问</h3><p>maps[key] = value; //给key赋值，key有对应的value就覆盖</p>
+<p>It-&gt;first = 1;</p>
+<h3 id="常用函数-2"><a href="#常用函数-2" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="insert-1"><a href="#insert-1" class="headerlink" title="insert()"></a>insert()</h4><p>maps.insert(pair&lt;type,type&gt;(1,1)); //maps[1] = 1;</p>
+<h4 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h4><p>map&lt;type,type&gt;::iterator it = maps.find(x); //auto代替map&lt;type,type&gt;::iterator 自动推断值的类型</p>
+<h4 id="长度"><a href="#长度" class="headerlink" title="长度"></a>长度</h4><p>maps.empty(); //空返回1</p>
+<p>maps.size(); </p>
+<p>maps.count(x); //返回指定元素出现的次数</p>
+<h4 id="逆向迭代器"><a href="#逆向迭代器" class="headerlink" title="逆向迭代器"></a>逆向迭代器</h4><p>maps.rbegin(); //返回指向maps尾部的逆向迭代器  </p>
+<p>maps.rend(); //返回指向maps头部的逆向迭代器</p>
+<h4 id="bound"><a href="#bound" class="headerlink" title="bound"></a>bound</h4><p>maps.lower_bound(); //返回键值&gt;=给定元素的第一个迭代器</p>
+<p>maps.upper_bound(); //返回键值&gt;给定元素的第一个迭代器</p>
+<h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4><p>for(map&lt;type,type&gt;::iterator it = maps.begin(); it != maps.end(); it++) </p>
+<h4 id="erase-2"><a href="#erase-2" class="headerlink" title="erase()"></a>erase()</h4><p>maps.erase(iterator)</p>
+<p>maps.erase(type)</p>
 
         </div>
 
@@ -321,6 +356,8 @@
             </div>
         </section>
         <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/05/28/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/">类与对象</a>
             
             
             <a class="next" rel="next" href="/2020/03/04/%E7%94%A8git%E4%B8%8E%E4%BC%99%E4%BC%B4%E5%90%88%E5%8A%9B%E5%AE%8C%E6%88%90%E9%A1%B9%E7%9B%AE/">用git与伙伴合力完成项目</a>
