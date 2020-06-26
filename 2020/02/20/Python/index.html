@@ -249,29 +249,179 @@
 <h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">a = input(<span class="string">'请输入数据'</span>)</span><br><span class="line">b = input(<span class="string">"请输入数据"</span>)</span><br><span class="line">print(a,b)</span><br><span class="line"><span class="comment"># 同行输出，空格分割，换行再写一个print就会换行输出</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">"舒克儿"</span>)</span><br><span class="line"><span class="comment"># 文件开头加入# coding=utf-8或者# -*- coding: UTF-8 -*-可支持中文</span></span><br><span class="line">print(<span class="string">"\u751f"</span>)</span><br><span class="line"><span class="comment"># 使用Unicode编码输出中文</span></span><br><span class="line"></span><br><span class="line">fp = open(<span class="string">r'/Users/liting/Downloads/gan.txt'</span>,<span class="string">'a+'</span>)</span><br><span class="line"><span class="comment"># mac使用终端路径，Windows使用Windows路径</span></span><br><span class="line">print(<span class="string">"淦起来"</span>,file = fp)</span><br><span class="line">fp.close()</span><br><span class="line"><span class="comment"># 把新建gan.txt，把淦起来输入到/Users/liting/Downloads/gan.txt中</span></span><br></pre></td></tr></table></figure>
 <h2 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line">print(<span class="string">'当前年份：'</span>+str(datetime.datetime.now().year))</span><br><span class="line"><span class="comment"># 输出当前年份</span></span><br><span class="line">print(<span class="string">"当前日期实践："</span>+datetime.datetime.now().strftime(<span class="string">"%y-%m-%d %H:%M:%S"</span>))</span><br><span class="line"><span class="comment"># 输出"年-月-日 时:分:秒"</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">** </span><br><span class="line"># x的y次幂 Eg：10**2为100</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; </span><br><span class="line"># 返回商的整数部分 Eg：9&#x2F;&#x2F;2为4 </span><br><span class="line"></span><br><span class="line">is和is not </span><br><span class="line"># 判断俩个标识符是不是引用自一个对象，是则返回True</span><br><span class="line">in和not in </span><br><span class="line"># 判断是不是成员</span><br><span class="line"></span><br><span class="line">and、or和not</span><br><span class="line"># 逻辑与、逻辑或和逻辑非</span><br></pre></td></tr></table></figure>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">** </span><br><span class="line"># x的y次幂 Eg：10**2为100</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; </span><br><span class="line"># 返回商的整数部分 Eg：9&#x2F;&#x2F;2为4 </span><br><span class="line"></span><br><span class="line">is和is not </span><br><span class="line"># 判断俩个标识符是不是引用自一个对象，是则返回True</span><br><span class="line">in和not in </span><br><span class="line"># 判断是不是成员</span><br><span class="line"></span><br><span class="line">and、or和not</span><br><span class="line"># 逻辑与、逻辑或和逻辑非</span><br><span class="line"></span><br><span class="line">a &#x3D; a if a&gt;b else b</span><br><span class="line"># a和b中大的那一个</span><br></pre></td></tr></table></figure>
 
 <h2 id="条件和循环语句"><a href="#条件和循环语句" class="headerlink" title="条件和循环语句"></a>条件和循环语句</h2><h4 id="if"><a href="#if" class="headerlink" title="if"></a>if</h4><p>if 判断条件1:<br>    执行语句1……<br>elif 判断条件2:<br>    执行语句2……<br>else:<br>    执行语句4……</p>
 <h4 id="while"><a href="#while" class="headerlink" title="while"></a>while</h4><p>while 判断语句：<br>    循环体<br>else:<br>    执行语句 # 循环条件为False时执行的语句</p>
 <h4 id="for"><a href="#for" class="headerlink" title="for"></a>for</h4><p>依次输出元组里的元素<br>for i in 元组:<br>    循环体<br>    print(‘ ‘, i)<br>else:<br>    执行语句    </p>
-<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h4 id="Number（不可变）"><a href="#Number（不可变）" class="headerlink" title="Number（不可变）"></a>Number（不可变）</h4><p>复数</p>
-<p>complex(real, imag)</p>
-<p>整形</p>
-<p>int 无long</p>
-<p>浮点</p>
-<p>float 3E-2、1.23</p>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><h4 id="复数"><a href="#复数" class="headerlink" title="复数"></a>复数</h4><p>complex(real, imag)</p>
+<h4 id="整形"><a href="#整形" class="headerlink" title="整形"></a>整形</h4><p>int 无long</p>
+<h4 id="浮点"><a href="#浮点" class="headerlink" title="浮点"></a>浮点</h4><p>float 3E-2、1.23</p>
 <h1 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h1><h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h4 id="从前往后，由0开始递增；从后往前，由-1开始递减"><a href="#从前往后，由0开始递增；从后往前，由-1开始递减" class="headerlink" title="从前往后，由0开始递增；从后往前，由-1开始递减"></a>从前往后，由0开始递增；从后往前，由-1开始递减</h4><h4 id="切片-sname-start-end-step"><a href="#切片-sname-start-end-step" class="headerlink" title="切片 sname[start : end : step]"></a>切片 sname[start : end : step]</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a&#x3D;[1,2,3,4,5,6]</span><br><span class="line">b&#x3D;a[::2]</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
 
 <p>sname：序列的名字</p>
 <p>start：默认为0，开始位置</p>
 <p>end：默认为序列长度，结束位置</p>
 <p>step：默认为1，切片长度，隔step-1个</p>
-<h2 id="各序列的特点"><a href="#各序列的特点" class="headerlink" title="各序列的特点"></a>各序列的特点</h2><h3 id="String（不可变）"><a href="#String（不可变）" class="headerlink" title="String（不可变）"></a>String（不可变）</h3><p>“ “或’ ‘都可，三引号表示多行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(r&quot;\&quot;&quot;)</span><br><span class="line">print(&quot;\&quot;&quot;)</span><br><span class="line"># 用r或R强制转义</span><br></pre></td></tr></table></figure>
+<h2 id="各序列的特点"><a href="#各序列的特点" class="headerlink" title="各序列的特点"></a>各序列的特点</h2><h3 id="String（不可变）"><a href="#String（不可变）" class="headerlink" title="String（不可变）"></a>String（不可变）</h3><h4 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(r&quot;\&quot;&quot;)</span><br><span class="line">print(&quot;\&quot;&quot;)</span><br><span class="line"># 用r或R强制转义</span><br></pre></td></tr></table></figure>
 
-<h3 id="Tuple（元组）（不可变）"><a href="#Tuple（元组）（不可变）" class="headerlink" title="Tuple（元组）（不可变）"></a>Tuple（元组）（不可变）</h3><h4 id="创建、删除"><a href="#创建、删除" class="headerlink" title="创建、删除"></a>创建、删除</h4><h3 id="List（列表）（可变）"><a href="#List（列表）（可变）" class="headerlink" title="List（列表）（可变）"></a>List（列表）（可变）</h3><h4 id="创建、删除-1"><a href="#创建、删除-1" class="headerlink" title="创建、删除"></a>创建、删除</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [1,&#39;b&#39;,3]</span><br><span class="line">emptylist &#x3D; []</span><br><span class="line">b &#x3D; list(range(0,10,2))</span><br><span class="line"># 创建一个从0到10，以2为步长的列表</span><br><span class="line">print(b)</span><br><span class="line"># [0, 2, 4, 6, 8]</span><br><span class="line">del a</span><br><span class="line"># 删除列表a</span><br></pre></td></tr></table></figure>
+<h4 id="长度"><a href="#长度" class="headerlink" title="长度"></a>长度</h4><p>len(string)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">string &#x3D; &#39;淦&#39;</span><br><span class="line">print(len(string.encode()))</span><br><span class="line"># 计算UTF-8编码的字符串长度</span><br><span class="line">print(len(string.encode(&#39;gdk&#39;)))</span><br><span class="line"># 计算GBK编码的字符串长度</span><br></pre></td></tr></table></figure>
 
-<h4 id="推导生成列表"><a href="#推导生成列表" class="headerlink" title="推导生成列表"></a>推导生成列表</h4><p>newlist = [experssion for var in range]</p>
+<h4 id="分隔为表格"><a href="#分隔为表格" class="headerlink" title="分隔为表格"></a>分隔为表格</h4><p>str.split(sep, maxsplit)</p>
+<p>sep为指定分隔符，默认为空格</p>
+<p>maxsplit为分隔次数</p>
+<h4 id="检索"><a href="#检索" class="headerlink" title="检索"></a>检索</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">str &#x3D; &quot;abc&quot;</span><br><span class="line">print(str.find(&#39;a&#39;))</span><br><span class="line"># 返回首次出现的下角标，不存在返回-1</span><br><span class="line">print(str.index(&#39;a&#39;))</span><br><span class="line"># 和find的相同，不存在时抛出异常</span><br><span class="line">print(str.rindex(&#39;a&#39;))</span><br><span class="line"># 和index相同，只是从右开始检索</span><br></pre></td></tr></table></figure>
+
+<h4 id="确定开头结尾"><a href="#确定开头结尾" class="headerlink" title="确定开头结尾"></a>确定开头结尾</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">str.startswith(&#39;a&#39;)</span><br><span class="line"># 是否以a为开头</span><br><span class="line">str.endswith(&#39;bc&#39;)</span><br><span class="line"># 是否以bc为结尾</span><br></pre></td></tr></table></figure>
+
+<h4 id="去除空格和特殊字符"><a href="#去除空格和特殊字符" class="headerlink" title="去除空格和特殊字符"></a>去除空格和特殊字符</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">str.strip(&#39;@#&#39;)</span><br><span class="line"># 去除str两侧的@或#</span><br><span class="line">str.lstrip(&#39;a&#39;)</span><br><span class="line"># 去除左侧的a</span><br></pre></td></tr></table></figure>
+
+<h4 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a>格式化字符串</h4><p>{ [ index ] [ : [ [fill ] align ] [ sign ] [ # ] [ width ] [ .percision ] [ type ] ] }<br>index：设置的对象在参数列表中索引位置，省略则按照先后分配<br>fill：空白填充字符<br>align：&lt;内容做对齐；&gt;内容右对齐；^内容居中；=内容右对齐，放在填充字符左侧，只对数字有效；需要配合width<br>sign：<br>#：二、八、十六进制显示0b/0o/0x的前缀<br>width：占用宽度<br>type：如下表</p>
+<table>
+<thead>
+<tr>
+<th align="center">type</th>
+<th align="center">说明</th>
+<th align="center">type</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">s</td>
+<td align="center">对字符串类型格式化</td>
+<td align="center">b</td>
+<td align="center">十进制转为二进制后格式化</td>
+</tr>
+<tr>
+<td align="center">d</td>
+<td align="center">十进制整数</td>
+<td align="center">o</td>
+<td align="center">十进制转为八进制后格式化</td>
+</tr>
+<tr>
+<td align="center">c</td>
+<td align="center">十进制自动转为相应的Unicode</td>
+<td align="center">x/X</td>
+<td align="center">十进制转为十六进制格式化</td>
+</tr>
+<tr>
+<td align="center">e/E</td>
+<td align="center">科学计数法表示</td>
+<td align="center">f/F</td>
+<td align="center">浮点小数（默认保留6位）</td>
+</tr>
+<tr>
+<td align="center">g/G</td>
+<td align="center">自动在e和f中切换</td>
+<td align="center">%</td>
+<td align="center">显示百分比（默认保留6位）</td>
+</tr>
+</tbody></table>
+<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><p>1、基础表达式</p>
+<table>
+<thead>
+<tr>
+<th align="center">元字符</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.</td>
+<td align="left">匹配除换行符以外的字符</td>
+</tr>
+<tr>
+<td align="center">\w</td>
+<td align="left">匹配字母、数字、下划线或汉字</td>
+</tr>
+<tr>
+<td align="center">\W</td>
+<td align="left">匹配除字母、数字、下划线或汉字以外的</td>
+</tr>
+<tr>
+<td align="center">\s</td>
+<td align="left">匹配单个空白符</td>
+</tr>
+<tr>
+<td align="center">\S</td>
+<td align="left">匹配除单个空白符外的字符</td>
+</tr>
+<tr>
+<td align="center">\d</td>
+<td align="left">匹配数字</td>
+</tr>
+<tr>
+<td align="center">\b</td>
+<td align="left">匹配单词的开始或结束，单词的分界通常是空格、标点、换行</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="left">匹配字符串的开始</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td align="left">匹配字符串的结束</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>限定符</th>
+<th></th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>?</td>
+<td>匹配前面的字符0次或1次</td>
+<td>colou?r 匹配colour和color</td>
+</tr>
+<tr>
+<td>+</td>
+<td>1次或多次</td>
+<td>go+gle匹配gogle到goo…gle</td>
+</tr>
+<tr>
+<td>*</td>
+<td>0次或多次</td>
+<td>go*gle匹配ggle到goo…gle</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>n次</td>
+<td>go{2}gle匹配google</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td>最少n次</td>
+<td>go{2,}gle匹配google到goo…gle</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>匹配前面的字符最少n次，最多m次</td>
+<td>employe{0,2}匹配employee，employ，employe</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">^\d&#123;8&#125;$</span><br><span class="line"># 匹配8位QQ号</span><br><span class="line">\bmr\w*\b</span><br><span class="line"># 匹配mrsoft、mr1234等</span><br></pre></td></tr></table></figure>
+
+<p>2、对于非数字和字母，在方括号里列出，| 和 \ 、( ) 的使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[?!]表示匹配?或者!</span><br><span class="line"></span><br><span class="line">[\u4e00-\\u9fa5]匹配一个汉字，[\u4e00-\\u9fa5]+匹配多个汉字</span><br><span class="line"></span><br><span class="line">[a-z0-9A-Z]和\w相同（不考虑汉字）</span><br><span class="line"></span><br><span class="line">[^0-9]除数字以外的</span><br><span class="line"></span><br><span class="line">(^\d&#123;15&#125;$)|(^\d&#123;18&#125;$)|(^\d|X|x)$匹配15、18位数字或17位数字最后一位是X或x </span><br><span class="line"></span><br><span class="line">(six|four)th匹配sixth或fourth，(\.[0-9]&#123;1,3&#125;)&#123;3&#125;表示对(\.[0-9]&#123;1,3&#125;)重复三次</span><br><span class="line"></span><br><span class="line">[1-9]&#123;1,3&#125;(\.[0-9]&#123;1,3&#125;)&#123;3&#125;表示匹配127.0.0.1之类的IP地址，\.表示对.的转义</span><br></pre></td></tr></table></figure>
+
+<p>3、使用正则表达式语法</p>
+<p>4、使用re模块实现</p>
+<h3 id="Tuple（元组）（不可变）"><a href="#Tuple（元组）（不可变）" class="headerlink" title="Tuple（元组）（不可变）"></a>Tuple（元组）（不可变）</h3><h4 id="创建、删除"><a href="#创建、删除" class="headerlink" title="创建、删除"></a>创建、删除</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 基本与list相同</span><br><span class="line">b &#x3D; (&#39;gan&#39;,)</span><br><span class="line"># 只有一个元素的元组</span><br><span class="line">c &#x3D; (&#39;gan&#39;)</span><br><span class="line">print(c,type(c))</span><br><span class="line"># gan &lt;class &#39;str&#39;&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><h5 id="重新附值"><a href="#重新附值" class="headerlink" title="重新附值"></a>重新附值</h5><h5 id="尾部添加"><a href="#尾部添加" class="headerlink" title="尾部添加"></a>尾部添加</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; (1,&#39;b&#39;,3)</span><br><span class="line">a +&#x3D; (4,)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+
+<h3 id="List（列表）（可变）"><a href="#List（列表）（可变）" class="headerlink" title="List（列表）（可变）"></a>List（列表）（可变）</h3><h4 id="创建、删除-1"><a href="#创建、删除-1" class="headerlink" title="创建、删除"></a>创建、删除</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [1,&#39;b&#39;,3]</span><br><span class="line">emptylist &#x3D; []</span><br><span class="line">b &#x3D; list(range(0,10,2))</span><br><span class="line"># 创建一个从0到10，以2为步长的列表</span><br><span class="line">print(b)</span><br><span class="line"># [0, 2, 4, 6, 8]</span><br><span class="line">del a</span><br><span class="line"># 删除列表a</span><br></pre></td></tr></table></figure>
+
+<h4 id="推导生成列表"><a href="#推导生成列表" class="headerlink" title="推导生成列表"></a>推导生成列表</h4><h5 id="newlist-experssion-for-var-in-rangelist"><a href="#newlist-experssion-for-var-in-rangelist" class="headerlink" title="newlist = [experssion for var in rangelist]"></a>newlist = [experssion for var in rangelist]</h5><p>expression用于计算新列表元素的表达式</p>
+<p>var为列表中值的变量</p>
+<p>rangelist采用range()函数生成的列表</p>
+<h5 id="newlist-experssion-for-var-in-list-if-condition"><a href="#newlist-experssion-for-var-in-list-if-condition" class="headerlink" title="newlist = [experssion for var in list if condition]"></a>newlist = [experssion for var in list if condition]</h5><p>list为用于生成的列表</p>
+<p>condition为判断条件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">price &#x3D; [random.randint(100,1000) for x in range(5)]</span><br><span class="line"># 生成5个100～1000范围内的数</span><br><span class="line">print(price)</span><br><span class="line">price &#x3D; [x&#x2F;2 for x in price if x*0.5&gt;100]</span><br><span class="line"># 输出打五折后仍大于100的数</span><br><span class="line">print(price)</span><br></pre></td></tr></table></figure>
+
 <h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4><p>for item in listname: </p>
 <p>for index,item in enumerate(listtname): </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]</span><br><span class="line">b&#x3D;&quot;is &quot;</span><br><span class="line">for i,item in enumerate(a):</span><br><span class="line">    print(i,b+item)</span><br><span class="line"># 0 is a</span><br><span class="line"># 1 is b</span><br><span class="line"># 2 is c</span><br></pre></td></tr></table></figure>
@@ -288,7 +438,9 @@
 
 <h3 id="Dictionary（字典）（可变）"><a href="#Dictionary（字典）（可变）" class="headerlink" title="Dictionary（字典）（可变）"></a>Dictionary（字典）（可变）</h3><h3 id="Set（集合）（可变）"><a href="#Set（集合）（可变）" class="headerlink" title="Set（集合）（可变）"></a>Set（集合）（可变）</h3><h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><h4 id="包含"><a href="#包含" class="headerlink" title="包含"></a>包含</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num &#x3D; [1, 2, 3]</span><br><span class="line">print(&#39;a&#39; in num)</span><br><span class="line"># False</span><br></pre></td></tr></table></figure>
 
-<h4 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h4><h4 id="相加"><a href="#相加" class="headerlink" title="相加"></a>相加</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span><br><span class="line">num &#x3D; [1, 2, 3]</span><br><span class="line">print(a + num)</span><br><span class="line"># [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, 1, 2, 3]</span><br><span class="line"># 同为元组可以相加</span><br></pre></td></tr></table></figure>
+<h4 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; (1,&#39;b&#39;,3)</span><br><span class="line">print(a)</span><br><span class="line"># (1, &#39;b&#39;, 3)</span><br><span class="line">b &#x3D; a*2</span><br><span class="line">print(b)</span><br><span class="line"># (1, &#39;b&#39;, 3, 1, &#39;b&#39;, 3)</span><br></pre></td></tr></table></figure>
+
+<h4 id="相加"><a href="#相加" class="headerlink" title="相加"></a>相加</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span><br><span class="line">num &#x3D; [1, 2, 3]</span><br><span class="line">print(a + num)</span><br><span class="line"># [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, 1, 2, 3]</span><br><span class="line"># 同为元组可以相加</span><br></pre></td></tr></table></figure>
 
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><table>
 <thead>
