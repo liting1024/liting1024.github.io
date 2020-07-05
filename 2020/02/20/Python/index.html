@@ -238,7 +238,7 @@
         <div class="post-content">
             <p>开始编码之前首先确保Mac的python处于最新版本<br>在终端中输入alias python=python 3替换最新版本<br>输入python –version查看目前的python版本</p>
 <p><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1019273143120480" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400/1019273143120480</a></p>
-<h1 id="Before-begin"><a href="#Before-begin" class="headerlink" title="Before begin"></a>Before begin</h1><h2 id="保留字符"><a href="#保留字符" class="headerlink" title="保留字符"></a>保留字符</h2><p><img src="/Users/liting/blog/source/img/Python/%E4%BF%9D%E7%95%99%E5%AD%97%E7%AC%A6.png" alt="保留字符"></p>
+<h1 id="Before-begin"><a href="#Before-begin" class="headerlink" title="Before begin"></a>Before begin</h1><h2 id="保留字符"><a href="#保留字符" class="headerlink" title="保留字符"></a>保留字符</h2><p><img src="/img/Python/%E4%BF%9D%E7%95%99%E5%AD%97%E7%AC%A6.png" alt="保留字符"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import keyword</span><br><span class="line">print(keyword.kwlist)</span><br><span class="line"># 查看关键字</span><br></pre></td></tr></table></figure>
 
 <h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p>由英文数字下划线组成，且不以数字开头<br>单下划线开头表示不能直接访问的类属性<br>双下划线开头表示类的私有成员<br>双下划线开头和结尾是特殊方法专用标识   Eg：__ init __( )代表类的构造函数</p>
@@ -657,7 +657,7 @@
 <h1 id="文件和IO"><a href="#文件和IO" class="headerlink" title="文件和IO"></a>文件和IO</h1><h2 id="创建打开、关闭文件"><a href="#创建打开、关闭文件" class="headerlink" title="创建打开、关闭文件"></a>创建打开、关闭文件</h2><h3 id="file-open-filename-mode-buffering-encoding-’utf-8’"><a href="#file-open-filename-mode-buffering-encoding-’utf-8’" class="headerlink" title="file = open(filename, mode, buffering, encoding=’utf-8’)"></a>file = open(filename, mode, buffering, encoding=’utf-8’)</h3><p>file：文件对象</p>
 <p>filename：文件名，用’ ‘或” “括起来，如果打开的文件和当前文件同一目录下直接写文件名，否则需要写路径</p>
 <p>mode：打开的模式，默认为r</p>
-<p><img src="/Users/liting/blog/source/img/Python/mode%E5%8F%82%E6%95%B0.png" alt="mode参数"></p>
+<p><img src="/img/Python/mode%E5%8F%82%E6%95%B0.png" alt="mode参数"></p>
 <p>buffering：缓冲区大小，默认为缓冲</p>
 <p>encoding：文件编码方式，默认为GBK</p>
 <h3 id="file-close"><a href="#file-close" class="headerlink" title="file.close( )"></a>file.close( )</h3><p>刷新缓冲区中没有写入的信息再关闭文件</p>
@@ -674,8 +674,8 @@
 <h2 id="目录操作（import-os）"><a href="#目录操作（import-os）" class="headerlink" title="目录操作（import os）"></a>目录操作（import os）</h2><h3 id="os和os-path"><a href="#os和os-path" class="headerlink" title="os和os.path"></a>os和os.path</h3><p>os.name 返回nt表示WIndows，返回posix表示Linux或Mac os</p>
 <p>os.linesep 返回换行符</p>
 <p>os.sep 返回路径分隔符</p>
-<p><img src="/Users/liting/blog/source/img/Python/os.png" alt="os"></p>
-<p><img src="/Users/liting/blog/source/img/Python/os.path.png" alt="os.path"></p>
+<p><img src="/img/Python/os.png" alt="os"></p>
+<p><img src="/img/Python/os.path.png" alt="os.path"></p>
 <h3 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">print(os.getcwd()) # 输出当前目录</span><br><span class="line">print(os.path.exists(&#39;&#x2F;Users&#x2F;liting&#x2F;PycharmProjects&#x2F;test&#39;))</span><br><span class="line"># 判断路径是否存在</span><br><span class="line">print(os.path.abspath(&#39;hello.py&#39;)) # 获取绝对路径</span><br><span class="line">print(os.path.join(&#39;&#x2F;Users&#x2F;liting&#x2F;PycharmProjects&#x2F;test&#39;, &#39;hello.py&#39;)) </span><br><span class="line"># 拼接路径</span><br></pre></td></tr></table></figure>
 
 <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p>os.mkdir(path, mode=0o777)</p>
@@ -730,7 +730,7 @@
                 <a class="prev" rel="prev" href="/2020/03/04/%E7%94%A8git%E4%B8%8E%E4%BC%99%E4%BC%B4%E5%90%88%E5%8A%9B%E5%AE%8C%E6%88%90%E9%A1%B9%E7%9B%AE/">用git与伙伴合力完成项目</a>
             
             
-            <a class="next" rel="next" href="/2020/02/20/Python%E7%9A%84%E5%89%AF%E6%9C%AC/">Python</a>
+            <a class="next" rel="next" href="/2020/02/16/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/">最短路径</a>
             
         </section>
 
