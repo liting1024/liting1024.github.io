@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="舒克">
+
+
+
+
+
+<title>爬虫 | James&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/public/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Shuker&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Shuker&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">爬虫</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">舒克</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">July 8, 2020&nbsp;&nbsp;23:58:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Programme/">Programme</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="爬取有道翻译（POST后下载）"><a href="#爬取有道翻译（POST后下载）" class="headerlink" title="爬取有道翻译（POST后下载）"></a>爬取有道翻译（POST后下载）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import ssl</span><br><span class="line">ssl._create_default_https_context &#x3D; ssl._create_unverified_context</span><br><span class="line"># 取消SSL证书检测</span><br><span class="line">import urllib.request</span><br><span class="line">import urllib.parse</span><br><span class="line">import json</span><br><span class="line">import time</span><br><span class="line">while True:</span><br><span class="line">    url &#x3D; &#39;http:&#x2F;&#x2F;fanyi.youdao.com&#x2F;translate?smartresult&#x3D;dict&amp;smartresult&#x3D;rule&#39;</span><br><span class="line">    data &#x3D; &#123;&#125;</span><br><span class="line">    data[&#39;i&#39;] &#x3D; input(&quot;请输入翻译内容：\n&quot;)</span><br><span class="line">    data[&#39;doctype&#39;] &#x3D; &#39;json&#39;</span><br><span class="line">    data[&#39;keyfrom&#39;] &#x3D; &#39;fanyi.web&#39;</span><br><span class="line">    data &#x3D; urllib.parse.urlencode(data).encode(&#39;utf-8&#39;)</span><br><span class="line"></span><br><span class="line">    response &#x3D; urllib.request.Request(url, data) #POST给网站要翻译的句子</span><br><span class="line">    response.add_header(&#39;User-Agent&#39;, &#39;Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;81.0.4044.138 Safari&#x2F;537.36&#39;) # 伪装访问方式</span><br><span class="line">    response &#x3D; urllib.request.urlopen(response)</span><br><span class="line">    html &#x3D; response.read().decode(&#39;utf-8&#39;)</span><br><span class="line">    target &#x3D; json.loads(html)</span><br><span class="line">    print(target[&#39;translateResult&#39;][0][0][&#39;tgt&#39;])</span><br><span class="line">    time.sleep(2)</span><br></pre></td></tr></table></figure>
+
+<h2 id="BeautifulSoup爬HTML"><a href="#BeautifulSoup爬HTML" class="headerlink" title="BeautifulSoup爬HTML"></a>BeautifulSoup爬HTML</h2><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>find_all(self, name=None, attrs={‘ ‘:’ ‘}, recursive=True, text=None, limit=None, **kwargs)</p>
+<p>查找所有</p>
+<p>self要查找的元素</p>
+<p>name目标元素的名称</p>
+<p>attrs元素的属性</p>
+<p>recursive查找是否在节点子树下展开</p>
+<p>支持自己定义函数查找</p>
+<p>find(self, name=None, attrs={‘ ‘:’ ‘}, recursive=True, text=None, limit=None, **kwargs)</p>
+<p>查找第一个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import ssl</span><br><span class="line">ssl._create_default_https_context &#x3D; ssl._create_unverified_context</span><br><span class="line">import urllib.request</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    url &#x3D; &#39;https:&#x2F;&#x2F;liting1024.github.io&#x2F;2020&#x2F;02&#x2F;20&#x2F;Python&#x2F;&#39;</span><br><span class="line">    response&#x3D;urllib.request.urlopen(url)</span><br><span class="line">    html&#x3D;response.read().decode()</span><br><span class="line">    soup&#x3D;BeautifulSoup(html,&#39;lxml&#39;)</span><br><span class="line"></span><br><span class="line">    def endsWith(s,t):</span><br><span class="line">        if len(s)&gt;&#x3D;len(t):</span><br><span class="line">            return s[len(s)-len(t):]&#x3D;&#x3D;t</span><br><span class="line">        return False</span><br><span class="line">    def myFilter(tag):</span><br><span class="line">        return (tag.name&#x3D;&#x3D;&#39;a&#39; and tag.has_attr(&#39;href&#39;) and tag[&#39;href&#39;]&#x3D;&#x3D;&#39;&#x2F;category&#39; and endsWith(tag.text,&#39;ies&#39;))</span><br><span class="line">    # 元素类型为a，有超链接，且超链接为&#x2F;category，内容以ies结尾</span><br><span class="line">    </span><br><span class="line">    tag1&#x3D;soup.find(&#39;h1&#39;)</span><br><span class="line">    tag2&#x3D;soup.find_all(&#39;a&#39;,attrs&#x3D;&#123;&#39;class&#39;:&#39;menu-item&#39;&#125;)</span><br><span class="line">    tag3&#x3D;soup.find_all(myFilter)</span><br><span class="line">    print(tag1,&#39;\n&#39;,tag2,&#39;\n&#39;,tag3)</span><br><span class="line">    for tag in tag2:</span><br><span class="line">        print(tag[&#39;href&#39;])</span><br><span class="line">    for tag in tag2:</span><br><span class="line">        print(tag.text)</span><br><span class="line">except Exception as err:</span><br><span class="line">    print(err)</span><br></pre></td></tr></table></figure>
+
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><p>tag.parent 父类树节点</p>
+<p>tag.children 子节点</p>
+<p>tag.descendants 所有子孙节点</p>
+<p>tag.next_sibling 最近的下一个兄弟节点</p>
+<p>tag.previous_sibling 上一个兄弟节点</p>
+<h3 id="CSS语法查找"><a href="#CSS语法查找" class="headerlink" title="CSS语法查找"></a>CSS语法查找</h3><p>soup.select(tagName, attName=value)</p>
+<table>
+<thead>
+<tr>
+<th align="left">attName</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">attName^=value</td>
+<td>以value开头匹配属性</td>
+</tr>
+<tr>
+<td align="left">attName$=value</td>
+<td>以value结尾</td>
+</tr>
+<tr>
+<td align="left">attName*=value</td>
+<td>包含指定值</td>
+</tr>
+</tbody></table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">soup.select(&quot;p a[rel&#x3D;&#39;noopener&#39;]&quot;))</span><br><span class="line"># 查找p下的具有rel&#x3D;‘noopenner’属性的a</span><br><span class="line">soup.select(&quot;p &gt; a&quot;)</span><br><span class="line"># 查找p下的子节点a，不包含孙节点</span><br><span class="line">soup.select(&quot;p ~ a&quot;)</span><br><span class="line"># 查到p后面同级别的a</span><br></pre></td></tr></table></figure>
+
+<h3 id="爬天气预报"><a href="#爬天气预报" class="headerlink" title="爬天气预报"></a>爬天气预报</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import ssl</span><br><span class="line">ssl._create_default_https_context &#x3D; ssl._create_unverified_context</span><br><span class="line">import urllib.request</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">from bs4 import UnicodeDammit</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    url &#x3D; &#39;http:&#x2F;&#x2F;www.weather.com.cn&#x2F;weather&#x2F;101080101.shtml&#39;</span><br><span class="line">    headers&#x3D;&#123;&quot;User-Agent&quot;:&quot;Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;81.0.4044.138 Safari&#x2F;537.36&quot;&#125;</span><br><span class="line">    req&#x3D;urllib.request.Request(url,headers&#x3D;headers)</span><br><span class="line">    data&#x3D;urllib.request.urlopen(req)</span><br><span class="line">    data&#x3D;data.read()</span><br><span class="line">    dammit&#x3D;UnicodeDammit(data,[&#39;utf-8&#39;,&#39;gdk&#39;])</span><br><span class="line">    html&#x3D;dammit.unicode_markup</span><br><span class="line">    # 自动选择解码</span><br><span class="line">    soup&#x3D;BeautifulSoup(html, &#39;lxml&#39;)</span><br><span class="line">    lis&#x3D;soup.select(&quot;ul[class&#x3D;&#39;t clearfix&#39;] li&quot;)</span><br><span class="line">    for li in lis:</span><br><span class="line">        date &#x3D; li.select(&#39;h1&#39;)[0].text</span><br><span class="line">        weather &#x3D; li.select(&quot;p[class&#x3D;&#39;wea&#39;]&quot;)[0].text</span><br><span class="line">        temp1 &#x3D; li.select(&quot;p[class&#x3D;&#39;tem&#39;] i&quot;)[0].text</span><br><span class="line">        if li.select(&quot;p[class&#x3D;&#39;tem&#39;] span&quot;)&#x3D;&#x3D;[]:</span><br><span class="line">            temp&#x3D;temp1</span><br><span class="line">            # temp2和temp1相等是无法搜索到temp2</span><br><span class="line">        else:</span><br><span class="line">            temp2&#x3D;li.select(&quot;p[class&#x3D;&#39;tem&#39;] span&quot;)[0].text</span><br><span class="line">            temp&#x3D;temp1+&#39;&#x2F;&#39;+temp2</span><br><span class="line">        print(date, weather, temp)</span><br><span class="line">except Exception as err:</span><br><span class="line">    print(err)</span><br></pre></td></tr></table></figure>
+
+<h2 id="爬树"><a href="#爬树" class="headerlink" title="爬树"></a>爬树</h2><h3 id="深度和广度类"><a href="#深度和广度类" class="headerlink" title="深度和广度类"></a>深度和广度类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Stack: # 列表栈，深度</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.st&#x3D;[]</span><br><span class="line">    def pop(self):</span><br><span class="line">        return self.st.pop()</span><br><span class="line">    def push(self,obj):</span><br><span class="line">        return self.st.append(obj)</span><br><span class="line">    def isempty(self):</span><br><span class="line">        return len(self.st)&#x3D;&#x3D;0</span><br><span class="line"></span><br><span class="line">class Queue: # 队列，广度</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.st&#x3D;[]</span><br><span class="line">    def fetch(self):</span><br><span class="line">        return self.st.pop(0)</span><br><span class="line">    def enter(self,obj):</span><br><span class="line">        return self.st.append(obj)</span><br><span class="line">    def isempty(self):</span><br><span class="line">        return len(self.st)&#x3D;&#x3D;0</span><br></pre></td></tr></table></figure>
+
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>t = Thread(target=,args=)</p>
+<p>target：要执行的函数</p>
+<p>args：一个元组或列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from threading import Thread</span><br><span class="line"></span><br><span class="line">t.setDaemon(False)</span><br><span class="line"># 设定为后台线程</span><br><span class="line">t.start()</span><br><span class="line"># 启动线程</span><br><span class="line">t.join()</span><br><span class="line"># 阻塞当前线程，等t执行后继续执行</span><br><span class="line">lock&#x3D;threading._RLock()</span><br><span class="line"># 设定一个锁</span><br><span class="line">lock.acquire()</span><br><span class="line"># lock获取线程锁，如果另一个线程调用了acquire而没有release则阻塞当前线程等待别的线程释放锁</span><br><span class="line">lock.release()</span><br><span class="line"># 释放锁</span><br></pre></td></tr></table></figure>
+
+<h3 id="多线程爬天气网图片"><a href="#多线程爬天气网图片" class="headerlink" title="多线程爬天气网图片"></a>多线程爬天气网图片</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">import ssl</span><br><span class="line">ssl._create_default_https_context &#x3D; ssl._create_unverified_context</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">from bs4 import UnicodeDammit</span><br><span class="line">from urllib import parse</span><br><span class="line">import urllib.request</span><br><span class="line">import threading</span><br><span class="line"></span><br><span class="line">def imageSpider(start_url):</span><br><span class="line">    global threads</span><br><span class="line">    global count</span><br><span class="line">    try:</span><br><span class="line">        urls&#x3D;[]</span><br><span class="line">        req&#x3D;urllib.request.Request(start_url,headers&#x3D;headers)</span><br><span class="line">        data&#x3D;urllib.request.urlopen(req)</span><br><span class="line">        data&#x3D;data.read()</span><br><span class="line">        dammit&#x3D;UnicodeDammit(data, [&quot;utf-8&quot;,&quot;gdk&quot;])</span><br><span class="line">        data&#x3D;dammit.unicode_markup</span><br><span class="line">        soup&#x3D;BeautifulSoup(data,&#39;lxml&#39;)</span><br><span class="line">        images&#x3D;soup.select(&#39;img&#39;)</span><br><span class="line">        for image in images:</span><br><span class="line">            src&#x3D;image[&#39;src&#39;]</span><br><span class="line">            url&#x3D;parse.urljoin(start_url, src)</span><br><span class="line">            if url not in urls:</span><br><span class="line">                print(url)</span><br><span class="line">                urls.append(url)</span><br><span class="line">                count&#x3D;count+1</span><br><span class="line">                T&#x3D;threading.Thread(target&#x3D;download,args&#x3D;(url,count))</span><br><span class="line">                # 多线程运行download函数</span><br><span class="line">                T.setDaemon(False)</span><br><span class="line">                T.start()</span><br><span class="line">                threads.append(T)</span><br><span class="line">    except Exception as err:</span><br><span class="line">        print(err)</span><br><span class="line"></span><br><span class="line">def download(url,count):</span><br><span class="line">    if url[len(url)-4]&#x3D;&#x3D;&#39;.&#39;:</span><br><span class="line">        ext&#x3D;url[len(url)-4:]</span><br><span class="line">    else:</span><br><span class="line">        ext&#x3D;&#39;&#39;</span><br><span class="line">    req&#x3D;urllib.request.Request(url, headers&#x3D;headers)</span><br><span class="line">    data&#x3D;urllib.request.urlopen(req,timeout&#x3D;100)</span><br><span class="line">    data&#x3D;data.read()</span><br><span class="line">    fobj&#x3D;open(&#39;image\\&#39;+str(count)+ext,&#39;wb&#39;)</span><br><span class="line">    fobj.write(data)</span><br><span class="line">    fobj.close()</span><br><span class="line">    print(&#39;downloaded&#39;+str(count)+ext)</span><br><span class="line"></span><br><span class="line">start_url&#x3D;&#39;http:&#x2F;&#x2F;www.weather.com.cn&#x2F;weather1d&#x2F;101080101.shtml&#39;</span><br><span class="line">headers&#x3D;&#123;&#39;User-Agent&#39;:&#39;Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;81.0.4044.138 Safari&#x2F;537.36&#39;&#125;</span><br><span class="line">count&#x3D;0</span><br><span class="line">threads&#x3D;[]</span><br><span class="line">imageSpider(start_url)</span><br><span class="line">for t in threads: #多线程等待后结束主程序</span><br><span class="line">    t.join()</span><br><span class="line">print(&#39;END&#39;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a><a href="https://www.jianshu.com/p/a87dee628cc2" target="_blank" rel="noopener">Scrapy</a></h2><h3 id="创建简单爬虫"><a href="#创建简单爬虫" class="headerlink" title="创建简单爬虫"></a>创建简单爬虫</h3><p>在命令行中输入scrapy startproject XXX</p>
+<p>在spider文件夹中建立py文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import scrapy</span><br><span class="line"></span><br><span class="line">class MySpider(scrapy.Spider):</span><br><span class="line">    name&#x3D;&quot;mySpider&quot;</span><br><span class="line"></span><br><span class="line">    def start_requests(self):</span><br><span class="line">    # 整个函数可以用start_urls &#x3D; [&#39;https:&#x2F;&#x2F;www.baidu.com&#39;]代替</span><br><span class="line">        url&#x3D;&#39;https:&#x2F;&#x2F;www.baidu.com&#39;</span><br><span class="line">        yield scrapy.Request(url&#x3D;url, callback&#x3D;self.parse)</span><br><span class="line">        # 访问网页回调callback函数，yield返回数据但可以不结束函数</span><br><span class="line">    def parse(self, response):</span><br><span class="line">        print(response.url)</span><br><span class="line">        data&#x3D;response.body.decode()</span><br><span class="line">        print(data)</span><br></pre></td></tr></table></figure>
+
+<p>在XXX文件中建立py文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from scrapy import cmdline</span><br><span class="line"></span><br><span class="line">cmdline.execute(&#39;scrapy crawl mySpider -s LOG_ENABLED&#x3D;False&#39;.split())</span><br></pre></td></tr></table></figure>
+
+<h3 id="查找HTML元素"><a href="#查找HTML元素" class="headerlink" title="查找HTML元素"></a>查找HTML元素</h3>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>舒克</span>
+                    </p>
+                
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Python/"># Python</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/07/08/Python%E5%9F%BA%E7%A1%80/">Python基础</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 舒克 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
