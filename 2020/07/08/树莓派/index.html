@@ -236,7 +236,7 @@
         </header>
 
         <div class="post-content">
-            <p>笔记本电脑当作树莓派的显示器<a href="https://www.jianshu.com/p/515d35847069" target="_blank" rel="noopener"></a></p>
+            <p><a href="https://www.jianshu.com/p/515d35847069" target="_blank" rel="noopener">笔记本电脑当作树莓派的显示器</a></p>
 <h2 id="Linux基本命令"><a href="#Linux基本命令" class="headerlink" title="Linux基本命令"></a>Linux基本命令</h2><h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><p>cd XXX 进入XXX文件夹（不写XXX时退出到主页）</p>
 <p>ls 查看目录下的文件夹</p>
 <p>mkdir XXX 创建新文件夹</p>
@@ -254,6 +254,7 @@
 <p>python3 XXX.py 以python运行XXX.py</p>
 <h3 id="python"><a href="#python" class="headerlink" title="python"></a>python</h3><p>exit() 退出python</p>
 <p>pip3 install gpiozero 下载gpio包</p>
+<h2 id="利用Pycharm的ssh推送"><a href="#利用Pycharm的ssh推送" class="headerlink" title="利用Pycharm的ssh推送"></a>利用Pycharm的ssh推送</h2><p>打开</p>
 <h2 id="GPIO操作"><a href="#GPIO操作" class="headerlink" title="GPIO操作"></a><a href="https://gpiozero.readthedocs.io/en/stable/" target="_blank" rel="noopener">GPIO操作</a></h2><h3 id="灯光"><a href="#灯光" class="headerlink" title="灯光"></a>灯光</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from gpiozero import LED</span><br><span class="line">from time import sleep</span><br><span class="line"></span><br><span class="line">led&#x3D;LED(这里写LED的端口号)</span><br><span class="line">while True:</span><br><span class="line">    led.on()</span><br><span class="line">    sleep(1)</span><br><span class="line">    led1.off()</span><br></pre></td></tr></table></figure>
 
 
