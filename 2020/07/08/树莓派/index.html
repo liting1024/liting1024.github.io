@@ -237,6 +237,7 @@
 
         <div class="post-content">
             <p><a href="https://www.jianshu.com/p/515d35847069" target="_blank" rel="noopener">笔记本电脑当作树莓派的显示器</a></p>
+<p><a href="https://blog.csdn.net/wongnoubo/article/details/88833317" target="_blank" rel="noopener">修改静态地址</a></p>
 <p><a href="https://linux.cn/article-10888-1.html" target="_blank" rel="noopener">SSH远程连接树莓派</a></p>
 <h2 id="Linux基本命令"><a href="#Linux基本命令" class="headerlink" title="Linux基本命令"></a>Linux基本命令</h2><h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><p>cd XXX 进入XXX文件夹（不写XXX时退出到主页）</p>
 <p>ls 查看目录下的文件夹</p>
@@ -264,9 +265,9 @@
 <p>Password：树莓派的密码<br>Tools-Configuration 选择好path</p>
 <p>Web path为默认的’/‘</p>
 <p>Tools-Option-Create empty directories</p>
-<h2 id="GPIO操作"><a href="#GPIO操作" class="headerlink" title="GPIO操作"></a><a href="https://gpiozero.readthedocs.io/en/stable/" target="_blank" rel="noopener">GPIO操作</a></h2><h3 id="灯光"><a href="#灯光" class="headerlink" title="灯光"></a>灯光</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from gpiozero import LED</span><br><span class="line">from time import sleep</span><br><span class="line"></span><br><span class="line">led&#x3D;LED(这里写LED的端口号)</span><br><span class="line">while True:</span><br><span class="line">    led.on()</span><br><span class="line">    sleep(1)</span><br><span class="line">    led.off()</span><br></pre></td></tr></table></figure>
+<h2 id="GPIO"><a href="#GPIO" class="headerlink" title="GPIO"></a><a href="https://gpiozero.readthedocs.io/en/stable/" target="_blank" rel="noopener">GPIO</a></h2><h3 id="RPi-GPIO"><a href="#RPi-GPIO" class="headerlink" title="RPi.GPIO"></a>RPi.GPIO</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import RPi.GPIO as GPIO #导入RPi.GPIO库</span><br><span class="line"></span><br><span class="line">GPIO.setmode(GPIO.BCM) #设置输出为python的BCM</span><br><span class="line">GPIO.setwarnings(False) #取消报警</span><br><span class="line">GPIO.setup(2, GPIO.OUT, GPIO.PUD_UP) </span><br><span class="line">#设置2号BCM为输出口，初始状态为上拉 GPIO.PUD_DOWN&#x2F;GPIO.LOW</span><br><span class="line">GPIO.setup(2, GPIO.HIGH) #设置2号为上拉的高电平 </span><br><span class="line">GPIO.wait_for_press(3, GPIO.FALLING) #检测3号按钮状态 GPIO.RAISE</span><br></pre></td></tr></table></figure>
 
-
+<h3 id="gpiozero"><a href="#gpiozero" class="headerlink" title="gpiozero"></a>gpiozero</h3>
         </div>
 
         
