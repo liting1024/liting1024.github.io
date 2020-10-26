@@ -236,7 +236,8 @@
         </header>
 
         <div class="post-content">
-            <h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><p>程序设计的实质：数据表示（存储在内存中，核心：数据结构）和数据处理（核心：算法）</p>
+            <p>==version 1.1==</p>
+<h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><p>程序设计的实质：数据表示（存储在内存中，核心：数据结构）和数据处理（核心：算法）</p>
 <p>数值问题 -&gt; 数学问题</p>
 <p>非数值问题 -&gt; 数据结构</p>
 <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="数据：信息的载体"><a href="#数据：信息的载体" class="headerlink" title="数据：信息的载体"></a>数据：信息的载体</h3><p>数据元素：数据的基本单位（讨论数据结构时涉及的最小数据单位）</p>
@@ -286,7 +287,7 @@
 <h3 id="描述方法"><a href="#描述方法" class="headerlink" title="描述方法"></a>描述方法</h3><table>
 <thead>
 <tr>
-<th></th>
+<th>语言</th>
 <th>优点</th>
 <th>缺点</th>
 </tr>
@@ -309,7 +310,7 @@
 <tr>
 <td>伪代码</td>
 <td>算法语言</td>
-<td></td>
+<td>真没缺点</td>
 </tr>
 </tbody></table>
 <h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>事后统计</p>
@@ -336,7 +337,7 @@
 <h2 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h2><p>用地址连续的存储单元依次存储线性表的数据元素，通常用一维数组实现</p>
 <p>静态存储分布</p>
 <p>基地址：起始地址</p>
-<p>数组长度&gt;=线性表长度</p>
+<p>数组长度 &gt;= 线性表长度</p>
 <p>存取结构：<strong><em>随机存取</em></strong></p>
 <h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>无需为表示元素间的逻辑关系新增空间</p>
 <p>随机存取可以快速存取任意位置元素</p>
@@ -364,39 +365,44 @@
 <p>空间换时间</p>
 <h4 id="静态链表"><a href="#静态链表" class="headerlink" title="静态链表"></a>静态链表</h4><p>间接寻址：结合数组和指针，将数组中存储数据元素的单元改为存储指向该元素的指针</p>
 <p>优点：插入删除时只需要修改指针不移动元素</p>
-<p>缺点：：没解决连续存储分配的问题，还需要维护一个空闲链，不能随机存取</p>
+<p>缺点：没解决连续存储分配的问题，还需要维护一个空闲链，不能随机存取</p>
 <h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><h3 id="时间性能"><a href="#时间性能" class="headerlink" title="时间性能"></a>时间性能</h3><p>实现基于某存储结构的基本操作的时间复杂度</p>
-<h3 id="空间性能"><a href="#空间性能" class="headerlink" title="空间性能"></a>空间性能</h3><p>存储密度= 数据域占用的存储量 / 整个结点占用的</p>
+<h3 id="空间性能"><a href="#空间性能" class="headerlink" title="空间性能"></a>空间性能</h3><p>存储密度 = 数据域占用的存储量 / 整个结点占用的</p>
 <p>顺序表 = 1 存储空间利用率较高                                                                                                                                                                                                                                                                                                                               </p>
 <p>链表 &lt; 1</p>
 <h1 id="栈和队列"><a href="#栈和队列" class="headerlink" title="栈和队列"></a>栈和队列</h1><p>操作受限的线性表，逻辑结构相同</p>
 <h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>限定仅在表尾插入删除的线性表，单一的前驱和后继</p>
 <p>特性：后进先出</p>
 <p>栈顶：允许插入和删除</p>
+<p>栈空：不含任何数据元素的栈</p>
 <h3 id="ADT"><a href="#ADT" class="headerlink" title="ADT"></a>ADT</h3><p>Push</p>
 <p>Pop</p>
 <p>GetTop</p>
 <p>Empty</p>
-<h3 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h3><p>栈空：top=-1</p>
-<p>栈满：top=StackSize-1</p>
-<h3 id="两栈共享空间"><a href="#两栈共享空间" class="headerlink" title="两栈共享空间"></a>两栈共享空间</h3><p>栈空：</p>
-<p>top1=-1</p>
-<p>top2=Stack_Size</p>
-<p>栈满：top2=top1+1</p>
+<h3 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h3><p>栈空：top = -1</p>
+<p>栈满：top = StackSize - 1</p>
+<h3 id="两栈共享空间"><a href="#两栈共享空间" class="headerlink" title="两栈共享空间"></a>两栈共享空间</h3><p>栈空：top1 = - 1        top2 = Stack_Size</p>
+<p>栈满：top2 = top1 + 1        top1 = top2 - 1</p>
 <h3 id="链栈"><a href="#链栈" class="headerlink" title="链栈"></a>链栈</h3><p>以单链表的头部做栈顶，不需要附设头结点</p>
 <p>头插入栈</p>
+<h3 id="顺序栈vs链栈"><a href="#顺序栈vs链栈" class="headerlink" title="顺序栈vs链栈"></a>顺序栈vs链栈</h3><p>基本操作的算法只需要常数时间</p>
+<p>链栈有结构性开销，应采用顺序栈</p>
 <h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p>只允许在一端插入另一端删除的线性表</p>
 <p>特性：先进先出</p>
 <p>队尾：允许出队（删除）</p>
+<p>设置队头、队尾两个指针，改进出队时间性能 </p>
+<p>队头指针：头元素前一个位置</p>
+<p>队尾指针：队尾元素</p>
 <h3 id="ADT-1"><a href="#ADT-1" class="headerlink" title="ADT"></a>ADT</h3><p>EnQueue</p>
 <p>DeQueue</p>
 <p>GetQueue</p>
 <p>Empty</p>
 <h3 id="顺序存储-循环队列"><a href="#顺序存储-循环队列" class="headerlink" title="顺序存储-循环队列"></a>顺序存储-循环队列</h3><p>假溢出：元素插入数组下标较大的位置移过去，数组的低端还有空闲空间</p>
-<p>队空：front=rear=QueueSize-1</p>
-<p>队满：(rear+1)%QueueSize=front</p>
-<p>设置队头、队尾两个指针，改进出队时间性能 </p>
-
+<p>队空：front = rear = QueueSize - 1</p>
+<p>队满：( rear + 1 ) % QueueSize = front</p>
+<p>（头尾）进一：rear = ( rear + 1 ) % QueueSize</p>
+<h3 id="链队列"><a href="#链队列" class="headerlink" title="链队列"></a>链队列</h3><p>使用头结点，使操作统一</p>
+<h1 id="字符串和多维数组"><a href="#字符串和多维数组" class="headerlink" title="字符串和多维数组"></a>字符串和多维数组</h1>
         </div>
 
         
