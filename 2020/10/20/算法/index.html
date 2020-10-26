@@ -402,7 +402,18 @@
 <p>队满：( rear + 1 ) % QueueSize = front</p>
 <p>（头尾）进一：rear = ( rear + 1 ) % QueueSize</p>
 <h3 id="链队列"><a href="#链队列" class="headerlink" title="链队列"></a>链队列</h3><p>使用头结点，使操作统一</p>
-<h1 id="字符串和多维数组"><a href="#字符串和多维数组" class="headerlink" title="字符串和多维数组"></a>字符串和多维数组</h1>
+<h1 id="字符串和多维数组-S-“s1-s2-…-sn”"><a href="#字符串和多维数组-S-“s1-s2-…-sn”" class="headerlink" title="字符串和多维数组 S=“s1 s2 … sn”"></a>字符串和多维数组 S=“s1 s2 … sn”</h1><p>是零个或多个字符组成的有限序列，是数据元素为单个字符的线性表<br>空格串：包含空格的串<br>子串：任意个连续的字符组成的子序列<br>主串：包含子串的串<br>子串在主串中的位置：子串的第一个字符在主串中的序号<br>字符串的比较：由ASCII码决定</p>
+<h2 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h2><p>在主串S中寻找子串T的过程<br>模式：子串T</p>
+<h3 id="BF算法"><a href="#BF算法" class="headerlink" title="BF算法"></a>BF算法</h3><p>最好情况下时间复杂度O(n+m)<br>改进的KMP算法：<br>i不回溯，j回溯到next[j]<br>失败时 T[0]<del>T[k-1]=S[i-k]</del>S[i-1]<br>成功时 T[j-k]<del>T[j-1]=S[i-k]</del>S[i-1]<br>综上 T[0]<del>T[k-1]=T[j-k]</del>T[j-1]</p>
+<h2 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h2><p>类型相同的数据元素构成的有序集合<br>行[l1,h1]、列[l2,h2]：loc=基地址+c((i-l1)(h2-l2+1)+(j-l2))</p>
+<h3 id="矩阵的压缩存储"><a href="#矩阵的压缩存储" class="headerlink" title="矩阵的压缩存储"></a>矩阵的压缩存储</h3><p>行优先：以行序为主序<br>特殊矩阵：很多值相同的元素且他们的分布有规律，稀疏矩阵不属于特殊矩阵<br>压缩存储：值相同的元素只分配一个存储空间，零元素不分配存储空间</p>
+<h4 id="对称矩阵"><a href="#对称矩阵" class="headerlink" title="对称矩阵"></a>对称矩阵</h4><p>关于主对角线对称，只存储下三角部分（和主对角线）<br>n*n -&gt; n(n+1)/2<br>存在数组SA[n(n+1)/2]中，下标k=i(i-1)/2+j-1（下标从0开始）</p>
+<h4 id="三角矩阵"><a href="#三角矩阵" class="headerlink" title="三角矩阵"></a>三角矩阵</h4><p>对称矩阵，对角线上为常数c<br>n*n -&gt; n(n+1)/2+1<br>存在数组SA[n(n+1)/2+1]中，下标为k（从0开始）</p>
+<h5 id="下三角"><a href="#下三角" class="headerlink" title="下三角"></a>下三角</h5><p>i &gt;= j k = i(i-1)/2+j-1<br>i &lt; j k = n(n+1)/2</p>
+<h5 id="上三角"><a href="#上三角" class="headerlink" title="上三角"></a>上三角</h5><p>i &lt;= j k = (i-1)(2n-i+2)/2+j-i<br>i &gt; j k = n(n+1)/2</p>
+<h4 id="对角矩阵"><a href="#对角矩阵" class="headerlink" title="对角矩阵"></a>对角矩阵</h4><p>k = 2 + 3(i-2) + (j-i+2)</p>
+<h4 id="稀疏矩阵"><a href="#稀疏矩阵" class="headerlink" title="稀疏矩阵"></a>稀疏矩阵</h4><p>三元组顺序表<br>row，col，item<br>在顺序表倒数三行需要存矩阵的行、列数、非零元的个数<br>十字链表<br>row，col，item，right，down<br>right 同行下一个三元组<br>down 同列下一个三元组</p>
+
         </div>
 
         
