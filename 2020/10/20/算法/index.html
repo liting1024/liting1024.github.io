@@ -425,6 +425,80 @@
 <h4 id="对角矩阵"><a href="#对角矩阵" class="headerlink" title="对角矩阵"></a>对角矩阵</h4><p>k = 2 + 3(i-2) + (j-i+2)</p>
 <h4 id="稀疏矩阵"><a href="#稀疏矩阵" class="headerlink" title="稀疏矩阵"></a>稀疏矩阵</h4><p>非零元素分布没有规律</p>
 <p>三元组顺序表<br>row，col，item<br>在顺序表倒数三行需要存矩阵的行、列数、非零元的个数<br>十字链表<br>row，col，item，right，down<br>right 同行下一个三元组<br>down 同列下一个三元组</p>
+<h1 id="树和二叉树"><a href="#树和二叉树" class="headerlink" title="树和二叉树"></a>树和二叉树</h1><h2 id="树的术语"><a href="#树的术语" class="headerlink" title="树的术语"></a>树的术语</h2><p>树：n&gt;=0个结点的有限集合</p>
+<p>空树：n=0</p>
+<p>非空树：有且仅有一个根节点，其余结点分为m个互不相交的集合，每个集合都是这个根节点的一棵子树</p>
+<p>结点：数据元素</p>
+<p>度：子树的个数为结点的度，各节点的最大值为该树的度</p>
+<p>叶子结点（终端结点）：度为0的结点</p>
+<p>分支结点（非终端结点）：度不为0</p>
+<p>路径长度：路径上进过的边数，在树中路径是唯一的</p>
+<p>结点层数（树的深度、高度）：根结点的层数为1</p>
+<p>同层编号：每层从左到右从1开始编号</p>
+<p>有序树：从左到右有次序</p>
+<p>森林：任何一个数删除根结点就变成森林了，<em>一棵树也可称为森林</em></p>
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><p>前序：先根后括号</p>
+<p>中序：左根右</p>
+<p>后序：先左右后根</p>
+<p>层序：从第一层，逐层遍历</p>
+<h2 id="树的存储结构"><a href="#树的存储结构" class="headerlink" title="树的存储结构"></a>树的存储结构</h2><h3 id="双亲表示法"><a href="#双亲表示法" class="headerlink" title="双亲表示法"></a>双亲表示法</h3><p>静态链表（数组）</p>
+<p>只存储双亲或带右兄弟的双亲</p>
+<h3 id="孩子表示法"><a href="#孩子表示法" class="headerlink" title="孩子表示法"></a>孩子表示法</h3><h4 id="多重链表表示法"><a href="#多重链表表示法" class="headerlink" title="多重链表表示法"></a>多重链表表示法</h4><p>纯链表，双亲指向孩子</p>
+<p>指针域的个数 = 度</p>
+<p>缺点：各结点不同构时树的各种操作不容易实现，各结点同构时浪费存储空间</p>
+<h4 id="孩子链表表示法"><a href="#孩子链表表示法" class="headerlink" title="孩子链表表示法"></a>孩子链表表示法</h4><p>数组存所有数据</p>
+<p>数组中的firstchild用来存链表的表头，链表存结点的孩子</p>
+<h4 id="双亲孩子表示法"><a href="#双亲孩子表示法" class="headerlink" title="双亲孩子表示法"></a>双亲孩子表示法</h4><p>孩子链表的基础上数组里加上双亲的下角标</p>
+<h4 id="孩子兄弟表示法"><a href="#孩子兄弟表示法" class="headerlink" title="孩子兄弟表示法"></a>孩子兄弟表示法</h4><p>纯链表</p>
+<p>左边存第一个孩子，右边存右兄弟</p>
+<h2 id="二叉树的逻辑结构"><a href="#二叉树的逻辑结构" class="headerlink" title="二叉树的逻辑结构"></a>二叉树的逻辑结构</h2><h3 id="二叉树的定义"><a href="#二叉树的定义" class="headerlink" title="二叉树的定义"></a>二叉树的定义</h3><p>n &gt;= 0</p>
+<p>不存在度大于2的结点</p>
+<p><strong><em>是有序的</em></strong>（本书）</p>
+<p>斜树：所有结点都只有左子树或右子树，每层只有一个结点</p>
+<p><em>满二叉树：叶子结点只出现在下一层，只有度为0和度为2的结点</em></p>
+<p><em>完全二叉树：叶子结点只出现在下面俩层，如果有度为1的结点，只能有一个且该结点只有左孩子</em></p>
+<p>满二叉树必是完全二叉树</p>
+<h3 id="二叉树的性质"><a href="#二叉树的性质" class="headerlink" title="二叉树的性质"></a>二叉树的性质</h3><p>1、第i层上最多有$2^{i-1}$个</p>
+<p>2、深度为k的二叉树最多有$2^k-1$个结点，最少有k个结点</p>
+<p>3、叶子结点个数为$n_0$，度为2的结点个数为$n_2$，则$n_0=n_2+1$</p>
+<p>4、具有n个结点的完全二叉树深度为$\lfloor log_2n \rfloor+1$</p>
+<p>5、完全二叉树从1开始按层序编号</p>
+<p>如果i&gt;1，结点i的双亲编号为$\lfloor i/2 \rfloor$</p>
+<p>如果2i&lt;=n，结点i的左孩子编号为2i</p>
+<p>如果2i+1&lt;=n，结点i的右孩子编号为2i+1</p>
+<h3 id="二叉树的存储结构"><a href="#二叉树的存储结构" class="headerlink" title="二叉树的存储结构"></a>二叉树的存储结构</h3><p>把二叉树按完全二叉树编号，符合性质5</p>
+<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h2 id="图的逻辑结构"><a href="#图的逻辑结构" class="headerlink" title="图的逻辑结构"></a>图的逻辑结构</h2><h3 id="图的定义"><a href="#图的定义" class="headerlink" title="图的定义"></a>图的定义</h3><p>图：由顶点的有穷<strong>非空</strong>集合和顶点之间边的集合组成<br>无向边：俩顶点$v_i$和$v_j$之间的边没有方向<br>有向边（弧）：$v_i$为弧头，$v_j$为弧尾，用序偶对表示<br>无向图：任意边都是无向边，否则为有向图</p>
+<h3 id="图的术语"><a href="#图的术语" class="headerlink" title="图的术语"></a>图的术语</h3><p>简单图：不存在顶点到自身的边，且同一边不重复出现<br>邻接：存在弧&lt;vi, vj&gt;，称顶点vi邻接vj，vj邻接自vi；弧&lt;vi, vj&gt;依附于顶点vi和vj；vj是vi的邻接点，vi不是vj的邻接点<br>无向完全图：<br>有向完全图：<br>稠密图：<br>稀疏图：<br>顶点的度：依附于该顶点的边的个数<br>入度：以该顶点为弧头的弧的个数，计为ID(v)<br>出度：以该顶点为弧尾的弧的个数<br>权：<br>网：<br>路径：<br>路径长度：<br>回路：<br>简单路径：<br>简单回路：<br>子图：<br>连通图：<br>连通分量：<br>强连通图：<br>强连通分量：<br>生成树、森林：</p>
+<h3 id="ADT-2"><a href="#ADT-2" class="headerlink" title="ADT"></a>ADT</h3><p>InitGraph<br>DestroyGraph<br>DFSTraverse<br>BFSTraverse</p>
+<h3 id="遍历-1"><a href="#遍历-1" class="headerlink" title="遍历"></a>遍历</h3><p>深度优先<br>广度优先</p>
+<h2 id="图的存储结构"><a href="#图的存储结构" class="headerlink" title="图的存储结构"></a>图的存储结构</h2><h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><p>矩阵和顶点表<br>图：无边为0，有边为1<br>求入读<br>网：无边为∞，有边为权，主对角线为0</p>
+<h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><p>顶点表（顺序）：存所有顶点权值和firstedge边表第一个结点<br>边表（链式）：存顶点下标和next<br>顶点可能结构复杂，修改结点的开销大<br>插入用头插，节省时间</p>
+<h3 id="十字链表"><a href="#十字链表" class="headerlink" title="十字链表"></a>十字链表</h3><p>存储有向图<br>邻接表和逆邻接表的结点</p>
+<h3 id="邻接多重表"><a href="#邻接多重表" class="headerlink" title="邻接多重表"></a>邻接多重表</h3><p>存储无向图<br>顶点表（顺序）<br>边表（链式）：</p>
+<table>
+<thead>
+<tr>
+<th>结点域</th>
+<th>Statement</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ivex</td>
+<td>某边依附顶点的下标i</td>
+</tr>
+<tr>
+<td>ilink</td>
+<td>依附于ivex的下一边</td>
+</tr>
+<tr>
+<td>jvex</td>
+<td>下标j</td>
+</tr>
+<tr>
+<td>jlink</td>
+<td>依附于jvex的下一边</td>
+</tr>
+</tbody></table>
 
         </div>
 
@@ -465,6 +539,8 @@
             </div>
         </section>
         <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/11/01/Mathjax%E6%A0%BC%E5%BC%8F/">Mathjax格式</a>
             
             
             <a class="next" rel="next" href="/2020/07/08/%E7%88%AC%E8%99%AB/">爬虫</a>
