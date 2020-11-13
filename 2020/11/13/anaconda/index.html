@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="舒克">
+
+
+
+
+
+<title>anaconda | James&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/public/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Shuker&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Shuker&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">anaconda</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">舒克</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 13, 2020&nbsp;&nbsp;16:44:54</a>
+                        </span>
+                    
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="linux指令"><a href="#linux指令" class="headerlink" title="linux指令"></a>linux指令</h1><p>conda list 查看安装了哪些包。</p>
+<p>conda env list 或 conda info -e 查看当前存在哪些虚拟环境</p>
+<p>conda update conda 检查更新当前conda</p>
+<p>conda deactivate 退出环境</p>
+<p> conda create -n your_env_name python=X.X（2.7、3.6等)命令创建python版本为X.X、名字为your_env_name的虚拟环境</p>
+<p> source activate your_env_name(虚拟环境名称) 激活环境</p>
+<p> 使用命令conda remove -n your_env_name(虚拟环境名称) –all 删除环境</p>
+<p>conda remove –name your_env_name package_name 删除环境中的包</p>
+<h1 id="终端挂代理"><a href="#终端挂代理" class="headerlink" title="终端挂代理"></a>终端挂代理</h1><p>export http_proxy=socks5://127.0.0.1:1080 # 配置http 代理访问</p>
+<p>export https_proxy=socks5://127.0.0.1:1080 # 配置https 代理访问</p>
+<p> export all_proxy=socks5://127.0.0.1:1080 # 配置http和https访问</p>
+<p> unset http_proxy # 取消http 代理访问</p>
+<p>  unset https_proxy # 取消https 代理访问</p>
+<p>export http_proxy=http: //127.0.0.1:1085;export https_proxy=http: //127.0.0.1:1085;</p>
+<h1 id="screen挂起窗口"><a href="#screen挂起窗口" class="headerlink" title="screen挂起窗口"></a>screen挂起窗口</h1><p>进入screen后直接执行命令</p>
+<p>此时想离开一段时间，但还想让这个命令继续执行：ctrl +a +d</p>
+<ol>
+<li><p>screen -S yourname -&gt; 新建一个叫yourname的session</p>
+</li>
+<li><p>screen -ls         -&gt; 列出当前所有的session</p>
+</li>
+<li><p>screen -r yourname -&gt; 回到yourname这个session</p>
+</li>
+<li><p>screen -d yourname -&gt; 远程detach某个session</p>
+</li>
+<li><p>screen -d -r yourname -&gt; 结束当前session并回到yourname这个session</p>
+</li>
+<li><p>-A 　将所有的视窗都调整为目前终端机的大小。</p>
+</li>
+<li><p>-d   &lt;作业名称&gt; 　将指定的screen作业离线。</p>
+</li>
+<li><p>-h   &lt;行数&gt; 　指定视窗的缓冲区行数。</p>
+</li>
+<li><p>-m 　即使目前已在作业中的screen作业，仍强制建立新的screen作业。</p>
+</li>
+<li><p>-r   &lt;作业名称&gt; 　恢复离线的screen作业。</p>
+</li>
+<li><p>-R 　先试图恢复离线的作业。若找不到离线的作业，即建立新的screen作业。</p>
+</li>
+<li><p>-s 　指定建立新视窗时，所要执行的shell。</p>
+</li>
+<li><p>-S   &lt;作业名称&gt; 　指定screen作业的名称。</p>
+</li>
+<li><p>-v 　显示版本信息。</p>
+</li>
+<li><p>-x 　恢复之前离线的screen作业。</p>
+</li>
+<li><p>-ls或–list 　显示目前所有的screen作业。</p>
+</li>
+<li><p>-wipe 　检查目前所有的screen作业，并删除已经无法使用的screen作业。</p>
+</li>
+</ol>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>舒克</span>
+                    </p>
+                
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/11/01/Mathjax%E6%A0%BC%E5%BC%8F/">Mathjax格式</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 舒克 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
