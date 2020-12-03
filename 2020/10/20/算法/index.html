@@ -467,14 +467,45 @@
 <p>如果2i&lt;=n，结点i的左孩子编号为2i</p>
 <p>如果2i+1&lt;=n，结点i的右孩子编号为2i+1</p>
 <h3 id="二叉树的存储结构"><a href="#二叉树的存储结构" class="headerlink" title="二叉树的存储结构"></a>二叉树的存储结构</h3><p>把二叉树按完全二叉树编号，符合性质5</p>
-<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h2 id="图的逻辑结构"><a href="#图的逻辑结构" class="headerlink" title="图的逻辑结构"></a>图的逻辑结构</h2><h3 id="图的定义"><a href="#图的定义" class="headerlink" title="图的定义"></a>图的定义</h3><p>图：由顶点的有穷<strong>非空</strong>集合和顶点之间边的集合组成<br>无向边：俩顶点$v_i$和$v_j$之间的边没有方向<br>有向边（弧）：$v_i$为弧头，$v_j$为弧尾，用序偶对表示<br>无向图：任意边都是无向边，否则为有向图</p>
-<h3 id="图的术语"><a href="#图的术语" class="headerlink" title="图的术语"></a>图的术语</h3><p>简单图：不存在顶点到自身的边，且同一边不重复出现<br>邻接：存在弧&lt;vi, vj&gt;，称顶点vi邻接vj，vj邻接自vi；弧&lt;vi, vj&gt;依附于顶点vi和vj；vj是vi的邻接点，vi不是vj的邻接点<br>无向完全图：<br>有向完全图：<br>稠密图：<br>稀疏图：<br>顶点的度：依附于该顶点的边的个数<br>入度：以该顶点为弧头的弧的个数，计为ID(v)<br>出度：以该顶点为弧尾的弧的个数<br>权：<br>网：<br>路径：<br>路径长度：<br>回路：<br>简单路径：<br>简单回路：<br>子图：<br>连通图：<br>连通分量：<br>强连通图：<br>强连通分量：<br>生成树、森林：</p>
+<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h2 id="图的逻辑结构"><a href="#图的逻辑结构" class="headerlink" title="图的逻辑结构"></a>图的逻辑结构</h2><h3 id="图的定义"><a href="#图的定义" class="headerlink" title="图的定义"></a>图的定义</h3><ol>
+<li><p>图：由顶点的有穷<strong>非空</strong>集合和顶点之间边的集合组成（可以无边，必须有点）</p>
+</li>
+<li><p>无向边：俩顶点$v_i$和$v_j$之间的边没有方向<br>有向边（弧）：$v_i$为弧头，$v_j$为弧尾，用序偶对表示</p>
+</li>
+<li><p>无向图：任意边都是无向边，否则为有向图</p>
+<p>无向完全图：任意两个顶点之间都有边</p>
+<p>n个顶点则有n*(n-1)/2条边</p>
+<p>有向完全图：任意两个顶点之间都有方向相反的两条弧</p>
+<p>n个顶点则有n*(n-1)条边</p>
+</li>
+</ol>
+<h3 id="图的术语"><a href="#图的术语" class="headerlink" title="图的术语"></a>图的术语</h3><ol>
+<li><p>简单图：不存在顶点到自身的边，且同一边不重复出现</p>
+</li>
+<li><p>邻接：存在弧&lt;vi, vj&gt;，称顶点vi邻接vj，vj邻接自vi；弧&lt;vi, vj&gt;依附于顶点vi和vj；vj是vi的邻接点，vi不是vj的邻接点</p>
+</li>
+<li><p>稀疏图：边数很少的图，反之为稠密图</p>
+</li>
+<li><p>顶点的度：依附于该顶点的边的个数，入度+出度<br>入度：以该顶点为弧头的弧的个数<br>出度：以该顶点为弧尾的弧的个数</p>
+</li>
+<li><p>权：对边赋予的有意义的数值量<br>网：边上带权的图</p>
+</li>
+<li><p>路径：一个顶点序列（从一个顶点到另一个顶点）<br>路径长度：路径上边的数目（有权的话是权的和）<br>回路（环）：第一个顶点和最后一个顶点相同的路径<br>简单路径：顶点不重复出现的路径<br>简单回路： 除了第一个顶点和最后一个顶点外其余顶点不重复出现的回路（只绕一圈）</p>
+</li>
+<li><p>子图：一个图的点和边是另一个图的子集</p>
+<p>一个图可以有很多子图<br>连通图（无向图）：任意两点之间有路径（不考虑自己到自己）<br>连通分量：非连通图的极大连通子图<br>强连通图：（有向图）两点之间均有路径<br>强连通分量：非强连通图的极大强连通子图</p>
+</li>
+<li><p>生成树：n个顶点的连通图G的生成树是包含G中全部顶点的一个极小连通子图</p>
+<p>森林：每个连通分量得到的生成树构成的非连通图</p>
+</li>
+</ol>
 <h3 id="ADT-2"><a href="#ADT-2" class="headerlink" title="ADT"></a>ADT</h3><p>InitGraph<br>DestroyGraph<br>DFSTraverse<br>BFSTraverse</p>
-<h3 id="遍历-1"><a href="#遍历-1" class="headerlink" title="遍历"></a>遍历</h3><p>深度优先<br>广度优先</p>
-<h2 id="图的存储结构"><a href="#图的存储结构" class="headerlink" title="图的存储结构"></a>图的存储结构</h2><h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><p>矩阵和顶点表<br>图：无边为0，有边为1<br>求入读<br>网：无边为∞，有边为权，主对角线为0</p>
-<h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><p>顶点表（顺序）：存所有顶点权值和firstedge边表第一个结点<br>边表（链式）：存顶点下标和next<br>顶点可能结构复杂，修改结点的开销大<br>插入用头插，节省时间</p>
-<h3 id="十字链表"><a href="#十字链表" class="headerlink" title="十字链表"></a>十字链表</h3><p>存储有向图<br>邻接表和逆邻接表的结点</p>
-<h3 id="邻接多重表"><a href="#邻接多重表" class="headerlink" title="邻接多重表"></a>邻接多重表</h3><p>存储无向图<br>顶点表（顺序）<br>边表（链式）：</p>
+<h3 id="遍历-1"><a href="#遍历-1" class="headerlink" title="遍历"></a>遍历</h3><p>深度优先（类似树的前序遍历）</p>
+<p>广度优先（树的层序遍历）</p>
+<h2 id="图的存储结构"><a href="#图的存储结构" class="headerlink" title="图的存储结构"></a>图的存储结构</h2><h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><p>矩阵vertex和顶点表arc<br>图：无边为0，有边为1<br>网：无边为∞，有边为权，主对角线为0</p>
+<h3 id="邻接表（出边表）、逆邻接表（入边表）"><a href="#邻接表（出边表）、逆邻接表（入边表）" class="headerlink" title="邻接表（出边表）、逆邻接表（入边表）"></a>邻接表（出边表）、逆邻接表（入边表）</h3><p>顶点表（顺序）VertexNode：存所有顶点权值vertex和firstedge边表第一个结点<br>边表（链式）ArcNode：存顶点下标adjvext和next<br>存下标的原因：顶点可能结构复杂，修改结点的开销大<br>插入用头插，节省时间</p>
+<h3 id="十字链表"><a href="#十字链表" class="headerlink" title="十字链表"></a>十字链表</h3><p>存储有向图<br>邻接表和逆邻接表的结合</p>
+<h3 id="邻接多重表"><a href="#邻接多重表" class="headerlink" title="邻接多重表"></a>邻接多重表</h3><p>存储无向图表（顺序）<br>边表（链式）：</p>
 <table>
 <thead>
 <tr>
@@ -499,6 +530,111 @@
 <td>依附于jvex的下一边</td>
 </tr>
 </tbody></table>
+<h3 id="邻接矩阵和邻接表的比较"><a href="#邻接矩阵和邻接表的比较" class="headerlink" title="邻接矩阵和邻接表的比较"></a>邻接矩阵和邻接表的比较</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>空间</th>
+<th>时间</th>
+<th>适用范围</th>
+<th>唯一性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>矩阵</td>
+<td>O(n^2)</td>
+<td>O(n^2)</td>
+<td>稠密图</td>
+<td>唯一</td>
+</tr>
+<tr>
+<td>表</td>
+<td>O(n+e)</td>
+<td>O(n+e)</td>
+<td>稀疏图</td>
+<td>不唯一</td>
+</tr>
+</tbody></table>
+<h2 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h2><h3 id="MST性质"><a href="#MST性质" class="headerlink" title="MST性质"></a>MST性质</h3><p>一条具有最小权值的边，则必存在一课包含该边的最小生成树</p>
+<h3 id="Prim（需代码）"><a href="#Prim（需代码）" class="headerlink" title="Prim（需代码）"></a>Prim（需代码）</h3><p>shortEdge</p>
+<p>lowcost</p>
+<p>adjvex</p>
+<h1 id="查找技术"><a href="#查找技术" class="headerlink" title="查找技术"></a>查找技术</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h3><p>1、关键码：可以标识一个记录的某个数据项</p>
+<p>关键值：关键码的值</p>
+<p>主关键码：唯一标识一个记录，反之次关键码</p>
+<p>2、查找：在具有相同类型的记录构成的集合中找到满足给定条件的记录</p>
+<p>查找结果：返回查找到的记录的位置或值</p>
+<p>静态查找：不涉及插入和删除操作</p>
+<p>动态查找：查找不成功时插入数据</p>
+<p>3、查找结构：为提高查找效率设计的数据结构</p>
+<table>
+<thead>
+<tr>
+<th>查找结构</th>
+<th>适用</th>
+<th>主要技术</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>线性表</td>
+<td>静态</td>
+<td>顺序查找、折半查找</td>
+</tr>
+<tr>
+<td>树表</td>
+<td>动态</td>
+<td>二叉排序树</td>
+</tr>
+<tr>
+<td>散列表</td>
+<td>都可</td>
+<td>散列技术</td>
+</tr>
+</tbody></table>
+<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>时间性能：关键码的比较次数</p>
+<p>T(n,k)：问题规模n中查找位置k</p>
+<p>平均查找长度：ASL=$\Sigma pc$ 查找概率乘以比较次数求和</p>
+<h2 id="线性表查找"><a href="#线性表查找" class="headerlink" title="线性表查找"></a>线性表查找</h2><h3 id="顺序查找"><a href="#顺序查找" class="headerlink" title="顺序查找"></a>顺序查找</h3><p>待查值放在开头，设置为“哨兵”，从后向前查找，链式结构“哨兵”设置在头节点</p>
+<p>表长大于1000时平均时间减半</p>
+<h3 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h3><p>可利用递归</p>
+<p>计算mid，根据比较调整low和high</p>
+<p>比较次数为mid计算次数</p>
+<h4 id="折半查找判定树（判定树）"><a href="#折半查找判定树（判定树）" class="headerlink" title="折半查找判定树（判定树）"></a>折半查找判定树（判定树）</h4><p>结点记录查找过程结点在表中的位置</p>
+<p>性质：</p>
+<p>任意两折半查找判定树，若结点相同结构一定相同</p>
+<p>任意两个叶子所在层数最多相差一</p>
+<h3 id="对比-1"><a href="#对比-1" class="headerlink" title="对比"></a>对比</h3><table>
+<thead>
+<tr>
+<th>技术</th>
+<th>要求</th>
+<th>缺点</th>
+<th>优点</th>
+<th>ASL</th>
+<th>时间性能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>顺序</td>
+<td>无要求</td>
+<td>n大时效率低</td>
+<td>算法简单 适用面广</td>
+<td>$\Sigma p(n-i+1)$</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>折半</td>
+<td>有序 顺序存储</td>
+<td>要求高</td>
+<td>效率高</td>
+<td>$\Sigma(i*s^{i-1})$</td>
+<td>O($log_2 n$)</td>
+</tr>
+</tbody></table>
+<p>每个记录查找概率相同时p=1/n</p>
+<h2 id="树表查找"><a href="#树表查找" class="headerlink" title="树表查找"></a>树表查找</h2><h3 id="二叉排序树（查找树）"><a href="#二叉排序树（查找树）" class="headerlink" title="二叉排序树（查找树）"></a>二叉排序树（查找树）</h3><p>构造-&gt;查找-&gt;插入，查找是插入的前序过程</p>
+<p>空树 或 左孩子&lt;结点&lt;右孩子</p>
+<p>二叉链表</p>
 
         </div>
 
@@ -540,7 +676,7 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/11/01/Mathjax%E6%A0%BC%E5%BC%8F/">Mathjax格式</a>
+                <a class="prev" rel="prev" href="/2020/11/13/anaconda/">anaconda</a>
             
             
             <a class="next" rel="next" href="/2020/07/08/%E7%88%AC%E8%99%AB/">爬虫</a>
