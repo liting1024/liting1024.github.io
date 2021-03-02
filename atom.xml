@@ -6,7 +6,7 @@
   <link href="https://liting1024.github.io/atom.xml" rel="self"/>
   
   <link href="https://liting1024.github.io/"/>
-  <updated>2021-01-08T09:36:10.000Z</updated>
+  <updated>2021-03-02T12:07:21.000Z</updated>
   <id>https://liting1024.github.io/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vim</title>
+    <link href="https://liting1024.github.io/2021/03/02/vim/"/>
+    <id>https://liting1024.github.io/2021/03/02/vim/</id>
+    <published>2021-03-02T12:07:21.000Z</published>
+    <updated>2021-03-02T12:07:21.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="分页与导航"><a href="#分页与导航" class="headerlink" title="分页与导航"></a>分页与导航</h1><p>在不关闭的情况下开启其他档案<br>:e 档案名称<br>:e.<br>同时开启多个文档<br>:tabe 档案名称<br>:tabe.<br>下一个分页<br>gt<br>上一个分页<br>gT</p><h1 id="光标移动定位"><a href="#光标移动定位" class="headerlink" title="光标移动定位"></a>光标移动定位</h1><p>hjkl 左下上右 建议改为aswd<br>num j 向下移动num行<br>页面低端 G<br>页面顶端 gg</p><h1 id="翻页"><a href="#翻页" class="headerlink" title="翻页"></a>翻页</h1><p>向下半页 control+d<br>向上半页 control+u<br>向下整页 control+f<br>向上整页 control+b<br>向下一行 control+e<br>向上一行 control+y</p><h1 id="光标定位"><a href="#光标定位" class="headerlink" title="光标定位"></a>光标定位</h1><p>置中 zz<br>行首 zt<br>行尾 zb<br>最上一行 H<br>最下一行 L<br>定位到num行<br>:num<br>num G</p><h1 id="查找指令"><a href="#查找指令" class="headerlink" title="查找指令"></a>查找指令</h1><p>下一个 n<br>上一个 N </p><h1 id="水平移动"><a href="#水平移动" class="headerlink" title="水平移动"></a>水平移动</h1><p>最后 $<br>最前 0<br>该行文字最前 ^<br>该行文字最后 g_<br>单字开头 W<br>单字结尾 E<br>上一个字开头 B<br>移动到字符x fx<br>字符前一格x tx<br>反向移动到字符 F<br>反向移动到字符后一格 T</p><p>重复上次的查找指令 ;</p><h1 id="插入指令"><a href="#插入指令" class="headerlink" title="插入指令"></a>插入指令</h1><h2 id="进入插入模式指令"><a href="#进入插入模式指令" class="headerlink" title="进入插入模式指令"></a>进入插入模式指令</h2><p>光标位置 i<br>当前行首 I<br>当前行尾 A<br>光标后方进入插入模式 a<br>光标上一行 O<br>光标下方进入插入模式 o</p><h2 id="取代文字"><a href="#取代文字" class="headerlink" title="取代文字"></a>取代文字</h2><p>取代字符 s<br>取代整行文字 S<br>取代到行尾 C<br>替换一个单词 cw<br>替换到结尾的文字 c$<br>替换到第一个引号 cf”</p><h2 id="退出插入模式"><a href="#退出插入模式" class="headerlink" title="退出插入模式"></a>退出插入模式</h2><p>control+[</p><p>#普通模式下的编辑指令<br>删除字元 x<br>删除前一个 X<br>取代当前字元为1 r1<br>取代模式 R</p><p>删除单行文字 dd<br>拷贝单行文字 yy<br>粘贴上文字  p或P</p><p>缩排文字 &gt;&gt;<br>反向缩排文字 &lt;&lt;</p><p>重复上一次的指令动作 .<br>恢复 u<br>重做 control+r<br>一次性恢复单行指令 U</p><p>数字变化<br>递增 control+a<br>递减 control+x</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;分页与导航&quot;&gt;&lt;a href=&quot;#分页与导航&quot; class=&quot;headerlink&quot; title=&quot;分页与导航&quot;&gt;&lt;/a&gt;分页与导航&lt;/h1&gt;&lt;p&gt;在不关闭的情况下开启其他档案&lt;br&gt;:e 档案名称&lt;br&gt;:e.&lt;br&gt;同时开启多个文档&lt;br&gt;:tabe 档案名称</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>FM、FFM</title>
+    <link href="https://liting1024.github.io/2021/02/20/FM%E3%80%81FFM/"/>
+    <id>https://liting1024.github.io/2021/02/20/FM%E3%80%81FFM/</id>
+    <published>2021-02-20T01:03:03.000Z</published>
+    <updated>2021-02-20T01:03:03.000Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Numpy</title>
+    <link href="https://liting1024.github.io/2021/02/11/Numpy/"/>
+    <id>https://liting1024.github.io/2021/02/11/Numpy/</id>
+    <published>2021-02-11T04:11:11.000Z</published>
+    <updated>2021-02-11T04:11:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Numpy科学计算库"><a href="#Numpy科学计算库" class="headerlink" title="Numpy科学计算库"></a>Numpy科学计算库</h1><p>数组中所有数据类型必须一致</p><h2 id="导入Numpy库"><a href="#导入Numpy库" class="headerlink" title="导入Numpy库"></a>导入Numpy库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np </span><br><span class="line">#调用函数时需要np.</span><br><span class="line">from numpy import *</span><br></pre></td></tr></table></figure><h2 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; arrary([列表]&#x2F;(元组))</span><br><span class="line">print(a.ndim)</span><br></pre></td></tr></table></figure><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><table><thead><tr><th align="center">属性</th><th align="center">描述</th></tr></thead><tbody><tr><td align="center">ndim</td><td align="center">维数</td></tr><tr><td align="center">shape</td><td align="center">形状</td></tr><tr><td align="center">size</td><td align="center">元素个数</td></tr><tr><td align="center">dtype</td><td align="center">元素的数据类型</td></tr><tr><td align="center">itemsize</td><td align="center">元素的字节数</td></tr></tbody></table><h3 id="特殊数组"><a href="#特殊数组" class="headerlink" title="特殊数组"></a>特殊数组</h3><table><thead><tr><th>函数</th><th>功能</th></tr></thead><tbody><tr><td>np.arange(起始数字, 结束数字, 步长, dtype)</td><td>数字序列</td></tr><tr><td>np.ones(shape, dtype)</td><td>全1</td></tr><tr><td>np.zeros(shape, dtype)</td><td>全0</td></tr><tr><td>np.eye(shape, dtype)</td><td>单位矩阵</td></tr><tr><td>np.linspace(start, stop, num, dtype)</td><td>等差数列</td></tr><tr><td>np.logspace(start, stop, num, base, dtype)</td><td>等比数列</td></tr><tr><td>asarray</td><td>转换列表元组为数组</td></tr></tbody></table><h2 id="数组运算"><a href="#数组运算" class="headerlink" title="数组运算"></a>数组运算</h2><p>切片</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; np.array([0,1,2,3])</span><br><span class="line">print(a[0:3]) </span><br><span class="line">#0,1,2</span><br></pre></td></tr></table></figure><p>改变形状</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Numpy科学计算库&quot;&gt;&lt;a href=&quot;#Numpy科学计算库&quot; class=&quot;headerlink&quot; title=&quot;Numpy科学计算库&quot;&gt;&lt;/a&gt;Numpy科学计算库&lt;/h1&gt;&lt;p&gt;数组中所有数据类型必须一致&lt;/p&gt;
+&lt;h2 id=&quot;导入Numpy库&quot;&gt;&lt;a</summary>
+      
+    
+    
+    
+    <category term="Program" scheme="https://liting1024.github.io/categories/Program/"/>
+    
+    
+    <category term="Python" scheme="https://liting1024.github.io/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>tensorflow</title>
@@ -34,7 +92,7 @@
     
     
     
-    <category term="Programme" scheme="https://liting1024.github.io/categories/Programme/"/>
+    <category term="Program" scheme="https://liting1024.github.io/categories/Program/"/>
     
     
     <category term="Python" scheme="https://liting1024.github.io/tags/Python/"/>
@@ -81,7 +139,7 @@
     
     
     
-    <category term="Programme" scheme="https://liting1024.github.io/categories/Programme/"/>
+    <category term="Program" scheme="https://liting1024.github.io/categories/Program/"/>
     
     
     <category term="C++" scheme="https://liting1024.github.io/tags/C/"/>
@@ -105,7 +163,7 @@
     
     
     
-    <category term="Programme" scheme="https://liting1024.github.io/categories/Programme/"/>
+    <category term="Program" scheme="https://liting1024.github.io/categories/Program/"/>
     
     
     <category term="Python" scheme="https://liting1024.github.io/tags/Python/"/>
@@ -130,7 +188,7 @@
     
     
     
-    <category term="Programme" scheme="https://liting1024.github.io/categories/Programme/"/>
+    <category term="Program" scheme="https://liting1024.github.io/categories/Program/"/>
     
     
     <category term="Python" scheme="https://liting1024.github.io/tags/Python/"/>
@@ -155,7 +213,7 @@
     
     
     
-    <category term="Programme" scheme="https://liting1024.github.io/categories/Programme/"/>
+    <category term="Program" scheme="https://liting1024.github.io/categories/Program/"/>
     
     
     <category term="Python" scheme="https://liting1024.github.io/tags/Python/"/>
@@ -186,7 +244,7 @@
     
     
     
-    <category term="Programme" scheme="https://liting1024.github.io/categories/Programme/"/>
+    <category term="Program" scheme="https://liting1024.github.io/categories/Program/"/>
     
     
     <category term="C++" scheme="https://liting1024.github.io/tags/C/"/>
@@ -210,7 +268,7 @@
     
     
     
-    <category term="Programme" scheme="https://liting1024.github.io/categories/Programme/"/>
+    <category term="Program" scheme="https://liting1024.github.io/categories/Program/"/>
     
     
     <category term="C++" scheme="https://liting1024.github.io/tags/C/"/>
@@ -234,7 +292,7 @@
     
     
     
-    <category term="Programme" scheme="https://liting1024.github.io/categories/Programme/"/>
+    <category term="Program" scheme="https://liting1024.github.io/categories/Program/"/>
     
     
     <category term="SwiftUI" scheme="https://liting1024.github.io/tags/SwiftUI/"/>
@@ -258,7 +316,7 @@
     
     
     
-    <category term="Programme" scheme="https://liting1024.github.io/categories/Programme/"/>
+    <category term="Program" scheme="https://liting1024.github.io/categories/Program/"/>
     
     
     <category term="C++" scheme="https://liting1024.github.io/tags/C/"/>
@@ -282,7 +340,7 @@
     
     
     
-    <category term="Programme" scheme="https://liting1024.github.io/categories/Programme/"/>
+    <category term="Program" scheme="https://liting1024.github.io/categories/Program/"/>
     
     
     <category term="SwiftUI" scheme="https://liting1024.github.io/tags/SwiftUI/"/>
@@ -306,7 +364,7 @@
     
     
     
-    <category term="Programme" scheme="https://liting1024.github.io/categories/Programme/"/>
+    <category term="Program" scheme="https://liting1024.github.io/categories/Program/"/>
     
     
     <category term="C++" scheme="https://liting1024.github.io/tags/C/"/>
@@ -331,7 +389,7 @@
     
     
     
-    <category term="Programme" scheme="https://liting1024.github.io/categories/Programme/"/>
+    <category term="Program" scheme="https://liting1024.github.io/categories/Program/"/>
     
     
     <category term="SwiftUI" scheme="https://liting1024.github.io/tags/SwiftUI/"/>
@@ -355,7 +413,7 @@
     
     
     
-    <category term="Programme" scheme="https://liting1024.github.io/categories/Programme/"/>
+    <category term="Program" scheme="https://liting1024.github.io/categories/Program/"/>
     
     
     <category term="blog" scheme="https://liting1024.github.io/tags/blog/"/>

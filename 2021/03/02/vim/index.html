@@ -12,7 +12,7 @@
 
 
 
-<title>Swift语法 | James&#39;s blog</title>
+<title>vim | James&#39;s blog</title>
 
 
 
@@ -212,7 +212,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Swift语法</h1>
+            <h1 class="post-title">vim</h1>
             
                 <div class="post-meta">
                     
@@ -221,30 +221,31 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">February 14, 2020&nbsp;&nbsp;15:35:00</a>
+                        Date: <a href="#">March 2, 2021&nbsp;&nbsp;20:07:21</a>
                         </span>
                     
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/Program/">Program</a>
-                            
-                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func 函数名(外部参数名1 内部参数名1：参数类型，外部参数名2 内部参数名2:参数类型) -&gt; 返回值类型 &#123;</span><br><span class="line">    函数体</span><br><span class="line">    <span class="built_in">return</span> 返回值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>函数名 (  ，)<br>外部参数名为 _ 时是省略的意思</p>
-<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var 元组名 = (参数1，参数2)</span><br><span class="line"><span class="built_in">let</span> z = 元组名(_，b)</span><br></pre></td></tr></table></figure>
-<p>只把参数2赋给z</p>
-<h3 id="范围and循环"><a href="#范围and循环" class="headerlink" title="范围and循环"></a>范围and循环</h3><p>let a = 1…5   //封闭范围<br>let b = 1..&lt;5   //半开范围<br>let c = 1…   //到最大值</p>
-<h4 id="for-in循环"><a href="#for-in循环" class="headerlink" title="for-in循环"></a>for-in循环</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 1...10 &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"第\(i)次循环"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> 循环条件&#123;</span><br><span class="line">   循环体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="可选类型"><a href="#可选类型" class="headerlink" title="可选类型"></a>可选类型</h3>
+            <h1 id="分页与导航"><a href="#分页与导航" class="headerlink" title="分页与导航"></a>分页与导航</h1><p>在不关闭的情况下开启其他档案<br>:e 档案名称<br>:e.<br>同时开启多个文档<br>:tabe 档案名称<br>:tabe.<br>下一个分页<br>gt<br>上一个分页<br>gT</p>
+<h1 id="光标移动定位"><a href="#光标移动定位" class="headerlink" title="光标移动定位"></a>光标移动定位</h1><p>hjkl 左下上右 建议改为aswd<br>num j 向下移动num行<br>页面低端 G<br>页面顶端 gg</p>
+<h1 id="翻页"><a href="#翻页" class="headerlink" title="翻页"></a>翻页</h1><p>向下半页 control+d<br>向上半页 control+u<br>向下整页 control+f<br>向上整页 control+b<br>向下一行 control+e<br>向上一行 control+y</p>
+<h1 id="光标定位"><a href="#光标定位" class="headerlink" title="光标定位"></a>光标定位</h1><p>置中 zz<br>行首 zt<br>行尾 zb<br>最上一行 H<br>最下一行 L<br>定位到num行<br>:num<br>num G</p>
+<h1 id="查找指令"><a href="#查找指令" class="headerlink" title="查找指令"></a>查找指令</h1><p>下一个 n<br>上一个 N </p>
+<h1 id="水平移动"><a href="#水平移动" class="headerlink" title="水平移动"></a>水平移动</h1><p>最后 $<br>最前 0<br>该行文字最前 ^<br>该行文字最后 g_<br>单字开头 W<br>单字结尾 E<br>上一个字开头 B<br>移动到字符x fx<br>字符前一格x tx<br>反向移动到字符 F<br>反向移动到字符后一格 T</p>
+<p>重复上次的查找指令 ;</p>
+<h1 id="插入指令"><a href="#插入指令" class="headerlink" title="插入指令"></a>插入指令</h1><h2 id="进入插入模式指令"><a href="#进入插入模式指令" class="headerlink" title="进入插入模式指令"></a>进入插入模式指令</h2><p>光标位置 i<br>当前行首 I<br>当前行尾 A<br>光标后方进入插入模式 a<br>光标上一行 O<br>光标下方进入插入模式 o</p>
+<h2 id="取代文字"><a href="#取代文字" class="headerlink" title="取代文字"></a>取代文字</h2><p>取代字符 s<br>取代整行文字 S<br>取代到行尾 C<br>替换一个单词 cw<br>替换到结尾的文字 c$<br>替换到第一个引号 cf”</p>
+<h2 id="退出插入模式"><a href="#退出插入模式" class="headerlink" title="退出插入模式"></a>退出插入模式</h2><p>control+[</p>
+<p>#普通模式下的编辑指令<br>删除字元 x<br>删除前一个 X<br>取代当前字元为1 r1<br>取代模式 R</p>
+<p>删除单行文字 dd<br>拷贝单行文字 yy<br>粘贴上文字  p或P</p>
+<p>缩排文字 &gt;&gt;<br>反向缩排文字 &lt;&lt;</p>
+<p>重复上一次的指令动作 .<br>恢复 u<br>重做 control+r<br>一次性恢复单行指令 U</p>
+<p>数字变化<br>递增 control+a<br>递减 control+x</p>
+
         </div>
 
         
@@ -271,10 +272,6 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
-                    
-                        <a href="/tags/SwiftUI/"># SwiftUI</a>
-                    
-                        
                 </span>
             </div>
             <div>
@@ -285,10 +282,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/02/16/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/">最短路径</a>
             
-            
-            <a class="next" rel="next" href="/2020/02/02/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%A4%9A%E7%A7%8D%E7%AE%97%E6%B3%95%E5%8F%8A%E6%AF%94%E8%BE%83/">求最大公约数的多种算法及比较</a>
+            <a class="next" rel="next" href="/2021/02/20/FM%E3%80%81FFM/">FM、FFM</a>
             
         </section>
 

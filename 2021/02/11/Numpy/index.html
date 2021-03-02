@@ -12,7 +12,7 @@
 
 
 
-<title>Swift语法 | James&#39;s blog</title>
+<title>Numpy | James&#39;s blog</title>
 
 
 
@@ -212,7 +212,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Swift语法</h1>
+            <h1 class="post-title">Numpy</h1>
             
                 <div class="post-meta">
                     
@@ -221,7 +221,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">February 14, 2020&nbsp;&nbsp;15:35:00</a>
+                        Date: <a href="#">February 11, 2021&nbsp;&nbsp;12:11:11</a>
                         </span>
                     
                     
@@ -237,14 +237,82 @@
         </header>
 
         <div class="post-content">
-            <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func 函数名(外部参数名1 内部参数名1：参数类型，外部参数名2 内部参数名2:参数类型) -&gt; 返回值类型 &#123;</span><br><span class="line">    函数体</span><br><span class="line">    <span class="built_in">return</span> 返回值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>函数名 (  ，)<br>外部参数名为 _ 时是省略的意思</p>
-<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var 元组名 = (参数1，参数2)</span><br><span class="line"><span class="built_in">let</span> z = 元组名(_，b)</span><br></pre></td></tr></table></figure>
-<p>只把参数2赋给z</p>
-<h3 id="范围and循环"><a href="#范围and循环" class="headerlink" title="范围and循环"></a>范围and循环</h3><p>let a = 1…5   //封闭范围<br>let b = 1..&lt;5   //半开范围<br>let c = 1…   //到最大值</p>
-<h4 id="for-in循环"><a href="#for-in循环" class="headerlink" title="for-in循环"></a>for-in循环</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> 1...10 &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"第\(i)次循环"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> 循环条件&#123;</span><br><span class="line">   循环体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="可选类型"><a href="#可选类型" class="headerlink" title="可选类型"></a>可选类型</h3>
+            <h1 id="Numpy科学计算库"><a href="#Numpy科学计算库" class="headerlink" title="Numpy科学计算库"></a>Numpy科学计算库</h1><p>数组中所有数据类型必须一致</p>
+<h2 id="导入Numpy库"><a href="#导入Numpy库" class="headerlink" title="导入Numpy库"></a>导入Numpy库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np </span><br><span class="line">#调用函数时需要np.</span><br><span class="line">from numpy import *</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; arrary([列表]&#x2F;(元组))</span><br><span class="line">print(a.ndim)</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ndim</td>
+<td align="center">维数</td>
+</tr>
+<tr>
+<td align="center">shape</td>
+<td align="center">形状</td>
+</tr>
+<tr>
+<td align="center">size</td>
+<td align="center">元素个数</td>
+</tr>
+<tr>
+<td align="center">dtype</td>
+<td align="center">元素的数据类型</td>
+</tr>
+<tr>
+<td align="center">itemsize</td>
+<td align="center">元素的字节数</td>
+</tr>
+</tbody></table>
+<h3 id="特殊数组"><a href="#特殊数组" class="headerlink" title="特殊数组"></a>特殊数组</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>np.arange(起始数字, 结束数字, 步长, dtype)</td>
+<td>数字序列</td>
+</tr>
+<tr>
+<td>np.ones(shape, dtype)</td>
+<td>全1</td>
+</tr>
+<tr>
+<td>np.zeros(shape, dtype)</td>
+<td>全0</td>
+</tr>
+<tr>
+<td>np.eye(shape, dtype)</td>
+<td>单位矩阵</td>
+</tr>
+<tr>
+<td>np.linspace(start, stop, num, dtype)</td>
+<td>等差数列</td>
+</tr>
+<tr>
+<td>np.logspace(start, stop, num, base, dtype)</td>
+<td>等比数列</td>
+</tr>
+<tr>
+<td>asarray</td>
+<td>转换列表元组为数组</td>
+</tr>
+</tbody></table>
+<h2 id="数组运算"><a href="#数组运算" class="headerlink" title="数组运算"></a>数组运算</h2><p>切片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; np.array([0,1,2,3])</span><br><span class="line">print(a[0:3]) </span><br><span class="line">#0,1,2</span><br></pre></td></tr></table></figure>
+
+
+
+<p>改变形状</p>
+
         </div>
 
         
@@ -272,7 +340,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/SwiftUI/"># SwiftUI</a>
+                        <a href="/tags/Python/"># Python</a>
                     
                         
                 </span>
@@ -285,10 +353,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/02/16/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/">最短路径</a>
+                <a class="prev" rel="prev" href="/2021/02/20/FM%E3%80%81FFM/">FM、FFM</a>
             
             
-            <a class="next" rel="next" href="/2020/02/02/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%A4%9A%E7%A7%8D%E7%AE%97%E6%B3%95%E5%8F%8A%E6%AF%94%E8%BE%83/">求最大公约数的多种算法及比较</a>
+            <a class="next" rel="next" href="/2021/01/08/tensorflow/">tensorflow</a>
             
         </section>
 
