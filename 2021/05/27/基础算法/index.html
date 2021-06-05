@@ -237,7 +237,11 @@
         </header>
 
         <div class="post-content">
-            <h2 id="快读快出"><a href="#快读快出" class="headerlink" title="快读快出"></a>快读快出</h2><h3 id="scanf"><a href="#scanf" class="headerlink" title="scanf"></a>scanf</h3><p>scanf(“%控制格式”, &amp;变量地址); 对于数组 变量本身就是地址</p>
+            <p>编译器优化</p>
+<p>-O0 表示无优化状态<br>-O1 表示对代码进行了优化<br>-O2 表示减小目标文件大小<br>-O3 表示减小代码段及栈空间的大小<br>#pragma GCC optimize (“O0”)</p>
+<p>爆栈</p>
+<p>#pragma comment(linker, “/STACK:1024000000,1024000000”)</p>
+<h2 id="快读快出"><a href="#快读快出" class="headerlink" title="快读快出"></a>快读快出</h2><h3 id="scanf"><a href="#scanf" class="headerlink" title="scanf"></a>scanf</h3><p>scanf(“%控制格式”, &amp;变量地址); 对于数组 变量本身就是地址</p>
 <table>
 <thead>
 <tr>
