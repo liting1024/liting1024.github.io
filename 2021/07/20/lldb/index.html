@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="舒克">
+
+
+
+
+
+<title>lldb | James&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/public/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="James's blog" type="application/atom+xml">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Shuker&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Shuker&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">lldb</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">舒克</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">July 20, 2021&nbsp;&nbsp;17:04:50</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Program/">Program</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="What’s-LLDB"><a href="#What’s-LLDB" class="headerlink" title="What’s LLDB"></a>What’s LLDB</h1><p><a href="http://lldb.llvm.org/" target="_blank" rel="noopener">LLDB</a>是一个带着REPL、C++特性，且带有Python插件的<a href="http://lldb.llvm.org/source.html" target="_blank" rel="noopener">开源</a>调试器。LLDB内置在了Xcode里面。也就是我们所见到的控制台中。</p>
+<h1 id="How-to-use-LLDB"><a href="#How-to-use-LLDB" class="headerlink" title="How to use LLDB"></a>How to use LLDB</h1><p>打了断点，并开始debug程序后</p>
+<h3 id="print"><a href="#print" class="headerlink" title="print"></a>print</h3><p><code>prin</code>、<code>pri</code>、<code>p</code>等，都是<code>print</code>的别名，使用的效果和print是一样的。</p>
+<p>出现的<code>$0</code>是指向结果的</p>
+<h3 id="expression"><a href="#expression" class="headerlink" title="expression"></a>expression</h3><p><code>e</code>是别名，改变程序和调试器中的值</p>
+<p>输入<code>p count = 18</code>和<code>expression count = 18</code>，结果是一样样的</p>
+<h3 id="description"><a href="#description" class="headerlink" title="description"></a>description</h3><p>打印指针的值</p>
+<p><code>e -o --$0</code> 0可以改为要打的值得行数</p>
+<h3 id="help"><a href="#help" class="headerlink" title="help"></a>help</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br></pre></td><td class="code"><pre><span class="line">(lldb) help</span><br><span class="line">Debugger commands:</span><br><span class="line">  apropos           -- List debugger commands related to a word or subject.</span><br><span class="line">  breakpoint        -- Commands for operating on breakpoints (see &#39;help b&#39; for</span><br><span class="line">                       shorthand.)</span><br><span class="line">  command           -- Commands for managing custom LLDB commands.</span><br><span class="line">  disassemble       -- Disassemble specified instructions in the current</span><br><span class="line">                       target.  Defaults to the current function for the</span><br><span class="line">                       current thread and stack frame.</span><br><span class="line">  expression        -- Evaluate an expression on the current thread.  Displays</span><br><span class="line">                       any returned value with LLDB&#39;s default formatting.</span><br><span class="line">  frame             -- Commands for selecting and examing the current thread&#39;s</span><br><span class="line">                       stack frames.</span><br><span class="line">  gdb-remote        -- Connect to a process via remote GDB server.  If no host</span><br><span class="line">                       is specifed, localhost is assumed.</span><br><span class="line">  gui               -- Switch into the curses based GUI mode.</span><br><span class="line">  help              -- Show a list of all debugger commands, or give details</span><br><span class="line">                       about a specific command.</span><br><span class="line">  kdp-remote        -- Connect to a process via remote KDP server.  If no UDP</span><br><span class="line">                       port is specified, port 41139 is assumed.</span><br><span class="line">  language          -- Commands specific to a source language.</span><br><span class="line">  log               -- Commands controlling LLDB internal logging.</span><br><span class="line">  memory            -- Commands for operating on memory in the current target</span><br><span class="line">                       process.</span><br><span class="line">  platform          -- Commands to manage and create platforms.</span><br><span class="line">  plugin            -- Commands for managing LLDB plugins.</span><br><span class="line">  process           -- Commands for interacting with processes on the current</span><br><span class="line">                       platform.</span><br><span class="line">  quit              -- Quit the LLDB debugger.</span><br><span class="line">  register          -- Commands to access registers for the current thread and</span><br><span class="line">                       stack frame.</span><br><span class="line">  reproducer        -- Commands for manipulating reproducers. Reproducers make</span><br><span class="line">                       it possible to capture full debug sessions with all its</span><br><span class="line">                       dependencies. The resulting reproducer is used to replay</span><br><span class="line">                       the debug session while debugging the debugger.</span><br><span class="line">                       Because reproducers need the whole the debug session</span><br><span class="line">                       from beginning to end, you need to launch the debugger</span><br><span class="line">                       in capture or replay mode, commonly though the command</span><br><span class="line">                       line driver.</span><br><span class="line">                       Reproducers are unrelated record-replay debugging, as</span><br><span class="line">                       you cannot interact with the debugger during replay.</span><br><span class="line">  script            -- Invoke the script interpreter with provided code and</span><br><span class="line">                       display any results.  Start the interactive interpreter</span><br><span class="line">                       if no code is supplied.</span><br><span class="line">  settings          -- Commands for managing LLDB settings.</span><br><span class="line">  source            -- Commands for examining source code described by debug</span><br><span class="line">                       information for the current target process.</span><br><span class="line">  statistics        -- Print statistics about a debugging session</span><br><span class="line">  target            -- Commands for operating on debugger targets.</span><br><span class="line">  thread            -- Commands for operating on one or more threads in the</span><br><span class="line">                       current process.</span><br><span class="line">  type              -- Commands for operating on the type system.</span><br><span class="line">  version           -- Show the LLDB debugger version.</span><br><span class="line">  watchpoint        -- Commands for operating on watchpoints.</span><br><span class="line">Current command abbreviations (type &#39;help command alias&#39; for more info):</span><br><span class="line">  add-dsym  -- Add a debug symbol file to one of the target&#39;s current modules</span><br><span class="line">               by specifying a path to a debug symbols file, or using the</span><br><span class="line">               options to specify a module to download symbols for.</span><br><span class="line">  attach    -- Attach to process by ID or name.</span><br><span class="line">  b         -- Set a breakpoint using one of several shorthand formats.</span><br><span class="line">  bt        -- Show the current thread&#39;s call stack.  Any numeric argument</span><br><span class="line">               displays at most that many frames.  The argument &#39;all&#39; displays</span><br><span class="line">               all threads.  Use &#39;settings set frame-format&#39; to customize the</span><br><span class="line">               printing of individual frames and &#39;settings set thread-format&#39;</span><br><span class="line">               to customize the thread header.</span><br><span class="line">  c         -- Continue execution of all threads in the current process.</span><br><span class="line">  call      -- Evaluate an expression on the current thread.  Displays any</span><br><span class="line">               returned value with LLDB&#39;s default formatting.</span><br><span class="line">  continue  -- Continue execution of all threads in the current process.</span><br><span class="line">  detach    -- Detach from the current target process.</span><br><span class="line">  di        -- Disassemble specified instructions in the current target. </span><br><span class="line">               Defaults to the current function for the current thread and</span><br><span class="line">               stack frame.</span><br><span class="line">  dis       -- Disassemble specified instructions in the current target. </span><br><span class="line">               Defaults to the current function for the current thread and</span><br><span class="line">               stack frame.</span><br><span class="line">  display   -- Evaluate an expression at every stop (see &#39;help target</span><br><span class="line">               stop-hook&#39;.)</span><br><span class="line">  down      -- Select a newer stack frame.  Defaults to moving one frame, a</span><br><span class="line">               numeric argument can specify an arbitrary number.</span><br><span class="line">  env       -- Shorthand for viewing and setting environment variables.</span><br><span class="line">  exit      -- Quit the LLDB debugger.</span><br><span class="line">  f         -- Select the current stack frame by index from within the current</span><br><span class="line">               thread (see &#39;thread backtrace&#39;.)</span><br><span class="line">  file      -- Create a target using the argument as the main executable.</span><br><span class="line">  finish    -- Finish executing the current stack frame and stop after</span><br><span class="line">               returning.  Defaults to current thread unless specified.</span><br><span class="line">  image     -- Commands for accessing information for one or more target</span><br><span class="line">               modules.</span><br><span class="line">  j         -- Set the program counter to a new address.</span><br><span class="line">  jump      -- Set the program counter to a new address.</span><br><span class="line">  kill      -- Terminate the current target process.</span><br><span class="line">  l         -- List relevant source code using one of several shorthand formats.</span><br><span class="line">  list      -- List relevant source code using one of several shorthand formats.</span><br><span class="line">  n         -- Source level single step, stepping over calls.  Defaults to</span><br><span class="line">               current thread unless specified.</span><br><span class="line">  next      -- Source level single step, stepping over calls.  Defaults to</span><br><span class="line">               current thread unless specified.</span><br><span class="line">  nexti     -- Instruction level single step, stepping over calls.  Defaults to</span><br><span class="line">               current thread unless specified.</span><br><span class="line">  ni        -- Instruction level single step, stepping over calls.  Defaults to</span><br><span class="line">               current thread unless specified.</span><br><span class="line">  p         -- Evaluate an expression on the current thread.  Displays any</span><br><span class="line">               returned value with LLDB&#39;s default formatting.</span><br><span class="line">  parray    -- parray &lt;COUNT&gt; &lt;EXPRESSION&gt; -- lldb will evaluate EXPRESSION to</span><br><span class="line">               get a typed-pointer-to-an-array in memory, and will display</span><br><span class="line">               COUNT elements of that type from the array.</span><br><span class="line">  po        -- Evaluate an expression on the current thread.  Displays any</span><br><span class="line">               returned value with formatting controlled by the type&#39;s author.</span><br><span class="line">  poarray   -- poarray &lt;COUNT&gt; &lt;EXPRESSION&gt; -- lldb will evaluate EXPRESSION to</span><br><span class="line">               get the address of an array of COUNT objects in memory, and will</span><br><span class="line">               call po on them.</span><br><span class="line">  print     -- Evaluate an expression on the current thread.  Displays any</span><br><span class="line">               returned value with LLDB&#39;s default formatting.</span><br><span class="line">  q         -- Quit the LLDB debugger.</span><br><span class="line">  r         -- Launch the executable in the debugger.</span><br><span class="line">  rbreak    -- Sets a breakpoint or set of breakpoints in the executable.</span><br><span class="line">  re        -- Commands to access registers for the current thread and stack</span><br><span class="line">               frame.</span><br><span class="line">  run       -- Launch the executable in the debugger.</span><br><span class="line">  s         -- Source level single step, stepping into calls.  Defaults to</span><br><span class="line">               current thread unless specified.</span><br><span class="line">  si        -- Instruction level single step, stepping into calls.  Defaults to</span><br><span class="line">               current thread unless specified.</span><br><span class="line">  sif       -- Step through the current block, stopping if you step directly</span><br><span class="line">               into a function whose name matches the TargetFunctionName.</span><br><span class="line">  step      -- Source level single step, stepping into calls.  Defaults to</span><br><span class="line">               current thread unless specified.</span><br><span class="line">  stepi     -- Instruction level single step, stepping into calls.  Defaults to</span><br><span class="line">               current thread unless specified.</span><br><span class="line">  t         -- Change the currently selected thread.</span><br><span class="line">  tbreak    -- Set a one-shot breakpoint using one of several shorthand formats.</span><br><span class="line">  undisplay -- Stop displaying expression at every stop (specified by stop-hook</span><br><span class="line">               index.)</span><br><span class="line">  up        -- Select an older stack frame.  Defaults to moving one frame, a</span><br><span class="line">               numeric argument can specify an arbitrary number.</span><br><span class="line">  v         -- Show variables for the current stack frame. Defaults to all</span><br><span class="line">               arguments and local variables in scope. Names of argument,</span><br><span class="line">               local, file static and file global variables can be specified.</span><br><span class="line">               Children of aggregate variables can be specified such as</span><br><span class="line">               &#39;var-&gt;child.x&#39;.  The -&gt; and [] operators in &#39;frame variable&#39; do</span><br><span class="line">               not invoke operator overloads if they exist, but directly access</span><br><span class="line">               the specified element.  If you want to trigger operator</span><br><span class="line">               overloads use the expression command to print the variable</span><br><span class="line">               instead.</span><br><span class="line">               It is worth noting that except for overloaded operators, when</span><br><span class="line">               printing local variables &#39;expr local_var&#39; and &#39;frame var</span><br><span class="line">               local_var&#39; produce the same results.  However, &#39;frame variable&#39;</span><br><span class="line">               is more efficient, since it uses debug information and memory</span><br><span class="line">               reads directly, rather than parsing and evaluating an</span><br><span class="line">               expression, which may even involve JITing and running code in</span><br><span class="line">               the target program.</span><br><span class="line">  var       -- Show variables for the current stack frame. Defaults to all</span><br><span class="line">               arguments and local variables in scope. Names of argument,</span><br><span class="line">               local, file static and file global variables can be specified.</span><br><span class="line">               Children of aggregate variables can be specified such as</span><br><span class="line">               &#39;var-&gt;child.x&#39;.  The -&gt; and [] operators in &#39;frame variable&#39; do</span><br><span class="line">               not invoke operator overloads if they exist, but directly access</span><br><span class="line">               the specified element.  If you want to trigger operator</span><br><span class="line">               overloads use the expression command to print the variable</span><br><span class="line">               instead.</span><br><span class="line">               It is worth noting that except for overloaded operators, when</span><br><span class="line">               printing local variables &#39;expr local_var&#39; and &#39;frame var</span><br><span class="line">               local_var&#39; produce the same results.  However, &#39;frame variable&#39;</span><br><span class="line">               is more efficient, since it uses debug information and memory</span><br><span class="line">               reads directly, rather than parsing and evaluating an</span><br><span class="line">               expression, which may even involve JITing and running code in</span><br><span class="line">               the target program.</span><br><span class="line">  vo        -- Show variables for the current stack frame. Defaults to all</span><br><span class="line">               arguments and local variables in scope. Names of argument,</span><br><span class="line">               local, file static and file global variables can be specified.</span><br><span class="line">               Children of aggregate variables can be specified such as</span><br><span class="line">               &#39;var-&gt;child.x&#39;.  The -&gt; and [] operators in &#39;frame variable&#39; do</span><br><span class="line">               not invoke operator overloads if they exist, but directly access</span><br><span class="line">               the specified element.  If you want to trigger operator</span><br><span class="line">               overloads use the expression command to print the variable</span><br><span class="line">               instead.</span><br><span class="line">               It is worth noting that except for overloaded operators, when</span><br><span class="line">               printing local variables &#39;expr local_var&#39; and &#39;frame var</span><br><span class="line">               local_var&#39; produce the same results.  However, &#39;frame variable&#39;</span><br><span class="line">               is more efficient, since it uses debug information and memory</span><br><span class="line">               reads directly, rather than parsing and evaluating an</span><br><span class="line">               expression, which may even involve JITing and running code in</span><br><span class="line">               the target program.</span><br><span class="line">  x         -- Read from the memory of the current target process.</span><br><span class="line">For more information on any command, type &#39;help &lt;command-name&gt;&#39;.</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>舒克</span>
+                    </p>
+                
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2021/05/27/%E5%9B%BE%E5%83%8F%E8%AF%86%E5%88%AB/">图像识别</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 舒克 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
