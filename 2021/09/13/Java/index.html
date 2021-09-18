@@ -12,7 +12,7 @@
 
 
 
-<title>Movie | James&#39;s blog</title>
+<title>Java | James&#39;s blog</title>
 
 
 
@@ -212,7 +212,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Movie</h1>
+            <h1 class="post-title">Java</h1>
             
                 <div class="post-meta">
                     
@@ -221,14 +221,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">August 1, 2021&nbsp;&nbsp;17:49:08</a>
+                        Date: <a href="#">September 13, 2021&nbsp;&nbsp;14:08:26</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/AfterWatch/">AfterWatch</a>
+                                <a href="/categories/Program/">Program</a>
                             
                         </span>
                     
@@ -237,12 +237,52 @@
         </header>
 
         <div class="post-content">
-            <h1 id="Money-Heist"><a href="#Money-Heist" class="headerlink" title="Money Heist"></a>Money Heist</h1><p>Country：Spain</p>
-<p>Time：2020</p>
-<p>惊心动魄</p>
-<h1 id="How-to-sell-drugs-online"><a href="#How-to-sell-drugs-online" class="headerlink" title="How  to sell drugs online"></a>How  to sell drugs online</h1><p>Country：Germany</p>
-<p>Time：2021.8</p>
-<p>宅男 信息爆炸 隐私 网络安全 创业 诱惑 pill 年少成名 发小 逃离林塞尔 Z时代</p>
+            <h1 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h1><h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class HelloWorld&#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		Scanner input &#x3D; new Scanner(System.in);	</span><br><span class="line">		String name &#x3D; input.next();</span><br><span class="line">		int age &#x3D; input.nextInt();</span><br><span class="line">		char sex &#x3D; input.next().charAt(0);&#x2F;&#x2F;截取String第一个字符变成Char</span><br><span class="line">		double weight &#x3D; input.nextDouble();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>基础数据类型：数值、字符、布尔</p>
+<p>​    数值：整数（byte、short、int、long）</p>
+<p>​    字符char </p>
+<p>​    布尔boolean：只能是true或false</p>
+<p>引用数据类型：类Class、接口interface、数组</p>
+<p>基本类型变量在栈，引用类型<strong>引用</strong>到堆（类似于指针）</p>
+<p>Unicode编码每个字符占两位</p>
+<p>不存在无符号数，可以用long处理  </p>
+<h4 id="int转String"><a href="#int转String" class="headerlink" title="int转String"></a>int转String</h4><p>int i=12345;<br>String s=””;<br>第一种方法：s=i+””;<br>第二种方法：s=String.valueOf(i);</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>&amp;&amp;断路与：第一个操作数为假不判断第二个</p>
+<p>||断路或：第一个操作数为真不判断第二个</p>
+<p>逻辑与和或为&amp; |</p>
+<p>带符号右移&gt;&gt;</p>
+<p>无符号右移&gt;&gt;&gt;</p>
+<p>0b可以定义二进制</p>
+<p>=可以默认强制类型转换</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>是引用类型 </p>
+<p>存在堆里</p>
+<h3 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">int[] a &#x3D; &#123;1,2,3,&#125;,b;&#x2F;&#x2F;最后可以多一个逗号，b也是数组但没初始化</span><br><span class="line">int[] c &#x3D; new int[3];&#x2F;&#x2F;自动全初始化为0</span><br><span class="line">int d[] &#x3D; new int[2];&#x2F;&#x2F;C样式的初始化</span><br><span class="line">int [][] e &#x3D; &#123;&#123;1,2&#125;,&#123;3,4,5&#125;&#125;;&#x2F;&#x2F;数组的数组 不等于二维数组</span><br><span class="line">int [][] t &#x3D; new int[2][]; &#x2F;&#x2F;必须先把第一维的大小描述出来</span><br><span class="line">t[0] &#x3D; new int[2];</span><br><span class="line">t[1] &#x3D; new int[3];</span><br></pre></td></tr></table></figure>
+
+<h4 id="数组复制的常用方法有4种"><a href="#数组复制的常用方法有4种" class="headerlink" title="数组复制的常用方法有4种"></a>数组复制的常用方法有4种</h4><ol>
+<li>for循环，效率最低</li>
+<li>System.arraycopy() 效率最高</li>
+<li>Arrays.copyOf() 效率次于第二种方法</li>
+<li>Object.clone() 效率次于第二种和第三种</li>
+</ol>
+<h4 id="Eenhanced-For-增强for"><a href="#Eenhanced-For-增强for" class="headerlink" title="Eenhanced-For 增强for"></a>Eenhanced-For 增强for</h4><p>只读式遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int[] ages &#x3D; new int[10];</span><br><span class="line">for(int age:ages)</span><br><span class="line">	System.out.println(age);</span><br></pre></td></tr></table></figure>
+
+<h1 id="类、包和接口"><a href="#类、包和接口" class="headerlink" title="类、包和接口"></a>类、包和接口</h1><h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>构造方法（与类同名）没有的话系统产生一个默认构造方法（不嗲参数、方法体为空），也可以有多个构造方法</p>
+<p>方法重载：多个方法名字相同，签名或者参数的个数、类型不同</p>
+<p>和Cpp一样有this：可以调用另一个构造方法，但必须放在第一句，其他用法和Cpp一样</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>extends 只继承一个直接父类但可以多重继承，自动继承父类的状态和行为，也可以修改（覆盖Override）、添加（参数相同）、重载（参数不同），同时继承超父类（SuperClass）</p>
+<p>没有继承则自动继承java.lang.Object</p>
+<p>字段的隐藏：重新定义一个从父类那里继承的域变量完全相同的变量</p>
+<p><a href="https://blog.csdn.net/yongbutingxide/article/details/82669054" target="_blank" rel="noopener">super</a>：访问父类（的父类）的域和方法，可以在<strong>覆盖</strong>父类的方法同时又<strong>利用</strong>已定义好的父类方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Student(String name,int age,String school)&#123;</span><br><span class="line">	super(name,age);&#x2F;&#x2F;必须放在第一行，调用父类的name和age</span><br><span class="line">	this.school &#x3D; school;</span><br><span class="line">	super.printName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="包"><a href="#包" class="headerlink" title="包"></a>包</h2><p>对类和接口分类</p>
+<p><a href="https://www.cnblogs.com/chuijingjing/p/9452893.html" target="_blank" rel="noopener">静态static</a></p>
 
         </div>
 
@@ -271,7 +311,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/Netflix/"># Netflix</a>
+                        <a href="/tags/Java/"># Java</a>
                     
                         
                 </span>
@@ -284,10 +324,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/09/13/Java/">Java</a>
             
-            
-            <a class="next" rel="next" href="/2021/07/20/lldb/">lldb</a>
+            <a class="next" rel="next" href="/2021/08/01/Movie/">Movie</a>
             
         </section>
 
