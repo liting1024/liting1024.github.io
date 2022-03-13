@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="舒克">
+
+
+
+
+
+<title>STL | James&#39;s blog</title>
+
+
+
+    <link rel="icon" href="/public/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="James's blog" type="application/atom+xml">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Shuker&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Shuker&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">STL</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">舒克</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">January 27, 2022&nbsp;&nbsp;17:25:45</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Program/">Program</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>[TOC]</p>
+<h3 id="priority-queue"><a href="#priority-queue" class="headerlink" title="priority_queue"></a>priority_queue</h3><p>大根堆（top是max）优先队列</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">priority_queue&lt;<span class="keyword">int</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;, greater&lt;<span class="keyword">int</span>&gt;&gt; q; <span class="comment">// 小根堆</span></span><br><span class="line"></span><br><span class="line">top</span><br><span class="line">push 和 pop</span><br><span class="line">empty <span class="built_in">size</span></span><br><span class="line">emplace(<span class="number">1</span>,<span class="number">1</span>) <span class="comment">// priority_queue&lt;PII&gt; q;</span></span><br><span class="line"><span class="comment">// 相当于 push(&#123;1,1&#125;)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="deque"><a href="#deque" class="headerlink" title="deque"></a>deque</h3><p>双端队列：首尾都可以插入删除</p>
+<p>应用：二叉树层次遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">empty()</span><br><span class="line">size()</span><br><span class="line">front() 和 back()</span><br><span class="line">push_front(x) 和 push_back(x)</span><br><span class="line">pop_front() 和 pop_back()</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="unordered"><a href="#unordered" class="headerlink" title="unordered"></a>unordered</h2><p>unordered_set, unordered_map, unordered_multiset, unordered_multimap, 哈希表</p>
+<p>不支持 lower_bound()/upper_bound()， 迭代器的++，–</p>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>不允许重复，升序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">erase(x) <span class="comment">// 删除所有x或迭代器it</span></span><br><span class="line">count() </span><br><span class="line"><span class="built_in">find</span>() <span class="comment">// set.find(1) == set.end() 没找到</span></span><br><span class="line">lower_bound(x) 大于等于x的最小的数的it</span><br><span class="line">upper_bound(x) 大于x的最下的数的it</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="multiset"><a href="#multiset" class="headerlink" title="multiset"></a>multiset</h3><p>允许重复，升序</p>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>&lt;key, value&gt; 根据key升序，key不允许重复</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">find</span><br><span class="line">erase(pair)</span><br><span class="line">[]</span><br><span class="line">lower_bound 和 upper_bound</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="multimap"><a href="#multimap" class="headerlink" title="multimap"></a>multimap</h3><p>&lt;key, value&gt; 根据key升序，key允许重复</p>
+<h2 id="bitset"><a href="#bitset" class="headerlink" title="bitset"></a>bitset</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bitset</span>&lt;10000&gt; s;</span><br><span class="line">~, &amp;, |, ^</span><br><span class="line">&gt;&gt;, &lt;&lt;</span><br><span class="line">==, !=</span><br><span class="line">[]</span><br><span class="line"></span><br><span class="line">count()  返回有多少个<span class="number">1</span></span><br><span class="line"></span><br><span class="line">any()  判断是否至少有一个<span class="number">1</span></span><br><span class="line">none()  判断是否全为<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>()  把所有位置成<span class="number">1</span></span><br><span class="line"><span class="built_in">set</span>(k, v)  将第k位变成v</span><br><span class="line">reset()  把所有位变成<span class="number">0</span></span><br><span class="line">flip()  等价于~</span><br><span class="line">flip(k) 把第k位取反</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p>支持按字典序比较运算</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">size</span></span><br><span class="line">empty</span><br><span class="line"><span class="built_in">clear</span></span><br><span class="line">front 和 back</span><br><span class="line">push_back 和 pop_back</span><br><span class="line">insert emplace</span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
+
+<p>二维</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;int&gt;&gt; g(N,vector&lt;int&gt;(N,-1)); &#x2F;&#x2F; 初始化为-1（N*N大小）</span><br></pre></td></tr></table></figure>
+
+<h2 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">top</span><br><span class="line">push 和 pop</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="queue"><a href="#queue" class="headerlink" title="queue"></a>queue</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">front 和 back</span><br><span class="line">push 和 pop</span><br></pre></td></tr></table></figure>
+
+<h2 id="pair"><a href="#pair" class="headerlink" title="pair"></a>pair</h2><p>升序？</p>
+<h2 id="unique"><a href="#unique" class="headerlink" title="unique"></a>unique</h2><p>将<strong>序列中不重复的相邻元素（即与前一个数不同）</strong>放在前面，需要先排序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> arr[] = &#123;<span class="number">3</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">4</span>&#125;, n = <span class="keyword">sizeof</span> arr/ <span class="keyword">sizeof</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> a : arr) <span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="string">' '</span>;</span><br><span class="line"><span class="comment">// 3 2 2 1 4 </span></span><br><span class="line">sort(arr, arr+n);</span><br><span class="line"><span class="comment">// 1 2 2 3 4</span></span><br><span class="line">n = unique(arr, arr+n) - arr;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> a : arr) <span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="string">' '</span>;</span><br><span class="line"><span class="comment">// 1 2 3 4 4</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">cout</span>&lt;&lt;arr[i]&lt;&lt;<span class="string">' '</span>;</span><br><span class="line"><span class="comment">// 1 2 3 4</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="greater"><a href="#greater" class="headerlink" title="greater"></a>greater</h2><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">sort</th>
+<th align="center">priority_queue</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">greater</td>
+<td align="center">从大到小</td>
+<td align="center">小顶堆</td>
+</tr>
+<tr>
+<td align="center">less</td>
+<td align="center">从小到大</td>
+<td align="center">大顶堆</td>
+</tr>
+</tbody></table>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>舒克</span>
+                    </p>
+                
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2020 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/C/"># C++</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2022/01/13/%E7%AB%9E%E8%B5%9B%E7%BB%8F%E9%AA%8C/">经验</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© 舒克 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
