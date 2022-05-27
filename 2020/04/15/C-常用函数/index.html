@@ -1,242 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <meta name="author" content="舒克">
-
-
-
-
-
-<title>C++常用函数 | James&#39;s blog</title>
-
-
-
-    <link rel="icon" href="/public/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
-    
-    <link rel="stylesheet" href="/css/style.css">
-    
-
-
-
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     
+    <title>C++常用函数 | Li Ting</title>
+
+    <meta name="description" content="Li Ting">
+    <meta name="keywords" content="">
+
     
-        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
+
+    <meta property="og:locale" content="cn" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "C++常用函数 | Li Ting"  />
+    <meta property="og:description" content= "Li Ting" />
+    <meta property="og:url" content="https://liting1024.github.io/2020/04/15/C-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="李挺" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="Li Ting" />
+    <meta name="twitter:title" content="C++常用函数 | Li Ting"/>
+    <meta name="twitter:description" content="Li Ting"/>
+    <script type="application/ld+json">
+        {
+            "description": "Li Ting",
+            "author": { "@type": "Person", "name": "李挺" },
+            "@type": "BlogPosting",
+            "url": "https://liting1024.github.io/2020/04/15/C-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://liting1024.github.ioundefined"
+            },
+            "name": "李挺"
+            },
+            "headline": "C++常用函数 | Li Ting",
+            "datePublished": "2020-04-15T15:12:59.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://liting1024.github.io/2020/04/15/C-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/index.html"
+            },
+            "@context": "http://schema.org"
         }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
+    </script>
+
+
 
 
     
 
+    
+    <meta property="algolia:search" data-application-id="applicationID" data-api-key="apiKey" data-index-name="...">
+    
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="James's blog" type="application/atom+xml">
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css">
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1651727875408.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1651727875408.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            
+            
+            disqusjs: {
+              enable: true,
+              shortname: "QV1M00MyMJQyCDRKyi5s8kR6r0AjoFFzCqj7oSMhPlBAn8nymgqGHn9aExS3N5Io",
+              siteName: "",
+              api: "https://disqus.skk.moe/disqus/",
+              apikey: "",
+              nesting: "4",
+              nocomment: "快来评论吧！",
+              admin: "",
+              adminLabel: "",
+            },
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = true
+
+    </script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Li Ting" type="application/atom+xml">
 </head>
+
 <body>
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Shuker&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
 
-        </div>
-    </nav>
-
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>Li Ting</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
     
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">Shuker&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">首页</a>
+                
+                <a href="/archives">存档</a>
+                
+                <a href="/collection">收藏</a>
+                
+                <a href="/about">关于</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/liting1024">
+        <box-icon type='logo' name='github'></box-icon>
+    </a>
+
+    <a class="social" target="_blank" href="jkliting@163.com">
+        <box-icon type='solid' name='envelope'></box-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
                 </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">首页</a>
+                    
+                    <a href="/archives">存档</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                    <a href="/about">关于</a>
+                    
+                </div>
             </div>
         </div>
-    </nav>
+    </div>
 
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-        <div class="main">
-            <div class="container">
-    
-    
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
 </div>
 
-<script>
-    document.ready(
-        function () {
-            tocbot.init({
-                tocSelector: '.tocbot-list',
-                contentSelector: '.post-content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 1,
-                orderedList: false,
-                scrollSmooth: true,
-            })
-        }
-    )
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cl3npp9mo0002euvm6mct04xr" class="article article-type-post" itemscope
+    itemprop="blogPost">
 
-    function expand_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 6,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "collapse_toc()");
-        b.innerHTML = "Collapse all"
-    }
+    <div class="article-inner">
 
-    function collapse_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 1,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "expand_toc()");
-        b.innerHTML = "Expand all"
-    }
+        
+          
+        
+        
+        
 
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-</script>
-    
-
-    
-    <article class="post-wrap">
-        <header class="post-header">
-            <h1 class="post-title">C++常用函数</h1>
+        
+        <header class="article-header">
             
-                <div class="post-meta">
-                    
-                        Author: <a itemprop="author" rel="author" href="/">舒克</a>
-                    
+  
+    <h1 class="article-title" itemprop="name">
+      C++常用函数
+    </h1>
+  
 
-                    
-                        <span class="post-time">
-                        Date: <a href="#">April 15, 2020&nbsp;&nbsp;23:12:59</a>
-                        </span>
-                    
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/Program/">Program</a>
-                            
-                        </span>
-                    
-                </div>
-            
         </header>
+        
 
-        <div class="post-content">
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2020-04-15T15:12:59.000Z" itemprop="datePublished">2020-04-15</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a>
+            </div>
+            
+
+            
+            <div class="article-tag">
+                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+            </div>
+            
+
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
             <h1 id="cstring类型"><a href="#cstring类型" class="headerlink" title="cstring类型"></a>cstring类型</h1><h3 id="比较和计算"><a href="#比较和计算" class="headerlink" title="比较和计算"></a>比较和计算</h3><h4 id="strcmp-a-b"><a href="#strcmp-a-b" class="headerlink" title="strcmp(a,b);"></a>strcmp(a,b);</h4><p>比较返回两个char数组的差异度（-2表示有一个char不同）</p>
 <h4 id="strlen-a"><a href="#strlen-a" class="headerlink" title="strlen(a);"></a>strlen(a);</h4><p>计算string或char数组的长度</p>
 <h4 id="size"><a href="#size" class="headerlink" title="size();"></a>size();</h4><h4 id="lenth"><a href="#lenth" class="headerlink" title="lenth();"></a>lenth();</h4><table>
@@ -282,17 +277,53 @@
 <h4 id="lower-bound-first-last-n"><a href="#lower-bound-first-last-n" class="headerlink" title="lower_bound(first, last, n);"></a>lower_bound(first, last, n);</h4><p>查找区间中第一个大于<strong>等于</strong>n的位置，返回的是地址</p>
 <h4 id="next-permutation-first-last-prev-permutation"><a href="#next-permutation-first-last-prev-permutation" class="headerlink" title="next_permutation(first, last); prev_permutation();"></a>next_permutation(first, last); prev_permutation();</h4><p>将数组中的元素全排列</p>
 <p><strong>需要将数组进行升序排列</strong>，否则只能找出该序列之后的全排列数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">char a[4]&#x3D;&#123;&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;&#125;;</span><br><span class="line">    do&#123;</span><br><span class="line">        for(int i&#x3D;0;i&lt;4;++i)</span><br><span class="line">            cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;while(next_permutation(a,a+4));</span><br></pre></td></tr></table></figure>
-
-<h4 id="sort-first-last-greater-lt-gt"><a href="#sort-first-last-greater-lt-gt" class="headerlink" title="sort(first, last, greater&lt;&gt;());"></a>sort(first, last, greater&lt;&gt;());</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int a[5]&#x3D;&#123;5,2,4,3,1&#125;,b[3]&#x3D;&quot;cba&quot;;</span><br><span class="line">sort(a,a+5);&#x2F;&#x2F;正序排列</span><br><span class="line">sort(a,a+5,greater&lt;&gt;());&#x2F;&#x2F;逆序排列数字</span><br><span class="line">sort(b,b+3,greater&lt;char&gt;());&#x2F;&#x2F;逆序排列char</span><br></pre></td></tr></table></figure>
-
-<h4 id="fill-first-last-a"><a href="#fill-first-last-a" class="headerlink" title="fill(first, last, a);"></a>fill(first, last, a);</h4><p>可将数组的值初始化成a</p>
+<pre><code>char a[4]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;};
+    do{
+        for(int i=0;i&lt;4;++i)
+            cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
+        cout&lt;&lt;endl;
+    }while(next_permutation(a,a+4));</code></pre><h4 id="sort-first-last-greater-lt-gt"><a href="#sort-first-last-greater-lt-gt" class="headerlink" title="sort(first, last, greater&lt;&gt;());"></a>sort(first, last, greater&lt;&gt;());</h4><pre><code>int a[5]={5,2,4,3,1},b[3]=&quot;cba&quot;;
+sort(a,a+5);//正序排列
+sort(a,a+5,greater&lt;&gt;());//逆序排列数字
+sort(b,b+3,greater&lt;char&gt;());//逆序排列char</code></pre><h4 id="fill-first-last-a"><a href="#fill-first-last-a" class="headerlink" title="fill(first, last, a);"></a>fill(first, last, a);</h4><p>可将数组的值初始化成a</p>
 <h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p>一个动态申请空间的数组</p>
 <h3 id="定义-vector-lt-typename-gt-name"><a href="#定义-vector-lt-typename-gt-name" class="headerlink" title="定义 vector &lt; typename &gt; name;"></a>定义 vector &lt; typename &gt; name;</h3><p>typename可以是任何基本类型 结构体,STL容器vector,set,queue等。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; stu;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; stu;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; stu;</span><br><span class="line"><span class="built_in">vector</span>&lt;node&gt; stu;<span class="comment">//node是结构体类型</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; name;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; a[arraySize];<span class="comment">//申请一个二维数组</span></span><br></pre></td></tr></table></figure>
+<pre><code class="C++">vector&lt;int&gt; stu;
+vector&lt;double&gt; stu;
+vector&lt;char&gt; stu;
+vector&lt;node&gt; stu;//node是结构体类型
+vector&lt;vector&lt;int&gt;&gt; name;
+vector&lt;typename&gt; a[arraySize];//申请一个二维数组</code></pre>
+<h3 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h3><pre><code class="c++">//初始化了10个默认值为0的元素
+vector&lt;int&gt; abc(10);
+//初始化了10个值为1的元素
+vector&lt;int&gt; cde(10，1); 
 
-<h3 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化了10个默认值为0的元素</span></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">abc</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line"><span class="comment">//初始化了10个值为1的元素</span></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">cde</span><span class="params">(<span class="number">10</span>，<span class="number">1</span>)</span></span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="comment">//通过数组a的地址初始化，注意地址是从0到5（左闭右开区间）</span></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">b</span><span class="params">(a, a+<span class="number">5</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">5</span>,<span class="number">1</span>)</span></span>;</span><br><span class="line"><span class="comment">//通过a初始化</span></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">b</span><span class="params">(a)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//insert初始化方式将同类型的迭代器对应的始末区间（左闭右开区间）内的值插入到vector中</span></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">6</span>,<span class="number">6</span>)</span></span>;</span><br><span class="line">vecot&lt;<span class="keyword">int</span>&gt; b;</span><br><span class="line"><span class="comment">//将a[0]~a[2]插入到b中，b.size()由0变为3</span></span><br><span class="line">b.insert(b.<span class="built_in">begin</span>(), a.<span class="built_in">begin</span>(), a.<span class="built_in">begin</span>() + <span class="number">3</span>);</span><br><span class="line"><span class="comment">//在b开始位置处插入6个6</span></span><br><span class="line">b.insert(b.<span class="built_in">begin</span>(), <span class="number">6</span>, <span class="number">6</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">5</span>,<span class="number">1</span>)</span></span>;</span><br><span class="line"><span class="keyword">int</span> a1[<span class="number">5</span>] = &#123;<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>&#125;;</span><br><span class="line"><span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">b</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">/*将a中元素全部拷贝到b开始的位置中,注意拷贝的区间为a.begin() ~ a.end()的左闭右开的区间*/</span></span><br><span class="line">copy(a.<span class="built_in">begin</span>(), a.<span class="built_in">end</span>(), b.<span class="built_in">begin</span>());</span><br><span class="line"> </span><br><span class="line"><span class="comment">//拷贝区间也可以是数组地址构成的区间</span></span><br><span class="line">copy(a1, a1+<span class="number">5</span>, b.<span class="built_in">begin</span>() + <span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+int a[5] = {1,2,3,4,5};
+//通过数组a的地址初始化，注意地址是从0到5（左闭右开区间）
+vector&lt;int&gt; b(a, a+5);
 
+vector&lt;int&gt; a(5,1);
+//通过a初始化
+vector&lt;int&gt; b(a);
+
+//insert初始化方式将同类型的迭代器对应的始末区间（左闭右开区间）内的值插入到vector中
+vector&lt;int&gt; a(6,6);
+vecot&lt;int&gt; b;
+//将a[0]~a[2]插入到b中，b.size()由0变为3
+b.insert(b.begin(), a.begin(), a.begin() + 3);
+//在b开始位置处插入6个6
+b.insert(b.begin(), 6, 6);
+
+vector&lt;int&gt; a(5,1);
+int a1[5] = {2,2,2,2,2};
+vector&lt;int&gt; b(10);
+
+ /*将a中元素全部拷贝到b开始的位置中,注意拷贝的区间为a.begin() ~ a.end()的左闭右开的区间*/
+copy(a.begin(), a.end(), b.begin());
+
+//拷贝区间也可以是数组地址构成的区间
+copy(a1, a1+5, b.begin() + 5);</code></pre>
 <h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><h4 id="下标访问"><a href="#下标访问" class="headerlink" title="下标访问"></a>下标访问</h4><p>从0开始</p>
 <h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>vector<typename>::iterator it;//it是一个迭代器变量</p>
 <h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="push-back-a"><a href="#push-back-a" class="headerlink" title="push_back(a)"></a>push_back(a)</h4><p>在vector最后面添加一个元素a</p>
@@ -330,8 +361,15 @@
 <p>erase(a,b); 删除左闭右开区间内[a,b)的元素</p>
 <h3 id="multiset"><a href="#multiset" class="headerlink" title="multiset"></a>multiset</h3><p>有序可重复的容器</p>
 <p>通过重载确定排序规则</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">rec</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x,y;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cmp</span>&#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">const</span> rec&amp;a,<span class="keyword">const</span> rec&amp;b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a.x&lt;b.x||a.x==b.x&amp;&amp;a.y&lt;b.y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">multiset</span>&lt;rec,cmp&gt;h;</span><br></pre></td></tr></table></figure>
-
+<pre><code class="C++">struct rec{
+    int x,y;
+};
+struct cmp{
+    bool operator()(const rec&amp;a,const rec&amp;b){
+        return a.x&lt;b.x||a.x==b.x&amp;&amp;a.y&lt;b.y;
+    }
+};
+multiset&lt;rec,cmp&gt;h;</code></pre>
 <h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>建立key（第一个值）和value（第二个值） 的对应，以key为标准有序</p>
 <h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>map&lt;int , int&gt; maps;</p>
 <h3 id="访问-2"><a href="#访问-2" class="headerlink" title="访问"></a>访问</h3><p>maps[key] = value; //给key赋值，key有对应的value就覆盖</p>
@@ -494,62 +532,247 @@
 
         </div>
 
-        
-            <section class="post-copyright">
-                
-                    <p class="copyright-item">
-                        <span>Author:</span>
-                        <span>舒克</span>
-                    </p>
-                
-                
-                
-                    <p class="copyright-item">
-                        <span>License:</span>
-                        <span>Copyright (c) 2020 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
-                    </p>
-                
-                
+    </div>
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/2020/07/08/%E7%88%AC%E8%99%AB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          爬虫
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/02/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%A4%9A%E7%A7%8D%E7%AE%97%E6%B3%95%E5%8F%8A%E6%AF%94%E8%BE%83/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">求最大公约数的多种算法及比较</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=C++常用函数 - Li Ting&url=https%3A%2F%2Fliting1024.github.io%2F2020%2F04%2F15%2FC-%25E5%25B8%25B8%25E7%2594%25A8%25E5%2587%25BD%25E6%2595%25B0%2F">
+            <box-icon type='logo' name='twitter'></box-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://www.facebook.com/sharer.php?title=C++常用函数 - Li Ting&u=https%3A%2F%2Fliting1024.github.io%2F2020%2F04%2F15%2FC-%25E5%25B8%25B8%25E7%2594%25A8%25E5%2587%25BD%25E6%2595%25B0%2F">
+            <box-icon name='facebook-square' type='logo' ></box-icon>
+        </a>
+        <!-- <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=C++常用函数 - Li Ting&url=https://liting1024.github.io/2020/04/15/C-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a> -->
+    </section>
+
+</article>
+
+
+
+
+<section class="comments comments-disqus">
+    <div id="disqus_thread"></div>
+    <script>
+        ;(function () {
+            // DON'T EDIT BELOW THIS LINE
+            var d = document,
+                s = d.createElement('script')
+            s.src =
+                'https://liting1024.disqus.com/embed.js'
+            s.setAttribute('data-timestamp', +new Date())
+            ;(d.head || d.body).appendChild(s)
+        })()
+    </script>
+</section>
+
+
+
+<section class="comments comments-disqusjs">
+    <div id="disqus_thread"></div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</div>
+                </section>
             </section>
-        
-        <section class="post-tags">
-            <div>
-                <span>Tag(s):</span>
-                <span class="tag">
-                    
-                    
-                        <a href="/tags/C/"># C++</a>
-                    
-                        
-                </span>
-            </div>
-            <div>
-                <a href="javascript:window.history.back();">back</a>
-                <span>· </span>
-                <a href="/">home</a>
-            </div>
-        </section>
-        <section class="post-nav">
-            
-                <a class="prev" rel="prev" href="/2020/05/28/%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1/">类与对象</a>
-            
-            
-            <a class="next" rel="next" href="/2020/03/04/%E7%94%A8git%E4%B8%8E%E4%BC%99%E4%BC%B4%E5%90%88%E5%8A%9B%E5%AE%8C%E6%88%90%E9%A1%B9%E7%9B%AE/">用git与伙伴合力完成项目</a>
-            
-        </section>
 
+            
+            <aside class="sidebar sidebar-search-fix">
+                
 
-    </article>
+    <div class="search">
+    <div class="has-icon-right">
+        <input type="text" class="form-input" id="search" placeholder="SEARCH" autocomplete="off">
+        <div class="form-icon">
+            <box-icon name='search' color="#3c4859"></box-icon>
+        </div>
+    </div>
+    <div class="search-result" id="search-ps"></div>
 </div>
 
-        </div>
-        <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© 舒克 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
     </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/26/CLIP/">CLIP</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/27/STL/">STL</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/13/ACM%E7%BB%8F%E9%AA%8C/">ACM经验</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/27/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/08/%E7%88%AC%E8%99%AB/">爬虫</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag">读论文</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E4%B8%8E%E5%89%8D%E7%AB%AF/">Web与前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            Li Ting &copy; 2022<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
 </footer>
 
-    </div>
+
+
+
+<script src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script>
+
+
+
+<script src="/dist/build.js?1651727875408.js"></script>
+
+
+<script src="/dist/custom.js?1651727875408.js"></script>
+
+
+
+<!-- 百度链接提交 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
 </body>
+
 </html>

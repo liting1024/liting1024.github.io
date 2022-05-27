@@ -1,208 +1,2368 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-    <meta name="author" content="舒克">
-
-
-
-
-
-<title>James&#39;s blog</title>
-
-
-
-    <link rel="icon" href="/public/favicon.ico">
-
-
-
-
-    <!-- stylesheets list from _config.yml -->
     
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Li Ting</title>
+
+    <meta name="description" content="Li Ting">
+    <meta name="keywords" content="">
+
     
 
 
 
-    <!-- scripts list from _config.yml -->
-    
-    <script src="/js/script.js"></script>
-    
-    <script src="/js/tocbot.min.js"></script>
-    
-
-
-
-    
-    
-        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content=""/>
+    <meta property="og:description" content=""/>
+    <meta property="og:locale" content="cn" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://liting1024.github.io/index.html" />
+    <meta property="og:site_name" content="李挺" />
+    <meta property="article:publisher" content="" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "",
+            "description": "",
+            "publisher": {
+                "@type": "Organization",
+                "name": "李挺"
+            },
         }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
+    </script>
 
 
     
 
+    
+    <meta property="algolia:search" data-application-id="applicationID" data-api-key="apiKey" data-index-name="...">
+    
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="James's blog" type="application/atom+xml">
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css">
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1651727875408.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1651727875408.css">
+
+
+    <script>
+        window.isPost = false
+        window.aomori = {
+            
+            
+            
+            disqusjs: {
+              enable: true,
+              shortname: "QV1M00MyMJQyCDRKyi5s8kR6r0AjoFFzCqj7oSMhPlBAn8nymgqGHn9aExS3N5Io",
+              siteName: "",
+              api: "https://disqus.skk.moe/disqus/",
+              apikey: "",
+              nesting: "4",
+              nocomment: "快来评论吧！",
+              admin: "",
+              adminLabel: "",
+            },
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = true
+
+    </script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Li Ting" type="application/atom+xml">
 </head>
+
 <body>
-    <div class="wrapper">
-        <header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-header header-logo"><a href="/">Shuker&#39;s Blog</a></div>
-            <div class="menu navbar-right">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-                <input id="switch_default" type="checkbox" class="switch_default">
-                <label for="switch_default" class="toggleBtn"></label>
-            </div>
 
-        </div>
-    </nav>
-
-    
-    <nav class="navbar-mobile" id="nav-mobile">
-        <div class="container">
-            <div class="navbar-header">
-                <div>
-                    <a href="/">Shuker&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
-                </div>
-                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
-            </div>
-            <div class="menu" id="mobile-menu">
-                
-                    <a class="menu-item" href="/archives">Posts</a>
-                
-                    <a class="menu-item" href="/category">Categories</a>
-                
-                    <a class="menu-item" href="/tag">Tags</a>
-                
-                    <a class="menu-item" href="/about">About</a>
-                
-            </div>
-        </div>
-    </nav>
-
-</header>
-<script>
-    var mobileBtn = function f() {
-        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
-        var mobileMenu = document.getElementById("mobile-menu");
-        if(toggleMenu.classList.contains("active")){
-           toggleMenu.classList.remove("active")
-            mobileMenu.classList.remove("active")
-        }else{
-            toggleMenu.classList.add("active")
-            mobileMenu.classList.add("active")
-        }
-    }
-</script>
-        <div class="main">
-            
     <div class="container">
-    <div class="intro">
-        <div class="avatar">
-            <a href="/archives"><img src="/image/JohnLegend.jpg"></a>
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>Li Ting</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
         </div>
-        <div class="nickname">舒克</div>
-        <div class="description"><p>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit.</strong> <br>Fusce eget urna vitae velit <em>eleifend interdum at ac</em> nisi.</p>
-</div>
-        <div class="links">
-            
+        <div class="header-menu">
+            <div class="header-menu-inner">
                 
-                    <a class="link-item" title="Blog" href="/archives">
-                        
-                        
-                            <i class="iconfont icon-blog"></i>
-                        
-                    </a>
+                <a href="/">首页</a>
                 
-                    <a class="link-item" title="RSS" href="https://liting1024.github.io/atom.xml">
-                        
-                        
-                            <i class="iconfont icon-rss"></i>
-                        
-                    </a>
+                <a href="/archives">存档</a>
                 
-                    <a class="link-item" title="QQ" href="https://user.qzone.qq.com/1284917479/main" target="_blank" rel="noopener">
-                        
-                        
-                            <i class="iconfont icon-qq"></i>
-                        
-                    </a>
+                <a href="/collection">收藏</a>
                 
-                    <a class="link-item" title="WeChat" href="/image/WeChat.JPG">
-                        
-                        
-                            <i class="iconfont icon-wechat"></i>
-                        
-                    </a>
+                <a href="/about">关于</a>
                 
-                    <a class="link-item" title="Github" href="https://github.com/liting1024" target="_blank" rel="noopener">
-                        
-                        
-                            <i class="iconfont icon-github"></i>
-                        
-                    </a>
+            </div>
+            <div class="header-menu-social">
                 
-            
+    <a class="social" target="_blank" href="https://github.com/liting1024">
+        <box-icon type='logo' name='github'></box-icon>
+    </a>
+
+    <a class="social" target="_blank" href="jkliting@163.com">
+        <box-icon type='solid' name='envelope'></box-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">首页</a>
+                    
+                    <a href="/archives">存档</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                    <a href="/about">关于</a>
+                    
+                </div>
+            </div>
         </div>
     </div>
+
 </div>
 
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="index">
+  
+    
+      <article
+id="post-CLIP"
+class="article article-type-post"
+>
 
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2022/05/26/CLIP/">CLIP</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p><a href="https://github.com/openai/CLIP" target="_blank" rel="noopener">项目GitHub链接</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/CLIP.png" alt=""></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>优点：预训练、结构简单、在zero-shot上比有监督下ResNet50效果好</p>
+<p>1、利用自然语言处理的监督信号做预训练：</p>
+<p>输入 图片和句子的配对</p>
+<p>通过图片编码器，resnet或vison transformer，得到图像特征</p>
+<p>通过文本编码器，，得到文本特征</p>
+<p>然后对图片和文本进行对比学习，得到文本和图片的特征</p>
+<p>正样本：配对的图片文本对，即左图中对角线上的样本，共n个 </p>
+<p>负样本：非对角线的元素，共 n^2-n 个</p>
+<p>数据集：OpenAI上4亿个文本和图片配对</p>
+<p>2、用Prompt template做推理：</p>
+<p>Prompt engineringh或prompt ensemble</p>
+<p>输入 图片</p>
+<p>通过图片编码器得到特征，与每个文本特征求cos similarity</p>
+<p>优点：得到语义特征，迁移性强（素描、动漫风格的物体都能识别出是什么）</p>
+<p>可以应用在；目标检测（丰富检测出物体的信息）、用文本检索视频中物品出现的帧等</p>
+<h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>​    现有模型都是通过提前定义好的标签集合（即物品类别）来预测，是有限制性的监督信号，无法识别新的类别；CLIP直接从自然语言处理中得到特征，即用爬取到的4亿图片-文本配对进行多模态的对比训练；在30个不同数据集上做预测效果都很好，比如在ImageNet上和有监督训练的ResNet-50打平手；预训练代码没开源，但模型在Github上开源了。</p>
+<p>​    Bert、GPT、T5是在原始的文本数据上预训练一个模型，已经取得革命性成果，无论是自回归预测还是掩码完形填空的方式，都是自监督的方式，目标函数和下游任务无关，随着模型、数据、计算资源变多，性能也会变好，比如GPT-3无需特定领域的数据就能与之前精心设计的网络做对比。</p>
+<p>​    对99年到21年工作的讨论，……，总之，有了Transformer后，出现了VirTex和ConVIRT这些和CLIP类似的工作，但这些模型由于数据和模型规模不够大，所以效果不够好；CLIP是ConVIRT的简化版，共尝试8个模型，包括Vision Transformer和ResNet，迁移学习效果和模型大小呈正相关。</p>
+<h1 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h1><p>1、监督的NLP</p>
+<p>​    NLP中原来多是基于N-gram，无法用于跨模态zero-shot工作</p>
+<p>2、造数据集</p>
+<p>​    现有的数据量都不够大，自己收集了WebImage Text（WIT）作为数据集</p>
+<p>3、训练方法</p>
+<p>​    文本用Transformer即CBOW 或 Text Transformer，图片用CNN即ResNet或Vision Transformer ；由于同一张图有不同的文字描述，不能用预测型任务，而是对比任务，即对比文本和图片是否配对。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/uTools_1653485396142.png" alt=""></p>
+<p>I为图片的输入，n为batchsize，224 * 224 * 3</p>
+<p>T为文本的输入，由于和图片配对，batchsize也是n，l为文本序列长度</p>
+<p>通过编码器之后得到特征，使用投射层，学习一下如何从单模态到多模态，得到用来对比的特征I_e和T_e，最后用logits（求得的余弦相似度）和ground truth（labels）求两个交叉熵损失函数，再将两个损失函  数求平均。</p>
+<p>ground truth是arange即从1到n，这样可以使对角线（即保证1-a 2-b……）上的元素为正样本；</p>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2022-05-26T12:43:50.000Z" itemprop="datePublished">2022-05-26</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
         </div>
-        <footer id="footer" class="footer">
-    <div class="copyright">
-        <span>© 舒克 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag">读论文</a></li></ul>
+        </div>
+    
     </div>
 </footer>
 
+</article>
+
+    
+  
+    
+      <article
+id="post-STL"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2022/01/27/STL/">STL</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p>[TOC]</p>
+<h3 id="priority-queue"><a href="#priority-queue" class="headerlink" title="priority_queue"></a>priority_queue</h3><p>大根堆（top是max）优先队列</p>
+<pre><code class="C++">priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; q; // 小根堆
+
+top
+push 和 pop
+empty size
+emplace(1,1) // priority_queue&lt;PII&gt; q;
+// 相当于 push({1,1}) </code></pre>
+<h3 id="deque"><a href="#deque" class="headerlink" title="deque"></a>deque</h3><p>双端队列：首尾都可以插入删除</p>
+<p>应用：二叉树层次遍历</p>
+<pre><code>empty()
+size()
+front() 和 back()
+push_front(x) 和 push_back(x)
+pop_front() 和 pop_back()</code></pre><h2 id="unordered"><a href="#unordered" class="headerlink" title="unordered"></a>unordered</h2><p>unordered_set, unordered_map, unordered_multiset, unordered_multimap, 哈希表</p>
+<p>不支持 lower_bound()/upper_bound()， 迭代器的++，–</p>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>不允许重复，升序</p>
+<pre><code class="C++">erase(x) // 删除所有x或迭代器it
+count() 
+find() // set.find(1) == set.end() 没找到
+lower_bound(x) 大于等于x的最小的数的it
+upper_bound(x) 大于x的最下的数的it</code></pre>
+<h3 id="multiset"><a href="#multiset" class="headerlink" title="multiset"></a>multiset</h3><p>允许重复，升序</p>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>&lt;key, value&gt; 根据key升序，key不允许重复</p>
+<pre><code>find
+erase(pair)
+[]
+lower_bound 和 upper_bound</code></pre><h3 id="multimap"><a href="#multimap" class="headerlink" title="multimap"></a>multimap</h3><p>&lt;key, value&gt; 根据key升序，key允许重复</p>
+<h2 id="bitset"><a href="#bitset" class="headerlink" title="bitset"></a>bitset</h2><pre><code class="C++">bitset&lt;10000&gt; s;
+~, &amp;, |, ^
+&gt;&gt;, &lt;&lt;
+==, !=
+[]
+
+count()  返回有多少个1
+
+any()  判断是否至少有一个1
+none()  判断是否全为0
+
+set()  把所有位置成1
+set(k, v)  将第k位变成v
+reset()  把所有位变成0
+flip()  等价于~
+flip(k) 把第k位取反</code></pre>
+<h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p>支持按字典序比较运算</p>
+<pre><code class="C++">size
+empty
+clear
+front 和 back
+push_back 和 pop_back
+insert emplace
+[]
+</code></pre>
+<p>二维</p>
+<pre><code>vector&lt;vector&lt;int&gt;&gt; g(N,vector&lt;int&gt;(N,-1)); // 初始化为-1（N*N大小）</code></pre><h2 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h2><pre><code>top
+push 和 pop</code></pre><h2 id="queue"><a href="#queue" class="headerlink" title="queue"></a>queue</h2><pre><code>front 和 back
+push 和 pop</code></pre><h2 id="pair"><a href="#pair" class="headerlink" title="pair"></a>pair</h2><p>升序？</p>
+<h2 id="unique"><a href="#unique" class="headerlink" title="unique"></a>unique</h2><p>将<strong>序列中不重复的相邻元素（即与前一个数不同）</strong>放在前面，需要先排序</p>
+<pre><code class="C++">int arr[] = {3,2,2,1,4}, n = sizeof arr/ sizeof 1;
+for (int a : arr) cout&lt;&lt;a&lt;&lt;&#39; &#39;;
+// 3 2 2 1 4 
+sort(arr, arr+n);
+// 1 2 2 3 4
+n = unique(arr, arr+n) - arr;
+for (int a : arr) cout&lt;&lt;a&lt;&lt;&#39; &#39;;
+// 1 2 3 4 4
+for (int i = 0; i &lt; n; i++) cout&lt;&lt;arr[i]&lt;&lt;&#39; &#39;;
+// 1 2 3 4 </code></pre>
+<h2 id="greater"><a href="#greater" class="headerlink" title="greater"></a>greater</h2><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">sort</th>
+<th align="center">priority_queue</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">greater</td>
+<td align="center">从大到小</td>
+<td align="center">小顶堆</td>
+</tr>
+<tr>
+<td align="center">less</td>
+<td align="center">从小到大</td>
+<td align="center">大顶堆</td>
+</tr>
+</tbody></table>
+
+        
     </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2022-01-27T09:25:45.000Z" itemprop="datePublished">2022-01-27</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-ACM经验"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2022/01/13/ACM%E7%BB%8F%E9%AA%8C/">ACM经验</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><pre><code class="c++">#pragma GCC optimize (&quot;O1&quot;)
+#pragma comment(linker, &quot;/STACK:1024000000,1024000000&quot;)
+//防止爆栈
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+#include &lt;iomanip&gt;
+#include &lt;cstring&gt;
+#define r(i,a,b) for(int i=a,i&lt;b;i++)
+using ll = long long;
+using namespace std;
+const int N=100;
+inline int read() {
+    int s = 0, w = 1;//s是数值，w是符号
+    char ch = getchar();
+    while (ch &lt; &#39;0&#39; || ch &gt; &#39;9&#39;) {//将空格、换行与符号滤去
+        if (ch == &#39;-&#39;) {//出现负号表示是负数
+            w = -1;
+            ch = getchar();//继续读入
+        }
+    }
+    while (ch &gt;= &#39;0&#39; &amp;&amp; ch &lt;= &#39;9&#39;){ //循环读取每一位的数字
+        s = s * 10 + ch - &#39;0&#39;;//将每一位的结果累加进s
+        ch = getchar();
+    }
+    return s * w;//乘上符号
+}
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+}</code></pre>
+<p>编译器优化</p>
+<p>-O0 表示无优化状态</p>
+<p>-O1 表示对代码进行了优化</p>
+<p>-O2 表示减小目标文件大小</p>
+<p>-O3 表示减小代码段及栈空间的大小</p>
+<p>#pragma GCC optimize (“O0”)</p>
+<p>爆栈</p>
+<p>#pragma comment(linker, “/STACK:1024000000,1024000000”)</p>
+<p>全局变量自动初始化</p>
+<pre><code>ios::sync_with_stdio(false); // 关闭C++输入输出缓冲区同步
+cin.tie(0); // 绑定缓冲区</code></pre><p>关闭后<em>cin不能</em>与scanf,sscanf, getchar, fgets等混用,cout不能与printf,<em>puts</em>等混用</p>
+<pre><code>使用ios...和tie 130 ms
+只使用ios... 676 ms
+只使用tie 315 ms
+无优化 885 ms</code></pre><h2 id="快读快出"><a href="#快读快出" class="headerlink" title="快读快出"></a>快读快出</h2><h3 id="scanf"><a href="#scanf" class="headerlink" title="scanf"></a>scanf</h3><p>scanf(“%控制格式”, &amp;变量地址); 对于数组 变量本身就是地址</p>
+<table>
+<thead>
+<tr>
+<th align="center">格式</th>
+<th align="center">字符意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">d</td>
+<td align="center">十进制整数</td>
+</tr>
+<tr>
+<td align="center">o</td>
+<td align="center">八进制整数</td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="center">十六进制整数</td>
+</tr>
+<tr>
+<td align="center">u</td>
+<td align="center">无符号十进制整数</td>
+</tr>
+<tr>
+<td align="center">f或e</td>
+<td align="center">实型数(用小数形式或指数形式)</td>
+</tr>
+<tr>
+<td align="center">c</td>
+<td align="center">单个字符</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">字符串</td>
+</tr>
+<tr>
+<td align="center">l/h</td>
+<td align="center">l表示长，h表示短，Eg：lf 读入doble</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">读入不赋值，EG：*d 读入int但不赋值</td>
+</tr>
+<tr>
+<td align="center">5（数字）</td>
+<td align="center">读入宽度</td>
+</tr>
+<tr>
+<td align="center">-/+</td>
+<td align="center">左/右对齐</td>
+</tr>
+<tr>
+<td align="center">#</td>
+<td align="center">需要时给出小数点和前缀o或 0x</td>
+</tr>
+<tr>
+<td align="center">空格</td>
+<td align="center">需要时显示正负号</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>没有精度控制 scanf(“%5.2f”,&amp;a);是非法的</p>
+<p>要求给出变量地址 scanf(“%d”,a);是非法的</p>
+<p>在碰到空格，TAB，回车或非法数据时认为该数据结束</p>
+<h3 id="printf"><a href="#printf" class="headerlink" title="printf"></a>printf</h3><p>printf(“%控制格式”, 变量本身);</p>
+<p>%a(%A)     浮点数、十六进制数字和p-(P-)记数法(C99)<br>      %c         字符<br>      %d         有符号十进制整数<br>      %f         浮点数(包括float和double)<br>      %e(%E)     浮点数指数输出[e-(E-)记数法]<br>      %g(%G)     浮点数不显无意义的零”0”<br>      %i         有符号十进制整数(与%d相同)<br>      %u         无符号十进制整数<br>      %x(%X)     十六进制整数0f(0F)   e.g.   0x1234<br>      %p         指针<br>      %%         “%”</p>
+<h3 id="读入空格"><a href="#读入空格" class="headerlink" title="读入空格"></a>读入空格</h3><p>cin.get(x) 读入单个char</p>
+<p>x = getchar( ) 读入单个char，对应putchar( ) 输出单个char</p>
+<p>getline(x) 读入string</p>
+<h3 id="内联函数read"><a href="#内联函数read" class="headerlink" title="内联函数read"></a>内联函数read</h3><p>内联是将代码内嵌到调用者代码处</p>
+<pre><code>inline int read() {
+    int s = 0, w = 1;//s是数值，w是符号
+    char ch = getchar();
+    while (ch &lt; &#39;0&#39; || ch &gt; &#39;9&#39;) {//将空格、换行与符号滤去
+        if (ch == &#39;-&#39;) {//出现负号表示是负数
+            w = -1;
+            ch = getchar();//继续读入
+        }
+    }
+    while (ch &gt;= &#39;0&#39; &amp;&amp; ch &lt;= &#39;9&#39;){ //循环读取每一位的数字
+        s = s * 10 + ch - &#39;0&#39;;//将每一位的结果累加进s
+        ch = getchar();
+    }
+    return s * w;//乘上符号
+}</code></pre><h3 id="内联函数write"><a href="#内联函数write" class="headerlink" title="内联函数write"></a>内联函数write</h3><pre><code>void write(int v) {
+    if (v&lt;0) {
+        putchar(&#39;-&#39;);
+        v=-v;
+    }
+    if (v&gt;9) write(v/10);
+    putchar(v%10+&#39;0&#39;);
+}
+puts(&quot;&quot;); //换行 </code></pre><h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h1><p>2^n 可以用 1&lt;&lt;n 来计算</p>
+<h2 id="异或"><a href="#异或" class="headerlink" title="异或 ^"></a>异或 ^</h2><h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><ol>
+<li><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>n</mi><mo>&amp;#x2264;</mo><mn>30</mn></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-10" role="math" style="width: 3.545em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.848em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.629em, 1002.848em, 2.79em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-11"><span class="mi" id="MathJax-Span-12" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-13" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">≤</span><span class="mn" id="MathJax-Span-14" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">30</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.211em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.075em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>≤</mo><mn>30</mn></math></span></span><script type="math/tex" id="MathJax-Element-2">n \le 30</script>, 指数级别, dfs+剪枝，状态压缩dp</li>
+<li><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>n</mi><mo>&amp;#x2264;</mo><mn>100</mn></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-15" role="math" style="width: 4.184em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.371em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.629em, 1003.371em, 2.79em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-16"><span class="mi" id="MathJax-Span-17" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-18" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">≤</span><span class="mn" id="MathJax-Span-19" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">100</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.211em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.075em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>≤</mo><mn>100</mn></math></span></span><script type="math/tex" id="MathJax-Element-3">n \le 100</script> =&gt; <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>O</mi><mo stretchy=&quot;false&quot;>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-20" role="math" style="width: 2.965em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.384em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.513em, 1002.326em, 2.848em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-21"><span class="mi" id="MathJax-Span-22" style="font-family: STIXGeneral-Italic;">O</span><span class="mo" id="MathJax-Span-23" style="font-family: STIXGeneral-Regular;">(</span><span class="msubsup" id="MathJax-Span-24"><span style="display: inline-block; position: relative; width: 0.932em; height: 0px;"><span style="position: absolute; clip: rect(3.371em, 1000.467em, 4.184em, -999.997em); top: -4.004em; left: 0.003em;"><span class="mi" id="MathJax-Span-25" style="font-family: STIXGeneral-Italic;">n</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span><span style="position: absolute; top: -4.352em; left: 0.526em;"><span class="mn" id="MathJax-Span-26" style="font-size: 70.7%; font-family: STIXGeneral-Regular;">3</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span></span></span><span class="mo" id="MathJax-Span-27" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.282em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.432em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>3</mn></msup><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-4">O(n^3)</script>，floyd，dp，高斯消元</li>
+<li><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>n</mi><mo>&amp;#x2264;</mo><mn>1000</mn></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-28" role="math" style="width: 4.707em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.836em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.629em, 1003.836em, 2.79em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-29"><span class="mi" id="MathJax-Span-30" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-31" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">≤</span><span class="mn" id="MathJax-Span-32" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">1000</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.211em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.075em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>≤</mo><mn>1000</mn></math></span></span><script type="math/tex" id="MathJax-Element-5">n \le 1000</script> =&gt; <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-6-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>O</mi><mo stretchy=&quot;false&quot;>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-33" role="math" style="width: 2.965em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.384em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.513em, 1002.326em, 2.848em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-34"><span class="mi" id="MathJax-Span-35" style="font-family: STIXGeneral-Italic;">O</span><span class="mo" id="MathJax-Span-36" style="font-family: STIXGeneral-Regular;">(</span><span class="msubsup" id="MathJax-Span-37"><span style="display: inline-block; position: relative; width: 0.932em; height: 0px;"><span style="position: absolute; clip: rect(3.371em, 1000.467em, 4.184em, -999.997em); top: -4.004em; left: 0.003em;"><span class="mi" id="MathJax-Span-38" style="font-family: STIXGeneral-Italic;">n</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span><span style="position: absolute; top: -4.352em; left: 0.526em;"><span class="mn" id="MathJax-Span-39" style="font-size: 70.7%; font-family: STIXGeneral-Regular;">2</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span></span></span><span class="mo" id="MathJax-Span-40" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.282em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.432em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-6">O(n^2)</script>，<span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-7-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>O</mi><mo stretchy=&quot;false&quot;>(</mo><msup><mi>n</mi><mn>2</mn></msup><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-41" role="math" style="width: 5.171em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.184em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.513em, 1004.126em, 2.907em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-42"><span class="mi" id="MathJax-Span-43" style="font-family: STIXGeneral-Italic;">O</span><span class="mo" id="MathJax-Span-44" style="font-family: STIXGeneral-Regular;">(</span><span class="msubsup" id="MathJax-Span-45"><span style="display: inline-block; position: relative; width: 0.932em; height: 0px;"><span style="position: absolute; clip: rect(3.371em, 1000.467em, 4.184em, -999.997em); top: -4.004em; left: 0.003em;"><span class="mi" id="MathJax-Span-46" style="font-family: STIXGeneral-Italic;">n</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span><span style="position: absolute; top: -4.352em; left: 0.526em;"><span class="mn" id="MathJax-Span-47" style="font-size: 70.7%; font-family: STIXGeneral-Regular;">2</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span></span></span><span class="mi" id="MathJax-Span-48" style="font-family: STIXGeneral-Italic;">l<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-49" style="font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-50" style="font-family: STIXGeneral-Italic;">g</span><span class="mi" id="MathJax-Span-51" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-52" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.354em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.432em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-7">O(n^2logn)</script>，dp，二分，朴素版Dijkstra、朴素版Prim、Bellman-Ford</li>
+<li><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-8-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>n</mi><mo>&amp;#x2264;</mo><mn>10000</mn></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-53" role="math" style="width: 5.404em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.358em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.629em, 1004.358em, 2.79em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-54"><span class="mi" id="MathJax-Span-55" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-56" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">≤</span><span class="mn" id="MathJax-Span-57" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">10000</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.211em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.075em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>≤</mo><mn>10000</mn></math></span></span><script type="math/tex" id="MathJax-Element-8">n \le 10000</script> =&gt; <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-9-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>O</mi><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mo>&amp;#x2217;</mo><msqrt><mi>n</mi></msqrt><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-58" role="math" style="width: 5.171em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.184em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.629em, 1004.126em, 2.907em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-59"><span class="mi" id="MathJax-Span-60" style="font-family: STIXGeneral-Italic;">O</span><span class="mo" id="MathJax-Span-61" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-62" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-63" style="font-family: STIXGeneral-Regular; padding-left: 0.235em;">∗</span><span class="msqrt" id="MathJax-Span-64" style="padding-left: 0.235em;"><span style="display: inline-block; position: relative; width: 1.222em; height: 0px;"><span style="position: absolute; clip: rect(3.371em, 1000.467em, 4.184em, -999.997em); top: -4.004em; left: 0.758em;"><span class="mrow" id="MathJax-Span-65"><span class="mi" id="MathJax-Span-66" style="font-family: STIXGeneral-Italic;">n</span></span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span><span style="position: absolute; clip: rect(3.023em, 1000.526em, 3.429em, -999.997em); top: -3.888em; left: 0.758em;"><span style="font-family: STIXGeneral-Regular;">‾</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span><span style="position: absolute; clip: rect(2.907em, 1000.758em, 4.184em, -999.997em); top: -3.772em; left: 0.003em;"><span style="font-family: STIXVariants;">√</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span></span></span><span class="mo" id="MathJax-Span-67" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.354em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.361em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>∗</mo><msqrt><mi>n</mi></msqrt><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-9">O(n * \sqrt n)</script>，块状链表、分块、莫队</li>
+<li><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-10-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>n</mi><mo>&amp;#x2264;</mo><mn>100000</mn></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-68" role="math" style="width: 6.042em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.881em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.629em, 1004.881em, 2.79em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-69"><span class="mi" id="MathJax-Span-70" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-71" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">≤</span><span class="mn" id="MathJax-Span-72" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">100000</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.211em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.075em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>≤</mo><mn>100000</mn></math></span></span><script type="math/tex" id="MathJax-Element-10">n \le 100000</script> =&gt; <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-11-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>O</mi><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-73" role="math" style="width: 4.649em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.778em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.629em, 1003.72em, 2.907em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-74"><span class="mi" id="MathJax-Span-75" style="font-family: STIXGeneral-Italic;">O</span><span class="mo" id="MathJax-Span-76" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-77" style="font-family: STIXGeneral-Italic;">n</span><span class="mi" id="MathJax-Span-78" style="font-family: STIXGeneral-Italic;">l<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-79" style="font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-80" style="font-family: STIXGeneral-Italic;">g</span><span class="mi" id="MathJax-Span-81" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-82" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.354em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.218em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-11">O(nlogn)</script> =&gt; 各种sort，线段树、树状数组、set/map、heap、拓扑排序、dijkstra+heap、prim+heap、Kruskal、spfa、求凸包、求半平面交、二分、CDQ分治、整体二分、后缀数组、树链剖分、动态树</li>
+<li><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-12-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>n</mi><mo>&amp;#x2264;</mo><mn>1000000</mn></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-83" role="math" style="width: 6.681em; display: inline-block;"><span style="display: inline-block; position: relative; width: 5.404em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.629em, 1005.404em, 2.79em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-84"><span class="mi" id="MathJax-Span-85" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-86" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">≤</span><span class="mn" id="MathJax-Span-87" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">1000000</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.211em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.075em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>≤</mo><mn>1000000</mn></math></span></span><script type="math/tex" id="MathJax-Element-12">n \le 1000000</script> =&gt; <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-13-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>O</mi><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-88" role="math" style="width: 2.442em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.977em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.629em, 1001.919em, 2.848em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-89"><span class="mi" id="MathJax-Span-90" style="font-family: STIXGeneral-Italic;">O</span><span class="mo" id="MathJax-Span-91" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-92" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-93" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.282em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.218em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-13">O(n)</script>, 以及常数较小的 <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-14-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>O</mi><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-94" role="math" style="width: 4.649em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.778em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.629em, 1003.72em, 2.907em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-95"><span class="mi" id="MathJax-Span-96" style="font-family: STIXGeneral-Italic;">O</span><span class="mo" id="MathJax-Span-97" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-98" style="font-family: STIXGeneral-Italic;">n</span><span class="mi" id="MathJax-Span-99" style="font-family: STIXGeneral-Italic;">l<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-100" style="font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-101" style="font-family: STIXGeneral-Italic;">g</span><span class="mi" id="MathJax-Span-102" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-103" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.354em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.218em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-14">O(nlogn)</script> 算法 =&gt; 单调队列、 hash、双指针扫描、并查集，kmp、AC自动机，常数比较小的 <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-15-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>O</mi><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-104" role="math" style="width: 4.649em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.778em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.629em, 1003.72em, 2.907em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-105"><span class="mi" id="MathJax-Span-106" style="font-family: STIXGeneral-Italic;">O</span><span class="mo" id="MathJax-Span-107" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-108" style="font-family: STIXGeneral-Italic;">n</span><span class="mi" id="MathJax-Span-109" style="font-family: STIXGeneral-Italic;">l<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-110" style="font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-111" style="font-family: STIXGeneral-Italic;">g</span><span class="mi" id="MathJax-Span-112" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-113" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.354em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.218em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-15">O(nlogn)</script> 的做法：sort、树状数组、heap、dijkstra、spfa</li>
+<li><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-16-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>n</mi><mo>&amp;#x2264;</mo><mn>10000000</mn></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-114" role="math" style="width: 7.32em; display: inline-block;"><span style="display: inline-block; position: relative; width: 5.926em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.629em, 1005.926em, 2.79em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-115"><span class="mi" id="MathJax-Span-116" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-117" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">≤</span><span class="mn" id="MathJax-Span-118" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">10000000</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.211em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.075em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>≤</mo><mn>10000000</mn></math></span></span><script type="math/tex" id="MathJax-Element-16">n \le 10000000</script> =&gt; <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-17-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>O</mi><mo stretchy=&quot;false&quot;>(</mo><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-119" role="math" style="width: 2.442em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.977em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.629em, 1001.919em, 2.848em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-120"><span class="mi" id="MathJax-Span-121" style="font-family: STIXGeneral-Italic;">O</span><span class="mo" id="MathJax-Span-122" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-123" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-124" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.282em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.218em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-17">O(n)</script>，双指针扫描、kmp、AC自动机、线性筛素数</li>
+<li><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-18-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>n</mi><mo>&amp;#x2264;</mo><msup><mn>10</mn><mn>9</mn></msup></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-125" role="math" style="width: 4.01em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.255em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.455em, 1003.255em, 2.79em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-126"><span class="mi" id="MathJax-Span-127" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-128" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">≤</span><span class="msubsup" id="MathJax-Span-129" style="padding-left: 0.293em;"><span style="display: inline-block; position: relative; width: 1.455em; height: 0px;"><span style="position: absolute; clip: rect(3.139em, 1000.99em, 4.184em, -999.997em); top: -4.004em; left: 0.003em;"><span class="mn" id="MathJax-Span-130" style="font-family: STIXGeneral-Regular;">10</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span><span style="position: absolute; top: -4.411em; left: 0.99em;"><span class="mn" id="MathJax-Span-131" style="font-size: 70.7%; font-family: STIXGeneral-Regular;">9</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.211em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.361em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>≤</mo><msup><mn>10</mn><mn>9</mn></msup></math></span></span><script type="math/tex" id="MathJax-Element-18">n \le 10^9</script> =&gt; <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-19-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>O</mi><mo stretchy=&quot;false&quot;>(</mo><msqrt><mi>n</mi></msqrt><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-132" role="math" style="width: 3.313em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.674em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.629em, 1002.616em, 2.907em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-133"><span class="mi" id="MathJax-Span-134" style="font-family: STIXGeneral-Italic;">O</span><span class="mo" id="MathJax-Span-135" style="font-family: STIXGeneral-Regular;">(</span><span class="msqrt" id="MathJax-Span-136"><span style="display: inline-block; position: relative; width: 1.222em; height: 0px;"><span style="position: absolute; clip: rect(3.371em, 1000.467em, 4.184em, -999.997em); top: -4.004em; left: 0.758em;"><span class="mrow" id="MathJax-Span-137"><span class="mi" id="MathJax-Span-138" style="font-family: STIXGeneral-Italic;">n</span></span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span><span style="position: absolute; clip: rect(3.023em, 1000.526em, 3.429em, -999.997em); top: -3.888em; left: 0.758em;"><span style="font-family: STIXGeneral-Regular;">‾</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span><span style="position: absolute; clip: rect(2.907em, 1000.758em, 4.184em, -999.997em); top: -3.772em; left: 0.003em;"><span style="font-family: STIXVariants;">√</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span></span></span><span class="mo" id="MathJax-Span-139" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.354em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.361em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><msqrt><mi>n</mi></msqrt><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-19">O(\sqrt n)</script>，判断质数</li>
+<li><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-20-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>n</mi><mo>&amp;#x2264;</mo><msup><mn>10</mn><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mn>18</mn></mrow></msup></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-140" role="math" style="width: 4.474em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.603em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.455em, 1003.603em, 2.79em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-141"><span class="mi" id="MathJax-Span-142" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-143" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">≤</span><span class="msubsup" id="MathJax-Span-144" style="padding-left: 0.293em;"><span style="display: inline-block; position: relative; width: 1.803em; height: 0px;"><span style="position: absolute; clip: rect(3.139em, 1000.99em, 4.184em, -999.997em); top: -4.004em; left: 0.003em;"><span class="mn" id="MathJax-Span-145" style="font-family: STIXGeneral-Regular;">10</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span><span style="position: absolute; top: -4.411em; left: 0.99em;"><span class="texatom" id="MathJax-Span-146"><span class="mrow" id="MathJax-Span-147"><span class="mn" id="MathJax-Span-148" style="font-size: 70.7%; font-family: STIXGeneral-Regular;">18</span></span></span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.211em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.361em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>≤</mo><msup><mn>10</mn><mrow class="MJX-TeXAtom-ORD"><mn>18</mn></mrow></msup></math></span></span><script type="math/tex" id="MathJax-Element-20">n \le 10^{18}</script> =&gt; <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-21-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>O</mi><mo stretchy=&quot;false&quot;>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-149" role="math" style="width: 4.01em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.255em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.629em, 1003.197em, 2.907em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-150"><span class="mi" id="MathJax-Span-151" style="font-family: STIXGeneral-Italic;">O</span><span class="mo" id="MathJax-Span-152" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-153" style="font-family: STIXGeneral-Italic;">l<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-154" style="font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-155" style="font-family: STIXGeneral-Italic;">g</span><span class="mi" id="MathJax-Span-156" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-157" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.354em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.218em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-21">O(logn)</script>，最大公约数，快速幂，数位DP</li>
+<li><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-22-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>n</mi><mo>&amp;#x2264;</mo><msup><mn>10</mn><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mn>1000</mn></mrow></msup></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-158" role="math" style="width: 5.287em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.3em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.455em, 1004.3em, 2.79em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-159"><span class="mi" id="MathJax-Span-160" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-161" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">≤</span><span class="msubsup" id="MathJax-Span-162" style="padding-left: 0.293em;"><span style="display: inline-block; position: relative; width: 2.5em; height: 0px;"><span style="position: absolute; clip: rect(3.139em, 1000.99em, 4.184em, -999.997em); top: -4.004em; left: 0.003em;"><span class="mn" id="MathJax-Span-163" style="font-family: STIXGeneral-Regular;">10</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span><span style="position: absolute; top: -4.411em; left: 0.99em;"><span class="texatom" id="MathJax-Span-164"><span class="mrow" id="MathJax-Span-165"><span class="mn" id="MathJax-Span-166" style="font-size: 70.7%; font-family: STIXGeneral-Regular;">1000</span></span></span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.211em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.361em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>≤</mo><msup><mn>10</mn><mrow class="MJX-TeXAtom-ORD"><mn>1000</mn></mrow></msup></math></span></span><script type="math/tex" id="MathJax-Element-22">n \le 10^{1000}</script> =&gt; <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-23-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>O</mi><mo stretchy=&quot;false&quot;>(</mo><mo stretchy=&quot;false&quot;>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><msup><mo stretchy=&quot;false&quot;>)</mo><mn>2</mn></msup><mo stretchy=&quot;false&quot;>)</mo></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-167" role="math" style="width: 5.404em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.358em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.513em, 1004.3em, 2.907em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-168"><span class="mi" id="MathJax-Span-169" style="font-family: STIXGeneral-Italic;">O</span><span class="mo" id="MathJax-Span-170" style="font-family: STIXGeneral-Regular;">(</span><span class="mo" id="MathJax-Span-171" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-172" style="font-family: STIXGeneral-Italic;">l<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-173" style="font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-174" style="font-family: STIXGeneral-Italic;">g</span><span class="mi" id="MathJax-Span-175" style="font-family: STIXGeneral-Italic;">n</span><span class="msubsup" id="MathJax-Span-176"><span style="display: inline-block; position: relative; width: 0.758em; height: 0px;"><span style="position: absolute; clip: rect(3.139em, 1000.293em, 4.358em, -999.997em); top: -4.004em; left: 0.003em;"><span class="mo" id="MathJax-Span-177" style="font-family: STIXGeneral-Regular;">)</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span><span style="position: absolute; top: -4.352em; left: 0.351em;"><span class="mn" id="MathJax-Span-178" style="font-size: 70.7%; font-family: STIXGeneral-Regular;">2</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span></span></span><span class="mo" id="MathJax-Span-179" style="font-family: STIXGeneral-Regular;">)</span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.354em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.432em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-23">O((logn)^2)</script>，高精度加减乘除</li>
+<li><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-24-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>n</mi><mo>&amp;#x2264;</mo><msup><mn>10</mn><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mn>100000</mn></mrow></msup></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-180" role="math" style="width: 6.159em; display: inline-block;"><span style="display: inline-block; position: relative; width: 4.997em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.455em, 1004.997em, 2.79em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-181"><span class="mi" id="MathJax-Span-182" style="font-family: STIXGeneral-Italic;">n</span><span class="mo" id="MathJax-Span-183" style="font-family: STIXGeneral-Regular; padding-left: 0.293em;">≤</span><span class="msubsup" id="MathJax-Span-184" style="padding-left: 0.293em;"><span style="display: inline-block; position: relative; width: 3.197em; height: 0px;"><span style="position: absolute; clip: rect(3.139em, 1000.99em, 4.184em, -999.997em); top: -4.004em; left: 0.003em;"><span class="mn" id="MathJax-Span-185" style="font-family: STIXGeneral-Regular;">10</span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span><span style="position: absolute; top: -4.411em; left: 0.99em;"><span class="texatom" id="MathJax-Span-186"><span class="mrow" id="MathJax-Span-187"><span class="mn" id="MathJax-Span-188" style="font-size: 70.7%; font-family: STIXGeneral-Regular;">100000</span></span></span><span style="display: inline-block; width: 0px; height: 4.01em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.211em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.361em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>≤</mo><msup><mn>10</mn><mrow class="MJX-TeXAtom-ORD"><mn>100000</mn></mrow></msup></math></span></span><script type="math/tex" id="MathJax-Element-24">n \le 10^{100000}</script> =&gt; <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-25-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi>O</mi><mo stretchy=&quot;false&quot;>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>k</mi><mo>&amp;#x00D7;</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>k</mi><mo stretchy=&quot;false&quot;>)</mo><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mo>&amp;#xFF0C;</mo></mrow><mi>k</mi><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mo>&amp;#x8868;</mo></mrow><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mo>&amp;#x793A;</mo></mrow><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mo>&amp;#x4F4D;</mo></mrow><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mo>&amp;#x6570;</mo></mrow></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-189" role="math" style="width: 14.521em; display: inline-block;"><span style="display: inline-block; position: relative; width: 11.792em; height: 0px; font-size: 123%;"><span style="position: absolute; clip: rect(1.513em, 1011.792em, 2.907em, -999.997em); top: -2.494em; left: 0.003em;"><span class="mrow" id="MathJax-Span-190"><span class="mi" id="MathJax-Span-191" style="font-family: STIXGeneral-Italic;">O</span><span class="mo" id="MathJax-Span-192" style="font-family: STIXGeneral-Regular;">(</span><span class="mi" id="MathJax-Span-193" style="font-family: STIXGeneral-Italic;">l<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-194" style="font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-195" style="font-family: STIXGeneral-Italic;">g</span><span class="mi" id="MathJax-Span-196" style="font-family: STIXGeneral-Italic;">k<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-197" style="font-family: STIXGeneral-Regular; padding-left: 0.235em;">×</span><span class="mi" id="MathJax-Span-198" style="font-family: STIXGeneral-Italic; padding-left: 0.235em;">l<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-199" style="font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-200" style="font-family: STIXGeneral-Italic;">g</span><span class="mi" id="MathJax-Span-201" style="font-family: STIXGeneral-Italic;">l<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mi" id="MathJax-Span-202" style="font-family: STIXGeneral-Italic;">o</span><span class="mi" id="MathJax-Span-203" style="font-family: STIXGeneral-Italic;">g</span><span class="mi" id="MathJax-Span-204" style="font-family: STIXGeneral-Italic;">k<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="mo" id="MathJax-Span-205" style="font-family: STIXGeneral-Regular;">)</span><span class="texatom" id="MathJax-Span-206"><span class="mrow" id="MathJax-Span-207"><span class="mo" id="MathJax-Span-208"><span style="font-family: STIXGeneral, &quot;Arial Unicode MS&quot;, serif; font-size: 81%; font-style: normal; font-weight: normal;">，</span></span></span></span><span class="mi" id="MathJax-Span-209" style="font-family: STIXGeneral-Italic;">k<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.003em;"></span></span><span class="texatom" id="MathJax-Span-210"><span class="mrow" id="MathJax-Span-211"><span class="mo" id="MathJax-Span-212"><span style="font-family: STIXGeneral, &quot;Arial Unicode MS&quot;, serif; font-size: 81%; font-style: normal; font-weight: normal;">表</span></span></span></span><span class="texatom" id="MathJax-Span-213"><span class="mrow" id="MathJax-Span-214"><span class="mo" id="MathJax-Span-215"><span style="font-family: STIXGeneral, &quot;Arial Unicode MS&quot;, serif; font-size: 81%; font-style: normal; font-weight: normal;">示</span></span></span></span><span class="texatom" id="MathJax-Span-216"><span class="mrow" id="MathJax-Span-217"><span class="mo" id="MathJax-Span-218"><span style="font-family: STIXGeneral, &quot;Arial Unicode MS&quot;, serif; font-size: 81%; font-style: normal; font-weight: normal;">位</span></span></span></span><span class="texatom" id="MathJax-Span-219"><span class="mrow" id="MathJax-Span-220"><span class="mo" id="MathJax-Span-221"><span style="font-family: STIXGeneral, &quot;Arial Unicode MS&quot;, serif; font-size: 81%; font-style: normal; font-weight: normal;">数</span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.5em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.354em; border-left-width: 0px; border-left-style: solid; width: 0px; height: 1.361em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>k</mi><mo>×</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>k</mi><mo stretchy="false">)</mo><mrow class="MJX-TeXAtom-ORD"><mo>，</mo></mrow><mi>k</mi><mrow class="MJX-TeXAtom-ORD"><mo>表</mo></mrow><mrow class="MJX-TeXAtom-ORD"><mo>示</mo></mrow><mrow class="MJX-TeXAtom-ORD"><mo>位</mo></mrow><mrow class="MJX-TeXAtom-ORD"><mo>数</mo></mrow></math></span></span><script type="math/tex" id="MathJax-Element-25">O(logk \times loglogk)，k表示位数</script>，高精度加减、FFT/NTT</li>
+</ol>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2022-01-13T13:56:24.000Z" itemprop="datePublished">2022-01-13</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-基础算法"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2021/05/27/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p>[TOC]</p>
+<h1 id="基础算法"><a href="#基础算法" class="headerlink" title="基础算法"></a>基础算法</h1><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="快速排序-分治"><a href="#快速排序-分治" class="headerlink" title="快速排序 - 分治"></a>快速排序 - 分治</h3><p>分治：不断把数据分成两部分，一半小于另一半</p>
+<ol>
+<li><p>确定分界（4种方法）：取q[l], q[(l + r) / 2], q[r], 随机点 </p>
+</li>
+<li><p>调整区间：小于分界点的在左区间，其余在右区间 </p>
+<p>​    使用两个数组作为左右区间 </p>
+<p>​    使用两个指针（i = l - 1，j = r + 1），如果a[i]&gt;x,a[i]&lt;x，交换a[i] a[j] </p>
+</li>
+<li><p>递归：给左右排序 </p>
+</li>
+</ol>
+<pre><code class="c++">void quick_sort(int q[], int l, int r) {
+    if (l &gt;= r) 
+      return;
+
+    int i = l - 1, j = r + 1, x = q[l + r &gt;&gt; 1];
+    while (i &lt; j) {
+        do i ++ ; while (q[i] &lt; x);
+        do j -- ; while (q[j] &gt; x);
+        if (i &lt; j) swap(q[i], q[j]);
+    }
+    quick_sort(q, l, j); quick_sort(q, j + 1, r);
+}</code></pre>
+<h3 id="归并排序-分治（稳定）"><a href="#归并排序-分治（稳定）" class="headerlink" title="归并排序 - 分治（稳定）"></a>归并排序 - 分治（稳定）</h3><p>合并：两个有序数组</p>
+<p>双指针：比较两个数组里待合并的数，将较小的放入新数组</p>
+<ol>
+<li>确定分界点 mid = (l + r) / 2 数组的中心</li>
+<li>递归</li>
+<li>归并两个有序数组（用双指针合并）</li>
+</ol>
+<pre><code class="C++">void merge_sort(int q[], int l, int r) {
+    if (l &gt;= r) return;
+
+    int mid = l + r &gt;&gt; 1; // 用mid将原数组一分为二
+    // 先递归到底
+    merge_sort(q, l, mid);
+    merge_sort(q, mid + 1, r);
+
+    int k = 0, i = l, j = mid + 1;
+    while (i &lt;= mid &amp;&amp; j &lt;= r) 
+        // 双指针i和j分别对mid左右的两个数组遍历
+        if (q[i] &lt;= q[j]) tmp[k ++ ] = q[i ++ ];
+        else tmp[k ++ ] = q[j ++ ];
+    // 将剩余的部分加入数组
+    while (i &lt;= mid) tmp[k ++ ] = q[i ++ ];
+    while (j &lt;= r) tmp[k ++ ] = q[j ++ ];
+
+    for (i = l, j = 0; i &lt;= r; i ++, j ++ ) q[i] = tmp[j];
+}</code></pre>
+<h2 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h2><p>有单调性 一定可以 二分</p>
+<p>求范围，让答案在收缩的区间里</p>
+<p>向左收缩和向右收缩mid的取值不同</p>
+<p><img src="/Users/liting/blog/source/_posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_90b4ffa079-IMG_67CE3ECA2B0B-1.jpeg" alt="IMG_67CE3ECA2B0B-1.jpeg"> </p>
+<pre><code class="C++">// 整数二分
+bool check(int x) {} // 检查x是否满足某种性质
+
+// 区间[l, r]被划分成[l, mid]和[mid + 1, r]时使用：向左收缩
+int bsearch_1(int l, int r) {
+    while (l &lt; r) {
+        int mid = l + r &gt;&gt; 1;
+        if (check(mid)) r = mid;    // check()判断mid是否满足性质
+        else l = mid + 1;
+    } // 结束时l和r相等
+    return l;
+}
+// 区间[l, r]被划分成[l, mid - 1]和[mid, r]时使用：向右收缩
+int bsearch_2(int l, int r) {
+    while (l &lt; r) {
+        int mid = l + r + 1 &gt;&gt; 1;//防止死循环 多加1
+        if (check(mid)) l = mid; // arr[mid]=x 时需要取边界
+        else r = mid - 1;
+    }
+    return l;
+}</code></pre>
+<p> 对于浮点数 将while里停止的条件改为 r - l &gt; 1e-6</p>
+<p>while控制的精度最好小于输出保留位数两位，防止精度不够</p>
+<p>Eg：输出小数点后四位，这里控制为1e-6</p>
+<pre><code class="C++">// 实数二分
+bool check(double x) {} // 检查x是否满足某种性质
+
+double bsearch_3(double l, double r) {
+    const double eps = 1e-6;   // eps 表示精度，取决于题目对精度的要求
+    while (r - l &gt; eps) {
+        double mid = (l + r) / 2;
+        if (check(mid)) r = mid;
+        else l = mid;
+    }
+    return l;
+}</code></pre>
+<h2 id="高精度"><a href="#高精度" class="headerlink" title="高精度"></a>高精度</h2><p>用数组存大整数，低地址存低位（小端），0存个位</p>
+<h3 id="加"><a href="#加" class="headerlink" title="加"></a>加</h3><pre><code class="C++">// C = A + B, A &gt;= 0, B &gt;= 0
+vector&lt;int&gt; add(vector&lt;int&gt; &amp;A, vector&lt;int&gt; &amp;B) {
+    if (A.size() &lt; B.size()) return add(B, A);
+
+    vector&lt;int&gt; C;
+    int t = 0;
+    for (int i = 0; i &lt; A.size(); i ++ ) {
+        t += A[i];
+        if (i &lt; B.size()) t += B[i];
+        C.push_back(t % 10);
+        t /= 10;
+    }
+
+    if (t) C.push_back(t);
+    return C;
+}</code></pre>
+<h3 id="减"><a href="#减" class="headerlink" title="减"></a>减</h3><p>A &lt; B =&gt; -(B - A) </p>
+<pre><code class="C++">// C = A - B, 满足A &gt;= B, A &gt;= 0, B &gt;= 0
+bool cmp(vector&lt;int&gt; &amp;A, vector&lt;int&gt; &amp;B) {
+    if (A.size() != B.size()) return A.size() &gt; B.size();
+    for (int i = A.size()-1; i &gt;= 0; i--) 
+        if (A[i] != B[i]) return A[i] &gt; B[i];
+    return true; // 
+}
+vector&lt;int&gt; sub(vector&lt;int&gt; &amp;A, vector&lt;int&gt; &amp;B) { //引用 节省时间
+    vector&lt;int&gt; C;
+    for (int i = 0, t = 0; i &lt; A.size(); i ++ ) {
+        t = A[i] - t;
+        if (i &lt; B.size()) t -= B[i];
+        C.push_back((t + 10) % 10);
+          // 只防止负数 不会改变结果 
+        //（1+10）%10 = 1 （10+10）%10 = 0
+        if (t &lt; 0) t = 1;
+        else t = 0;
+    }
+        // 去除多个 0
+    while (C.size() &gt; 1 &amp;&amp; C.back() == 0) C.pop_back();
+    return C;
+}
+// 主函数
+if (cmp(A, B)) C = sub(A, B);
+else {
+    C = sub(B, A);
+    cout&lt;&lt;&#39;-&#39;;
+}</code></pre>
+<h3 id="乘"><a href="#乘" class="headerlink" title="乘"></a>乘</h3><pre><code class="C++">// C = A * b, A &gt;= 0, b &gt;= 0
+vector&lt;int&gt; mul(vector&lt;int&gt; &amp;A, int b) {
+    vector&lt;int&gt; C;
+
+    for (int i = 0, t = 0; i &lt; A.size() || t; i ++ ) {
+        if (i &lt; A.size()) t += A[i] * b;
+        C.push_back(t % 10);
+        t /= 10;
+    }
+
+    while (C.size() &gt; 1 &amp;&amp; C.back() == 0) C.pop_back();
+
+    return C;
+}</code></pre>
+<h3 id="除"><a href="#除" class="headerlink" title="除"></a>除</h3><p><img src="/Users/liting/blog/source/_posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_46df52f37a-IMG_CF57C855FBAC-1.jpeg" alt="IMG_CF57C855FBAC-1.jpeg"> </p>
+<pre><code class="C++">// A / b = C ... r, A &gt;= 0, b &gt; 0
+// 引用直接修改原来的r
+vector&lt;int&gt; div(vector&lt;int&gt; &amp;A, int b, int &amp;r) {
+    vector&lt;int&gt; C;
+    r = 0;
+    for (int i = A.size() - 1; i &gt;= 0; i -- ) {
+        r = r * 10 + A[i]; // 借位
+        C.push_back(r / b);
+        r %= b;
+    }
+    reverse(C.begin(), C.end());
+    while (C.size() &gt; 1 &amp;&amp; C.back() == 0) C.pop_back();
+    return C;
+}</code></pre>
+<h2 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h2><p>应用：计算前缀和</p>
+<p>存前缀和的下标从1开始，将数组下标为0的值设为0</p>
+<h3 id="一维"><a href="#一维" class="headerlink" title="一维"></a>一维</h3><p><img src="/Users/liting/blog/source/_posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_fda86e367a-IMG_D9E1403749B2-1.jpeg" alt="IMG_D9E1403749B2-1.jpeg"></p>
+<h3 id="二维"><a href="#二维" class="headerlink" title="二维"></a>二维</h3><p><img src="/Users/liting/blog/source/_posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_bfe890657b-96221_82a4b4b87a-IMG_57AF8F31A5F1-1.jpg" alt="96221_82a4b4b87a-IMG_57AF8F31A5F1-1.jpg"> </p>
+<pre><code class="C++">// 一维
+s[i] = s[i-1] + a[i];
+s[j] - s[i-1];
+
+// 二维
+sum[i][j] = sum[i-1][j] + sum[i][j-1] - sum[i-1][j-1] + a[i][j];
+sum[x2][y2] - sum[x2][y1-1] - sum[x1-1][y2] + sum[x1-1][y1-1];</code></pre>
+<h2 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h2><p>应用：在[ l , r ]之间的每个数加上 c</p>
+<p>前缀和的逆运算</p>
+<h3 id="一维-1"><a href="#一维-1" class="headerlink" title="一维"></a>一维</h3><p><img src="/Users/liting/blog/source/_posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_2d5a8c7d7b-IMG_C86BC0DC46CD-1.jpeg" alt="IMG_C86BC0DC46CD-1.jpeg"> </p>
+<h3 id="二维-1"><a href="#二维-1" class="headerlink" title="二维"></a>二维</h3><p><img src="/Users/liting/blog/source/_posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_3c3bcc877b-IMG_66D0BEAAF6CD-1.jpeg" alt="IMG_66D0BEAAF6CD-1.jpeg"> </p>
+<pre><code class="C++">// 一维
+// a存b的前缀和
+b[i] = a[i]-a[i-1]
+
+void insert(int l, int r,int c) {
+  b[l] += c;
+  b[r+1] -= c;
+}
+// 求前缀和 得到操作后的a数组
+b[i] += b[i-1];
+
+// 二维
+void insert(int x1,int y1,int x2,int y2,int c) {
+    b[x1][y1] += c;
+    b[x2+1][y1] -= c;
+    b[x1][y2+1] -= c;
+    b[x2+1][y2+1] += c;
+}
+// 求前缀和 把b还原成加了c之后的a
+b[i][j] += b[i-1][j] + b[i][j-1] - b[i-1][j-1];
+</code></pre>
+<h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><p>核心：将两个指针 n^2 优化到 n ， 没思路可以先写一个 n^2 找规律</p>
+<p>两个序列：合并；归并排序的归并、快速排序的划分；KMP</p>
+<p>一个序列：确定区间的开头结尾，如：滑动窗口；判断环</p>
+<pre><code class="C++">for (i = 0, j = 0; i &lt; n; i++) {
+    while(j &lt; i &amp;&amp; check(i, j)) j++;
+}</code></pre>
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>n&gt;&gt;k&amp;1：n（二进制）的第k位（从第0位开始）</p>
+<p>1&lt;&lt;n：2的n次方</p>
+<p>lowbit(x) { return x&amp;-x;}：x&amp;(~x+1)，即返回x的最后一位1，可以计算1的个数</p>
+<h3 id="异或"><a href="#异或" class="headerlink" title="异或"></a>异或</h3><p>不进位加法，相同为0，不同为1</p>
+<table>
+<thead>
+<tr>
+<th align="center">运算</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0^x = x</td>
+<td align="center">0异或还是原数</td>
+</tr>
+<tr>
+<td align="center">1^1010 = 1011</td>
+<td align="center">1异或末尾取反</td>
+</tr>
+<tr>
+<td align="center">x^x = 0</td>
+<td align="center">异或自己得0</td>
+</tr>
+<tr>
+<td align="center">a^b == 0</td>
+<td align="center">判断a和b是否相等</td>
+</tr>
+</tbody></table>
+<p>交换a和b：a = a ^ b, b = b ^ a, a = a ^ b</p>
+<p>交换律： a ^ b = b ^a, a ^ b ^ a = b 可以用于找奇数个数的数</p>
+<h2 id="离散化"><a href="#离散化" class="headerlink" title="离散化"></a>离散化</h2><p>离散化：稀疏数组中，10^5个数，值域为 0 ~ 10^9，将值域映射到 0 ~ n</p>
+<p>难点：可能存在重复元素，并能及时得到离散化后的值</p>
+<p>应用：稀疏数组即数组下标很大，但数组中很多值是空的</p>
+<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_3d6388e57c-IMG_DA2CAA82DDB6-1.jpeg" alt="IMG_DA2CAA82DDB6-1.jpeg"> </p>
+<pre><code class="C++">// 用vector模拟set，可以用下标访问
+vector&lt;int&gt; vec;
+sort(vec.begin(), vec.end()); // 排序
+vec.erase(unique(vec.begin(), vec.end()), vec.end()); // 去重
+// 用二分找第一个大于等于x的，相当于lower_bound()
+int find(int x) { 
+    int l = 0, r = vec.size()-1;
+    while (l &lt; r) {
+        int mid = l+r&gt;&gt;1;
+        if (vec[mid] &gt;= x) r = mid;
+        else l = mid + 1;
+    }
+    return r+1; // 从1开始映射
+}</code></pre>
+<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><h3 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h3><pre><code class="C++">/*
+* head 头结点下标 存值
+* e 存val
+* ne 存next
+* idx 表示e中当前位置
+*/
+int head, e[N], ne[N], idx;
+// 头插
+void add_to_head(int x) {
+    e[idx] = x;
+    ne[idx] = head;
+    head = idx;
+    idx ++;
+}
+// 下标为k的后面插x
+void add(int k, int x) { 
+    e[idx] = x;
+    ne[idx] = ne[k];
+    ne[k] = idx;
+    idx ++;
+}
+// 删k后的点 (-1后的点为0)
+void remove(int k) {
+    if (k == -1) head = ne[head];
+    ne[k] = ne[ne[k]];
+}
+void init() {
+    head = -1;
+    idx = 0;
+}</code></pre>
+<h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><pre><code class="C++">int head[N];</code></pre>
+<h3 id="双链表"><a href="#双链表" class="headerlink" title="双链表"></a>双链表</h3><p>优化某些问题</p>
+<pre><code class="C++">int head, tail;
+int e[N], l[N], r[N], idx;
+void init() {
+    head = -1; 
+    tail = -1;
+    idx = 0;
+}
+// 在k右边插入 
+// 在k左边插入 add(l[k], x);
+void add(int k, int x) {
+    e[idx] = x;
+    r[idx] = r[k];
+    l[idx] = k;
+    l[r[k]] = idx;
+    r[k] = idx;
+    idx ++;
+}
+void remove(int k) {
+    r[l[k]] = r[k];
+    l[r[k]] = l[k];
+}</code></pre>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h3><p>应用：找每个数左边第一个比它小/大的数、视野总和、柱状图中最大矩形</p>
+<p>有序栈：如果<strong>栈为空</strong>或<strong>入栈元素值小于栈顶元素值</strong>，则入栈；否则，如果入栈则会破坏栈的单调性，则需要把比入栈元素小的元素全部出栈。</p>
+<p>思想：先考虑暴力，然后优化</p>
+<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_207657767c-IMG_75854B600D80-1.jpeg" alt="IMG_75854B600D80-1.jpeg"> </p>
+<pre><code class="C++">// STL
+for (int i = 0; i &lt; n; i ++ ) {
+    cin&gt;&gt;x;
+    while (!stk.empty() &amp;&amp; stk.top() &gt;= x) stk.pop();
+    if (!stk.empty()) cout&lt;&lt;stk.top();
+    else cout&lt;&lt;-1;
+    cout&lt;&lt;&#39; &#39;;
+    stk.push(x);
+}
+// 数组
+for (int i = 0; i &lt; n; i ++ ) {
+  cin&gt;&gt;x;
+  while (tt &amp;&amp; stk[tt] &gt;= x) tt --;
+  if (tt) cout&lt;&lt;stk[tt];
+  else cout&lt;&lt;-1;
+  cout&lt;&lt;&#39; &#39;;
+  stk[++tt] = x;
+}</code></pre>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><h3 id="单调队列（滑动窗口）"><a href="#单调队列（滑动窗口）" class="headerlink" title="单调队列（滑动窗口）"></a>单调队列（滑动窗口）</h3><p>思路：先暴力 再优化，根据单调性，去除不必要的数据和遍历</p>
+<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_c426d80b7d-IMG_802D4A12F0EB-1.jpeg" alt="IMG_802D4A12F0EB-1.jpeg"> </p>
+<pre><code class="C++">// 数组模拟队列
+int hh = 0, tt = -1;
+for (int i = 0; i &lt; n; i ++ ) {
+  while (hh &lt;= tt &amp;&amp; q[hh] &lt; i-k+1) hh++;
+  while (hh &lt;= tt &amp;&amp; a[q[tt]] &gt;= a[i]) tt--;
+
+    q[++tt] = i;
+    if (i &gt;= k-1) cout&lt;&lt;a[q[hh]]&lt;&lt;&#39; &#39;;
+}
+// 双端队列
+deque&lt;int&gt; que;
+for (int i = 0; i &lt; n; i ++ ) {
+  while (!que.empty() &amp;&amp; que.front() &lt; i-k+1) que.pop_front(); // 超出窗口大小出队
+  // 次新的不如新的小 丢弃
+  while (!que.empty() &amp;&amp; a[i] &lt;= a[que.back()]) que.pop_back();
+
+  que.push_back(i);
+  if (i &gt;= k-1) cout&lt;&lt;a[que.front()]&lt;&lt;&#39; &#39;;
+}
+// 优先队列
+priority_queue&lt;PII, vector&lt;PII&gt;, greater&lt;PII&gt;&gt; que1;
+for (int i = 0; i &lt; n; i ++ ) {
+    while (!que1.empty() &amp;&amp; que1.top().y &lt; i-k+1) que1.pop();
+
+  que1.push({a[i], i});
+  if (que1.size() &gt; k-1) cout&lt;&lt;que1.top().x&lt;&lt;&#39; &#39;;
+}</code></pre>
+<h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><p>应用：找子串</p>
+<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_64cbfa007e-IMG_E8CB8965BF92-1.jpeg" alt="IMG_E8CB8965BF92-1.jpeg"> </p>
+<pre><code class="C++">// 求next
+for (int i = 2, j = 0; i &lt;= n; i ++ ) {
+    while (j &amp;&amp; p[i] != p[j+1]) j = ne[j];
+  if (p[i] == p[j+1]) j++;
+  ne[i] = j;
+}
+
+for (int i = 1, j = 0; i &lt;= m; i ++ ) {
+    while (j &amp;&amp; s[i] != p[j+1]) { // 不能匹配或j无处可退
+      j = ne[j];
+  }
+  if (s[i] == p[j+1]) j++;
+  if (j == n) {
+        // 匹配成功
+    cout&lt;&lt;i-n&lt;&lt;&#39; &#39;;
+    j = ne[j]; // 
+  }
+}</code></pre>
+<h2 id="Trie树"><a href="#Trie树" class="headerlink" title="Trie树"></a>Trie树</h2><p>高效存储查找字符串集合</p>
+<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_8b858dd97e-IMG_F19C60B06C11-1.jpeg" alt="IMG_F19C60B06C11-1.jpeg"> </p>
+<pre><code class="C++">// son每个结点的子节点
+// cnt以当前点结尾的单词的数量
+// 下标为0的点 空节点或者根节点
+int son[N][26], cnt[N], idx; 
+void insert(char str[]) {
+    int p = 0;
+    for (int i = 0; str[i] ;i++ ) {
+        int u = str[i] - &#39;a&#39;;
+        if (!son[p][u]) son[p][u] = ++idx; // 不存在字母u
+        p = son[p][u];
+    }
+    cnt[p] ++;
+}
+int query(char str[]) { // 返回string出现的次数
+    int p = 0;
+    for (int i = 0; str[i] ;i++ ) {
+        int u = str[i] - &#39;a&#39;;
+        if (!son[p][u]) return 0;
+        p = son[p][u];
+    }
+    return cnt[p];
+}</code></pre>
+<h2 id="并查集-Union-Find-Set"><a href="#并查集-Union-Find-Set" class="headerlink" title="并查集 Union Find Set"></a>并查集 Union Find Set</h2><p>合并两个集合、询问两个元素是否在一个集合中</p>
+<p>基本：树根（代表元素）的编号是整个树的编号</p>
+<p>路径压缩：所有孩子都直接指向根节点</p>
+<p>按秩合并：将简单的树合并在复杂的树下（计算深度）</p>
+<h3 id="朴素并查集"><a href="#朴素并查集" class="headerlink" title="朴素并查集"></a>朴素并查集</h3><pre><code class="C++">int p[N]; //储存每个点的祖宗节点
+
+int find(int x) { //返回x的祖宗节点 + 递归保证 路径压缩
+    if(p[x] != x) p[x] = find(p[x]);
+    return p[x];
+}
+
+for (int i = 1; i &lt;= n; i ++ ) p[i] = i; //初始化
+
+p[find(a)] = find(b); //合并a,b两个集合</code></pre>
+<h3 id="维护size数组的并查集"><a href="#维护size数组的并查集" class="headerlink" title="维护size数组的并查集"></a>维护size数组的并查集</h3><pre><code class="C++">int p[N], size[N];
+//p[]存储每个点的祖宗节点, size[]只有祖宗节点的有意义，表示祖宗节点所在集合中的点的数量
+
+// 返回x的祖宗节点
+int find(int x){
+  if (p[x] != x) p[x] = find(p[x]);
+  return p[x];
+}
+// 初始化，假定节点编号是1~n    
+for (int i = 1; i &lt;= n; i ++ ){
+  p[i] = i;    
+  size[i] = 1;
+}
+// 合并a和b所在的两个集合：先把size求和    
+size[find(b)] += size[find(a)];
+p[find(a)] = find(b);
+</code></pre>
+<h3 id="维护到祖宗节点距离的并查集"><a href="#维护到祖宗节点距离的并查集" class="headerlink" title="维护到祖宗节点距离的并查集"></a>维护到祖宗节点距离的并查集</h3><pre><code class="C++">int p[N], d[N];
+//p[]存储每个点的祖宗节点, d[x]存储x到p[x]的距离
+
+// 返回x的祖宗节点
+int find(int x){
+    if (p[x] != x){
+        int u = find(p[x]);
+        d[x] += d[p[x]];
+        p[x] = u;
+    }
+    return p[x];
+}
+
+// 初始化，假定节点编号是1~n
+for (int i = 1; i &lt;= n; i ++ ){
+    p[i] = i;
+    d[i] = 0;
+}
+
+// 合并a和b所在的两个集合：
+p[find(a)] = find(b);
+d[find(a)] = distance; // 根据具体问题，初始化find(a)的偏移量
+</code></pre>
+<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>完全二叉树</p>
+<p>根结点小于等于左右子结点</p>
+<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_52e7bb837f-IMG_06DCF7F7578D-1.jpeg" alt="IMG_06DCF7F7578D-1.jpeg"> </p>
+<pre><code class="C++">int h[N]; // 用完全二叉树存堆
+// 从根往下调整
+void down(int u) {
+  int t = u;
+  if (u*2 &lt;= size &amp;&amp; h[u*2] &lt; h[t]) t = u*2;
+  if (u*2+1 &lt;= size &amp;&amp; h[u*2+1] &lt; h[t]) t = u*@+1;
+  if (u != t) {
+    swap(h[u], h[t]);
+    down(t);
+  }
+}
+void up(); // 向上调整
+// 插入
+heap[++size] = x; up(size);
+// 求最值（堆顶）
+head[1]
+// 删除最值
+heap[1] = heap[size]; size --; down(1);
+// 删除任意元素（用最后一个代替原值并执行down或up，这里都写但实际不会都执行下去）
+heap[k] = heap[size]; size --; down(k); up(k);
+// 修改任意值
+heap[k] = x; down(k); up(k);</code></pre>
+<h1 id="搜索与图论"><a href="#搜索与图论" class="headerlink" title="搜索与图论"></a>搜索与图论</h1><h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><p>深搜</p>
+<h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><p>广搜</p>
+<p>八皇后</p>
+<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h2><p>关键：广搜、入度</p>
+<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_3f32973686-IMG_99F1477B4A0A-1.jpeg" alt="IMG_99F1477B4A0A-1.jpeg"> </p>
+<pre><code class="C++">bool topsort() {
+    queue&lt;int&gt; que;
+    for (int i = 1; i &lt;= n; i++) // 初始化 将入度为0的点入队
+        if (d[i] == 0) que.push(i);
+
+    while(!que.empty()) {
+        int tmp = que.front();
+        ans.push_back(tmp);
+        que.pop();
+
+        for (auto e : edge[tmp]) {
+            d[e] --;
+            if (d[e] == 0) que.push(e);
+        }
+    }
+    return ans.size() == n; // 全进入ans则存在拓扑
+}</code></pre>
+<h2 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h2><p>n为点数，m为边数</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/IMG_275108A5538C-1.jpeg" alt="IMG_275108A5538C-1"></p>
+<h3 id="朴素Dijkstra"><a href="#朴素Dijkstra" class="headerlink" title="朴素Dijkstra"></a>朴素Dijkstra</h3><p>稠密图用邻接矩阵</p>
+<p>重边保留短边，忽略自环</p>
+<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/IMG_E4D127BD4E5A-1.jpeg" alt="IMG_E4D127BD4E5A-1"></p>
+<pre><code class="C++">int g[N][N];  // 存储每条边
+int dist[N];  // 存储1号点到每个点的最短距离
+bool st[N];   // 存储每个点的最短路是否已经确定
+
+// 求1号点到n号点的最短路，如果不存在则返回-1
+int dijkstra() {
+    memset(dist, 0x3f, sizeof dist); //初始化 dist 为无穷
+    dist[1] = 0;
+    for (int i = 0; i &lt; n - 1; i++) {
+        int t = -1;     // 在还未确定最短路的点中，找距离最小的点
+        for (int j = 1; j &lt;= n; j++)
+            if (!st[j] &amp;&amp; (t == -1 || dist[t] &gt; dist[j]))
+                t = j;
+        // 用t更新其他点的距离
+        for (int j = 1; j &lt;= n; j++)
+            dist[j] = min(dist[j], dist[t] + g[t][j]);
+        st[t] = true;
+    }
+    if (dist[n] == 0x3f3f3f3f) return -1;
+    return dist[n];
+}</code></pre>
+<h3 id="堆优化Dijkstra"><a href="#堆优化Dijkstra" class="headerlink" title="堆优化Dijkstra"></a>堆优化Dijkstra</h3><p>稀疏图用邻接表</p>
+<pre><code class="C++">const int N = 510; // 太大会爆vector
+typedef pair&lt;int,int&gt; PII;
+int n, m, dist[N], weight[N][N];
+memset(weight, 0x3f, sizeof weight);
+vector&lt;int&gt; g[N];
+bool st[N]; 
+int dijkstra() {
+    memset(dist, 0x3f, sizeof dist);
+    dist[1] = 0;
+
+    priority_queue&lt;PII,vector&lt;PII&gt;,greater&lt;&gt;&gt; heap; // 小顶堆
+    heap.push({0,1}); // first-&gt;距离 second-&gt;点 用距离排序
+    while (!heap.empty()) {
+        auto t = heap.top();
+        heap.pop();
+
+        int ver = t.second, distance = t.first;
+        if (st[ver]) continue;
+        st[ver] = true
+        for (auto vec : g[ver]) {
+            if (dist[vec] &gt; distance + weight[ver][vec]) {
+                dist[vec] = distance + weight[ver][vec];
+                heap.push({dist[vec], vec});
+            }
+        }
+    }
+
+    if (dist[n] == 0x3f3f3f3f) return -1;
+    return dist[n];
+}</code></pre>
+<h3 id="Bellman-Ford"><a href="#Bellman-Ford" class="headerlink" title="Bellman-Ford"></a>Bellman-Ford</h3><pre><code class="C++"></code></pre>
+<h1 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h1><h2 id="数论"><a href="#数论" class="headerlink" title="数论"></a>数论</h2><h3 id="质（素）数"><a href="#质（素）数" class="headerlink" title="质（素）数"></a>质（素）数</h3><p>大于等于2的整数中，只包含1和本身这两个约数</p>
+<p>质数判断一试除法：</p>
+<pre><code class="C++">bool is_prime(int n) {
+    if (n &lt; 2) return false;
+    for (int i = 2; i &lt;= n/i; i++) 
+        if (n % i == 0)
+        return false;
+  return true;
+}</code></pre>
+<p>质数判断二分解质因数：</p>
+<p>从小到大枚举n的所有因数</p>
+<pre><code class="C++"></code></pre>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-05-27T14:43:44.000Z" itemprop="datePublished">2021-05-27</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-爬虫"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2020/07/08/%E7%88%AC%E8%99%AB/">爬虫</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h2 id="爬取有道翻译（POST后下载）"><a href="#爬取有道翻译（POST后下载）" class="headerlink" title="爬取有道翻译（POST后下载）"></a>爬取有道翻译（POST后下载）</h2><pre><code>import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+# 取消SSL证书检测
+import urllib.request
+import urllib.parse
+import json
+import time
+while True:
+    url = &#39;http://fanyi.youdao.com/translate?smartresult=dict&amp;smartresult=rule&#39;
+    data = {}
+    data[&#39;i&#39;] = input(&quot;请输入翻译内容：\n&quot;)
+    data[&#39;doctype&#39;] = &#39;json&#39;
+    data[&#39;keyfrom&#39;] = &#39;fanyi.web&#39;
+    data = urllib.parse.urlencode(data).encode(&#39;utf-8&#39;)
+
+    response = urllib.request.Request(url, data) #POST给网站要翻译的句子
+    response.add_header(&#39;User-Agent&#39;, &#39;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36&#39;) # 伪装访问方式
+    response = urllib.request.urlopen(response)
+    html = response.read().decode(&#39;utf-8&#39;)
+    target = json.loads(html)
+    print(target[&#39;translateResult&#39;][0][0][&#39;tgt&#39;])
+    time.sleep(2)</code></pre><h2 id="BeautifulSoup爬HTML"><a href="#BeautifulSoup爬HTML" class="headerlink" title="BeautifulSoup爬HTML"></a>BeautifulSoup爬HTML</h2><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>find_all(self, name=None, attrs={‘ ‘:’ ‘}, recursive=True, text=None, limit=None, **kwargs)</p>
+<p>查找所有</p>
+<p>self要查找的元素</p>
+<p>name目标元素的名称</p>
+<p>attrs元素的属性</p>
+<p>recursive查找是否在节点子树下展开</p>
+<p>支持自己定义函数查找</p>
+<p>find(self, name=None, attrs={‘ ‘:’ ‘}, recursive=True, text=None, limit=None, **kwargs)</p>
+<p>查找第一个</p>
+<pre><code>import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+import urllib.request
+from bs4 import BeautifulSoup
+
+try:
+    url = &#39;https://liting1024.github.io/2020/02/20/Python/&#39;
+    response=urllib.request.urlopen(url)
+    html=response.read().decode()
+    soup=BeautifulSoup(html,&#39;lxml&#39;)
+
+    def endsWith(s,t):
+        if len(s)&gt;=len(t):
+            return s[len(s)-len(t):]==t
+        return False
+    def myFilter(tag):
+        return (tag.name==&#39;a&#39; and tag.has_attr(&#39;href&#39;) and tag[&#39;href&#39;]==&#39;/category&#39; and endsWith(tag.text,&#39;ies&#39;))
+    # 元素类型为a，有超链接，且超链接为/category，内容以ies结尾
+
+    tag1=soup.find(&#39;h1&#39;)
+    tag2=soup.find_all(&#39;a&#39;,attrs={&#39;class&#39;:&#39;menu-item&#39;})
+    tag3=soup.find_all(myFilter)
+    print(tag1,&#39;\n&#39;,tag2,&#39;\n&#39;,tag3)
+    for tag in tag2:
+        print(tag[&#39;href&#39;])
+    for tag in tag2:
+        print(tag.text)
+except Exception as err:
+    print(err)</code></pre><h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><p>tag.parent 父类树节点</p>
+<p>tag.children 子节点</p>
+<p>tag.descendants 所有子孙节点</p>
+<p>tag.next_sibling 最近的下一个兄弟节点</p>
+<p>tag.previous_sibling 上一个兄弟节点</p>
+<h3 id="CSS语法查找"><a href="#CSS语法查找" class="headerlink" title="CSS语法查找"></a>CSS语法查找</h3><p>soup.select(tagName, attName=value)</p>
+<table>
+<thead>
+<tr>
+<th align="left">attName</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">attName^=value</td>
+<td>以value开头匹配属性</td>
+</tr>
+<tr>
+<td align="left">attName$=value</td>
+<td>以value结尾</td>
+</tr>
+<tr>
+<td align="left">attName*=value</td>
+<td>包含指定值</td>
+</tr>
+</tbody></table>
+<pre><code>soup.select(&quot;p a[rel=&#39;noopener&#39;]&quot;))
+# 查找p下的具有rel=‘noopenner’属性的a
+soup.select(&quot;p &gt; a&quot;)
+# 查找p下的子节点a，不包含孙节点
+soup.select(&quot;p ~ a&quot;)
+# 查到p后面同级别的a</code></pre><h3 id="爬天气预报"><a href="#爬天气预报" class="headerlink" title="爬天气预报"></a>爬天气预报</h3><pre><code>import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+import urllib.request
+from bs4 import BeautifulSoup
+from bs4 import UnicodeDammit
+
+try:
+    url = &#39;http://www.weather.com.cn/weather/101080101.shtml&#39;
+    headers={&quot;User-Agent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36&quot;}
+    req=urllib.request.Request(url,headers=headers)
+    data=urllib.request.urlopen(req)
+    data=data.read()
+    dammit=UnicodeDammit(data,[&#39;utf-8&#39;,&#39;gdk&#39;])
+    html=dammit.unicode_markup
+    # 自动选择解码
+    soup=BeautifulSoup(html, &#39;lxml&#39;)
+    lis=soup.select(&quot;ul[class=&#39;t clearfix&#39;] li&quot;)
+    for li in lis:
+        date = li.select(&#39;h1&#39;)[0].text
+        weather = li.select(&quot;p[class=&#39;wea&#39;]&quot;)[0].text
+        temp1 = li.select(&quot;p[class=&#39;tem&#39;] i&quot;)[0].text
+        if li.select(&quot;p[class=&#39;tem&#39;] span&quot;)==[]:
+            temp=temp1
+            # temp2和temp1相等是无法搜索到temp2
+        else:
+            temp2=li.select(&quot;p[class=&#39;tem&#39;] span&quot;)[0].text
+            temp=temp1+&#39;/&#39;+temp2
+        print(date, weather, temp)
+except Exception as err:
+    print(err)</code></pre><h2 id="爬树"><a href="#爬树" class="headerlink" title="爬树"></a>爬树</h2><h3 id="深度和广度类"><a href="#深度和广度类" class="headerlink" title="深度和广度类"></a>深度和广度类</h3><pre><code>class Stack: # 列表栈，深度
+    def __init__(self):
+        self.st=[]
+    def pop(self):
+        return self.st.pop()
+    def push(self,obj):
+        return self.st.append(obj)
+    def isempty(self):
+        return len(self.st)==0
+
+class Queue: # 队列，广度
+    def __init__(self):
+        self.st=[]
+    def fetch(self):
+        return self.st.pop(0)
+    def enter(self,obj):
+        return self.st.append(obj)
+    def isempty(self):
+        return len(self.st)==0</code></pre><h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>t = Thread(target=,args=)</p>
+<p>target：要执行的函数</p>
+<p>args：一个元组或列表</p>
+<pre><code>from threading import Thread
+
+t.setDaemon(False)
+# 设定为后台线程
+t.start()
+# 启动线程
+t.join()
+# 阻塞当前线程，等t执行后继续执行
+lock=threading._RLock()
+# 设定一个锁
+lock.acquire()
+# lock获取线程锁，如果另一个线程调用了acquire而没有release则阻塞当前线程等待别的线程释放锁
+lock.release()
+# 释放锁</code></pre><h3 id="多线程爬天气网图片"><a href="#多线程爬天气网图片" class="headerlink" title="多线程爬天气网图片"></a>多线程爬天气网图片</h3><pre><code>import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+from bs4 import BeautifulSoup
+from bs4 import UnicodeDammit
+from urllib import parse
+import urllib.request
+import threading
+
+def imageSpider(start_url):
+    global threads
+    global count
+    try:
+        urls=[]
+        req=urllib.request.Request(start_url,headers=headers)
+        data=urllib.request.urlopen(req)
+        data=data.read()
+        dammit=UnicodeDammit(data, [&quot;utf-8&quot;,&quot;gdk&quot;])
+        data=dammit.unicode_markup
+        soup=BeautifulSoup(data,&#39;lxml&#39;)
+        images=soup.select(&#39;img&#39;)
+        for image in images:
+            src=image[&#39;src&#39;]
+            url=parse.urljoin(start_url, src)
+            if url not in urls:
+                print(url)
+                urls.append(url)
+                count=count+1
+                T=threading.Thread(target=download,args=(url,count))
+                # 多线程运行download函数
+                T.setDaemon(False)
+                T.start()
+                threads.append(T)
+    except Exception as err:
+        print(err)
+
+def download(url,count):
+    if url[len(url)-4]==&#39;.&#39;:
+        ext=url[len(url)-4:]
+    else:
+        ext=&#39;&#39;
+    req=urllib.request.Request(url, headers=headers)
+    data=urllib.request.urlopen(req,timeout=100)
+    data=data.read()
+    fobj=open(&#39;image\\&#39;+str(count)+ext,&#39;wb&#39;)
+    fobj.write(data)
+    fobj.close()
+    print(&#39;downloaded&#39;+str(count)+ext)
+
+start_url=&#39;http://www.weather.com.cn/weather1d/101080101.shtml&#39;
+headers={&#39;User-Agent&#39;:&#39;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36&#39;}
+count=0
+threads=[]
+imageSpider(start_url)
+for t in threads: #多线程等待后结束主程序
+    t.join()
+print(&#39;END&#39;)</code></pre><h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a><a href="https://www.jianshu.com/p/a87dee628cc2" target="_blank" rel="noopener">Scrapy</a></h2><h3 id="创建简单爬虫"><a href="#创建简单爬虫" class="headerlink" title="创建简单爬虫"></a>创建简单爬虫</h3><p>在虚拟python环境中pip install scrapy</p>
+<p>scrapy startproject XXX</p>
+<p>生成爬虫名字为itcast，地址为itcast.cn </p>
+<p>scrapy genspider itcast itcast.cn</p>
+<p>启动爬虫不打印日志</p>
+<p>scrapy crawl 爬虫名字 –nolog </p>
+<p>在spider文件夹中建立py文件</p>
+<pre><code>import scrapy
+
+class MySpider(scrapy.Spider):
+    name=&quot;mySpider&quot;
+
+    def start_requests(self):
+    # 整个函数可以用start_urls = [&#39;https://www.baidu.com&#39;]代替
+        url=&#39;https://www.baidu.com&#39;
+        yield scrapy.Request(url=url, callback=self.parse)
+        # 访问网页回调callback函数，yield返回数据但可以不结束函数
+    def parse(self, response):
+        print(response.url)
+        data=response.body.decode()
+        print(data)</code></pre><p>在XXX文件中建立py文件</p>
+<pre><code>from scrapy import cmdline
+
+cmdline.execute(&#39;scrapy crawl mySpider -s LOG_ENABLED=False&#39;.split())</code></pre><h3 id="查找HTML元素"><a href="#查找HTML元素" class="headerlink" title="查找HTML元素"></a>查找HTML元素</h3><pre><code>from scrapy.selector import Selector
+
+selector=Selector(text=html)
+s=selector.xpath(&#39;//title&#39;)
+# //表示在任何位置，/表示下一级，&#39;//body/book&#39;搜索body下一级的book
+# selector.xpath(&#39;//book&#39;).xpath(&#39;/title&#39;)
+# .xpath(&#39;//book&#39;).xpath(&#39;//title&#39;) 对每个book查找title
+print(s)</code></pre><h4 id="解析为列表"><a href="#解析为列表" class="headerlink" title="解析为列表"></a>解析为列表</h4><p>s=selector.xpath(‘//title’).extract()</p>
+<p>得到title组成的list，.extract_first()得到第一个元素</p>
+<h4 id="获取属性、文本"><a href="#获取属性、文本" class="headerlink" title="获取属性、文本"></a>获取属性、文本</h4><p>s=selector.xpath(‘//title/@id’).extract()</p>
+<p>获取属性值</p>
+<p>s=selector.xpath(“”//title[@id=’chinese’]/text()”).extract()</p>
+<p>限定id属性的值筛选</p>
+<p>s=selector.xpath(‘//title/text()’).extract()</p>
+<p>获取title的文本</p>
+<h4 id="用-代表任何"><a href="#用-代表任何" class="headerlink" title="用*代表任何"></a>用*代表任何</h4><p>用*代替任何节点，不包括Text、Comment节点</p>
+<p>s=selector.xpath(“”//title[@*]”)</p>
+<p>任何属性</p>
+<h4 id="position下角标"><a href="#position下角标" class="headerlink" title="position下角标"></a>position下角标</h4><p>从1开始编号</p>
+<p>//body/title[position( )&gt;2] [position( )&lt;5]</p>
+<p>取第三到六个title</p>
+<h4 id="兄弟节点父节点"><a href="#兄弟节点父节点" class="headerlink" title="兄弟节点父节点"></a>兄弟节点父节点</h4><p>s= selector.xpath( //title[ @lang = ‘chinese ]/parent::*”)</p>
+<p>查找属性为lang= chinese’的title的父节点</p>
+<p>s=sclector.xpathC(“//b[position()= 1]following-sibling::* [position()=1]”)<br>搜索第一个b节点后面的第一个兄弟节点</p>
+<p>“element/ollowing-sibling::*”搜索element后面的同级的所有兄弟节点</p>
+<p>“element/preceding-sibling::*“搜索element 前面的同级的所有兄弟节点<br>“element/preceding-sibling::*[position()=1]”搜索element 前面的同级的第一个兄弟节<br>点</p>
+<h3 id="其他py文件"><a href="#其他py文件" class="headerlink" title="其他py文件"></a>其他py文件</h3><h4 id="items-py储存数据"><a href="#items-py储存数据" class="headerlink" title="items.py储存数据"></a>items.py储存数据</h4><p>items中建立用于储存数据的类</p>
+<pre><code>class YourprojectItem(scrapy.Item): # 继承scrapy.Item
+    # define the fields for your item here like:
+    # name = scrapy.Field()
+    title=scrapy.Field()</code></pre><p>在spiders中的爬虫中应用这个类</p>
+<pre><code>from yourProject.items import YourprojectItem
+
+class MySpider(scrapy.Spider):
+    name=&quot;mySpider&quot;
+    start_urls = [&#39;https://www.baidu.com&#39;]
+
+    def parse(self, response):
+        data=response.body.decode()
+        selector=scrapy.Selector(text=data)
+        books=selector.xpath(&quot;//book&quot;)
+        for book in books:
+            item=YourprojectItem()
+            item[&quot;title&quot;]=book.xpath(&quot;./title/text()&quot;).extract_first()
+            yield item</code></pre><h4 id="pipelines-py数据管道处理类"><a href="#pipelines-py数据管道处理类" class="headerlink" title="pipelines.py数据管道处理类"></a>pipelines.py数据管道处理类</h4><p>在settings.py中取消注释</p>
+<p>ITEM_PIPELINES = {</p>
+<p>​    ‘yourProject.pipelines.YourprojectPipeline’: 300,</p>
+<p>}</p>
+<p>爬取一次数据，调用一次process_item函数</p>
+<pre><code>from itemadapter import ItemAdapter
+
+class YourprojectPipeline(object):
+    count = 0
+    def process_item(self, item, spider):
+        YourprojectPipeline.count+=1
+        if YourprojectPipeline.count==1:
+            fobj=open(&quot;book.txt&quot;,&quot;wb&quot;)
+        else:
+            fobj=open(&quot;book.txt&quot;,&quot;at&quot;)
+        print(item[&quot;title&quot;])
+        fobj.write(item[&#39;title&#39;])
+        fobj.close()
+        return item</code></pre><h3 id="爬取当当网图书数据"><a href="#爬取当当网图书数据" class="headerlink" title="爬取当当网图书数据"></a>爬取当当网图书数据</h3>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2020-07-08T15:58:00.000Z" itemprop="datePublished">2020-07-08</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-C-常用函数"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2020/04/15/C-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">C++常用函数</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h1 id="cstring类型"><a href="#cstring类型" class="headerlink" title="cstring类型"></a>cstring类型</h1><h3 id="比较和计算"><a href="#比较和计算" class="headerlink" title="比较和计算"></a>比较和计算</h3><h4 id="strcmp-a-b"><a href="#strcmp-a-b" class="headerlink" title="strcmp(a,b);"></a>strcmp(a,b);</h4><p>比较返回两个char数组的差异度（-2表示有一个char不同）</p>
+<h4 id="strlen-a"><a href="#strlen-a" class="headerlink" title="strlen(a);"></a>strlen(a);</h4><p>计算string或char数组的长度</p>
+<h4 id="size"><a href="#size" class="headerlink" title="size();"></a>size();</h4><h4 id="lenth"><a href="#lenth" class="headerlink" title="lenth();"></a>lenth();</h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能 是为1 否为0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>isalpha</td>
+<td>判断是否为字母</td>
+</tr>
+<tr>
+<td>islower/isupper</td>
+<td>小/大写字母</td>
+</tr>
+<tr>
+<td>isdigit</td>
+<td>数字</td>
+</tr>
+<tr>
+<td>isalnum</td>
+<td>字母或数字</td>
+</tr>
+<tr>
+<td>tolower/toupper</td>
+<td>转换为小/大写字母</td>
+</tr>
+</tbody></table>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h4 id="memset-s-c-n"><a href="#memset-s-c-n" class="headerlink" title="memset(s, c, n);"></a>memset(s, c, n);</h4><p>将以开辟内存s的前n个直接初始化为c</p>
+<p>n可以用sizeof(s)</p>
+<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><h4 id="memcpy-b-a-n"><a href="#memcpy-b-a-n" class="headerlink" title="memcpy(b, a, n);"></a>memcpy(b, a, n);</h4><p>以a开头，长度为n的内存，拷贝到b中</p>
+<h4 id="strncpy-b-a-n"><a href="#strncpy-b-a-n" class="headerlink" title="strncpy(b,a,n);"></a>strncpy(b,a,n);</h4><p>以a开头，长度为n的内存，拷贝到b中，<strong>并返回b</strong></p>
+<h4 id="strcpy-b-a"><a href="#strcpy-b-a" class="headerlink" title="strcpy(b,a);"></a>strcpy(b,a);</h4><p>从a开始复制给b，遇到NULL ‘/0’结束</p>
+<h4 id="strcat-b-a"><a href="#strcat-b-a" class="headerlink" title="strcat(b,a);"></a>strcat(b,a);</h4><p>把a连接到b后</p>
+<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><h4 id="getline-cin-a-n"><a href="#getline-cin-a-n" class="headerlink" title="getline(cin,a,n);"></a>getline(cin,a,n);</h4><p>将流中的字符存在a中，</p>
+<p>遇到n结束，没有默认为‘/n’</p>
+<h2 id="cctype"><a href="#cctype" class="headerlink" title="cctype"></a>cctype</h2><h4 id="tolower-toupper"><a href="#tolower-toupper" class="headerlink" title="tolower(); toupper();"></a>tolower(); toupper();</h4><p>改变字母大小写</p>
+<h4 id="isalpha-isdigit-isprint"><a href="#isalpha-isdigit-isprint" class="headerlink" title="isalpha(); isdigit(); isprint();"></a>isalpha(); isdigit(); isprint();</h4><p>判断是否是字母，数字，可打印字符（非控制字符）</p>
+<h2 id="algorithm"><a href="#algorithm" class="headerlink" title="algorithm"></a>algorithm</h2><h4 id="min-max"><a href="#min-max" class="headerlink" title="min(); max()"></a>min(); max()</h4><p>返回两个元素中最小（最大）的一个</p>
+<h4 id="upper-bound-first-last-n"><a href="#upper-bound-first-last-n" class="headerlink" title="upper_bound(first, last, n);"></a>upper_bound(first, last, n);</h4><p>查找区间中第一个大于n的位置，返回的是地址</p>
+<h4 id="lower-bound-first-last-n"><a href="#lower-bound-first-last-n" class="headerlink" title="lower_bound(first, last, n);"></a>lower_bound(first, last, n);</h4><p>查找区间中第一个大于<strong>等于</strong>n的位置，返回的是地址</p>
+<h4 id="next-permutation-first-last-prev-permutation"><a href="#next-permutation-first-last-prev-permutation" class="headerlink" title="next_permutation(first, last); prev_permutation();"></a>next_permutation(first, last); prev_permutation();</h4><p>将数组中的元素全排列</p>
+<p><strong>需要将数组进行升序排列</strong>，否则只能找出该序列之后的全排列数。</p>
+<pre><code>char a[4]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;};
+    do{
+        for(int i=0;i&lt;4;++i)
+            cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
+        cout&lt;&lt;endl;
+    }while(next_permutation(a,a+4));</code></pre><h4 id="sort-first-last-greater-lt-gt"><a href="#sort-first-last-greater-lt-gt" class="headerlink" title="sort(first, last, greater&lt;&gt;());"></a>sort(first, last, greater&lt;&gt;());</h4><pre><code>int a[5]={5,2,4,3,1},b[3]=&quot;cba&quot;;
+sort(a,a+5);//正序排列
+sort(a,a+5,greater&lt;&gt;());//逆序排列数字
+sort(b,b+3,greater&lt;char&gt;());//逆序排列char</code></pre><h4 id="fill-first-last-a"><a href="#fill-first-last-a" class="headerlink" title="fill(first, last, a);"></a>fill(first, last, a);</h4><p>可将数组的值初始化成a</p>
+<h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p>一个动态申请空间的数组</p>
+<h3 id="定义-vector-lt-typename-gt-name"><a href="#定义-vector-lt-typename-gt-name" class="headerlink" title="定义 vector &lt; typename &gt; name;"></a>定义 vector &lt; typename &gt; name;</h3><p>typename可以是任何基本类型 结构体,STL容器vector,set,queue等。</p>
+<pre><code class="C++">vector&lt;int&gt; stu;
+vector&lt;double&gt; stu;
+vector&lt;char&gt; stu;
+vector&lt;node&gt; stu;//node是结构体类型
+vector&lt;vector&lt;int&gt;&gt; name;
+vector&lt;typename&gt; a[arraySize];//申请一个二维数组</code></pre>
+<h3 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h3><pre><code class="c++">//初始化了10个默认值为0的元素
+vector&lt;int&gt; abc(10);
+//初始化了10个值为1的元素
+vector&lt;int&gt; cde(10，1); 
+
+int a[5] = {1,2,3,4,5};
+//通过数组a的地址初始化，注意地址是从0到5（左闭右开区间）
+vector&lt;int&gt; b(a, a+5);
+
+vector&lt;int&gt; a(5,1);
+//通过a初始化
+vector&lt;int&gt; b(a);
+
+//insert初始化方式将同类型的迭代器对应的始末区间（左闭右开区间）内的值插入到vector中
+vector&lt;int&gt; a(6,6);
+vecot&lt;int&gt; b;
+//将a[0]~a[2]插入到b中，b.size()由0变为3
+b.insert(b.begin(), a.begin(), a.begin() + 3);
+//在b开始位置处插入6个6
+b.insert(b.begin(), 6, 6);
+
+vector&lt;int&gt; a(5,1);
+int a1[5] = {2,2,2,2,2};
+vector&lt;int&gt; b(10);
+
+ /*将a中元素全部拷贝到b开始的位置中,注意拷贝的区间为a.begin() ~ a.end()的左闭右开的区间*/
+copy(a.begin(), a.end(), b.begin());
+
+//拷贝区间也可以是数组地址构成的区间
+copy(a1, a1+5, b.begin() + 5);</code></pre>
+<h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><h4 id="下标访问"><a href="#下标访问" class="headerlink" title="下标访问"></a>下标访问</h4><p>从0开始</p>
+<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>vector<typename>::iterator it;//it是一个迭代器变量</p>
+<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="push-back-a"><a href="#push-back-a" class="headerlink" title="push_back(a)"></a>push_back(a)</h4><p>在vector最后面添加一个元素a</p>
+<h4 id="pop-back-x"><a href="#pop-back-x" class="headerlink" title="pop_back(x)"></a>pop_back(x)</h4><p>删除vector的尾元素x</p>
+<h4 id="size-1"><a href="#size-1" class="headerlink" title="size()"></a>size()</h4><h4 id="clear"><a href="#clear" class="headerlink" title="clear()"></a>clear()</h4><p>清空vector所有的元素</p>
+<h4 id="insert"><a href="#insert" class="headerlink" title="insert();"></a>insert();</h4><p>insert(it,x);向vector的任意迭代器it初传入一个元素x</p>
+<p>a.insert(a.begin()+1, 5);在a的第1个元素（从第0个算起）的位置插入数值5，如a为1,2,3,4，插入元素后为1,5,2,3,4<br>a.insert(a.begin()+1, 3,5);在a的第1个元素（从第0个算起）的位置插入3个数，其值都为5<br>a.insert(a.begin()+1,b+3, b+6);b为数组，在a的第1个元素（从第0个算起）的位置插入b的第3个元素到第5个元素（不包括b+6），如b为1,2,3,4,5,9,8，插入元素后为1,4,5,9,2,3,4,5,9,8</p>
+<h4 id="erase"><a href="#erase" class="headerlink" title="erase()"></a>erase()</h4><p>erase(x); 删除单个元素</p>
+<p>erase(a,b); 删除左闭右开区间内[a,b)的元素</p>
+<h4 id="copy-a-begin-a-end-b-begin-1"><a href="#copy-a-begin-a-end-b-begin-1" class="headerlink" title="copy(a.begin(),a.end(),b.begin()+1);"></a>copy(a.begin(),a.end(),b.begin()+1);</h4><p>把a中的从a.begin()（包括它）到a.end()（不包括它）的元素复制到b中，从b.begin()+1的位置（包括它）开始复制，覆盖掉原有元素</p>
+<h4 id="find-a-begin-a-end-10"><a href="#find-a-begin-a-end-10" class="headerlink" title="find(a.begin(),a.end(),10);"></a>find(a.begin(),a.end(),10);</h4><p>在a中的从a.begin()（包括它）到a.end()（不包括它）的元素中查找10，若存在返回其在向量中的位置</p>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>一个内部自动升序而且不重复元素的容器</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>操作</strong></th>
+<th align="center"><strong>效果</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><em>set</em> c</td>
+<td align="center">产生一个空的set/multiset，不含任何元素</td>
+</tr>
+<tr>
+<td align="center">set c(op)</td>
+<td align="center">以op为排序准则，产生一个空的set/multiset</td>
+</tr>
+</tbody></table>
+<h3 id="访问-1"><a href="#访问-1" class="headerlink" title="访问"></a>访问</h3><p>只能通过迭代器</p>
+<p>set<typename>::iterator it;//typename对应定义set时的类型，auto自动推断定义类型</p>
+<h3 id="常用函数-1"><a href="#常用函数-1" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="insert-x"><a href="#insert-x" class="headerlink" title="insert(x)"></a>insert(x)</h4><p>将x插入set容器中，并且自动递增排序和去重</p>
+<h4 id="size-2"><a href="#size-2" class="headerlink" title="size()"></a>size()</h4><h4 id="clear-1"><a href="#clear-1" class="headerlink" title="clear()"></a>clear()</h4><h3 id="end"><a href="#end" class="headerlink" title="end()"></a>end()</h3><p>返回最后一个的迭代器</p>
+<h4 id="find-x"><a href="#find-x" class="headerlink" title="find(x)"></a>find(x)</h4><p>查找值为x的元素，返回它的迭代器</p>
+<h4 id="erase-1"><a href="#erase-1" class="headerlink" title="erase()"></a>erase()</h4><p>erase(x); 删除单个元素</p>
+<p>erase(a,b); 删除左闭右开区间内[a,b)的元素</p>
+<h3 id="multiset"><a href="#multiset" class="headerlink" title="multiset"></a>multiset</h3><p>有序可重复的容器</p>
+<p>通过重载确定排序规则</p>
+<pre><code class="C++">struct rec{
+    int x,y;
+};
+struct cmp{
+    bool operator()(const rec&amp;a,const rec&amp;b){
+        return a.x&lt;b.x||a.x==b.x&amp;&amp;a.y&lt;b.y;
+    }
+};
+multiset&lt;rec,cmp&gt;h;</code></pre>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>建立key（第一个值）和value（第二个值） 的对应，以key为标准有序</p>
+<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>map&lt;int , int&gt; maps;</p>
+<h3 id="访问-2"><a href="#访问-2" class="headerlink" title="访问"></a>访问</h3><p>maps[key] = value; //给key赋值，key有对应的value就覆盖</p>
+<p>It-&gt;first = 1;</p>
+<h3 id="常用函数-2"><a href="#常用函数-2" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="insert-1"><a href="#insert-1" class="headerlink" title="insert()"></a>insert()</h4><p>maps.insert(pair&lt;type,type&gt;(1,1)); //maps[1] = 1;</p>
+<h4 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h4><p>map&lt;type,type&gt;::iterator it = maps.find(x); //auto代替map&lt;type,type&gt;::iterator 自动推断值的类型</p>
+<h4 id="长度"><a href="#长度" class="headerlink" title="长度"></a>长度</h4><p>maps.empty(); //空返回1</p>
+<p>maps.size(); </p>
+<p>maps.count(x); //返回指定元素出现的次数</p>
+<h4 id="逆向迭代器"><a href="#逆向迭代器" class="headerlink" title="逆向迭代器"></a>逆向迭代器</h4><p>maps.rbegin(); //返回指向maps尾部的逆向迭代器  </p>
+<p>maps.rend(); //返回指向maps头部的逆向迭代器</p>
+<h4 id="bound"><a href="#bound" class="headerlink" title="bound"></a>bound</h4><p>maps.lower_bound(); //返回键值&gt;=给定元素的第一个迭代器</p>
+<p>maps.upper_bound(); //返回键值&gt;给定元素的第一个迭代器</p>
+<h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4><p>for(map&lt;type,type&gt;::iterator it = maps.begin(); it != maps.end(); it++) </p>
+<h4 id="erase-2"><a href="#erase-2" class="headerlink" title="erase()"></a>erase()</h4><p>maps.erase(iterator)</p>
+<p>maps.erase(type)</p>
+<h2 id="哈希hashtable"><a href="#哈希hashtable" class="headerlink" title="哈希hashtable"></a>哈希hashtable</h2><p>unordered_set 不存储重复元素</p>
+<p>unordered_map 实现key和value的映射</p>
+<h3 id="对比set和unordered-set"><a href="#对比set和unordered-set" class="headerlink" title="对比set和unordered_set"></a>对比set和unordered_set</h3><p>map和unordered_set也相同</p>
+<table>
+<thead>
+<tr>
+<th>对比</th>
+<th>set</th>
+<th>unordered_set</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>有序</td>
+<td>有序</td>
+<td>无序</td>
+</tr>
+<tr>
+<td>实现</td>
+<td>BST或RBT</td>
+<td>Hash Table</td>
+</tr>
+<tr>
+<td>插入、删除</td>
+<td>log n</td>
+<td>平均O(1)，最坏O(n)</td>
+</tr>
+</tbody></table>
+<h3 id="unordered-map的成员"><a href="#unordered-map的成员" class="headerlink" title="unordered_map的成员"></a>unordered_map的成员</h3><table>
+<thead>
+<tr>
+<th>成员方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>begin()</td>
+<td>返回指向容器中第一个键值对的正向迭代器。</td>
+</tr>
+<tr>
+<td>end()</td>
+<td>返回指向容器中最后一个键值对之后位置的正向迭代器。</td>
+</tr>
+<tr>
+<td>cbegin()</td>
+<td>和 begin() 功能相同，只不过在其基础上增加了 const 属性，即该方法返回的迭代器不能用于修改容器内存储的键值对。</td>
+</tr>
+<tr>
+<td>cend()</td>
+<td>和 end() 功能相同，只不过在其基础上，增加了 const 属性，即该方法返回的迭代器不能用于修改容器内存储的键值对。</td>
+</tr>
+<tr>
+<td>empty()</td>
+<td>若容器为空，则返回 true；否则 false。</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>返回当前容器中存有键值对的个数。</td>
+</tr>
+<tr>
+<td>max_size()</td>
+<td>返回容器所能容纳键值对的最大个数，不同的操作系统，其返回值亦不相同。</td>
+</tr>
+<tr>
+<td>operator[key]</td>
+<td>该模板类中重载了 [] 运算符，其功能是可以向访问数组中元素那样，只要给定某个键值对的键 key，就可以获取该键对应的值。注意，如果当前容器中没有以 key 为键的键值对，则其会使用该键向当前容器中插入一个新键值对。</td>
+</tr>
+<tr>
+<td>at(key)</td>
+<td>返回容器中存储的键 key 对应的值，如果 key 不存在，则会抛出 out_of_range 异常。</td>
+</tr>
+<tr>
+<td>find(key)</td>
+<td>查找以 key 为键的键值对，如果找到，则返回一个指向该键值对的正向迭代器；反之，则返回一个指向容器中最后一个键值对之后位置的迭代器（如果 end() 方法返回的迭代器）。</td>
+</tr>
+<tr>
+<td>count(key)</td>
+<td>在容器中查找以 key 键的键值对的个数。</td>
+</tr>
+<tr>
+<td>equal_range(key)</td>
+<td>返回一个 pair 对象，其包含 2 个迭代器，用于表明当前容器中键为 key 的键值对所在的范围。</td>
+</tr>
+<tr>
+<td>emplace()</td>
+<td>向容器中添加新键值对，效率比 insert() 方法高。</td>
+</tr>
+<tr>
+<td>emplace_hint()</td>
+<td>向容器中添加新键值对，效率比 insert() 方法高。</td>
+</tr>
+<tr>
+<td>insert()</td>
+<td>向容器中添加新键值对。</td>
+</tr>
+<tr>
+<td>erase()</td>
+<td>删除指定键值对。</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>清空容器，即删除容器中存储的所有键值对。</td>
+</tr>
+<tr>
+<td>swap()</td>
+<td>交换 2 个 unordered_map 容器存储的键值对，前提是必须保证这 2 个容器的类型完全相等。</td>
+</tr>
+<tr>
+<td>bucket_count()</td>
+<td>返回当前容器底层存储键值对时，使用桶（一个线性链表代表一个桶）的数量。</td>
+</tr>
+<tr>
+<td>max_bucket_count()</td>
+<td>返回当前系统中，unordered_map 容器底层最多可以使用多少桶。</td>
+</tr>
+<tr>
+<td>bucket_size(n)</td>
+<td>返回第 n 个桶中存储键值对的数量。</td>
+</tr>
+<tr>
+<td>bucket(key)</td>
+<td>返回以 key 为键的键值对所在桶的编号。</td>
+</tr>
+<tr>
+<td>load_factor()</td>
+<td>返回 unordered_map 容器中当前的负载因子。负载因子，指的是的当前容器中存储键值对的数量（size()）和使用桶数（bucket_count()）的比值，即 load_factor() = size() / bucket_count()。</td>
+</tr>
+<tr>
+<td>max_load_factor()</td>
+<td>返回或者设置当前 unordered_map 容器的负载因子。</td>
+</tr>
+<tr>
+<td>rehash(n)</td>
+<td>将当前容器底层使用桶的数量设置为 n。</td>
+</tr>
+<tr>
+<td>reserve()</td>
+<td>将存储桶的数量（也就是 bucket_count() 方法的返回值）设置为至少容纳count个元（不超过最大负载因子）所需的数量，并重新整理容器。</td>
+</tr>
+<tr>
+<td>hash_function()</td>
+<td>返回当前容器使用的哈希函数对象。</td>
+</tr>
+</tbody></table>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2020-04-15T15:12:59.000Z" itemprop="datePublished">2020-04-15</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-求最大公约数的多种算法及比较"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2020/02/02/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%A4%9A%E7%A7%8D%E7%AE%97%E6%B3%95%E5%8F%8A%E6%AF%94%E8%BE%83/">求最大公约数的多种算法及比较</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h2 id="公约数的性质"><a href="#公约数的性质" class="headerlink" title="公约数的性质"></a>公约数的性质</h2><p>gcd(-a,b)=gcd(a,b)<br>gcd(a,0)=|a|<br>gcd(a,1)=1<br>gcd(a,b)=gcd(b, a-b)<br>gcd(ma,mb)=m * gcd(a,b)</p>
+<p>⚠️注：两数必须为正整数</p>
+<h2 id="辗转相除法（欧几里得）"><a href="#辗转相除法（欧几里得）" class="headerlink" title="辗转相除法（欧几里得）"></a>辗转相除法（欧几里得）</h2><p>时间效率： ⭐️<br>素数较大时运算耗时</p>
+<pre><code class="bash">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    if (a &lt; b) swap(a, b);//保证a大于b
+    int t = a % b;
+    while (t) {
+        a = b;
+        b = t;
+        t = a % b;
+    }
+    cout &lt;&lt; b;
+}</code></pre>
+<h2 id="穷举法"><a href="#穷举法" class="headerlink" title="穷举法"></a>穷举法</h2><p>时间效率： ⭐️⭐️⭐️</p>
+<pre><code class="bash">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    int t = a &gt; b ? b : a;//t为min
+    while (t) {
+        if (a % t == 0 &amp;&amp; b % t == 0)
+            break;
+        t--;
+    }
+    cout &lt;&lt; t;
+}</code></pre>
+<h2 id="更相减损术"><a href="#更相减损术" class="headerlink" title="更相减损术"></a>更相减损术</h2><p>时间效率： ⭐️⭐️⭐️<br>两数相差大时运算次数多</p>
+<pre><code class="bash">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main() {
+    int a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    int l = 0;
+    while (a % 2 == 0 &amp;&amp; b % 2 == 0) {//都是偶数则除二
+        a /= 2;
+        b /= 2;
+        l++;
+    }
+    if (a &lt; b) swap(a, b);//保证a大于b
+    int t = 1;
+    while (t) {
+        t = a - b;
+        a = b &gt; t ? b : t;//保证a大于b
+        b = b &gt; t ? t : b;
+        if (a == b)//直到两数相等
+            break;
+    }
+    cout &lt;&lt; pow(2, l) * b;
+}</code></pre>
+<h2 id="Stein算法"><a href="#Stein算法" class="headerlink" title="Stein算法"></a><a href="https://blog.csdn.net/Zhao_Xinhao/article/details/76060119" target="_blank" rel="noopener">Stein算法</a></h2><p>时间效率： ⭐️⭐️<br>对于辗转相除法的改进</p>
+<pre><code class="bash">//递归
+int Stein(int u, int v) {
+    if (u == 0) {
+        return v;
+    }
+    if (v == 0) {
+        return u;
+    }
+    if (~u &amp; 1) {
+        if (v &amp; 1) {
+            return Stein(u &gt;&gt; 1, v);
+        }
+        else {
+            return Stein(u &gt;&gt; 1, v &gt;&gt; 1) &lt;&lt; 1;
+        }
+    }
+    if (~v &amp; 1) {
+        return gcd2(u, v &gt;&gt; 1);
+    }
+    if (u &gt; v) {
+        return gcd2((u - v) &gt;&gt; 1, v);
+    }
+    return gcd2((v - u) &gt;&gt; 1, u);
+}
+//非递归
+int Stein(unsigned int x, unsigned int y) {
+    int factor = 0;   //计数器
+    int temp;
+
+    //大数赋给x，小数赋给y
+    if (x &lt; y) {
+        temp = x;
+        x = y;
+        y = temp;
+    }
+    if (0 == y) {
+        return 0;
+    }
+    while (x != y) {
+        if (x &amp; 0x1) {
+            if (y &amp; 0x1) {   //x,y都为奇数
+                y = (x - y) &gt;&gt; 1;
+                x -= y;
+            }
+            else {    // x为奇数，y为偶数
+                y &gt;&gt;= 1;
+            }
+        }
+        else {
+            if (y &amp; 0x1) {   // x为偶数，y为奇数
+                x &gt;&gt;= 1;
+                if (x &lt; y) {
+                    temp = x;
+                    x = y;
+                    y = temp;
+                }
+            }
+            else {   //x,y均为偶数
+                x &gt;&gt;= 1;
+                y &gt;&gt;= 1;
+                ++factor;
+            }
+        }
+    }
+    return (x &lt;&lt; factor);
+}</code></pre>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2020-02-02T05:10:15.000Z" itemprop="datePublished">2020-02-02</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-mac搭建个人blog"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2020/01/28/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/">Mac搭建个人Blog</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h1 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h1><h2 id="hexo创建一个blog"><a href="#hexo创建一个blog" class="headerlink" title="hexo创建一个blog"></a>hexo创建一个blog</h2><h3 id="终端的一些命令"><a href="#终端的一些命令" class="headerlink" title="终端的一些命令"></a>终端的一些命令</h3><p>注：终端中输入密码时不会显示<br><img src="../img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/1.png" alt="1"></p>
+<pre><code class="bash">pwd
+//查看此时所在位置
+mkdir blog
+//创建blog文件夹
+cd ..
+//返回上一层目录
+cd blog
+//进入blog文件夹</code></pre>
+<p><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/2.png" alt="2"></p>
+<h3 id="输入sudo-hexo-init-创建博客"><a href="#输入sudo-hexo-init-创建博客" class="headerlink" title="输入sudo hexo init 创建博客"></a>输入sudo hexo init 创建博客</h3><p><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/3.png" alt="3"></p>
+<h2 id="如何使用hexo"><a href="#如何使用hexo" class="headerlink" title="如何使用hexo"></a>如何使用hexo</h2><h3 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h3><pre><code class="bash">hexo new post XXX</code></pre>
+<h3 id="创建新目录"><a href="#创建新目录" class="headerlink" title="创建新目录"></a>创建新目录</h3><pre><code class="bash">hexo new page tag</code></pre>
+<p>前往blog/source/tag文件夹中更改</p>
+<pre><code class="bash">---
+title: XXX
+lyout: tag
+date: 2020-02-02 13:07:16
+---
+</code></pre>
+<h3 id="创建新标签"><a href="#创建新标签" class="headerlink" title="创建新标签"></a>创建新标签</h3><pre><code class="bash">hexo new page category</code></pre>
+<p>同理把tag改为category即可</p>
+<h3 id="about页面"><a href="#about页面" class="headerlink" title="about页面"></a>about页面</h3><p>除了不支持Categories和Tags外和写文章的格式一样<br>一般不需要新建页面，只更改blog/source/about/index.md即可</p>
+<pre><code class="bash">hexo new page about</code></pre>
+<h2 id="推送至github和coding-net"><a href="#推送至github和coding-net" class="headerlink" title="推送至github和coding.net"></a>推送至github和coding.net</h2><h4 id="比较github（国外）和coding（腾讯）"><a href="#比较github（国外）和coding（腾讯）" class="headerlink" title="比较github（国外）和coding（腾讯）"></a>比较github（国外）和coding（腾讯）</h4><table>
+<thead>
+<tr>
+<th></th>
+<th>github</th>
+<th>coding.net</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>域名</td>
+<td>自定义</td>
+<td>随机生成</td>
+</tr>
+<tr>
+<td>加载速度</td>
+<td>慢</td>
+<td>快一些</td>
+</tr>
+<tr>
+<td>方便的clone方式</td>
+<td>HTTPS</td>
+<td>SSH</td>
+</tr>
+</tbody></table>
+<h2 id="如何使用hexo-1"><a href="#如何使用hexo-1" class="headerlink" title="如何使用hexo"></a>如何使用hexo</h2><h3 id="创建新文章-1"><a href="#创建新文章-1" class="headerlink" title="创建新文章"></a>创建新文章</h3><pre><code class="bash">hexo new post XXX</code></pre>
+<h3 id="创建新目录-1"><a href="#创建新目录-1" class="headerlink" title="创建新目录"></a>创建新目录</h3><pre><code class="bash">hexo new page tag</code></pre>
+<p>前往blog/source/tag文件夹中更改</p>
+<pre><code class="bash">---
+title: XXX
+lyout: tag
+date: 2020-02-02 13:07:16
+---
+</code></pre>
+<h3 id="创建新标签-1"><a href="#创建新标签-1" class="headerlink" title="创建新标签"></a>创建新标签</h3><pre><code class="bash">hexo new page category</code></pre>
+<p>同理把tag改为category即可</p>
+<h3 id="about页面-1"><a href="#about页面-1" class="headerlink" title="about页面"></a>about页面</h3><p>除了不支持Categories和Tags外和写文章的格式一样<br>一般不需要新建页面，只更改blog/source/about/index.md即可</p>
+<pre><code class="bash">hexo new page about</code></pre>
+<h1 id="进阶部分"><a href="#进阶部分" class="headerlink" title="进阶部分"></a>进阶部分</h1><h2 id="如何在百度中搜索到自己写的博客内容"><a href="#如何在百度中搜索到自己写的博客内容" class="headerlink" title="如何在百度中搜索到自己写的博客内容"></a>如何在百度中搜索到自己写的博客内容</h2><p>必须在<a href="https://ziyuan.baidu.com/linksubmit/url" target="_blank" rel="noopener">这里提交</a>自己的博客链接才能在百度引擎中搜索到的</p>
+<h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><h3 id="在-Hexo-中下载主题"><a href="#在-Hexo-中下载主题" class="headerlink" title="在 Hexo  中下载主题"></a>在<a href="https://hexo.io/" target="_blank" rel="noopener"> Hexo </a> 中下载主题</h3><pre><code class="bash">git clone https://github.com.....主题地址 themes/主题名字
+//将主题下载到themes中</code></pre>
+<h3 id="更改theme中的-config-yml"><a href="#更改theme中的-config-yml" class="headerlink" title="更改theme中的_config.yml"></a>更改theme中的_config.yml</h3><pre><code class="bash">vim _config.yml 进入编辑模式（注意空格）
+按 A 开始编辑
+按 esc 退出编辑
+输入 :wq 保存并退出</code></pre>
+<p><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/4.png" alt="4"></p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><pre><code class="bash">hexo clean 清除缓存
+hexo g 搭建   
+hexo d 提交到github</code></pre>
+<h1 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h1><h2 id="hexo-g-失败"><a href="#hexo-g-失败" class="headerlink" title="hexo g 失败"></a>hexo g 失败</h2><p>TypeError [ERR_INVALID_URL]: Invalid URL: http: //127.0.0.1:1085;export<br>    at onParseError (internal/url.js:243:9)</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>这个原因呢也很简单，就是hexo升级到4.2后，对于文章内的url自动变成html的A标签的解析引擎有点小bug，这是我在一个github的issue中看到的，issue链接我就不贴出来了,有兴趣的自行用英文关键字进行Google吧。</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><ul>
+<li>把http://这个协议头去掉，不过经过测试发现hexo自动生成的链接会有点其它的小bug，大家可以自行测试一下</li>
+<li>在http://的冒号后面加个空格</li>
+<li>把这个url用两个``给引起来，这种方法我感觉最好</li>
+</ul>
+<p>本博客主题为<a href="https://github.com/Siricee/hexo-theme-Chic/blob/master/README-CN.md" target="_blank" rel="noopener">Chic</a></p>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2020-01-28T07:32:31.000Z" itemprop="datePublished">2020-01-28</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/Web%E4%B8%8E%E5%89%8D%E7%AB%AF/">Web与前端</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+
+  
+</div>
+
+                </section>
+            </section>
+
+            
+            <aside class="sidebar sidebar-search-fix">
+                
+
+    <div class="search">
+    <div class="has-icon-right">
+        <input type="text" class="form-input" id="search" placeholder="SEARCH" autocomplete="off">
+        <div class="form-icon">
+            <box-icon name='search' color="#3c4859"></box-icon>
+        </div>
+    </div>
+    <div class="search-result" id="search-ps"></div>
+</div>
+
+
+<div class="widget" id="widget">
+    
+      
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2022/05/26/CLIP/">CLIP</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/27/STL/">STL</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/13/ACM%E7%BB%8F%E9%AA%8C/">ACM经验</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/27/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/08/%E7%88%AC%E8%99%AB/">爬虫</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag">读论文</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E4%B8%8E%E5%89%8D%E7%AB%AF/">Web与前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            Li Ting &copy; 2022<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+
+
+
+<script src="https://unpkg.com/disqusjs@1.3/dist/disqus.js"></script>
+
+
+
+<script src="/dist/build.js?1651727875408.js"></script>
+
+
+<script src="/dist/custom.js?1651727875408.js"></script>
+
+
+
+<!-- 百度链接提交 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
 </body>
+
 </html>
