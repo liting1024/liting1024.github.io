@@ -64,6 +64,8 @@
     
 
     
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    
 
     
 
@@ -78,6 +80,16 @@
     <script>
         window.isPost = true
         window.aomori = {
+            
+            gitalk: {
+                enable: true,
+                clientID: "6d0cedf1b471cbc3fb0d",
+                clientSecret: "397c8d7ca7ab800dba9e60fd593649b23b6059b8",
+                repo: "comments-section",
+                owner: "liting1024",
+                admin: ["liting1024",],
+                distractionFreeMode: true  // Facebook-like distraction free mode
+            },
             
             
             
@@ -168,7 +180,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-cl3nufqv1000py8vmd7puhvf0" class="article article-type-post" itemscope
+    <article id="post-cl3o54rlg000mffvm52dfh8ue" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -553,13 +565,9 @@ class YourprojectPipeline(object):
             <box-icon type='logo' name='twitter'></box-icon>
         </a>
         <a class="share-item" target="_blank"
-            href="https://www.facebook.com/sharer.php?title=爬虫 - Li Ting&u=https%3A%2F%2Fliting1024.github.io%2F2020%2F07%2F08%2F%25E7%2588%25AC%25E8%2599%25AB%2F">
-            <box-icon name='facebook-square' type='logo' ></box-icon>
-        </a>
-        <!-- <a class="share-item" target="_blank"
             href="https://service.weibo.com/share/share.php?title=爬虫 - Li Ting&url=https://liting1024.github.io/2020/07/08/%E7%88%AC%E8%99%AB/&pic=">
             <div class="n-icon n-icon-weibo"></div>
-        </a> -->
+        </a>
     </section>
 
 </article>
@@ -567,24 +575,13 @@ class YourprojectPipeline(object):
 
 
 
-<section class="comments comments-disqus">
-    <div id="disqus_thread"></div>
-    <script>
-        ;(function () {
-            // DON'T EDIT BELOW THIS LINE
-            var d = document,
-                s = d.createElement('script')
-            s.src =
-                'https://liting1024.disqus.com/embed.js'
-            s.setAttribute('data-timestamp', +new Date())
-            ;(d.head || d.body).appendChild(s)
-        })()
-    </script>
+
+
+
+
+<section class="comments">
+    <div id="gitalk-container"></div>
 </section>
-
-
-
-
 
 
 
@@ -710,6 +707,8 @@ class YourprojectPipeline(object):
 
 </footer>
 
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 
 

@@ -29,6 +29,8 @@
     
 
     
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    
 
     
 
@@ -43,6 +45,16 @@
     <script>
         window.isPost = false
         window.aomori = {
+            
+            gitalk: {
+                enable: true,
+                clientID: "6d0cedf1b471cbc3fb0d",
+                clientSecret: "397c8d7ca7ab800dba9e60fd593649b23b6059b8",
+                repo: "comments-section",
+                owner: "liting1024",
+                admin: ["liting1024",],
+                distractionFreeMode: true  // Facebook-like distraction free mode
+            },
             
             
             
@@ -279,6 +291,8 @@
 
 </footer>
 
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 
 

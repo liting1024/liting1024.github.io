@@ -50,6 +50,8 @@
     
 
     
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    
 
     
 
@@ -64,6 +66,16 @@
     <script>
         window.isPost = false
         window.aomori = {
+            
+            gitalk: {
+                enable: true,
+                clientID: "6d0cedf1b471cbc3fb0d",
+                clientSecret: "397c8d7ca7ab800dba9e60fd593649b23b6059b8",
+                repo: "comments-section",
+                owner: "liting1024",
+                admin: ["liting1024",],
+                distractionFreeMode: true  // Facebook-like distraction free mode
+            },
             
             
             
@@ -161,7 +173,7 @@
 <div class="page">
   
 <article
-id="page-cl3nufqub0000y8vm3x5cgt6y"
+id="page-cl3o54rly0011ffvm5ugwgm8j"
 class="article article-type-page"
 >
   <div class="article-inner">
@@ -216,90 +228,6 @@ class="article article-type-page"
             </section>
 
             
-            <aside class="sidebar sidebar-search-fix">
-                
-
-    <div class="search">
-    <div class="has-icon-right">
-        <input type="text" class="form-input" id="search" placeholder="SEARCH" autocomplete="off">
-        <div class="form-icon">
-            <box-icon name='search' color="#3c4859"></box-icon>
-        </div>
-    </div>
-    <div class="search-result" id="search-ps"></div>
-</div>
-
-
-<div class="widget" id="widget">
-    
-      
-    
-      
-  <div class="widget-wrap widget-recent-posts">
-    <div class="widget-title"><span>Recent Posts</span></div>
-    <div class="widget-inner">
-      <ul>
-        
-          <li>
-            <a href="/2022/05/27/%E3%80%90%E9%A1%B9%E7%9B%AE%E8%AF%A6%E6%83%85%E3%80%91%E8%A7%A3%E5%AD%97/">【项目详情】解字</a>
-          </li>
-        
-          <li>
-            <a href="/2022/05/27/%E6%9B%B4%E6%8D%A2Aomori%E4%B8%BB%E9%A2%98/">更换Aomori主题</a>
-          </li>
-        
-          <li>
-            <a href="/2022/05/26/CLIP/">CLIP</a>
-          </li>
-        
-          <li>
-            <a href="/2022/01/27/STL/">STL</a>
-          </li>
-        
-          <li>
-            <a href="/2022/01/13/ACM%E7%BB%8F%E9%AA%8C/">ACM经验</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-    
-      
-  <div class="widget-wrap widget-archive">
-    <div class="widget-title"><span>Archive</span></div>
-    <div class="widget-inner">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget-wrap widget-tags">
-    <div class="widget-title"><span>Tags</span></div>
-    <div class="widget-inner">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag">读论文</a></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget-wrap widget-cate">
-    <div class="widget-title"><span>Categories</span></div>
-    <div class="widget-inner">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E4%B8%8E%E5%89%8D%E7%AB%AF/">Web与前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a></li></ul>
-    </div>
-  </div>
-
-
-    
-</div>
-
-<div id="backtop"><i class="icon icon-arrow-up"></i></div>
-            </aside>
-            
         </div>
     </div>
 
@@ -319,6 +247,8 @@ class="article article-type-page"
 
 </footer>
 
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 
 

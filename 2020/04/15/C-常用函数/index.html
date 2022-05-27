@@ -64,6 +64,8 @@
     
 
     
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    
 
     
 
@@ -78,6 +80,16 @@
     <script>
         window.isPost = true
         window.aomori = {
+            
+            gitalk: {
+                enable: true,
+                clientID: "6d0cedf1b471cbc3fb0d",
+                clientSecret: "397c8d7ca7ab800dba9e60fd593649b23b6059b8",
+                repo: "comments-section",
+                owner: "liting1024",
+                admin: ["liting1024",],
+                distractionFreeMode: true  // Facebook-like distraction free mode
+            },
             
             
             
@@ -168,7 +180,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-cl3nufquf0001y8vm7pio12zq" class="article article-type-post" itemscope
+    <article id="post-cl3o54rl00000ffvm446u8gdr" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -558,13 +570,9 @@ multiset&lt;rec,cmp&gt;h;</code></pre>
             <box-icon type='logo' name='twitter'></box-icon>
         </a>
         <a class="share-item" target="_blank"
-            href="https://www.facebook.com/sharer.php?title=C++常用函数 - Li Ting&u=https%3A%2F%2Fliting1024.github.io%2F2020%2F04%2F15%2FC-%25E5%25B8%25B8%25E7%2594%25A8%25E5%2587%25BD%25E6%2595%25B0%2F">
-            <box-icon name='facebook-square' type='logo' ></box-icon>
-        </a>
-        <!-- <a class="share-item" target="_blank"
             href="https://service.weibo.com/share/share.php?title=C++常用函数 - Li Ting&url=https://liting1024.github.io/2020/04/15/C-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/&pic=">
             <div class="n-icon n-icon-weibo"></div>
-        </a> -->
+        </a>
     </section>
 
 </article>
@@ -572,24 +580,13 @@ multiset&lt;rec,cmp&gt;h;</code></pre>
 
 
 
-<section class="comments comments-disqus">
-    <div id="disqus_thread"></div>
-    <script>
-        ;(function () {
-            // DON'T EDIT BELOW THIS LINE
-            var d = document,
-                s = d.createElement('script')
-            s.src =
-                'https://liting1024.disqus.com/embed.js'
-            s.setAttribute('data-timestamp', +new Date())
-            ;(d.head || d.body).appendChild(s)
-        })()
-    </script>
+
+
+
+
+<section class="comments">
+    <div id="gitalk-container"></div>
 </section>
-
-
-
-
 
 
 
@@ -715,6 +712,8 @@ multiset&lt;rec,cmp&gt;h;</code></pre>
 
 </footer>
 
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 
 
