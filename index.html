@@ -257,7 +257,7 @@ hexo d</code></pre>
 </div>
     
         <div class="article-category">
-        <a class="article-category-link" href="/categories/Web%E4%B8%8E%E5%89%8D%E7%AB%AF/">Web与前端</a>
+        <a class="article-category-link" href="/categories/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">应用开发</a>
         </div>
     
     
@@ -697,6 +697,999 @@ puts(&quot;&quot;); //换行 </code></pre><h1 id="位运算"><a href="#位运算
   
     
       <article
+id="post-Review【一】线性回归、Softmax、感知机、卷积"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2021/05/28/Review%E3%80%90%E4%B8%80%E3%80%91%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E3%80%81Softmax%E3%80%81%E6%84%9F%E7%9F%A5%E6%9C%BA%E3%80%81%E5%8D%B7%E7%A7%AF/">Review【一】线性回归、Softmax、感知机、卷积</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <blockquote>
+<p><a href="https://zh-v2.d2l.ai/chapter_multilayer-perceptrons/mlp-concise.html" target="_blank" rel="noopener">课程地址</a></p>
+</blockquote>
+<h1 id="一、线性回归"><a href="#一、线性回归" class="headerlink" title="一、线性回归"></a>一、线性回归</h1><p>线性模型：y = ax + b<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述"><br>单层神经网络（输出层不看做是一层）<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613631.png" alt="在这里插入图片描述"></p>
+<h2 id="1-损失函数"><a href="#1-损失函数" class="headerlink" title="1 损失函数"></a>1 损失函数</h2><p>比较真实值和预估值<br><a href="https://zhuanlan.zhihu.com/p/58883095" target="_blank" rel="noopener">以下几种损失函数比较</a></p>
+<ul>
+<li>0-1损失函数(zero-one loss)</li>
+<li>绝对值损失函数</li>
+<li>log对数损失函数</li>
+<li>平方损失函数</li>
+<li>指数损失函数（exponential loss）</li>
+<li>Hinge 损失函数</li>
+<li>感知损失(perceptron loss)函数</li>
+<li>交叉熵损失函数 (Cross-entropy loss function)</li>
+</ul>
+<p><a href="https://blog.csdn.net/u010637291/article/details/118381364" target="_blank" rel="noopener">语音的几种损失函数</a></p>
+<h2 id="2-参数学习"><a href="#2-参数学习" class="headerlink" title="2 参数学习"></a>2 参数学习</h2><p>选取不同的w和b，根据输入X，计算y的损失<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613918-3745573.png" alt="最小化损失"></p>
+<h2 id="3-梯度下降-GD"><a href="#3-梯度下降-GD" class="headerlink" title="3 梯度下降 GD"></a>3 梯度下降 GD</h2><p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613688.png" alt="在这里插入图片描述"><br>学习率：每次计算loss后调整的步长</p>
+<p>小批量随机梯度下降 SGD：通过随机采样b个样本计算近似损失，以减少计算梯度求导的消耗<br>这里的b  就是batchsize，并行进入神经网络的样本数量</p>
+<h2 id="3-torch实现"><a href="#3-torch实现" class="headerlink" title="3 torch实现"></a>3 torch实现</h2><pre><code class="python"># `nn` 是神经网络的缩写
+from torch import nn
+#Sequential是存放网络的list
+#全连接层（单层网络）输入维度是2 输出为1
+net = nn.Sequential(nn.Linear(2, 1))
+#初始化网络参数
+net[0].weight.data.normal_(0, 0.01)
+net[0].bias.data.fill_(0)
+#损失函数 均方误差
+loss = nn.MSELoss()
+#定义优化算法 小批量随机梯度下降 传入net的参数w和b 指定学习率lr
+trainer = torch.optim.SGD(net.parameters(), lr=0.03)
+#训练
+num_epochs = 3
+for epoch in range(num_epochs):
+    for X, y in data_iter:
+        l = loss(net(X) ,y)
+        trainer.zero_grad() #梯度清零以计算backward
+        l.backward() 
+        trainer.step() #更新模型
+    l = loss(net(features), labels)
+    print(f&#39;epoch {epoch + 1}, loss {l:f}&#39;)
+w = net[0].weight.data
+print(&#39;w的估计误差：&#39;, true_w - w.reshape(true_w.shape))
+b = net[0].bias.data
+print(&#39;b的估计误差：&#39;, true_b - b)</code></pre>
+<h1 id="二、Softmax分类"><a href="#二、Softmax分类" class="headerlink" title="二、Softmax分类"></a>二、Softmax分类</h1><p>预测离散的类型，通常有多个输出，输出 i 是预测为第 i 类的置信度<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613675.png" alt="在这里插入图片描述"><br>对每个类别进行一位有效编码（==One-Hot==），编码后为向量y作为输入，每个类别的置信度分数（即每个类别的概率）作为输出（输出向量的每个元素非负，元素和为1）<br>使用均方损失函数训练</p>
+<h2 id="1-损失函数-1"><a href="#1-损失函数-1" class="headerlink" title="1 损失函数"></a>1 损失函数</h2><p>橙色为导数，绿色为最大似然函数，蓝色为损失函数<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613620.png" alt="在这里插入图片描述"><br>随着预测值和真实值相差不同，进行不同的优化<br><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613574.png" alt="在这里插入图片描述"><br>不管预测值和真实值相差多远，都能稳定优化<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613645.png" alt="在这里插入图片描述"><br>在预测值和真实值相差不大时，减少优化 </p>
+<h2 id="2-torch实现"><a href="#2-torch实现" class="headerlink" title="2 torch实现"></a>2 torch实现</h2><pre><code class="python">import torch
+from torch import nn
+from d2l import torch as d2l
+
+batch_size = 256
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size)
+
+# PyTorch不会隐式地调整输入的形状 在线性层前定义展平层（flatten）调整网络输入的形状
+#输入为784 输出为10
+net = nn.Sequential(nn.Flatten(), nn.Linear(784, 10))
+#初始化为均值为0方差为0.01的随机值
+def init_weights(m):
+    if type(m) == nn.Linear:
+        nn.init.normal_(m.weight, std=0.01)
+net.apply(init_weights);
+
+loss = nn.CrossEntropyLoss()
+
+trainer = torch.optim.SGD(net.parameters(), lr=0.1)
+#训练模型
+num_epochs = 10
+def train_ch3(net, train_iter, test_iter, loss, num_epochs, updater):  
+    animator = Animator(xlabel=&#39;epoch&#39;, xlim=[1, num_epochs], ylim=[0.3, 0.9],
+                        legend=[&#39;train loss&#39;, &#39;train acc&#39;, &#39;test acc&#39;])
+    for epoch in range(num_epochs):
+        train_metrics = train_epoch_ch3(net, train_iter, loss, updater)
+        test_acc = evaluate_accuracy(net, test_iter)
+        animator.add(epoch + 1, train_metrics + (test_acc,))
+    train_loss, train_acc = train_metrics
+    assert train_loss &lt; 0.5, train_loss
+    assert train_acc &lt;= 1 and train_acc &gt; 0.7, train_acc
+    assert test_acc &lt;= 1 and test_acc &gt; 0.7, test_acc
+d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, trainer)</code></pre>
+<h1 id="三、感知机-Perceptron"><a href="#三、感知机-Perceptron" class="headerlink" title="三、感知机 Perceptron"></a>三、感知机 Perceptron</h1><h2 id="1-二分类的感知机"><a href="#1-二分类的感知机" class="headerlink" title="1 二分类的感知机"></a>1 二分类的感知机</h2><p>二分类问题，x为给定输入，w为权重，b为偏移<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613716.png" alt="在这里插入图片描述"><br>线性回归输出的是实数，softmax回归输出的是概率，这里只输出0和1（或者-1和1）是二分类问题<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613817.png" alt="在这里插入图片描述"><br>y为实际值，wx+b为预测值，以下所有wx为w和x的混合积</p>
+<pre><code class="c">w=b=0;
+while(所有分类正确): 
+    if (y*[wx+b]&lt;=0) w+=y*x,b+=y;</code></pre>
+<p>等价于使用batchsize为1的梯度下降，其中loss=max(0,-y*wx)<br>根据收敛定理，对于正确的数据一定可以得到一条直线，将两类样本点分开<br>局限：普通感知机不能拟合XOR函数，必须使用多层感知机</p>
+<h2 id="2-多层感知机MLP"><a href="#2-多层感知机MLP" class="headerlink" title="2 多层感知机MLP"></a>2 多层感知机MLP</h2><p>两个分类器做乘法（用与门和或门实现与或门）<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613729.png" alt="在这里插入图片描述"></p>
+<h3 id="单隐藏层-单分类"><a href="#单隐藏层-单分类" class="headerlink" title="单隐藏层-单分类"></a>单隐藏层-单分类</h3><p>Hidden-layer隐藏层是 mxn 的矩阵<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613748.png" alt="在这里插入图片描述"><br>使用线性==激活函数==会导致多个连接层摞在一起，变成单层感知机；应当使用Sigmoid、Tanh、ReLU</p>
+<h3 id="多隐藏层多分类"><a href="#多隐藏层多分类" class="headerlink" title="多隐藏层多分类"></a>多隐藏层多分类</h3><p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613833.png" alt="在这里插入图片描述"><br>结果 y = ==softmax== (o) </p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613805.png" alt="在这里插入图片描述"><br>每次计算出隐藏层结果之前都要使用非线性激活函数，最后一层可以直接通过softmax得到y</p>
+<h2 id="3-torch实现-1"><a href="#3-torch实现-1" class="headerlink" title="3 torch实现"></a>3 torch实现</h2><pre><code class="python">import torch
+from torch import nn
+from d2l import torch as d2l
+
+net = nn.Sequential(nn.Flatten(),
+                    nn.Linear(784, 256),
+                    nn.ReLU(),
+                    nn.Linear(256, 10))
+# 将三维flatten成二维
+def init_weights(m):
+    if type(m) == nn.Linear:
+        nn.init.normal_(m.weight, std=0.01)
+
+net.apply(init_weights);
+
+batch_size, lr, num_epochs = 256, 0.1, 10
+loss = nn.CrossEntropyLoss()#交叉熵损失
+trainer = torch.optim.SGD(net.parameters(), lr=lr)
+
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size)
+d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, trainer)</code></pre>
+<h1 id="四、卷积层"><a href="#四、卷积层" class="headerlink" title="四、卷积层"></a>四、卷积层</h1><h2 id="1-卷积操作"><a href="#1-卷积操作" class="headerlink" title="1 卷积操作"></a>1 卷积操作</h2><p>卷积是具有平移不变性（权重共享）和局部性的全连接<br>以下以二维卷积为例<br>二维交叉相关：w为权重，v为重新构建索引后的w<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613795.png" alt="在这里插入图片描述"><br>平移不变性：换不同的位置 卷积的计算方式不改变<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613815.png" alt="在这里插入图片描述"></p>
+<p>局部性：卷积核在局部进行运算即可<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613843.png" alt="在这里插入图片描述"></p>
+<h2 id="2-卷积层"><a href="#2-卷积层" class="headerlink" title="2 卷积层"></a>2 卷积层</h2><p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613863.png" alt="在这里插入图片描述"><br>填充：通过填充保证卷积后矩阵尺寸不会太小<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613871.png" alt="在这里插入图片描述"></p>
+<p>步长（步幅）：矩阵太大，跳过一些以控制输出<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613895.png" alt="在这里插入图片描述"></p>
+<h2 id="3-gif"><a href="#3-gif" class="headerlink" title="3 gif"></a>3 gif</h2><p><a href="https://github.com/vdumoulin/conv_arithmetic" target="_blank" rel="noopener">动图地址</a></p>
+<p>正卷积 Convolution</p>
+<table style="width:100%; table-layout:fixed;">
+  <tr>
+    <td><img width="150px" src="https://img-blog.csdnimg.cn/5eef48d06fb14f899bda33df05105a29.gif"></td>
+    <td><img width="150px" src="https://img-blog.csdnimg.cn/15690af9e7f14fdfa4792e36d9917a9b.gif"></td>
+    <td><img width="150px" src="https://img-blog.csdnimg.cn/f1c24feaa4824cc58c1c73c1241a6ca6.gif"></td>
+    <td><img width="150px" src="https://img-blog.csdnimg.cn/74e048c5c87b4c5eab6d1c021a9ef8d0.gif"></td>
+  </tr>
+  <tr>
+    <td>No padding, no strides</td>
+    <td>Arbitrary padding, no strides</td>
+    <td>Half padding, no strides</td>
+    <td>Full padding, no strides</td>
+  </tr>
+  <tr>
+    <td><img width="150px" src="https://img-blog.csdnimg.cn/77c1340f081447dd80235a0314ea4e39.gif"></td>
+    <td><img width="150px" src="https://img-blog.csdnimg.cn/d8248ba016884fe2b9a3459d4d256ca4.gif"></td>
+    <td><img width="150px" src="https://img-blog.csdnimg.cn/36415057172440488fdeb342d30e9bf7.gif"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>No padding, strides</td>
+    <td>Padding, strides</td>
+    <td>Padding, strides (odd)</td>
+    <td></td>
+  </tr>
+</table>
+
+<p>转置卷积 Transposed Convolution</p>
+<table style="width:100%; table-layout:fixed;">
+  <tr>
+    <td><img width="150px" src="https://img-blog.csdnimg.cn/624f5f3771ce4420a681ed56542d9f16.gif"></td>
+    <td><img width="150px" src="https://img-blog.csdnimg.cn/d4212dc0bd7a47b098ac3951f84e642e.gif"></td>
+    <td><img width="150px" src="https://img-blog.csdnimg.cn/c846e49417fe4eb3a5e4ac05ae37ef86.gif"></td>
+    <td><img width="150px" src="https://img-blog.csdnimg.cn/b2d1713bb7d84db285f91ce3b469b8de.gif"></td>
+  </tr>
+  <tr>
+    <td>No padding, no strides, transposed</td>
+    <td>Arbitrary padding, no strides, transposed</td>
+    <td>Half padding, no strides, transposed</td>
+    <td>Full padding, no strides, transposed</td>
+  </tr>
+  <tr>
+    <td><img width="150px" src="https://img-blog.csdnimg.cn/e30aa2ee0e8b4bcfb4a737e8641b35f5.gif"></td>
+    <td><img width="150px" src="https://img-blog.csdnimg.cn/4415738c84e043b696971d25fb6da0b9.gif"></td>
+    <td><img width="150px" src="https://img-blog.csdnimg.cn/445168d353204ffbb47f3f60fd14702d.gif"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>No padding, strides, transposed</td>
+    <td>Padding, strides, transposed</td>
+    <td>Padding, strides, transposed (odd)</td>
+    <td></td>
+  </tr>
+</table>
+空洞卷积 Dilated convolution
+![在这里插入图片描述](https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/405a4c3d348d42d98f83aedcae5648b5.gif)
+
+<h2 id="4-多输入输出通道channls"><a href="#4-多输入输出通道channls" class="headerlink" title="4 多输入输出通道channls"></a>4 多输入输出通道channls</h2><h3 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h3><p>多个输出out通道可以识别特定的模式，Eg：RGB图片三通道可以按照颜色分别识别<br>多个输入in通道可以识别并组合输入中的模式，Eg：在识别猫的图片时，分别识别出猫的脚和身体，然后组合</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>多输入in：在每个通道各自卷积后加权求和（降维）为一个通道<br>多输出out：使用多个卷积核，每个卷积核生成一个输出通道</p>
+<h2 id="5-1x1的卷积层"><a href="#5-1x1的卷积层" class="headerlink" title="5 1x1的卷积层"></a>5 1x1的卷积层</h2><p>不识别空间模式，只是融合不同通道的信息，对不同的通道进行加权求和<br>Eg：语音分离<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613889.png" alt="在这里插入图片描述"><br>将input拉成一维的向量就变成全连接层</p>
+<h1 id="五、ConvTranspoes-转置卷积"><a href="#五、ConvTranspoes-转置卷积" class="headerlink" title="五、ConvTranspoes 转置卷积"></a>五、ConvTranspoes 转置卷积</h1><p>增大输入的高宽，一般用于恢复形状，但输出的信息比较抽象，不能被人直接分辨，也用于上采样。<br>输入中的每一个值与卷积核的每一个值做乘法，把重合的部分相加。<br>padding是去掉输出的外层。<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528214613918.png" alt="在这里插入图片描述"></p>
+<h1 id="六、池化层（汇聚层）-Pooling"><a href="#六、池化层（汇聚层）-Pooling" class="headerlink" title="六、池化层（汇聚层） Pooling"></a>六、池化层（汇聚层） Pooling</h1><p>卷积层做边缘检测时，对边缘太敏感，检测时往往会不准确</p>
+<p>最大池化：在滑动窗口时，返回窗口中的最大值<br>平均池化：返回窗口中各元素的均值</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>超参数有窗口大小、填充和步幅<br>没有可学习的参数<br>输出通道数=输入通道数<br>在每个输入通道都用池化层来分别获得输出，不进行多通道融合</p>
+<h2 id="torch实现"><a href="#torch实现" class="headerlink" title="torch实现"></a>torch实现</h2><p>2x3大小的窗口</p>
+<pre><code class="python">pool2d = nn.MaxPool2d((2, 3), padding=(1, 1), stride=(2, 3))
+pool2d(X)</code></pre>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-05-28T13:45:31.000Z" itemprop="datePublished">2021-05-28</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-深度学习Review【二】LeNet、AlexNet、VGG、NiN、GoogLeNet、ResNet、DenseNet"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2021/05/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0Review%E3%80%90%E4%BA%8C%E3%80%91LeNet%E3%80%81AlexNet%E3%80%81VGG%E3%80%81NiN%E3%80%81GoogLeNet%E3%80%81ResNet%E3%80%81DenseNet/">Review【一】线性回归、Softmax、感知机、卷积</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <blockquote>
+<p><a href="https://zh-v2.d2l.ai/chapter_multilayer-perceptrons/mlp-concise.html" target="_blank" rel="noopener">课程地址</a></p>
+</blockquote>
+<h1 id="一、LeNet"><a href="#一、LeNet" class="headerlink" title="一、LeNet"></a>一、LeNet</h1><p>手写数字识别（MNIST）<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/512cd1b1e7c840acb4eabbffd3d6923a.png" alt="在这里插入图片描述"><br>使用了Conv2d、AvgPooling、Linear<br>高宽减半时通道数翻倍，保证信息能匹配更多的模式（将信息分配到多个通道）<br>输入超过100x100时MLP不如CNN，输入少时mlp更快</p>
+<h2 id="torch实现"><a href="#torch实现" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
+from torch import nn
+from d2l import torch as d2l
+#使用类可以放在Sequential里
+class Reshape(torch.nn.Module):
+    def forward(self, x):
+        return x.view(-1, 1, 28, 28)
+
+net = torch.nn.Sequential(
+    Reshape(),
+    nn.Conv2d(1, 6, kernel_size=5, padding=2), nn.Sigmoid(),#窗口5x5，由于数据集是28x28和论文中32x32不同，所以padding了2
+    nn.AvgPool2d(kernel_size=2, stride=2),#stride=2防止2x2的窗口重叠
+    nn.Conv2d(6, 16, kernel_size=5), nn.Sigmoid(),
+    nn.AvgPool2d(kernel_size=2, stride=2),#输出为16*5*5
+    nn.Flatten(),#把16x5x5拉长变成1维的1x400
+    nn.Linear(16 * 5 * 5, 120), nn.Sigmoid(),
+    nn.Linear(120, 84), nn.Sigmoid(),nn.Linear(84, 10))#最后输出1*10的向量
+    #去掉了高斯层
+batch_size = 256
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size=batch_size)
+
+def evaluate_accuracy_gpu(net, data_iter, device=None):
+    &quot;&quot;&quot;使用GPU计算模型在数据集上的精度。&quot;&quot;&quot;
+    if isinstance(net, torch.nn.Module):
+        net.eval()  # 设置为评估模式
+        if not device: #未设置device就看net的第一个参数的device
+            device = next(iter(net.parameters())).device
+    # 正确预测的数量，总预测的数量
+    metric = d2l.Accumulator(2)
+    for X, y in data_iter:
+        if isinstance(X, list):
+            # BERT微调所需的（之后将介绍）
+            X = [x.to(device) for x in X]
+        else:
+            X = X.to(device)
+        y = y.to(device)
+        metric.add(d2l.accuracy(net(X), y), y.numel())
+    return metric[0] / metric[1] #分类正确的个数/所有
+#lr为学习率
+def train_ch6(net, train_iter, test_iter, num_epochs, lr, device):
+    &quot;&quot;&quot;用GPU训练模型(在第六章定义)&quot;&quot;&quot;
+    def init_weights(m): #初始化权重
+        if type(m) == nn.Linear or type(m) == nn.Conv2d:
+            nn.init.xavier_uniform_(m.weight) #线性回归和二维卷积自动初始化权重（卷积核）
+    net.apply(init_weights)
+    print(&#39;training on&#39;, device)
+    net.to(device)#搬入GPU
+    optimizer = torch.optim.SGD(net.parameters(), lr=lr)
+    loss = nn.CrossEntropyLoss()
+    #使用动画方便查看结果
+    animator = d2l.Animator(xlabel=&#39;epoch&#39;, xlim=[1, num_epochs],
+                            legend=[&#39;train loss&#39;, &#39;train acc&#39;, &#39;test acc&#39;])
+    timer, num_batches = d2l.Timer(), len(train_iter)
+    for epoch in range(num_epochs):
+        # 训练损失之和，训练准确率之和，范例数
+        metric = d2l.Accumulator(3)
+        net.train()
+        for i, (X, y) in enumerate(train_iter):
+            timer.start()
+            optimizer.zero_grad()
+            X, y = X.to(device), y.to(device)#把输入输出放在GPU上
+            y_hat = net(X)
+            l = loss(y_hat, y)
+            l.backward()
+            optimizer.step()
+            with torch.no_grad():
+                metric.add(l * X.shape[0], d2l.accuracy(y_hat, y), X.shape[0])
+            timer.stop()
+            train_l = metric[0] / metric[2]
+            train_acc = metric[1] / metric[2]
+            if (i + 1) % (num_batches // 5) == 0 or i == num_batches - 1:
+                animator.add(epoch + (i + 1) / num_batches,
+                             (train_l, train_acc, None))
+        test_acc = evaluate_accuracy_gpu(net, test_iter)
+        animator.add(epoch + 1, (None, None, test_acc))
+    print(f&#39;loss {train_l:.3f}, train acc {train_acc:.3f}, &#39;
+          f&#39;test acc {test_acc:.3f}&#39;)
+    print(f&#39;{metric[2] * num_epochs / timer.sum():.1f} examples/sec &#39;
+          f&#39;on {str(device)}&#39;)</code></pre>
+<p>图片的学习结果 <a href="http://poloclub.github.io/cnn-explainer/" target="_blank" rel="noopener">http://poloclub.github.io/cnn-explainer/</a></p>
+<h1 id="二、AlexNet"><a href="#二、AlexNet" class="headerlink" title="二、AlexNet"></a>二、AlexNet</h1><p>数据集：ImageNet 自然物体彩色图片</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>更深更大的LeNet<br>使用了丢弃法（正则化）、ReLU（减缓梯度消失）、MaxPooling（扩大梯度更容易训练）、隐藏全连接层后（Dense/FC 4096后）加入丢弃层<br> <img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030179.png" alt="在这里插入图片描述"></p>
+<h2 id="torch实现-1"><a href="#torch实现-1" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
+from torch import nn
+from d2l import torch as d2l
+
+net = nn.Sequential(
+    # 步幅为4，以减少输出的高度和宽度 输出通道 96
+    nn.Conv2d(1, 96, kernel_size=11, stride=4, padding=1), nn.ReLU(),
+    nn.MaxPool2d(kernel_size=3, stride=2),
+    # 减小卷积窗口，使用填充为2来使得输入与输出的高和宽一致，且增大输出通道数
+    nn.Conv2d(96, 256, kernel_size=5, padding=2), nn.ReLU(),
+    nn.MaxPool2d(kernel_size=3, stride=2),
+    # 使用三个连续的卷积层和较小的卷积窗口 除了最后的卷积层，输出通道的数量进一步增加。
+    # 在前两个卷积层之后，汇聚层不用于减少输入的高度和宽度
+    nn.Conv2d(256, 384, kernel_size=3, padding=1), nn.ReLU(),
+    nn.Conv2d(384, 384, kernel_size=3, padding=1), nn.ReLU(),
+    nn.Conv2d(384, 256, kernel_size=3, padding=1), nn.ReLU(),
+    nn.MaxPool2d(kernel_size=3, stride=2),
+    nn.Flatten(),
+    # 这里，全连接层的输出数量是LeNet中的好几倍。使用dropout层来减轻过度拟合
+    nn.Linear(6400, 4096), nn.ReLU(),
+    nn.Dropout(p=0.5),
+    nn.Linear(4096, 4096), nn.ReLU(),
+    nn.Dropout(p=0.5), # 丢弃了50%
+    # 最后是输出层。使用Fashion-MNIST，类别数为10，论文中是1000
+    nn.Linear(4096, 10))
+
+batch_size = 128
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=224)
+
+lr, num_epochs = 0.01, 10
+#train_ch6定义在上
+d2l.train_ch6(net, train_iter, test_iter, num_epochs, lr, d2l.try_gpu())</code></pre>
+<h1 id="三、VGG"><a href="#三、VGG" class="headerlink" title="三、VGG"></a>三、VGG</h1><p>为了让模型更深更大，使用更多的卷积层，将卷积层组成块，重复使用这些卷积块<br>更深的模型 窗口更小 效果更好<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030263.png" alt="在这里插入图片描述"></p>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>原始 VGG 网络有 5 个卷积块，其中前两个块各有一个卷积层，后三个块各包含两个卷积层。<br>第一个模块有 64 个输出通道，每个后续模块将输出通道数量翻倍，直到该数字达到 512。由于该网络使用 8 个卷积层和 3 个全连接层，因此它被称为 VGG-11</p>
+<h2 id="torch实现-2"><a href="#torch实现-2" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
+from torch import nn
+from d2l import torch as d2l
+
+def vgg_block(num_convs, in_channels, out_channels):
+    layers = []
+    for _ in range(num_convs):
+        layers.append(nn.Conv2d(in_channels, out_channels,
+                                kernel_size=3, padding=1))
+        layers.append(nn.ReLU())
+        in_channels = out_channels
+    layers.append(nn.MaxPool2d(kernel_size=2,stride=2))
+    return nn.Sequential(*layers)
+
+conv_arch = ((1, 64), (1, 128), (2, 256), (2, 512), (2, 512))
+
+def vgg(conv_arch):
+    conv_blks = []
+    in_channels = 1
+    # 卷积层部分
+    for (num_convs, out_channels) in conv_arch:
+        conv_blks.append(vgg_block(num_convs, in_channels, out_channels))
+        in_channels = out_channels
+
+    return nn.Sequential(
+        *conv_blks, nn.Flatten(),
+        # 全连接层部分 224
+        nn.Linear(out_channels * 7 * 7, 4096), nn.ReLU(), nn.Dropout(0.5),
+        nn.Linear(4096, 4096), nn.ReLU(), nn.Dropout(0.5),
+        nn.Linear(4096, 10))
+
+net = vgg(conv_arch)
+
+ratio = 4 #将通道数除以4 以方便训练
+small_conv_arch = [(pair[0], pair[1] // ratio) for pair in conv_arch]
+net = vgg(small_conv_arch)
+
+lr, num_epochs, batch_size = 0.05, 10, 128
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=224)
+d2l.train_ch6(net, train_iter, test_iter, num_epochs, lr, d2l.try_gpu())</code></pre>
+<h1 id="四、NiN"><a href="#四、NiN" class="headerlink" title="四、NiN"></a>四、NiN</h1><p>网络中的网络</p>
+<h2 id="思路、结构"><a href="#思路、结构" class="headerlink" title="思路、结构"></a>思路、结构</h2><p>全连接层会导致过拟合，用卷积层替代全连接层<br>使用NiN块，一个卷积层+两个卷积层（卷积核为1x1、步幅为1、无填充、输出形状和卷积层输出一致（不改变输出和通道数）），来代替全连接层<br>交替使用NiN块和步幅为2的最大池化层（逐步减小高宽 增大通道数），最后用全局平均池化层替代非常大的全连接层得到输出<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030176.png" alt="在这里插入图片描述"></p>
+<h2 id="torch实现-3"><a href="#torch实现-3" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
+from torch import nn
+from d2l import torch as d2l
+
+def nin_block(in_channels, out_channels, kernel_size, strides, padding):
+    return nn.Sequential(
+        nn.Conv2d(in_channels, out_channels, kernel_size, strides, padding),nn.ReLU(),
+        #输入输出通道数相同
+        nn.Conv2d(out_channels, out_channels, kernel_size=1), nn.ReLU(),
+        nn.Conv2d(out_channels, out_channels, kernel_size=1), nn.ReLU())
+
+net = nn.Sequential(
+    nin_block(1, 96, kernel_size=11, strides=4, padding=0),
+    nn.MaxPool2d(3, stride=2),
+    nin_block(96, 256, kernel_size=5, strides=1, padding=2),
+    nn.MaxPool2d(3, stride=2),
+    nin_block(256, 384, kernel_size=3, strides=1, padding=1),
+    nn.MaxPool2d(3, stride=2),
+    nn.Dropout(0.5),
+    # MNIST的类别数是10，输出降到10即可
+    nin_block(384, 10, kernel_size=3, strides=1, padding=1),
+    nn.AdaptiveAvgPool2d((1, 1)),
+    # 将四维的输出转成二维的输出，其形状为(批量大小, 10)
+    nn.Flatten())
+
+lr, num_epochs, batch_size = 0.1, 10, 128
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=224)
+#内含有Softmax
+d2l.train_ch6(net, train_iter, test_iter, num_epochs, lr, d2l.try_gpu())</code></pre>
+<h1 id="五、GoogLeNet"><a href="#五、GoogLeNet" class="headerlink" title="五、GoogLeNet"></a>五、GoogLeNet</h1><p>并行连接的网络</p>
+<h2 id="Inception块"><a href="#Inception块" class="headerlink" title="Inception块"></a>Inception块</h2><p>将输入的通道分为4份<br>为每个通道使用不同窗口大小和padding的卷积层<br>最后的输出高宽相同<br>减少计算量<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/e1aeffe2ab1243f0a52877f7c9d9242c.png" alt="在这里插入图片描述"></p>
+<h2 id="GoogLeNet"><a href="#GoogLeNet" class="headerlink" title="GoogLeNet"></a>GoogLeNet</h2><p>保留更多高宽<br>9个Inception块<br>每个Stage将高宽减半<br>使用全局平均池化<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030177.png" alt="在这里插入图片描述"><br>Stage1&amp;2：更小的核 更小的输出通道<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030148.png" alt="在这里插入图片描述"></p>
+<p>Stage3：输出通道增加<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030261.png" alt="在这里插入图片描述"></p>
+<p>Stage4&amp;5：增加通道数 最后输出1024维特征</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030254.png" alt="在这里插入图片描述"></p>
+<h2 id="Inception变种"><a href="#Inception变种" class="headerlink" title="Inception变种"></a>Inception变种</h2><p>Inception-BN（V2） 加入batch normalization</p>
+<p>Inception-V3 替换卷积层，消耗内存较多，精度提升<br>把Inception块中的 5x5 替换为多个 3x3 的卷积层（或者1x7和7x1）、把 3x3 换为 1x3 和 3x1 的卷积层<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030261-3745830.png" alt="在这里插入图片描述"><br><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030260.png" alt="在这里插入图片描述"></p>
+<p>Inception-V4 添加残差块连接</p>
+<h2 id="torch实现-4"><a href="#torch实现-4" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
+from torch import nn
+from torch.nn import functional as F
+from d2l import torch as d2l
+
+class Inception(nn.Module):
+    # `c1`--`c4` 是每条路径的输出通道数
+    def __init__(self, in_channels, c1, c2, c3, c4, **kwargs):
+        super(Inception, self).__init__(**kwargs)
+        # 线路1，单1 x 1卷积层
+        self.p1_1 = nn.Conv2d(in_channels, c1, kernel_size=1)
+        # 线路2，1 x 1卷积层后接3 x 3卷积层
+        self.p2_1 = nn.Conv2d(in_channels, c2[0], kernel_size=1)
+        self.p2_2 = nn.Conv2d(c2[0], c2[1], kernel_size=3, padding=1)
+        # 线路3，1 x 1卷积层后接5 x 5卷积层
+        self.p3_1 = nn.Conv2d(in_channels, c3[0], kernel_size=1)
+        self.p3_2 = nn.Conv2d(c3[0], c3[1], kernel_size=5, padding=2)
+        # 线路4，3 x 3最大汇聚层后接1 x 1卷积层
+        self.p4_1 = nn.MaxPool2d(kernel_size=3, stride=1, padding=1)
+        self.p4_2 = nn.Conv2d(in_channels, c4, kernel_size=1)
+    def forward(self, x):
+        p1 = F.relu(self.p1_1(x))
+        p2 = F.relu(self.p2_2(F.relu(self.p2_1(x))))
+        p3 = F.relu(self.p3_2(F.relu(self.p3_1(x))))
+        p4 = F.relu(self.p4_2(self.p4_1(x)))
+        # 在通道维度上拼接输出
+        return torch.cat((p1, p2, p3, p4), dim=1)
+
+b1 = nn.Sequential(nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3),
+                   nn.ReLU(),
+                   nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
+b2 = nn.Sequential(nn.Conv2d(64, 64, kernel_size=1),
+                   nn.ReLU(),
+                   nn.Conv2d(64, 192, kernel_size=3, padding=1),
+                   nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
+b3 = nn.Sequential(Inception(192, 64, (96, 128), (16, 32), 32),
+                   Inception(256, 128, (128, 192), (32, 96), 64),
+                   nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
+b4 = nn.Sequential(Inception(480, 192, (96, 208), (16, 48), 64),
+                   Inception(512, 160, (112, 224), (24, 64), 64),
+                   Inception(512, 128, (128, 256), (24, 64), 64),
+                   Inception(512, 112, (144, 288), (32, 64), 64),
+                   Inception(528, 256, (160, 320), (32, 128), 128),
+                   nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
+b5 = nn.Sequential(Inception(832, 256, (160, 320), (32, 128), 128),
+                   Inception(832, 384, (192, 384), (48, 128), 128),
+                   nn.AdaptiveAvgPool2d((1,1)),
+                   nn.Flatten())
+
+net = nn.Sequential(b1, b2, b3, b4, b5, nn.Linear(1024, 10))
+lr, num_epochs, batch_size = 0.1, 10, 128
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=96)
+d2l.train_ch6(net, train_iter, test_iter, num_epochs, lr, d2l.try_gpu())</code></pre>
+<h1 id="六、批量归一化"><a href="#六、批量归一化" class="headerlink" title="六、批量归一化"></a>六、批量归一化</h1><p>对于很深的神经网络，损失出现在最后，但数据在底部；当底部层发生变化所有层都要跟着改变，因此最后的那些层会重新学习很多次，导致loss收敛变慢。<br>一般作用在全连接层和卷积层的输出上，激活函数之前；全连接层和卷积层输入上<br>对于全连接层，作用在特征维；对于卷积层，作用在通道维。<br>由于是在每个小批量里加入噪音控制模型复杂度，因此不必和Dropout混用。 </p>
+<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>固定小批量里的均值和方差，然后学习出适合的偏移和缩放，以加快收敛<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/3524edcea5e443bb9a103cb17ac75a4c.png" alt="在这里插入图片描述"><br>方差和均值是可学习的参数，控制着做小量的调整（线性变换）<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030304.png" alt="在这里插入图片描述"></p>
+<h1 id="七、残差网络ResNet"><a href="#七、残差网络ResNet" class="headerlink" title="七、残差网络ResNet"></a>七、残差网络ResNet</h1><p>加更多的层不一定能距离最优点更近</p>
+<h2 id="残差块"><a href="#残差块" class="headerlink" title="残差块"></a>残差块</h2><p>加入快速通道来得到 f(x) = x + g(x)，由于g(x)在反向传播，层层求梯度之后可能变得非常小，所有将x加在这里，防止变成0而消失。<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030342.png" alt="在这里插入图片描述"><br>也可以用1x1的Conv调整通道和分辨率<br><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030347.png" alt="在这里插入图片描述"></p>
+<p>可以有各种各样的排列形式<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030318.png" alt="在这里插入图片描述"><br>多个块拼接成ResNet，每个块高宽减半（strides = 2）<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030365.png" alt="在这里插入图片描述"></p>
+<h2 id="torch实现-5"><a href="#torch实现-5" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
+from torch import nn
+from torch.nn import functional as F
+from d2l import torch as d2l
+
+
+class Residual(nn.Module):  #@save
+    def __init__(self, input_channels, num_channels,
+                 use_1x1conv=False, strides=1):
+        #use1x1是否使用1x1的卷积层
+        super().__init__()
+        self.conv1 = nn.Conv2d(input_channels, num_channels,
+                               kernel_size=3, padding=1, stride=strides)
+        self.conv2 = nn.Conv2d(num_channels, num_channels,
+                               kernel_size=3, padding=1)
+        if use_1x1conv:
+            self.conv3 = nn.Conv2d(input_channels, num_channels,
+                                   kernel_size=1, stride=strides)
+        else:
+            self.conv3 = None
+        self.bn1 = nn.BatchNorm2d(num_channels)
+        self.bn2 = nn.BatchNorm2d(num_channels)
+        self.relu = nn.ReLU(inplace=True)
+
+    def forward(self, X):
+        Y = F.relu(self.bn1(self.conv1(X)))
+        Y = self.bn2(self.conv2(Y))
+        if self.conv3:
+            X = self.conv3(X)
+        Y += X
+        return F.relu(Y)
+b1 = nn.Sequential(nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3),
+                   nn.BatchNorm2d(64), nn.ReLU(),
+                   nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
+#num residuals是表示使用几个block组成一个Stage
+def resnet_block(input_channels, num_channels, num_residuals,
+                 first_block=False):
+    blk = []
+    for i in range(num_residuals):
+        if i == 0 and not first_block:
+            blk.append(Residual(input_channels, num_channels,
+                                use_1x1conv=True, strides=2))
+        else:
+            blk.append(Residual(num_channels, num_channels))
+    return blk
+b2 = nn.Sequential(*resnet_block(64, 64, 2, first_block=True))
+b3 = nn.Sequential(*resnet_block(64, 128, 2))
+b4 = nn.Sequential(*resnet_block(128, 256, 2))
+b5 = nn.Sequential(*resnet_block(256, 512, 2))
+net = nn.Sequential(b1, b2, b3, b4, b5,
+                    nn.AdaptiveAvgPool2d((1,1)),
+                    nn.Flatten(), nn.Linear(512, 10))</code></pre>
+<p>各块输出的Shape<br>Sequential output shape:     torch.Size([1, 64, 56, 56])<br>Sequential output shape:     torch.Size([1, 64, 56, 56])<br>Sequential output shape:     torch.Size([1, 128, 28, 28])<br>Sequential output shape:     torch.Size([1, 256, 14, 14])<br>Sequential output shape:     torch.Size([1, 512, 7, 7])<br>AdaptiveAvgPool2d output shape:      torch.Size([1, 512, 1, 1])<br>Flatten output shape:        torch.Size([1, 512])<br>Linear output shape:         torch.Size([1, 10])</p>
+<pre><code class="python">lr, num_epochs, batch_size = 0.05, 10, 256
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=96)
+d2l.train_ch6(net, train_iter, test_iter, num_epochs, lr, d2l.try_gpu())</code></pre>
+<h1 id="DenseNet-稠密连接网络"><a href="#DenseNet-稠密连接网络" class="headerlink" title="DenseNet 稠密连接网络"></a>DenseNet 稠密连接网络</h1><p>用更高阶的泰勒展开，每一层都加上x<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/f7ac3960291949338e7370cfe6832566.png" alt="在这里插入图片描述"></p>
+<h2 id="结构-1"><a href="#结构-1" class="headerlink" title="结构"></a>结构</h2><p>由 稠密块（dense block）和 过渡层 （transition layer）构成。 前者定义如何连接输入和输出，而后者则通过  1×1  的卷积层来减小通道数，并使用步幅为 2 的平均池化层减半高和宽，控制通道数量。</p>
+<h2 id="torch实现-6"><a href="#torch实现-6" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
+from torch import nn
+from d2l import torch as d2l
+
+def conv_block(input_channels, num_channels):
+    return nn.Sequential(
+        nn.BatchNorm2d(input_channels), nn.ReLU(),
+        nn.Conv2d(input_channels, num_channels, kernel_size=3, padding=1))
+# 稠密层        
+class DenseBlock(nn.Module):
+    def __init__(self, num_convs, input_channels, num_channels):
+        super(DenseBlock, self).__init__()
+        layer = []
+        for i in range(num_convs):
+            layer.append(conv_block(
+                num_channels * i + input_channels, num_channels))
+        self.net = nn.Sequential(*layer)
+
+    def forward(self, X):
+        for blk in self.net:
+            Y = blk(X)
+            # 连接通道维度上每个块的输入和输出
+            X = torch.cat((X, Y), dim=1)
+        return X
+blk = DenseBlock(2, 3, 10)
+X = torch.randn(4, 3, 8, 8)
+Y = blk(X)
+Y.shape
+# 过渡层
+def transition_block(input_channels, num_channels):
+    return nn.Sequential(
+        nn.BatchNorm2d(input_channels), nn.ReLU(),
+        nn.Conv2d(input_channels, num_channels, kernel_size=1),
+        nn.AvgPool2d(kernel_size=2, stride=2))
+blk = transition_block(23, 10)
+blk(Y).shape
+# DenseNet
+b1 = nn.Sequential(
+    nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3),
+    nn.BatchNorm2d(64), nn.ReLU(),
+    nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
+
+num_channels, growth_rate = 64, 32
+num_convs_in_dense_blocks = [4, 4, 4, 4]
+blks = []
+for i, num_convs in enumerate(num_convs_in_dense_blocks):
+    blks.append(DenseBlock(num_convs, num_channels, growth_rate))
+    # 上一个稠密块的输出通道数
+    num_channels += num_convs * growth_rate
+    # 在稠密块之间添加一个转换层，使通道数量减半
+    if i != len(num_convs_in_dense_blocks) - 1:
+        blks.append(transition_block(num_channels, num_channels // 2))
+        num_channels = num_channels // 2
+#最后加上池化和全连接
+net = nn.Sequential(
+    b1, *blks,
+    nn.BatchNorm2d(num_channels), nn.ReLU(),
+    nn.AdaptiveMaxPool2d((1, 1)),
+    nn.Flatten(),
+    nn.Linear(num_channels, 10))
+lr, num_epochs, batch_size = 0.1, 10, 256
+train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=96)
+d2l.train_ch6(net, train_iter, test_iter, num_epochs, lr, d2l.try_gpu()) </code></pre>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-05-28T13:45:31.000Z" itemprop="datePublished">2021-05-28</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-深度学习Review【三】序列、RNN、LSTM（GRU）、DRNN"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2021/05/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0Review%E3%80%90%E4%B8%89%E3%80%91%E5%BA%8F%E5%88%97%E3%80%81RNN%E3%80%81LSTM%EF%BC%88GRU%EF%BC%89%E3%80%81DRNN/">Review【一】线性回归、Softmax、感知机、卷积</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <blockquote>
+<p><a href="https://zh-v2.d2l.ai/chapter_multilayer-perceptrons/mlp-concise.html" target="_blank" rel="noopener">课程地址</a></p>
+</blockquote>
+<h1 id="一、序列模型"><a href="#一、序列模型" class="headerlink" title="一、序列模型"></a>一、序列模型</h1><p>序列数据：实际中很多数据是随着时间变化而变化。</p>
+<p>根据条件概率一直x1到xT的概率可以算出x的概率。<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317525.png" alt="在这里插入图片描述"><br>自回归模型：用的数据，预测现在的数据</p>
+<h2 id="马尔科夫假设"><a href="#马尔科夫假设" class="headerlink" title="马尔科夫假设"></a>马尔科夫假设</h2><p>当前数据只和t个过去的数据相关<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317506.png" alt="在这里插入图片描述"></p>
+<h2 id="潜变量"><a href="#潜变量" class="headerlink" title="潜变量"></a>潜变量</h2><p>引入潜变量h来表示过去的信息<br>绿色代表不同的潜变量h，每次在改变x后计算新的潜变量h<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317616.png" alt="在这里插入图片描述"></p>
+<h1 id="二、RNN-循环神经网络"><a href="#二、RNN-循环神经网络" class="headerlink" title="二、RNN 循环神经网络"></a>二、RNN 循环神经网络</h1><p> 适用于100以内的序列<br> 用当前时刻的输入预测下一时刻的输出，“你好世界”，输出的“好”是由输入的“你”和“好”预测出来的。<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317481.png" alt="在这里插入图片描述"><br>W[hx]表示从x到h的权重</p>
+<h2 id="衡量语言模型"><a href="#衡量语言模型" class="headerlink" title="衡量语言模型"></a>衡量语言模型</h2><ul>
+<li>平均交叉熵<ul>
+<li>困惑度：指数（1表示完美，无穷表示垃）</li>
+</ul>
+</li>
+</ul>
+<h2 id="梯度剪裁"><a href="#梯度剪裁" class="headerlink" title="梯度剪裁"></a>梯度剪裁</h2><p>可以防止梯度爆炸，如果梯度长度超过某个值，就拖回到这个值。<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/91b5da51c44f458884862918ed0395fc.png" alt="在这里插入图片描述"></p>
+<h2 id="torch实现"><a href="#torch实现" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
+from torch import nn
+from torch.nn import functional as F
+from d2l import torch as d2l
+
+batch_size, num_steps = 32, 35 #句子长度为35
+train_iter, vocab = d2l.load_data_time_machine(batch_size, num_steps)
+#一个具有256个隐藏单元的单隐藏层的循环神经网络层 rnn_layer
+num_hiddens = 256
+rnn_layer = rnn.RNN(num_hiddens)
+rnn_layer.initialize()
+
+class RNNModel(nn.Module):
+    &quot;&quot;&quot;循环神经网络模型。&quot;&quot;&quot;
+    def __init__(self, rnn_layer, vocab_size, **kwargs):
+        super(RNNModel, self).__init__(**kwargs)
+        self.rnn = rnn_layer #不包括输出层
+        self.vocab_size = vocab_size
+        self.num_hiddens = self.rnn.hidden_size
+        # 如果RNN是双向的（之后将介绍），`num_directions`应该是2，否则应该是1。
+        # 构造输出层
+        if not self.rnn.bidirectional:
+            self.num_directions = 1
+            self.linear = nn.Linear(self.num_hiddens, self.vocab_size)
+        else:
+            self.num_directions = 2
+            self.linear = nn.Linear(self.num_hiddens * 2, self.vocab_size)
+
+    def forward(self, inputs, state):
+        X = F.one_hot(inputs.T.long(), self.vocab_size)
+        X = X.to(torch.float32)
+        Y, state = self.rnn(X, state) # 中间隐藏层的Y
+        # 全连接层首先将`Y`的形状改为(`时间步数`*`批量大小`, `隐藏单元数`)。
+        # 它的输出形状是 (`时间步数`*`批量大小`, `词表大小`)。
+        output = self.linear(Y.reshape((-1, Y.shape[-1])))#把时间和批量这两个维度和到一起
+        return output, state
+
+    def begin_state(self, device, batch_size=1):
+        if not isinstance(self.rnn, nn.LSTM):
+            # `nn.GRU` 以张量作为隐藏状态
+            return  torch.zeros((self.num_directions * self.rnn.num_layers,
+                                 batch_size, self.num_hiddens),
+                                device=device)
+        else:
+            # `nn.LSTM` 以张量作为隐藏状态
+            return (torch.zeros((
+                self.num_directions * self.rnn.num_layers,
+                batch_size, self.num_hiddens), device=device),
+                    torch.zeros((
+                        self.num_directions * self.rnn.num_layers,
+                        batch_size, self.num_hiddens), device=device))
+
+def train_ch8(net, train_iter, vocab, lr, num_epochs, device,
+              use_random_iter=False):
+    &quot;&quot;&quot;训练模型（定义见第8章）。&quot;&quot;&quot;
+    loss = nn.CrossEntropyLoss()
+    animator = d2l.Animator(xlabel=&#39;epoch&#39;, ylabel=&#39;perplexity&#39;,
+                            legend=[&#39;train&#39;], xlim=[10, num_epochs])
+    # 初始化
+    if isinstance(net, nn.Module):
+        updater = torch.optim.SGD(net.parameters(), lr)
+    else:
+        updater = lambda batch_size: d2l.sgd(net.params, lr, batch_size)
+    predict = lambda prefix: predict_ch8(prefix, 50, net, vocab, device)
+    # 训练和预测
+    for epoch in range(num_epochs):
+        ppl, speed = train_epoch_ch8(
+            net, train_iter, loss, updater, device, use_random_iter)
+        if (epoch + 1) % 10 == 0:
+            print(predict(&#39;time traveller&#39;))
+            animator.add(epoch + 1, [ppl])
+    print(f&#39;困惑度 {ppl:.1f}, {speed:.1f} 词元/秒 {str(device)}&#39;)
+    print(predict(&#39;time traveller&#39;))
+    print(predict(&#39;traveller&#39;))
+num_epochs, lr = 500, 1
+d2l.train_ch8(net, train_iter, vocab, lr, num_epochs, device)</code></pre>
+<h1 id="三、GRU-门控循环单元"><a href="#三、GRU-门控循环单元" class="headerlink" title="三、GRU 门控循环单元"></a>三、GRU 门控循环单元</h1><p>  是LSTM的简化，正常情况下效果差不多。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>由于并不是每个值都是同等重要的，所以设置更新门（关注的机制）和重置门（遗忘机制）来只记住相关的值（关键字、关键点、切换场景时的帧 ）。  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317525-3745997.png" alt="在这里插入图片描述"><br>R和Z本质是用sigmoid对全连接层做激活<br>R（重置门）：0到1之间的数，若为0表示之前的东西全不要<br>Z（更新门）：0到1之间的数，若为1表示不用之前的东西更新<br>改进：多了几个可以计算的权重<br><del>H是候选隐含状态：根据X、R和W、之前的H输出当前候选隐含状态<br>H是隐含状态：根据Z、</del>H、之前的H的值输出新的隐含状态<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317628.png" alt="在这里插入图片描述"></p>
+<h2 id="torch实现-1"><a href="#torch实现-1" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">num_inputs = vocab_size
+gru_layer = nn.GRU(num_inputs, num_hiddens)
+model = d2l.RNNModel(gru_layer, len(vocab))
+model = model.to(device)
+d2l.train_ch8(model, train_iter, vocab, lr, num_epochs, device)</code></pre>
+<h1 id="四、LSTM"><a href="#四、LSTM" class="headerlink" title="四、LSTM"></a>四、LSTM</h1><p>先于GRU提出，四套W权重</p>
+<p>遗忘门F：将值收缩为0<br>输入门I：决定是否忽略输入数据<br>输出门O：决定是否使用隐含状态（ 当前的C）<br>候选记忆单元~C：包括了 前一个状态的H（相当于GRU中的 当前状态的H）<br>记忆单元C：C的数值区间比较大，是否使用 之前的C 和 ~C<br>隐含状态H：将C的值稳定在1和-1之间，根据O控制要不要输出<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317553.png" alt="在这里插入图片描述"></p>
+<h2 id="torch实现-2"><a href="#torch实现-2" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">num_inputs = vocab_size
+lstm_layer = nn.LSTM(num_inputs, num_hiddens)
+model = d2l.RNNModel(lstm_layer, len(vocab))
+model = model.to(device)
+d2l.train_ch8(model, train_iter, vocab, lr, num_epochs, device)</code></pre>
+<h1 id="五、Deep-RNN-深度循环"><a href="#五、Deep-RNN-深度循环" class="headerlink" title="五、Deep RNN 深度循环"></a>五、Deep RNN 深度循环</h1><p>输入-隐藏层-输出<br>通过增加隐藏层的个数，来加深RNN，获得更多的非线性性，增大可处理的序列长度。<br>后一个隐藏层的输出是上一个隐藏层的输出，同时下一个时刻的输入是上一个时刻的输出。<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317501.png" alt="在这里插入图片描述"></p>
+<h2 id="torch实现-3"><a href="#torch实现-3" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
+from torch import nn
+from d2l import torch as d2l
+
+batch_size, num_steps = 32, 35
+train_iter, vocab = d2l.load_data_time_machine(batch_size, num_steps)
+#num layers是隐藏层的个数
+vocab_size, num_hiddens, num_layers = len(vocab), 256, 2
+num_inputs = vocab_size
+device = d2l.try_gpu()
+# Pytorch的LSTM不带输出层
+lstm_layer = nn.LSTM(num_inputs, num_hiddens, num_layers)
+model = d2l.RNNModel(lstm_layer, len(vocab))
+model = model.to(device)
+
+num_epochs, lr = 500, 2
+d2l.train_ch8(model, train_iter, vocab, lr, num_epochs, device)</code></pre>
+<h1 id="六、BRNN双向循环网络"><a href="#六、BRNN双向循环网络" class="headerlink" title="六、BRNN双向循环网络"></a>六、BRNN双向循环网络</h1><p>一个词取决于过去和未来的上下文，所以不能用于推测下一个词，只能做完词填空，对一个句子做特征提取，Eg：翻译、改写。</p>
+<p>一个前向RNN隐藏层，一个后向RNN隐藏层，合并（concat）两个隐状态得到输出，两个隐藏层为一组，这两组隐藏层的权重不共享。<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317587.png" alt="在这里插入图片描述"></p>
+<h2 id="torch实现-4"><a href="#torch实现-4" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
+from torch import nn
+from d2l import torch as d2l
+
+# 加载数据
+batch_size, num_steps, device = 32, 35, d2l.try_gpu()
+train_iter, vocab = d2l.load_data_time_machine(batch_size, num_steps)
+# 通过设置&#39;bidirective=True&#39;来定义双向LSTM模型
+vocab_size, num_hiddens, num_layers = len(vocab), 256, 2
+num_inputs = vocab_size
+lstm_layer = nn.LSTM(num_inputs, num_hiddens, num_layers, bidirectional=True)
+model = d2l.RNNModel(lstm_layer, len(vocab))
+model = model.to(device)
+# 训练模型
+num_epochs, lr = 500, 1
+d2l.train_ch8(model, train_iter, vocab, lr, num_epochs, device)</code></pre>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-05-28T13:45:31.000Z" itemprop="datePublished">2021-05-28</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-深度学习Review【四】编解码.md"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2021/05/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0Review%E3%80%90%E5%9B%9B%E3%80%91%E7%BC%96%E8%A7%A3%E7%A0%81.md/">Review【一】线性回归、Softmax、感知机、卷积</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <blockquote>
+<p><a href="https://zh-v2.d2l.ai/chapter_multilayer-perceptrons/mlp-concise.html" target="_blank" rel="noopener">课程地址</a></p>
+</blockquote>
+<h1 id="一、编码-解码"><a href="#一、编码-解码" class="headerlink" title="一、编码-解码"></a>一、编码-解码</h1><p>编码（训练）：处理输出，把输入编程成中甲你表达形式（特征）<br>解码（预测）：生成输出，把特征解码成输出</p>
+<pre><code class="python">from torch import nn
+
+class Encoder(nn.Module):
+    &quot;&quot;&quot;编码器-解码器结构的基本编码器接口。&quot;&quot;&quot;
+    def __init__(self, **kwargs):
+        super(Encoder, self).__init__(**kwargs)
+
+    def forward(self, X, *args):
+        raise NotImplementedError
+class Decoder(nn.Module):
+    &quot;&quot;&quot;编码器-解码器结构的基本解码器接口。&quot;&quot;&quot;
+    def __init__(self, **kwargs):
+        super(Decoder, self).__init__(**kwargs)
+
+    def init_state(self, enc_outputs, *args):
+        raise NotImplementedError
+
+    def forward(self, X, state):
+        raise NotImplementedError
+class EncoderDecoder(nn.Module):
+    &quot;&quot;&quot;编码器-解码器结构的基类。&quot;&quot;&quot;
+    def __init__(self, encoder, decoder, **kwargs):
+        super(EncoderDecoder, self).__init__(**kwargs)
+        self.encoder = encoder
+        self.decoder = decoder
+
+    def forward(self, enc_X, dec_X, *args):
+        enc_outputs = self.encoder(enc_X, *args)
+        dec_state = self.decoder.init_state(enc_outputs, *args)
+        return self.decoder(dec_X, dec_state)</code></pre>
+<h1 id="二、Seq2seq"><a href="#二、Seq2seq" class="headerlink" title="二、Seq2seq"></a>二、Seq2seq</h1><p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215455572.png" alt="在这里插入图片描述"><br>训练过程，即Encode的过程（一个RNN)是双向的<br>解码器是单向的<br>RNN也不需要定长的序列作为输入输出</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_Q1NETiBA6IiS5YWL5YS_5LiN5byA6aOe5py6,size_26,color_FFFFFF,t_70,g_se,x_16.png" alt="在这里插入图片描述"><br>把编码器的RNN最后一层的输出放在解码器里，作为初始隐状态 </p>
+<h2 id="torch"><a href="#torch" class="headerlink" title="torch"></a>torch</h2><pre><code class="python">import collections
+import math
+import torch
+from torch import nn
+from d2l import torch as d2l
+
+class Seq2SeqEncoder(d2l.Encoder):
+    &quot;&quot;&quot;用于序列到序列学习的循环神经网络编码器Encode&quot;&quot;&quot;
+    def __init__(self, vocab_size, embed_size, num_hiddens, num_layers,dropout=0, **kwargs):
+        super(Seq2SeqEncoder, self).__init__(**kwargs)
+        # 嵌入层
+        self.embedding = nn.Embedding(vocab_size, embed_size) 
+        #对每个词embedding
+        self.rnn = nn.GRU(embed_size, num_hiddens, num_layers,
+                          dropout=dropout)
+        #numlayers是RNN的层数 numhiddens是隐藏层的层数
+    def forward(self, X, *args):
+        # 输出&#39;X&#39;的形状：(`batch_size`, `num_steps`, `embed_size`)
+        X = self.embedding(X)
+        # 在循环神经网络模型中，第一个轴对应于时间步，交换batchsize和numstep
+        X = X.permute(1, 0, 2)
+        # 如果未提及状态，则默认为0
+        output, state = self.rnn(X)
+        # `output`的形状: (`num_steps`, `batch_size`, `num_hiddens`)
+        # `state[0]`的形状: (`num_layers`, `batch_size`, `num_hiddens`)
+        return output, state
+
+encoder = Seq2SeqEncoder(vocab_size=10, embed_size=8, num_hiddens=16,
+                         num_layers=2)
+encoder.eval()
+X = torch.zeros((4, 7), dtype=torch.long)
+output, state = encoder(X)
+#output和state的形状torch.Size([7, 4, 16]) torch.Size([2, 4, 16])
+
+class Seq2SeqDecoder(d2l.Decoder):
+    &quot;&quot;&quot;用于序列到序列学习的循环神经网络解码器。&quot;&quot;&quot;
+    def __init__(self, vocab_size, embed_size, num_hiddens, num_layers,
+                 dropout=0, **kwargs):
+        super(Seq2SeqDecoder, self).__init__(**kwargs)
+        self.embedding = nn.Embedding(vocab_size, embed_size)
+        self.rnn = nn.GRU(embed_size + num_hiddens, num_hiddens, num_layers,
+                          dropout=dropout)
+        self.dense = nn.Linear(num_hiddens, vocab_size)
+        #分类
+
+    def init_state(self, enc_outputs, *args):
+        return enc_outputs[1] #enc_outputs[1]为state
+
+    def forward(self, X, state):
+        # 输出&#39;X&#39;的形状：(`batch_size`, `num_steps`, `embed_size`)
+        X = self.embedding(X).permute(1, 0, 2)
+        # 广播`context`，使其具有与`X`相同的`num_steps`
+        context = state[-1].repeat(X.shape[0], 1, 1)
+        X_and_context = torch.cat((X, context), 2)
+        output, state = self.rnn(X_and_context, state)
+        output = self.dense(output).permute(1, 0, 2)
+        # `output`的形状: (`batch_size`, `num_steps`, `vocab_size`)
+        # `state[0]`的形状: (`num_layers`, `batch_size`, `num_hiddens`)
+        return output, state
+decoder = Seq2SeqDecoder(vocab_size=10, embed_size=8, num_hiddens=16,
+                         num_layers=2)
+decoder.eval()
+state = decoder.init_state(encoder(X))
+output, state = decoder(X, state)
+# output和state的shape(torch.Size([4, 7, 10]), torch.Size([2, 4, 16]))</code></pre>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-05-28T13:45:31.000Z" itemprop="datePublished">2021-05-28</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
 id="post-基础算法"
 class="article article-type-post"
 >
@@ -712,8 +1705,7 @@ class="article article-type-post"
     </header>
     <div class="article-entry post-inner-html">
         
-        <p>[TOC]</p>
-<h1 id="基础算法"><a href="#基础算法" class="headerlink" title="基础算法"></a>基础算法</h1><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="快速排序-分治"><a href="#快速排序-分治" class="headerlink" title="快速排序 - 分治"></a>快速排序 - 分治</h3><p>分治：不断把数据分成两部分，一半小于另一半</p>
+        <h1 id="基础算法"><a href="#基础算法" class="headerlink" title="基础算法"></a>基础算法</h1><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="快速排序-分治"><a href="#快速排序-分治" class="headerlink" title="快速排序 - 分治"></a>快速排序 - 分治</h3><p>分治：不断把数据分成两部分，一半小于另一半</p>
 <ol>
 <li><p>确定分界（4种方法）：取q[l], q[(l + r) / 2], q[r], 随机点 </p>
 </li>
@@ -765,7 +1757,7 @@ class="article article-type-post"
 <h2 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h2><p>有单调性 一定可以 二分</p>
 <p>求范围，让答案在收缩的区间里</p>
 <p>向左收缩和向右收缩mid的取值不同</p>
-<p><img src="/Users/liting/blog/source/_posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_90b4ffa079-IMG_67CE3ECA2B0B-1.jpeg" alt="IMG_67CE3ECA2B0B-1.jpeg"> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/96221_90b4ffa079-IMG_67CE3ECA2B0B-1.jpeg" alt="IMG_67CE3ECA2B0B-1.jpeg"> </p>
 <pre><code class="C++">// 整数二分
 bool check(int x) {} // 检查x是否满足某种性质
 
@@ -862,7 +1854,7 @@ vector&lt;int&gt; mul(vector&lt;int&gt; &amp;A, int b) {
 
     return C;
 }</code></pre>
-<h3 id="除"><a href="#除" class="headerlink" title="除"></a>除</h3><p><img src="/Users/liting/blog/source/_posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_46df52f37a-IMG_CF57C855FBAC-1.jpeg" alt="IMG_CF57C855FBAC-1.jpeg"> </p>
+<h3 id="除"><a href="#除" class="headerlink" title="除"></a>除</h3><p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/96221_46df52f37a-IMG_CF57C855FBAC-1.jpeg" alt="IMG_CF57C855FBAC-1.jpeg"> </p>
 <pre><code class="C++">// A / b = C ... r, A &gt;= 0, b &gt; 0
 // 引用直接修改原来的r
 vector&lt;int&gt; div(vector&lt;int&gt; &amp;A, int b, int &amp;r) {
@@ -879,8 +1871,8 @@ vector&lt;int&gt; div(vector&lt;int&gt; &amp;A, int b, int &amp;r) {
 }</code></pre>
 <h2 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h2><p>应用：计算前缀和</p>
 <p>存前缀和的下标从1开始，将数组下标为0的值设为0</p>
-<h3 id="一维"><a href="#一维" class="headerlink" title="一维"></a>一维</h3><p><img src="/Users/liting/blog/source/_posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_fda86e367a-IMG_D9E1403749B2-1.jpeg" alt="IMG_D9E1403749B2-1.jpeg"></p>
-<h3 id="二维"><a href="#二维" class="headerlink" title="二维"></a>二维</h3><p><img src="/Users/liting/blog/source/_posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_bfe890657b-96221_82a4b4b87a-IMG_57AF8F31A5F1-1.jpg" alt="96221_82a4b4b87a-IMG_57AF8F31A5F1-1.jpg"> </p>
+<h3 id="一维"><a href="#一维" class="headerlink" title="一维"></a>一维</h3><p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/96221_fda86e367a-IMG_D9E1403749B2-1.jpeg" alt="IMG_D9E1403749B2-1.jpeg"></p>
+<h3 id="二维"><a href="#二维" class="headerlink" title="二维"></a>二维</h3><p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/96221_bfe890657b-96221_82a4b4b87a-IMG_57AF8F31A5F1-1.jpg" alt="96221_82a4b4b87a-IMG_57AF8F31A5F1-1.jpg"> </p>
 <pre><code class="C++">// 一维
 s[i] = s[i-1] + a[i];
 s[j] - s[i-1];
@@ -890,8 +1882,8 @@ sum[i][j] = sum[i-1][j] + sum[i][j-1] - sum[i-1][j-1] + a[i][j];
 sum[x2][y2] - sum[x2][y1-1] - sum[x1-1][y2] + sum[x1-1][y1-1];</code></pre>
 <h2 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h2><p>应用：在[ l , r ]之间的每个数加上 c</p>
 <p>前缀和的逆运算</p>
-<h3 id="一维-1"><a href="#一维-1" class="headerlink" title="一维"></a>一维</h3><p><img src="/Users/liting/blog/source/_posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_2d5a8c7d7b-IMG_C86BC0DC46CD-1.jpeg" alt="IMG_C86BC0DC46CD-1.jpeg"> </p>
-<h3 id="二维-1"><a href="#二维-1" class="headerlink" title="二维"></a>二维</h3><p><img src="/Users/liting/blog/source/_posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_3c3bcc877b-IMG_66D0BEAAF6CD-1.jpeg" alt="IMG_66D0BEAAF6CD-1.jpeg"> </p>
+<h3 id="一维-1"><a href="#一维-1" class="headerlink" title="一维"></a>一维</h3><p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/96221_2d5a8c7d7b-IMG_C86BC0DC46CD-1.jpeg" alt="IMG_C86BC0DC46CD-1.jpeg"> </p>
+<h3 id="二维-1"><a href="#二维-1" class="headerlink" title="二维"></a>二维</h3><p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/96221_3c3bcc877b-IMG_66D0BEAAF6CD-1.jpeg" alt="IMG_66D0BEAAF6CD-1.jpeg"> </p>
 <pre><code class="C++">// 一维
 // a存b的前缀和
 b[i] = a[i]-a[i-1]
@@ -952,7 +1944,7 @@ b[i][j] += b[i-1][j] + b[i][j-1] - b[i-1][j-1];
 <h2 id="离散化"><a href="#离散化" class="headerlink" title="离散化"></a>离散化</h2><p>离散化：稀疏数组中，10^5个数，值域为 0 ~ 10^9，将值域映射到 0 ~ n</p>
 <p>难点：可能存在重复元素，并能及时得到离散化后的值</p>
 <p>应用：稀疏数组即数组下标很大，但数组中很多值是空的</p>
-<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_3d6388e57c-IMG_DA2CAA82DDB6-1.jpeg" alt="IMG_DA2CAA82DDB6-1.jpeg"> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/96221_3d6388e57c-IMG_DA2CAA82DDB6-1.jpeg" alt="IMG_DA2CAA82DDB6-1.jpeg"> </p>
 <pre><code class="C++">// 用vector模拟set，可以用下标访问
 vector&lt;int&gt; vec;
 sort(vec.begin(), vec.end()); // 排序
@@ -1023,7 +2015,7 @@ void remove(int k) {
 <h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h3><p>应用：找每个数左边第一个比它小/大的数、视野总和、柱状图中最大矩形</p>
 <p>有序栈：如果<strong>栈为空</strong>或<strong>入栈元素值小于栈顶元素值</strong>，则入栈；否则，如果入栈则会破坏栈的单调性，则需要把比入栈元素小的元素全部出栈。</p>
 <p>思想：先考虑暴力，然后优化</p>
-<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_207657767c-IMG_75854B600D80-1.jpeg" alt="IMG_75854B600D80-1.jpeg"> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/96221_207657767c-IMG_75854B600D80-1.jpeg" alt="IMG_75854B600D80-1.jpeg"> </p>
 <pre><code class="C++">// STL
 for (int i = 0; i &lt; n; i ++ ) {
     cin&gt;&gt;x;
@@ -1043,7 +2035,7 @@ for (int i = 0; i &lt; n; i ++ ) {
   stk[++tt] = x;
 }</code></pre>
 <h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><h3 id="单调队列（滑动窗口）"><a href="#单调队列（滑动窗口）" class="headerlink" title="单调队列（滑动窗口）"></a>单调队列（滑动窗口）</h3><p>思路：先暴力 再优化，根据单调性，去除不必要的数据和遍历</p>
-<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_c426d80b7d-IMG_802D4A12F0EB-1.jpeg" alt="IMG_802D4A12F0EB-1.jpeg"> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/96221_c426d80b7d-IMG_802D4A12F0EB-1.jpeg" alt="IMG_802D4A12F0EB-1.jpeg"> </p>
 <pre><code class="C++">// 数组模拟队列
 int hh = 0, tt = -1;
 for (int i = 0; i &lt; n; i ++ ) {
@@ -1072,7 +2064,7 @@ for (int i = 0; i &lt; n; i ++ ) {
   if (que1.size() &gt; k-1) cout&lt;&lt;que1.top().x&lt;&lt;&#39; &#39;;
 }</code></pre>
 <h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><p>应用：找子串</p>
-<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_64cbfa007e-IMG_E8CB8965BF92-1.jpeg" alt="IMG_E8CB8965BF92-1.jpeg"> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/96221_64cbfa007e-IMG_E8CB8965BF92-1.jpeg" alt="IMG_E8CB8965BF92-1.jpeg"> </p>
 <pre><code class="C++">// 求next
 for (int i = 2, j = 0; i &lt;= n; i ++ ) {
     while (j &amp;&amp; p[i] != p[j+1]) j = ne[j];
@@ -1092,7 +2084,7 @@ for (int i = 1, j = 0; i &lt;= m; i ++ ) {
   }
 }</code></pre>
 <h2 id="Trie树"><a href="#Trie树" class="headerlink" title="Trie树"></a>Trie树</h2><p>高效存储查找字符串集合</p>
-<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_8b858dd97e-IMG_F19C60B06C11-1.jpeg" alt="IMG_F19C60B06C11-1.jpeg"> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/96221_8b858dd97e-IMG_F19C60B06C11-1.jpeg" alt="IMG_F19C60B06C11-1.jpeg"> </p>
 <pre><code class="C++">// son每个结点的子节点
 // cnt以当前点结尾的单词的数量
 // 下标为0的点 空节点或者根节点
@@ -1171,7 +2163,7 @@ d[find(a)] = distance; // 根据具体问题，初始化find(a)的偏移量
 </code></pre>
 <h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>完全二叉树</p>
 <p>根结点小于等于左右子结点</p>
-<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_52e7bb837f-IMG_06DCF7F7578D-1.jpeg" alt="IMG_06DCF7F7578D-1.jpeg"> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/96221_52e7bb837f-IMG_06DCF7F7578D-1.jpeg" alt="IMG_06DCF7F7578D-1.jpeg"> </p>
 <pre><code class="C++">int h[N]; // 用完全二叉树存堆
 // 从根往下调整
 void down(int u) {
@@ -1198,7 +2190,7 @@ heap[k] = x; down(k); up(k);</code></pre>
 <h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><p>广搜</p>
 <p>八皇后</p>
 <h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h2><p>关键：广搜、入度</p>
-<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/96221_3f32973686-IMG_99F1477B4A0A-1.jpeg" alt="IMG_99F1477B4A0A-1.jpeg"> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/96221_3f32973686-IMG_99F1477B4A0A-1.jpeg" alt="IMG_99F1477B4A0A-1.jpeg"> </p>
 <pre><code class="C++">bool topsort() {
     queue&lt;int&gt; que;
     for (int i = 1; i &lt;= n; i++) // 初始化 将入度为0的点入队
@@ -1217,10 +2209,10 @@ heap[k] = x; down(k); up(k);</code></pre>
     return ans.size() == n; // 全进入ans则存在拓扑
 }</code></pre>
 <h2 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h2><p>n为点数，m为边数</p>
-<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/IMG_275108A5538C-1.jpeg" alt="IMG_275108A5538C-1"></p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/IMG_275108A5538C-1.jpeg" alt="IMG_275108A5538C-1"></p>
 <h3 id="朴素Dijkstra"><a href="#朴素Dijkstra" class="headerlink" title="朴素Dijkstra"></a>朴素Dijkstra</h3><p>稠密图用邻接矩阵</p>
 <p>重边保留短边，忽略自环</p>
-<p><img src="%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95.assets/IMG_E4D127BD4E5A-1.jpeg" alt="IMG_E4D127BD4E5A-1"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/IMG_E4D127BD4E5A-1.jpeg" alt="IMG_E4D127BD4E5A-1"></p>
 <pre><code class="C++">int g[N][N];  // 存储每条边
 int dist[N];  // 存储1号点到每个点的最短距离
 bool st[N];   // 存储每个点的最短路是否已经确定
@@ -1310,870 +2302,6 @@ int dijkstra() {
     
     
         <div class="article-tag">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
-        </div>
-    
-    </div>
-</footer>
-
-</article>
-
-    
-  
-    
-      <article
-id="post-爬虫"
-class="article article-type-post"
->
-
-
-
-<div class="article-inner">
-    
-
-    <div class="article-body">
-    <header class="article-title">
-        <a href="/2020/07/08/%E7%88%AC%E8%99%AB/">爬虫</a>
-    </header>
-    <div class="article-entry post-inner-html">
-        
-        <h2 id="爬取有道翻译（POST后下载）"><a href="#爬取有道翻译（POST后下载）" class="headerlink" title="爬取有道翻译（POST后下载）"></a>爬取有道翻译（POST后下载）</h2><pre><code>import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
-# 取消SSL证书检测
-import urllib.request
-import urllib.parse
-import json
-import time
-while True:
-    url = &#39;http://fanyi.youdao.com/translate?smartresult=dict&amp;smartresult=rule&#39;
-    data = {}
-    data[&#39;i&#39;] = input(&quot;请输入翻译内容：\n&quot;)
-    data[&#39;doctype&#39;] = &#39;json&#39;
-    data[&#39;keyfrom&#39;] = &#39;fanyi.web&#39;
-    data = urllib.parse.urlencode(data).encode(&#39;utf-8&#39;)
-
-    response = urllib.request.Request(url, data) #POST给网站要翻译的句子
-    response.add_header(&#39;User-Agent&#39;, &#39;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36&#39;) # 伪装访问方式
-    response = urllib.request.urlopen(response)
-    html = response.read().decode(&#39;utf-8&#39;)
-    target = json.loads(html)
-    print(target[&#39;translateResult&#39;][0][0][&#39;tgt&#39;])
-    time.sleep(2)</code></pre><h2 id="BeautifulSoup爬HTML"><a href="#BeautifulSoup爬HTML" class="headerlink" title="BeautifulSoup爬HTML"></a>BeautifulSoup爬HTML</h2><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>find_all(self, name=None, attrs={‘ ‘:’ ‘}, recursive=True, text=None, limit=None, **kwargs)</p>
-<p>查找所有</p>
-<p>self要查找的元素</p>
-<p>name目标元素的名称</p>
-<p>attrs元素的属性</p>
-<p>recursive查找是否在节点子树下展开</p>
-<p>支持自己定义函数查找</p>
-<p>find(self, name=None, attrs={‘ ‘:’ ‘}, recursive=True, text=None, limit=None, **kwargs)</p>
-<p>查找第一个</p>
-<pre><code>import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
-import urllib.request
-from bs4 import BeautifulSoup
-
-try:
-    url = &#39;https://liting1024.github.io/2020/02/20/Python/&#39;
-    response=urllib.request.urlopen(url)
-    html=response.read().decode()
-    soup=BeautifulSoup(html,&#39;lxml&#39;)
-
-    def endsWith(s,t):
-        if len(s)&gt;=len(t):
-            return s[len(s)-len(t):]==t
-        return False
-    def myFilter(tag):
-        return (tag.name==&#39;a&#39; and tag.has_attr(&#39;href&#39;) and tag[&#39;href&#39;]==&#39;/category&#39; and endsWith(tag.text,&#39;ies&#39;))
-    # 元素类型为a，有超链接，且超链接为/category，内容以ies结尾
-
-    tag1=soup.find(&#39;h1&#39;)
-    tag2=soup.find_all(&#39;a&#39;,attrs={&#39;class&#39;:&#39;menu-item&#39;})
-    tag3=soup.find_all(myFilter)
-    print(tag1,&#39;\n&#39;,tag2,&#39;\n&#39;,tag3)
-    for tag in tag2:
-        print(tag[&#39;href&#39;])
-    for tag in tag2:
-        print(tag.text)
-except Exception as err:
-    print(err)</code></pre><h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><p>tag.parent 父类树节点</p>
-<p>tag.children 子节点</p>
-<p>tag.descendants 所有子孙节点</p>
-<p>tag.next_sibling 最近的下一个兄弟节点</p>
-<p>tag.previous_sibling 上一个兄弟节点</p>
-<h3 id="CSS语法查找"><a href="#CSS语法查找" class="headerlink" title="CSS语法查找"></a>CSS语法查找</h3><p>soup.select(tagName, attName=value)</p>
-<table>
-<thead>
-<tr>
-<th align="left">attName</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">attName^=value</td>
-<td>以value开头匹配属性</td>
-</tr>
-<tr>
-<td align="left">attName$=value</td>
-<td>以value结尾</td>
-</tr>
-<tr>
-<td align="left">attName*=value</td>
-<td>包含指定值</td>
-</tr>
-</tbody></table>
-<pre><code>soup.select(&quot;p a[rel=&#39;noopener&#39;]&quot;))
-# 查找p下的具有rel=‘noopenner’属性的a
-soup.select(&quot;p &gt; a&quot;)
-# 查找p下的子节点a，不包含孙节点
-soup.select(&quot;p ~ a&quot;)
-# 查到p后面同级别的a</code></pre><h3 id="爬天气预报"><a href="#爬天气预报" class="headerlink" title="爬天气预报"></a>爬天气预报</h3><pre><code>import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
-import urllib.request
-from bs4 import BeautifulSoup
-from bs4 import UnicodeDammit
-
-try:
-    url = &#39;http://www.weather.com.cn/weather/101080101.shtml&#39;
-    headers={&quot;User-Agent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36&quot;}
-    req=urllib.request.Request(url,headers=headers)
-    data=urllib.request.urlopen(req)
-    data=data.read()
-    dammit=UnicodeDammit(data,[&#39;utf-8&#39;,&#39;gdk&#39;])
-    html=dammit.unicode_markup
-    # 自动选择解码
-    soup=BeautifulSoup(html, &#39;lxml&#39;)
-    lis=soup.select(&quot;ul[class=&#39;t clearfix&#39;] li&quot;)
-    for li in lis:
-        date = li.select(&#39;h1&#39;)[0].text
-        weather = li.select(&quot;p[class=&#39;wea&#39;]&quot;)[0].text
-        temp1 = li.select(&quot;p[class=&#39;tem&#39;] i&quot;)[0].text
-        if li.select(&quot;p[class=&#39;tem&#39;] span&quot;)==[]:
-            temp=temp1
-            # temp2和temp1相等是无法搜索到temp2
-        else:
-            temp2=li.select(&quot;p[class=&#39;tem&#39;] span&quot;)[0].text
-            temp=temp1+&#39;/&#39;+temp2
-        print(date, weather, temp)
-except Exception as err:
-    print(err)</code></pre><h2 id="爬树"><a href="#爬树" class="headerlink" title="爬树"></a>爬树</h2><h3 id="深度和广度类"><a href="#深度和广度类" class="headerlink" title="深度和广度类"></a>深度和广度类</h3><pre><code>class Stack: # 列表栈，深度
-    def __init__(self):
-        self.st=[]
-    def pop(self):
-        return self.st.pop()
-    def push(self,obj):
-        return self.st.append(obj)
-    def isempty(self):
-        return len(self.st)==0
-
-class Queue: # 队列，广度
-    def __init__(self):
-        self.st=[]
-    def fetch(self):
-        return self.st.pop(0)
-    def enter(self,obj):
-        return self.st.append(obj)
-    def isempty(self):
-        return len(self.st)==0</code></pre><h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>t = Thread(target=,args=)</p>
-<p>target：要执行的函数</p>
-<p>args：一个元组或列表</p>
-<pre><code>from threading import Thread
-
-t.setDaemon(False)
-# 设定为后台线程
-t.start()
-# 启动线程
-t.join()
-# 阻塞当前线程，等t执行后继续执行
-lock=threading._RLock()
-# 设定一个锁
-lock.acquire()
-# lock获取线程锁，如果另一个线程调用了acquire而没有release则阻塞当前线程等待别的线程释放锁
-lock.release()
-# 释放锁</code></pre><h3 id="多线程爬天气网图片"><a href="#多线程爬天气网图片" class="headerlink" title="多线程爬天气网图片"></a>多线程爬天气网图片</h3><pre><code>import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
-from bs4 import BeautifulSoup
-from bs4 import UnicodeDammit
-from urllib import parse
-import urllib.request
-import threading
-
-def imageSpider(start_url):
-    global threads
-    global count
-    try:
-        urls=[]
-        req=urllib.request.Request(start_url,headers=headers)
-        data=urllib.request.urlopen(req)
-        data=data.read()
-        dammit=UnicodeDammit(data, [&quot;utf-8&quot;,&quot;gdk&quot;])
-        data=dammit.unicode_markup
-        soup=BeautifulSoup(data,&#39;lxml&#39;)
-        images=soup.select(&#39;img&#39;)
-        for image in images:
-            src=image[&#39;src&#39;]
-            url=parse.urljoin(start_url, src)
-            if url not in urls:
-                print(url)
-                urls.append(url)
-                count=count+1
-                T=threading.Thread(target=download,args=(url,count))
-                # 多线程运行download函数
-                T.setDaemon(False)
-                T.start()
-                threads.append(T)
-    except Exception as err:
-        print(err)
-
-def download(url,count):
-    if url[len(url)-4]==&#39;.&#39;:
-        ext=url[len(url)-4:]
-    else:
-        ext=&#39;&#39;
-    req=urllib.request.Request(url, headers=headers)
-    data=urllib.request.urlopen(req,timeout=100)
-    data=data.read()
-    fobj=open(&#39;image\\&#39;+str(count)+ext,&#39;wb&#39;)
-    fobj.write(data)
-    fobj.close()
-    print(&#39;downloaded&#39;+str(count)+ext)
-
-start_url=&#39;http://www.weather.com.cn/weather1d/101080101.shtml&#39;
-headers={&#39;User-Agent&#39;:&#39;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36&#39;}
-count=0
-threads=[]
-imageSpider(start_url)
-for t in threads: #多线程等待后结束主程序
-    t.join()
-print(&#39;END&#39;)</code></pre><h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a><a href="https://www.jianshu.com/p/a87dee628cc2" target="_blank" rel="noopener">Scrapy</a></h2><h3 id="创建简单爬虫"><a href="#创建简单爬虫" class="headerlink" title="创建简单爬虫"></a>创建简单爬虫</h3><p>在虚拟python环境中pip install scrapy</p>
-<p>scrapy startproject XXX</p>
-<p>生成爬虫名字为itcast，地址为itcast.cn </p>
-<p>scrapy genspider itcast itcast.cn</p>
-<p>启动爬虫不打印日志</p>
-<p>scrapy crawl 爬虫名字 –nolog </p>
-<p>在spider文件夹中建立py文件</p>
-<pre><code>import scrapy
-
-class MySpider(scrapy.Spider):
-    name=&quot;mySpider&quot;
-
-    def start_requests(self):
-    # 整个函数可以用start_urls = [&#39;https://www.baidu.com&#39;]代替
-        url=&#39;https://www.baidu.com&#39;
-        yield scrapy.Request(url=url, callback=self.parse)
-        # 访问网页回调callback函数，yield返回数据但可以不结束函数
-    def parse(self, response):
-        print(response.url)
-        data=response.body.decode()
-        print(data)</code></pre><p>在XXX文件中建立py文件</p>
-<pre><code>from scrapy import cmdline
-
-cmdline.execute(&#39;scrapy crawl mySpider -s LOG_ENABLED=False&#39;.split())</code></pre><h3 id="查找HTML元素"><a href="#查找HTML元素" class="headerlink" title="查找HTML元素"></a>查找HTML元素</h3><pre><code>from scrapy.selector import Selector
-
-selector=Selector(text=html)
-s=selector.xpath(&#39;//title&#39;)
-# //表示在任何位置，/表示下一级，&#39;//body/book&#39;搜索body下一级的book
-# selector.xpath(&#39;//book&#39;).xpath(&#39;/title&#39;)
-# .xpath(&#39;//book&#39;).xpath(&#39;//title&#39;) 对每个book查找title
-print(s)</code></pre><h4 id="解析为列表"><a href="#解析为列表" class="headerlink" title="解析为列表"></a>解析为列表</h4><p>s=selector.xpath(‘//title’).extract()</p>
-<p>得到title组成的list，.extract_first()得到第一个元素</p>
-<h4 id="获取属性、文本"><a href="#获取属性、文本" class="headerlink" title="获取属性、文本"></a>获取属性、文本</h4><p>s=selector.xpath(‘//title/@id’).extract()</p>
-<p>获取属性值</p>
-<p>s=selector.xpath(“”//title[@id=’chinese’]/text()”).extract()</p>
-<p>限定id属性的值筛选</p>
-<p>s=selector.xpath(‘//title/text()’).extract()</p>
-<p>获取title的文本</p>
-<h4 id="用-代表任何"><a href="#用-代表任何" class="headerlink" title="用*代表任何"></a>用*代表任何</h4><p>用*代替任何节点，不包括Text、Comment节点</p>
-<p>s=selector.xpath(“”//title[@*]”)</p>
-<p>任何属性</p>
-<h4 id="position下角标"><a href="#position下角标" class="headerlink" title="position下角标"></a>position下角标</h4><p>从1开始编号</p>
-<p>//body/title[position( )&gt;2] [position( )&lt;5]</p>
-<p>取第三到六个title</p>
-<h4 id="兄弟节点父节点"><a href="#兄弟节点父节点" class="headerlink" title="兄弟节点父节点"></a>兄弟节点父节点</h4><p>s= selector.xpath( //title[ @lang = ‘chinese ]/parent::*”)</p>
-<p>查找属性为lang= chinese’的title的父节点</p>
-<p>s=sclector.xpathC(“//b[position()= 1]following-sibling::* [position()=1]”)<br>搜索第一个b节点后面的第一个兄弟节点</p>
-<p>“element/ollowing-sibling::*”搜索element后面的同级的所有兄弟节点</p>
-<p>“element/preceding-sibling::*“搜索element 前面的同级的所有兄弟节点<br>“element/preceding-sibling::*[position()=1]”搜索element 前面的同级的第一个兄弟节<br>点</p>
-<h3 id="其他py文件"><a href="#其他py文件" class="headerlink" title="其他py文件"></a>其他py文件</h3><h4 id="items-py储存数据"><a href="#items-py储存数据" class="headerlink" title="items.py储存数据"></a>items.py储存数据</h4><p>items中建立用于储存数据的类</p>
-<pre><code>class YourprojectItem(scrapy.Item): # 继承scrapy.Item
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    title=scrapy.Field()</code></pre><p>在spiders中的爬虫中应用这个类</p>
-<pre><code>from yourProject.items import YourprojectItem
-
-class MySpider(scrapy.Spider):
-    name=&quot;mySpider&quot;
-    start_urls = [&#39;https://www.baidu.com&#39;]
-
-    def parse(self, response):
-        data=response.body.decode()
-        selector=scrapy.Selector(text=data)
-        books=selector.xpath(&quot;//book&quot;)
-        for book in books:
-            item=YourprojectItem()
-            item[&quot;title&quot;]=book.xpath(&quot;./title/text()&quot;).extract_first()
-            yield item</code></pre><h4 id="pipelines-py数据管道处理类"><a href="#pipelines-py数据管道处理类" class="headerlink" title="pipelines.py数据管道处理类"></a>pipelines.py数据管道处理类</h4><p>在settings.py中取消注释</p>
-<p>ITEM_PIPELINES = {</p>
-<p>​    ‘yourProject.pipelines.YourprojectPipeline’: 300,</p>
-<p>}</p>
-<p>爬取一次数据，调用一次process_item函数</p>
-<pre><code>from itemadapter import ItemAdapter
-
-class YourprojectPipeline(object):
-    count = 0
-    def process_item(self, item, spider):
-        YourprojectPipeline.count+=1
-        if YourprojectPipeline.count==1:
-            fobj=open(&quot;book.txt&quot;,&quot;wb&quot;)
-        else:
-            fobj=open(&quot;book.txt&quot;,&quot;at&quot;)
-        print(item[&quot;title&quot;])
-        fobj.write(item[&#39;title&#39;])
-        fobj.close()
-        return item</code></pre><h3 id="爬取当当网图书数据"><a href="#爬取当当网图书数据" class="headerlink" title="爬取当当网图书数据"></a>爬取当当网图书数据</h3>
-        
-    </div>
-    </div>
-
-    <div class="article-badge">
-        
-        
-    </div>
-
-</div>
-
-<footer class="article-footer">
-    <div class="article-more-info">
-    <div class="article-date">
-  <time datetime="2020-07-08T15:58:00.000Z" itemprop="datePublished">2020-07-08</time>
-</div>
-    
-        <div class="article-category">
-        <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a>
-        </div>
-    
-    
-        <div class="article-tag">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
-        </div>
-    
-    </div>
-</footer>
-
-</article>
-
-    
-  
-    
-      <article
-id="post-C-常用函数"
-class="article article-type-post"
->
-
-
-
-<div class="article-inner">
-    
-
-    <div class="article-body">
-    <header class="article-title">
-        <a href="/2020/04/15/C-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">C++常用函数</a>
-    </header>
-    <div class="article-entry post-inner-html">
-        
-        <h1 id="cstring类型"><a href="#cstring类型" class="headerlink" title="cstring类型"></a>cstring类型</h1><h3 id="比较和计算"><a href="#比较和计算" class="headerlink" title="比较和计算"></a>比较和计算</h3><h4 id="strcmp-a-b"><a href="#strcmp-a-b" class="headerlink" title="strcmp(a,b);"></a>strcmp(a,b);</h4><p>比较返回两个char数组的差异度（-2表示有一个char不同）</p>
-<h4 id="strlen-a"><a href="#strlen-a" class="headerlink" title="strlen(a);"></a>strlen(a);</h4><p>计算string或char数组的长度</p>
-<h4 id="size"><a href="#size" class="headerlink" title="size();"></a>size();</h4><h4 id="lenth"><a href="#lenth" class="headerlink" title="lenth();"></a>lenth();</h4><table>
-<thead>
-<tr>
-<th>函数</th>
-<th>功能 是为1 否为0</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>isalpha</td>
-<td>判断是否为字母</td>
-</tr>
-<tr>
-<td>islower/isupper</td>
-<td>小/大写字母</td>
-</tr>
-<tr>
-<td>isdigit</td>
-<td>数字</td>
-</tr>
-<tr>
-<td>isalnum</td>
-<td>字母或数字</td>
-</tr>
-<tr>
-<td>tolower/toupper</td>
-<td>转换为小/大写字母</td>
-</tr>
-</tbody></table>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h4 id="memset-s-c-n"><a href="#memset-s-c-n" class="headerlink" title="memset(s, c, n);"></a>memset(s, c, n);</h4><p>将以开辟内存s的前n个直接初始化为c</p>
-<p>n可以用sizeof(s)</p>
-<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><h4 id="memcpy-b-a-n"><a href="#memcpy-b-a-n" class="headerlink" title="memcpy(b, a, n);"></a>memcpy(b, a, n);</h4><p>以a开头，长度为n的内存，拷贝到b中</p>
-<h4 id="strncpy-b-a-n"><a href="#strncpy-b-a-n" class="headerlink" title="strncpy(b,a,n);"></a>strncpy(b,a,n);</h4><p>以a开头，长度为n的内存，拷贝到b中，<strong>并返回b</strong></p>
-<h4 id="strcpy-b-a"><a href="#strcpy-b-a" class="headerlink" title="strcpy(b,a);"></a>strcpy(b,a);</h4><p>从a开始复制给b，遇到NULL ‘/0’结束</p>
-<h4 id="strcat-b-a"><a href="#strcat-b-a" class="headerlink" title="strcat(b,a);"></a>strcat(b,a);</h4><p>把a连接到b后</p>
-<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><h4 id="getline-cin-a-n"><a href="#getline-cin-a-n" class="headerlink" title="getline(cin,a,n);"></a>getline(cin,a,n);</h4><p>将流中的字符存在a中，</p>
-<p>遇到n结束，没有默认为‘/n’</p>
-<h2 id="cctype"><a href="#cctype" class="headerlink" title="cctype"></a>cctype</h2><h4 id="tolower-toupper"><a href="#tolower-toupper" class="headerlink" title="tolower(); toupper();"></a>tolower(); toupper();</h4><p>改变字母大小写</p>
-<h4 id="isalpha-isdigit-isprint"><a href="#isalpha-isdigit-isprint" class="headerlink" title="isalpha(); isdigit(); isprint();"></a>isalpha(); isdigit(); isprint();</h4><p>判断是否是字母，数字，可打印字符（非控制字符）</p>
-<h2 id="algorithm"><a href="#algorithm" class="headerlink" title="algorithm"></a>algorithm</h2><h4 id="min-max"><a href="#min-max" class="headerlink" title="min(); max()"></a>min(); max()</h4><p>返回两个元素中最小（最大）的一个</p>
-<h4 id="upper-bound-first-last-n"><a href="#upper-bound-first-last-n" class="headerlink" title="upper_bound(first, last, n);"></a>upper_bound(first, last, n);</h4><p>查找区间中第一个大于n的位置，返回的是地址</p>
-<h4 id="lower-bound-first-last-n"><a href="#lower-bound-first-last-n" class="headerlink" title="lower_bound(first, last, n);"></a>lower_bound(first, last, n);</h4><p>查找区间中第一个大于<strong>等于</strong>n的位置，返回的是地址</p>
-<h4 id="next-permutation-first-last-prev-permutation"><a href="#next-permutation-first-last-prev-permutation" class="headerlink" title="next_permutation(first, last); prev_permutation();"></a>next_permutation(first, last); prev_permutation();</h4><p>将数组中的元素全排列</p>
-<p><strong>需要将数组进行升序排列</strong>，否则只能找出该序列之后的全排列数。</p>
-<pre><code>char a[4]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;};
-    do{
-        for(int i=0;i&lt;4;++i)
-            cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
-        cout&lt;&lt;endl;
-    }while(next_permutation(a,a+4));</code></pre><h4 id="sort-first-last-greater-lt-gt"><a href="#sort-first-last-greater-lt-gt" class="headerlink" title="sort(first, last, greater&lt;&gt;());"></a>sort(first, last, greater&lt;&gt;());</h4><pre><code>int a[5]={5,2,4,3,1},b[3]=&quot;cba&quot;;
-sort(a,a+5);//正序排列
-sort(a,a+5,greater&lt;&gt;());//逆序排列数字
-sort(b,b+3,greater&lt;char&gt;());//逆序排列char</code></pre><h4 id="fill-first-last-a"><a href="#fill-first-last-a" class="headerlink" title="fill(first, last, a);"></a>fill(first, last, a);</h4><p>可将数组的值初始化成a</p>
-<h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p>一个动态申请空间的数组</p>
-<h3 id="定义-vector-lt-typename-gt-name"><a href="#定义-vector-lt-typename-gt-name" class="headerlink" title="定义 vector &lt; typename &gt; name;"></a>定义 vector &lt; typename &gt; name;</h3><p>typename可以是任何基本类型 结构体,STL容器vector,set,queue等。</p>
-<pre><code class="C++">vector&lt;int&gt; stu;
-vector&lt;double&gt; stu;
-vector&lt;char&gt; stu;
-vector&lt;node&gt; stu;//node是结构体类型
-vector&lt;vector&lt;int&gt;&gt; name;
-vector&lt;typename&gt; a[arraySize];//申请一个二维数组</code></pre>
-<h3 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h3><pre><code class="c++">//初始化了10个默认值为0的元素
-vector&lt;int&gt; abc(10);
-//初始化了10个值为1的元素
-vector&lt;int&gt; cde(10，1); 
-
-int a[5] = {1,2,3,4,5};
-//通过数组a的地址初始化，注意地址是从0到5（左闭右开区间）
-vector&lt;int&gt; b(a, a+5);
-
-vector&lt;int&gt; a(5,1);
-//通过a初始化
-vector&lt;int&gt; b(a);
-
-//insert初始化方式将同类型的迭代器对应的始末区间（左闭右开区间）内的值插入到vector中
-vector&lt;int&gt; a(6,6);
-vecot&lt;int&gt; b;
-//将a[0]~a[2]插入到b中，b.size()由0变为3
-b.insert(b.begin(), a.begin(), a.begin() + 3);
-//在b开始位置处插入6个6
-b.insert(b.begin(), 6, 6);
-
-vector&lt;int&gt; a(5,1);
-int a1[5] = {2,2,2,2,2};
-vector&lt;int&gt; b(10);
-
- /*将a中元素全部拷贝到b开始的位置中,注意拷贝的区间为a.begin() ~ a.end()的左闭右开的区间*/
-copy(a.begin(), a.end(), b.begin());
-
-//拷贝区间也可以是数组地址构成的区间
-copy(a1, a1+5, b.begin() + 5);</code></pre>
-<h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><h4 id="下标访问"><a href="#下标访问" class="headerlink" title="下标访问"></a>下标访问</h4><p>从0开始</p>
-<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>vector<typename>::iterator it;//it是一个迭代器变量</p>
-<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="push-back-a"><a href="#push-back-a" class="headerlink" title="push_back(a)"></a>push_back(a)</h4><p>在vector最后面添加一个元素a</p>
-<h4 id="pop-back-x"><a href="#pop-back-x" class="headerlink" title="pop_back(x)"></a>pop_back(x)</h4><p>删除vector的尾元素x</p>
-<h4 id="size-1"><a href="#size-1" class="headerlink" title="size()"></a>size()</h4><h4 id="clear"><a href="#clear" class="headerlink" title="clear()"></a>clear()</h4><p>清空vector所有的元素</p>
-<h4 id="insert"><a href="#insert" class="headerlink" title="insert();"></a>insert();</h4><p>insert(it,x);向vector的任意迭代器it初传入一个元素x</p>
-<p>a.insert(a.begin()+1, 5);在a的第1个元素（从第0个算起）的位置插入数值5，如a为1,2,3,4，插入元素后为1,5,2,3,4<br>a.insert(a.begin()+1, 3,5);在a的第1个元素（从第0个算起）的位置插入3个数，其值都为5<br>a.insert(a.begin()+1,b+3, b+6);b为数组，在a的第1个元素（从第0个算起）的位置插入b的第3个元素到第5个元素（不包括b+6），如b为1,2,3,4,5,9,8，插入元素后为1,4,5,9,2,3,4,5,9,8</p>
-<h4 id="erase"><a href="#erase" class="headerlink" title="erase()"></a>erase()</h4><p>erase(x); 删除单个元素</p>
-<p>erase(a,b); 删除左闭右开区间内[a,b)的元素</p>
-<h4 id="copy-a-begin-a-end-b-begin-1"><a href="#copy-a-begin-a-end-b-begin-1" class="headerlink" title="copy(a.begin(),a.end(),b.begin()+1);"></a>copy(a.begin(),a.end(),b.begin()+1);</h4><p>把a中的从a.begin()（包括它）到a.end()（不包括它）的元素复制到b中，从b.begin()+1的位置（包括它）开始复制，覆盖掉原有元素</p>
-<h4 id="find-a-begin-a-end-10"><a href="#find-a-begin-a-end-10" class="headerlink" title="find(a.begin(),a.end(),10);"></a>find(a.begin(),a.end(),10);</h4><p>在a中的从a.begin()（包括它）到a.end()（不包括它）的元素中查找10，若存在返回其在向量中的位置</p>
-<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>一个内部自动升序而且不重复元素的容器</p>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><table>
-<thead>
-<tr>
-<th align="center"><strong>操作</strong></th>
-<th align="center"><strong>效果</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><em>set</em> c</td>
-<td align="center">产生一个空的set/multiset，不含任何元素</td>
-</tr>
-<tr>
-<td align="center">set c(op)</td>
-<td align="center">以op为排序准则，产生一个空的set/multiset</td>
-</tr>
-</tbody></table>
-<h3 id="访问-1"><a href="#访问-1" class="headerlink" title="访问"></a>访问</h3><p>只能通过迭代器</p>
-<p>set<typename>::iterator it;//typename对应定义set时的类型，auto自动推断定义类型</p>
-<h3 id="常用函数-1"><a href="#常用函数-1" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="insert-x"><a href="#insert-x" class="headerlink" title="insert(x)"></a>insert(x)</h4><p>将x插入set容器中，并且自动递增排序和去重</p>
-<h4 id="size-2"><a href="#size-2" class="headerlink" title="size()"></a>size()</h4><h4 id="clear-1"><a href="#clear-1" class="headerlink" title="clear()"></a>clear()</h4><h3 id="end"><a href="#end" class="headerlink" title="end()"></a>end()</h3><p>返回最后一个的迭代器</p>
-<h4 id="find-x"><a href="#find-x" class="headerlink" title="find(x)"></a>find(x)</h4><p>查找值为x的元素，返回它的迭代器</p>
-<h4 id="erase-1"><a href="#erase-1" class="headerlink" title="erase()"></a>erase()</h4><p>erase(x); 删除单个元素</p>
-<p>erase(a,b); 删除左闭右开区间内[a,b)的元素</p>
-<h3 id="multiset"><a href="#multiset" class="headerlink" title="multiset"></a>multiset</h3><p>有序可重复的容器</p>
-<p>通过重载确定排序规则</p>
-<pre><code class="C++">struct rec{
-    int x,y;
-};
-struct cmp{
-    bool operator()(const rec&amp;a,const rec&amp;b){
-        return a.x&lt;b.x||a.x==b.x&amp;&amp;a.y&lt;b.y;
-    }
-};
-multiset&lt;rec,cmp&gt;h;</code></pre>
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>建立key（第一个值）和value（第二个值） 的对应，以key为标准有序</p>
-<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>map&lt;int , int&gt; maps;</p>
-<h3 id="访问-2"><a href="#访问-2" class="headerlink" title="访问"></a>访问</h3><p>maps[key] = value; //给key赋值，key有对应的value就覆盖</p>
-<p>It-&gt;first = 1;</p>
-<h3 id="常用函数-2"><a href="#常用函数-2" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="insert-1"><a href="#insert-1" class="headerlink" title="insert()"></a>insert()</h4><p>maps.insert(pair&lt;type,type&gt;(1,1)); //maps[1] = 1;</p>
-<h4 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h4><p>map&lt;type,type&gt;::iterator it = maps.find(x); //auto代替map&lt;type,type&gt;::iterator 自动推断值的类型</p>
-<h4 id="长度"><a href="#长度" class="headerlink" title="长度"></a>长度</h4><p>maps.empty(); //空返回1</p>
-<p>maps.size(); </p>
-<p>maps.count(x); //返回指定元素出现的次数</p>
-<h4 id="逆向迭代器"><a href="#逆向迭代器" class="headerlink" title="逆向迭代器"></a>逆向迭代器</h4><p>maps.rbegin(); //返回指向maps尾部的逆向迭代器  </p>
-<p>maps.rend(); //返回指向maps头部的逆向迭代器</p>
-<h4 id="bound"><a href="#bound" class="headerlink" title="bound"></a>bound</h4><p>maps.lower_bound(); //返回键值&gt;=给定元素的第一个迭代器</p>
-<p>maps.upper_bound(); //返回键值&gt;给定元素的第一个迭代器</p>
-<h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4><p>for(map&lt;type,type&gt;::iterator it = maps.begin(); it != maps.end(); it++) </p>
-<h4 id="erase-2"><a href="#erase-2" class="headerlink" title="erase()"></a>erase()</h4><p>maps.erase(iterator)</p>
-<p>maps.erase(type)</p>
-<h2 id="哈希hashtable"><a href="#哈希hashtable" class="headerlink" title="哈希hashtable"></a>哈希hashtable</h2><p>unordered_set 不存储重复元素</p>
-<p>unordered_map 实现key和value的映射</p>
-<h3 id="对比set和unordered-set"><a href="#对比set和unordered-set" class="headerlink" title="对比set和unordered_set"></a>对比set和unordered_set</h3><p>map和unordered_set也相同</p>
-<table>
-<thead>
-<tr>
-<th>对比</th>
-<th>set</th>
-<th>unordered_set</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>有序</td>
-<td>有序</td>
-<td>无序</td>
-</tr>
-<tr>
-<td>实现</td>
-<td>BST或RBT</td>
-<td>Hash Table</td>
-</tr>
-<tr>
-<td>插入、删除</td>
-<td>log n</td>
-<td>平均O(1)，最坏O(n)</td>
-</tr>
-</tbody></table>
-<h3 id="unordered-map的成员"><a href="#unordered-map的成员" class="headerlink" title="unordered_map的成员"></a>unordered_map的成员</h3><table>
-<thead>
-<tr>
-<th>成员方法</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>begin()</td>
-<td>返回指向容器中第一个键值对的正向迭代器。</td>
-</tr>
-<tr>
-<td>end()</td>
-<td>返回指向容器中最后一个键值对之后位置的正向迭代器。</td>
-</tr>
-<tr>
-<td>cbegin()</td>
-<td>和 begin() 功能相同，只不过在其基础上增加了 const 属性，即该方法返回的迭代器不能用于修改容器内存储的键值对。</td>
-</tr>
-<tr>
-<td>cend()</td>
-<td>和 end() 功能相同，只不过在其基础上，增加了 const 属性，即该方法返回的迭代器不能用于修改容器内存储的键值对。</td>
-</tr>
-<tr>
-<td>empty()</td>
-<td>若容器为空，则返回 true；否则 false。</td>
-</tr>
-<tr>
-<td>size()</td>
-<td>返回当前容器中存有键值对的个数。</td>
-</tr>
-<tr>
-<td>max_size()</td>
-<td>返回容器所能容纳键值对的最大个数，不同的操作系统，其返回值亦不相同。</td>
-</tr>
-<tr>
-<td>operator[key]</td>
-<td>该模板类中重载了 [] 运算符，其功能是可以向访问数组中元素那样，只要给定某个键值对的键 key，就可以获取该键对应的值。注意，如果当前容器中没有以 key 为键的键值对，则其会使用该键向当前容器中插入一个新键值对。</td>
-</tr>
-<tr>
-<td>at(key)</td>
-<td>返回容器中存储的键 key 对应的值，如果 key 不存在，则会抛出 out_of_range 异常。</td>
-</tr>
-<tr>
-<td>find(key)</td>
-<td>查找以 key 为键的键值对，如果找到，则返回一个指向该键值对的正向迭代器；反之，则返回一个指向容器中最后一个键值对之后位置的迭代器（如果 end() 方法返回的迭代器）。</td>
-</tr>
-<tr>
-<td>count(key)</td>
-<td>在容器中查找以 key 键的键值对的个数。</td>
-</tr>
-<tr>
-<td>equal_range(key)</td>
-<td>返回一个 pair 对象，其包含 2 个迭代器，用于表明当前容器中键为 key 的键值对所在的范围。</td>
-</tr>
-<tr>
-<td>emplace()</td>
-<td>向容器中添加新键值对，效率比 insert() 方法高。</td>
-</tr>
-<tr>
-<td>emplace_hint()</td>
-<td>向容器中添加新键值对，效率比 insert() 方法高。</td>
-</tr>
-<tr>
-<td>insert()</td>
-<td>向容器中添加新键值对。</td>
-</tr>
-<tr>
-<td>erase()</td>
-<td>删除指定键值对。</td>
-</tr>
-<tr>
-<td>clear()</td>
-<td>清空容器，即删除容器中存储的所有键值对。</td>
-</tr>
-<tr>
-<td>swap()</td>
-<td>交换 2 个 unordered_map 容器存储的键值对，前提是必须保证这 2 个容器的类型完全相等。</td>
-</tr>
-<tr>
-<td>bucket_count()</td>
-<td>返回当前容器底层存储键值对时，使用桶（一个线性链表代表一个桶）的数量。</td>
-</tr>
-<tr>
-<td>max_bucket_count()</td>
-<td>返回当前系统中，unordered_map 容器底层最多可以使用多少桶。</td>
-</tr>
-<tr>
-<td>bucket_size(n)</td>
-<td>返回第 n 个桶中存储键值对的数量。</td>
-</tr>
-<tr>
-<td>bucket(key)</td>
-<td>返回以 key 为键的键值对所在桶的编号。</td>
-</tr>
-<tr>
-<td>load_factor()</td>
-<td>返回 unordered_map 容器中当前的负载因子。负载因子，指的是的当前容器中存储键值对的数量（size()）和使用桶数（bucket_count()）的比值，即 load_factor() = size() / bucket_count()。</td>
-</tr>
-<tr>
-<td>max_load_factor()</td>
-<td>返回或者设置当前 unordered_map 容器的负载因子。</td>
-</tr>
-<tr>
-<td>rehash(n)</td>
-<td>将当前容器底层使用桶的数量设置为 n。</td>
-</tr>
-<tr>
-<td>reserve()</td>
-<td>将存储桶的数量（也就是 bucket_count() 方法的返回值）设置为至少容纳count个元（不超过最大负载因子）所需的数量，并重新整理容器。</td>
-</tr>
-<tr>
-<td>hash_function()</td>
-<td>返回当前容器使用的哈希函数对象。</td>
-</tr>
-</tbody></table>
-
-        
-    </div>
-    </div>
-
-    <div class="article-badge">
-        
-        
-    </div>
-
-</div>
-
-<footer class="article-footer">
-    <div class="article-more-info">
-    <div class="article-date">
-  <time datetime="2020-04-15T15:12:59.000Z" itemprop="datePublished">2020-04-15</time>
-</div>
-    
-        <div class="article-category">
-        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a>
-        </div>
-    
-    
-        <div class="article-tag">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
-        </div>
-    
-    </div>
-</footer>
-
-</article>
-
-    
-  
-    
-      <article
-id="post-求最大公约数的多种算法及比较"
-class="article article-type-post"
->
-
-
-
-<div class="article-inner">
-    
-
-    <div class="article-body">
-    <header class="article-title">
-        <a href="/2020/02/02/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%A4%9A%E7%A7%8D%E7%AE%97%E6%B3%95%E5%8F%8A%E6%AF%94%E8%BE%83/">求最大公约数的多种算法及比较</a>
-    </header>
-    <div class="article-entry post-inner-html">
-        
-        <h2 id="公约数的性质"><a href="#公约数的性质" class="headerlink" title="公约数的性质"></a>公约数的性质</h2><p>gcd(-a,b)=gcd(a,b)<br>gcd(a,0)=|a|<br>gcd(a,1)=1<br>gcd(a,b)=gcd(b, a-b)<br>gcd(ma,mb)=m * gcd(a,b)</p>
-<p>⚠️注：两数必须为正整数</p>
-<h2 id="辗转相除法（欧几里得）"><a href="#辗转相除法（欧几里得）" class="headerlink" title="辗转相除法（欧几里得）"></a>辗转相除法（欧几里得）</h2><p>时间效率： ⭐️<br>素数较大时运算耗时</p>
-<pre><code class="bash">#include &lt;iostream&gt;
-using namespace std;
-int main() {
-    int a, b;
-    cin &gt;&gt; a &gt;&gt; b;
-    if (a &lt; b) swap(a, b);//保证a大于b
-    int t = a % b;
-    while (t) {
-        a = b;
-        b = t;
-        t = a % b;
-    }
-    cout &lt;&lt; b;
-}</code></pre>
-<h2 id="穷举法"><a href="#穷举法" class="headerlink" title="穷举法"></a>穷举法</h2><p>时间效率： ⭐️⭐️⭐️</p>
-<pre><code class="bash">#include &lt;iostream&gt;
-using namespace std;
-int main() {
-    int a, b;
-    cin &gt;&gt; a &gt;&gt; b;
-    int t = a &gt; b ? b : a;//t为min
-    while (t) {
-        if (a % t == 0 &amp;&amp; b % t == 0)
-            break;
-        t--;
-    }
-    cout &lt;&lt; t;
-}</code></pre>
-<h2 id="更相减损术"><a href="#更相减损术" class="headerlink" title="更相减损术"></a>更相减损术</h2><p>时间效率： ⭐️⭐️⭐️<br>两数相差大时运算次数多</p>
-<pre><code class="bash">#include &lt;iostream&gt;
-#include &lt;cmath&gt;
-using namespace std;
-int main() {
-    int a, b;
-    cin &gt;&gt; a &gt;&gt; b;
-    int l = 0;
-    while (a % 2 == 0 &amp;&amp; b % 2 == 0) {//都是偶数则除二
-        a /= 2;
-        b /= 2;
-        l++;
-    }
-    if (a &lt; b) swap(a, b);//保证a大于b
-    int t = 1;
-    while (t) {
-        t = a - b;
-        a = b &gt; t ? b : t;//保证a大于b
-        b = b &gt; t ? t : b;
-        if (a == b)//直到两数相等
-            break;
-    }
-    cout &lt;&lt; pow(2, l) * b;
-}</code></pre>
-<h2 id="Stein算法"><a href="#Stein算法" class="headerlink" title="Stein算法"></a><a href="https://blog.csdn.net/Zhao_Xinhao/article/details/76060119" target="_blank" rel="noopener">Stein算法</a></h2><p>时间效率： ⭐️⭐️<br>对于辗转相除法的改进</p>
-<pre><code class="bash">//递归
-int Stein(int u, int v) {
-    if (u == 0) {
-        return v;
-    }
-    if (v == 0) {
-        return u;
-    }
-    if (~u &amp; 1) {
-        if (v &amp; 1) {
-            return Stein(u &gt;&gt; 1, v);
-        }
-        else {
-            return Stein(u &gt;&gt; 1, v &gt;&gt; 1) &lt;&lt; 1;
-        }
-    }
-    if (~v &amp; 1) {
-        return gcd2(u, v &gt;&gt; 1);
-    }
-    if (u &gt; v) {
-        return gcd2((u - v) &gt;&gt; 1, v);
-    }
-    return gcd2((v - u) &gt;&gt; 1, u);
-}
-//非递归
-int Stein(unsigned int x, unsigned int y) {
-    int factor = 0;   //计数器
-    int temp;
-
-    //大数赋给x，小数赋给y
-    if (x &lt; y) {
-        temp = x;
-        x = y;
-        y = temp;
-    }
-    if (0 == y) {
-        return 0;
-    }
-    while (x != y) {
-        if (x &amp; 0x1) {
-            if (y &amp; 0x1) {   //x,y都为奇数
-                y = (x - y) &gt;&gt; 1;
-                x -= y;
-            }
-            else {    // x为奇数，y为偶数
-                y &gt;&gt;= 1;
-            }
-        }
-        else {
-            if (y &amp; 0x1) {   // x为偶数，y为奇数
-                x &gt;&gt;= 1;
-                if (x &lt; y) {
-                    temp = x;
-                    x = y;
-                    y = temp;
-                }
-            }
-            else {   //x,y均为偶数
-                x &gt;&gt;= 1;
-                y &gt;&gt;= 1;
-                ++factor;
-            }
-        }
-    }
-    return (x &lt;&lt; factor);
-}</code></pre>
-
-        
-    </div>
-    </div>
-
-    <div class="article-badge">
-        
-        
-    </div>
-
-</div>
-
-<footer class="article-footer">
-    <div class="article-more-info">
-    <div class="article-date">
-  <time datetime="2020-02-02T05:10:15.000Z" itemprop="datePublished">2020-02-02</time>
-</div>
-    
-        <div class="article-category">
-        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a>
-        </div>
-    
-    
-        <div class="article-tag">
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li></ul>
         </div>
     
@@ -2184,134 +2312,11 @@ int Stein(unsigned int x, unsigned int y) {
 
     
   
-    
-      <article
-id="post-mac搭建个人blog"
-class="article article-type-post"
->
 
-
-
-<div class="article-inner">
-    
-
-    <div class="article-body">
-    <header class="article-title">
-        <a href="/2020/01/28/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/">Mac搭建个人Blog</a>
-    </header>
-    <div class="article-entry post-inner-html">
-        
-        <h1 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h1><h2 id="hexo创建一个blog"><a href="#hexo创建一个blog" class="headerlink" title="hexo创建一个blog"></a>hexo创建一个blog</h2><h3 id="终端的一些命令"><a href="#终端的一些命令" class="headerlink" title="终端的一些命令"></a>终端的一些命令</h3><p>注：终端中输入密码时不会显示<br><img src="../img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/1.png" alt="1"></p>
-<pre><code class="bash">pwd
-//查看此时所在位置
-mkdir blog
-//创建blog文件夹
-cd ..
-//返回上一层目录
-cd blog
-//进入blog文件夹</code></pre>
-<p><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/2.png" alt="2"></p>
-<h3 id="输入sudo-hexo-init-创建博客"><a href="#输入sudo-hexo-init-创建博客" class="headerlink" title="输入sudo hexo init 创建博客"></a>输入sudo hexo init 创建博客</h3><p><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/3.png" alt="3"></p>
-<h2 id="如何使用hexo"><a href="#如何使用hexo" class="headerlink" title="如何使用hexo"></a>如何使用hexo</h2><h3 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h3><pre><code class="bash">hexo new post XXX</code></pre>
-<h3 id="创建新目录"><a href="#创建新目录" class="headerlink" title="创建新目录"></a>创建新目录</h3><pre><code class="bash">hexo new page tag</code></pre>
-<p>前往blog/source/tag文件夹中更改</p>
-<pre><code class="bash">---
-title: XXX
-lyout: tag
-date: 2020-02-02 13:07:16
----
-</code></pre>
-<h3 id="创建新标签"><a href="#创建新标签" class="headerlink" title="创建新标签"></a>创建新标签</h3><pre><code class="bash">hexo new page category</code></pre>
-<p>同理把tag改为category即可</p>
-<h3 id="about页面"><a href="#about页面" class="headerlink" title="about页面"></a>about页面</h3><p>除了不支持Categories和Tags外和写文章的格式一样<br>一般不需要新建页面，只更改blog/source/about/index.md即可</p>
-<pre><code class="bash">hexo new page about</code></pre>
-<h2 id="推送至github和coding-net"><a href="#推送至github和coding-net" class="headerlink" title="推送至github和coding.net"></a>推送至github和coding.net</h2><h4 id="比较github（国外）和coding（腾讯）"><a href="#比较github（国外）和coding（腾讯）" class="headerlink" title="比较github（国外）和coding（腾讯）"></a>比较github（国外）和coding（腾讯）</h4><table>
-<thead>
-<tr>
-<th></th>
-<th>github</th>
-<th>coding.net</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>域名</td>
-<td>自定义</td>
-<td>随机生成</td>
-</tr>
-<tr>
-<td>加载速度</td>
-<td>慢</td>
-<td>快一些</td>
-</tr>
-<tr>
-<td>方便的clone方式</td>
-<td>HTTPS</td>
-<td>SSH</td>
-</tr>
-</tbody></table>
-<h2 id="如何使用hexo-1"><a href="#如何使用hexo-1" class="headerlink" title="如何使用hexo"></a>如何使用hexo</h2><h3 id="创建新文章-1"><a href="#创建新文章-1" class="headerlink" title="创建新文章"></a>创建新文章</h3><pre><code class="bash">hexo new post XXX</code></pre>
-<h3 id="创建新目录-1"><a href="#创建新目录-1" class="headerlink" title="创建新目录"></a>创建新目录</h3><pre><code class="bash">hexo new page tag</code></pre>
-<p>前往blog/source/tag文件夹中更改</p>
-<pre><code class="bash">---
-title: XXX
-lyout: tag
-date: 2020-02-02 13:07:16
----
-</code></pre>
-<h3 id="创建新标签-1"><a href="#创建新标签-1" class="headerlink" title="创建新标签"></a>创建新标签</h3><pre><code class="bash">hexo new page category</code></pre>
-<p>同理把tag改为category即可</p>
-<h3 id="about页面-1"><a href="#about页面-1" class="headerlink" title="about页面"></a>about页面</h3><p>除了不支持Categories和Tags外和写文章的格式一样<br>一般不需要新建页面，只更改blog/source/about/index.md即可</p>
-<pre><code class="bash">hexo new page about</code></pre>
-<h1 id="进阶部分"><a href="#进阶部分" class="headerlink" title="进阶部分"></a>进阶部分</h1><h2 id="如何在百度中搜索到自己写的博客内容"><a href="#如何在百度中搜索到自己写的博客内容" class="headerlink" title="如何在百度中搜索到自己写的博客内容"></a>如何在百度中搜索到自己写的博客内容</h2><p>必须在<a href="https://ziyuan.baidu.com/linksubmit/url" target="_blank" rel="noopener">这里提交</a>自己的博客链接才能在百度引擎中搜索到的</p>
-<h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><h3 id="在-Hexo-中下载主题"><a href="#在-Hexo-中下载主题" class="headerlink" title="在 Hexo  中下载主题"></a>在<a href="https://hexo.io/" target="_blank" rel="noopener"> Hexo </a> 中下载主题</h3><pre><code class="bash">git clone https://github.com.....主题地址 themes/主题名字
-//将主题下载到themes中</code></pre>
-<h3 id="更改theme中的-config-yml"><a href="#更改theme中的-config-yml" class="headerlink" title="更改theme中的_config.yml"></a>更改theme中的_config.yml</h3><pre><code class="bash">vim _config.yml 进入编辑模式（注意空格）
-按 A 开始编辑
-按 esc 退出编辑
-输入 :wq 保存并退出</code></pre>
-<p><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/4.png" alt="4"></p>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><pre><code class="bash">hexo clean 清除缓存
-hexo g 搭建   
-hexo d 提交到github</code></pre>
-<h1 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h1><h2 id="hexo-g-失败"><a href="#hexo-g-失败" class="headerlink" title="hexo g 失败"></a>hexo g 失败</h2><p>TypeError [ERR_INVALID_URL]: Invalid URL: http: //127.0.0.1:1085;export<br>    at onParseError (internal/url.js:243:9)</p>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>这个原因呢也很简单，就是hexo升级到4.2后，对于文章内的url自动变成html的A标签的解析引擎有点小bug，这是我在一个github的issue中看到的，issue链接我就不贴出来了,有兴趣的自行用英文关键字进行Google吧。</p>
-<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><ul>
-<li>把http://这个协议头去掉，不过经过测试发现hexo自动生成的链接会有点其它的小bug，大家可以自行测试一下</li>
-<li>在http://的冒号后面加个空格</li>
-<li>把这个url用两个``给引起来，这种方法我感觉最好</li>
-</ul>
-<p>本博客主题为<a href="https://github.com/Siricee/hexo-theme-Chic/blob/master/README-CN.md" target="_blank" rel="noopener">Chic</a></p>
-
-        
-    </div>
-    </div>
-
-    <div class="article-badge">
-        
-        
-    </div>
-
-</div>
-
-<footer class="article-footer">
-    <div class="article-more-info">
-    <div class="article-date">
-  <time datetime="2020-01-28T07:32:31.000Z" itemprop="datePublished">2020-01-28</time>
-</div>
-    
-        <div class="article-category">
-        <a class="article-category-link" href="/categories/Web%E4%B8%8E%E5%89%8D%E7%AB%AF/">Web与前端</a>
-        </div>
-    
-    
-    </div>
-</footer>
-
-</article>
-
-    
   
-
+    <nav class="pagination">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next</a>
+    </nav>
   
 </div>
 
@@ -2392,7 +2397,7 @@ hexo d 提交到github</code></pre>
   <div class="widget-wrap widget-cate">
     <div class="widget-title"><span>Categories</span></div>
     <div class="widget-inner">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E4%B8%8E%E5%89%8D%E7%AB%AF/">Web与前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Debug/">Debug</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">应用开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a></li></ul>
     </div>
   </div>
 

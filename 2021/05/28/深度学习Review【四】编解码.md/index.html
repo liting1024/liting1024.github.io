@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     
-    <title>CLIP | Li Ting</title>
+    <title>Review【一】线性回归、Softmax、感知机、卷积 | Li Ting</title>
 
     <meta name="description" content="Li Ting">
     <meta name="keywords" content="">
@@ -15,21 +15,21 @@
 
     <meta property="og:locale" content="cn" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content= "CLIP | Li Ting"  />
+    <meta property="og:title" content= "Review【一】线性回归、Softmax、感知机、卷积 | Li Ting"  />
     <meta property="og:description" content= "Li Ting" />
-    <meta property="og:url" content="https://liting1024.github.io/2022/05/26/CLIP/index.html" />
+    <meta property="og:url" content="https://liting1024.github.io/2021/05/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0Review%E3%80%90%E5%9B%9B%E3%80%91%E7%BC%96%E8%A7%A3%E7%A0%81.md/index.html" />
     <meta property="og:site_name" content="" />
     <meta property="article:author" content="李挺" />
     <meta property="article:publisher" content="" />
     <meta property="og:description" content="Li Ting" />
-    <meta name="twitter:title" content="CLIP | Li Ting"/>
+    <meta name="twitter:title" content="Review【一】线性回归、Softmax、感知机、卷积 | Li Ting"/>
     <meta name="twitter:description" content="Li Ting"/>
     <script type="application/ld+json">
         {
             "description": "Li Ting",
             "author": { "@type": "Person", "name": "李挺" },
             "@type": "BlogPosting",
-            "url": "https://liting1024.github.io/2022/05/26/CLIP/index.html",
+            "url": "https://liting1024.github.io/2021/05/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0Review%E3%80%90%E5%9B%9B%E3%80%91%E7%BC%96%E8%A7%A3%E7%A0%81.md/index.html",
             "publisher": {
             "@type": "Organization",
             "logo": {
@@ -38,11 +38,11 @@
             },
             "name": "李挺"
             },
-            "headline": "CLIP | Li Ting",
-            "datePublished": "2022-05-26T12:43:50.000Z",
+            "headline": "Review【一】线性回归、Softmax、感知机、卷积 | Li Ting",
+            "datePublished": "2021-05-28T13:45:31.000Z",
             "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": "https://liting1024.github.io/2022/05/26/CLIP/index.html"
+                "@id": "https://liting1024.github.io/2021/05/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0Review%E3%80%90%E5%9B%9B%E3%80%91%E7%BC%96%E8%A7%A3%E7%A0%81.md/index.html"
             },
             "@context": "http://schema.org"
         }
@@ -180,7 +180,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-cl3px1coa000296vm1b547xey" class="article article-type-post" itemscope
+    <article id="post-cl3pxppch000ra7vm8zkhf4wv" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -196,7 +196,7 @@
             
   
     <h1 class="article-title" itemprop="name">
-      CLIP
+      Review【一】线性回归、Softmax、感知机、卷积
     </h1>
   
 
@@ -206,7 +206,7 @@
         <div class="article-more-info article-more-info-post hairline">
 
             <div class="article-date">
-  <time datetime="2022-05-26T12:43:50.000Z" itemprop="datePublished">2022-05-26</time>
+  <time datetime="2021-05-28T13:45:31.000Z" itemprop="datePublished">2021-05-28</time>
 </div>
 
             
@@ -215,10 +215,6 @@
             </div>
             
 
-            
-            <div class="article-tag">
-                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag">读论文</a></li></ul>
-            </div>
             
 
             
@@ -230,37 +226,107 @@
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <p><a href="https://github.com/openai/CLIP" target="_blank" rel="noopener">项目GitHub链接</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/CLIP.png" alt=""></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>优点：预训练、结构简单、在zero-shot上比有监督下ResNet50效果好</p>
-<p>1、利用自然语言处理的监督信号做预训练：</p>
-<p>输入 图片和句子的配对</p>
-<p>通过图片编码器，resnet或vison transformer，得到图像特征</p>
-<p>通过文本编码器，，得到文本特征</p>
-<p>然后对图片和文本进行对比学习，得到文本和图片的特征</p>
-<p>正样本：配对的图片文本对，即左图中对角线上的样本，共n个 </p>
-<p>负样本：非对角线的元素，共 n^2-n 个</p>
-<p>数据集：OpenAI上4亿个文本和图片配对</p>
-<p>2、用Prompt template做推理：</p>
-<p>Prompt engineringh或prompt ensemble</p>
-<p>输入 图片</p>
-<p>通过图片编码器得到特征，与每个文本特征求cos similarity</p>
-<p>优点：得到语义特征，迁移性强（素描、动漫风格的物体都能识别出是什么）</p>
-<p>可以应用在；目标检测（丰富检测出物体的信息）、用文本检索视频中物品出现的帧等</p>
-<h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>​    现有模型都是通过提前定义好的标签集合（即物品类别）来预测，是有限制性的监督信号，无法识别新的类别；CLIP直接从自然语言处理中得到特征，即用爬取到的4亿图片-文本配对进行多模态的对比训练；在30个不同数据集上做预测效果都很好，比如在ImageNet上和有监督训练的ResNet-50打平手；预训练代码没开源，但模型在Github上开源了。</p>
-<p>​    Bert、GPT、T5是在原始的文本数据上预训练一个模型，已经取得革命性成果，无论是自回归预测还是掩码完形填空的方式，都是自监督的方式，目标函数和下游任务无关，随着模型、数据、计算资源变多，性能也会变好，比如GPT-3无需特定领域的数据就能与之前精心设计的网络做对比。</p>
-<p>​    对99年到21年工作的讨论，……，总之，有了Transformer后，出现了VirTex和ConVIRT这些和CLIP类似的工作，但这些模型由于数据和模型规模不够大，所以效果不够好；CLIP是ConVIRT的简化版，共尝试8个模型，包括Vision Transformer和ResNet，迁移学习效果和模型大小呈正相关。</p>
-<h1 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h1><p>1、监督的NLP</p>
-<p>​    NLP中原来多是基于N-gram，无法用于跨模态zero-shot工作</p>
-<p>2、造数据集</p>
-<p>​    现有的数据量都不够大，自己收集了WebImage Text（WIT）作为数据集</p>
-<p>3、训练方法</p>
-<p>​    文本用Transformer即CBOW 或 Text Transformer，图片用CNN即ResNet或Vision Transformer ；由于同一张图有不同的文字描述，不能用预测型任务，而是对比任务，即对比文本和图片是否配对。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/uTools_1653485396142.png" alt=""></p>
-<p>I为图片的输入，n为batchsize，224 * 224 * 3</p>
-<p>T为文本的输入，由于和图片配对，batchsize也是n，l为文本序列长度</p>
-<p>通过编码器之后得到特征，使用投射层，学习一下如何从单模态到多模态，得到用来对比的特征I_e和T_e，最后用logits（求得的余弦相似度）和ground truth（labels）求两个交叉熵损失函数，再将两个损失函  数求平均。</p>
-<p>ground truth是arange即从1到n，这样可以使对角线（即保证1-a 2-b……）上的元素为正样本；</p>
+            <blockquote>
+<p><a href="https://zh-v2.d2l.ai/chapter_multilayer-perceptrons/mlp-concise.html" target="_blank" rel="noopener">课程地址</a></p>
+</blockquote>
+<h1 id="一、编码-解码"><a href="#一、编码-解码" class="headerlink" title="一、编码-解码"></a>一、编码-解码</h1><p>编码（训练）：处理输出，把输入编程成中甲你表达形式（特征）<br>解码（预测）：生成输出，把特征解码成输出</p>
+<pre><code class="python">from torch import nn
+
+class Encoder(nn.Module):
+    &quot;&quot;&quot;编码器-解码器结构的基本编码器接口。&quot;&quot;&quot;
+    def __init__(self, **kwargs):
+        super(Encoder, self).__init__(**kwargs)
+
+    def forward(self, X, *args):
+        raise NotImplementedError
+class Decoder(nn.Module):
+    &quot;&quot;&quot;编码器-解码器结构的基本解码器接口。&quot;&quot;&quot;
+    def __init__(self, **kwargs):
+        super(Decoder, self).__init__(**kwargs)
+
+    def init_state(self, enc_outputs, *args):
+        raise NotImplementedError
+
+    def forward(self, X, state):
+        raise NotImplementedError
+class EncoderDecoder(nn.Module):
+    &quot;&quot;&quot;编码器-解码器结构的基类。&quot;&quot;&quot;
+    def __init__(self, encoder, decoder, **kwargs):
+        super(EncoderDecoder, self).__init__(**kwargs)
+        self.encoder = encoder
+        self.decoder = decoder
+
+    def forward(self, enc_X, dec_X, *args):
+        enc_outputs = self.encoder(enc_X, *args)
+        dec_state = self.decoder.init_state(enc_outputs, *args)
+        return self.decoder(dec_X, dec_state)</code></pre>
+<h1 id="二、Seq2seq"><a href="#二、Seq2seq" class="headerlink" title="二、Seq2seq"></a>二、Seq2seq</h1><p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215455572.png" alt="在这里插入图片描述"><br>训练过程，即Encode的过程（一个RNN)是双向的<br>解码器是单向的<br>RNN也不需要定长的序列作为输入输出</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_Q1NETiBA6IiS5YWL5YS_5LiN5byA6aOe5py6,size_26,color_FFFFFF,t_70,g_se,x_16.png" alt="在这里插入图片描述"><br>把编码器的RNN最后一层的输出放在解码器里，作为初始隐状态 </p>
+<h2 id="torch"><a href="#torch" class="headerlink" title="torch"></a>torch</h2><pre><code class="python">import collections
+import math
+import torch
+from torch import nn
+from d2l import torch as d2l
+
+class Seq2SeqEncoder(d2l.Encoder):
+    &quot;&quot;&quot;用于序列到序列学习的循环神经网络编码器Encode&quot;&quot;&quot;
+    def __init__(self, vocab_size, embed_size, num_hiddens, num_layers,dropout=0, **kwargs):
+        super(Seq2SeqEncoder, self).__init__(**kwargs)
+        # 嵌入层
+        self.embedding = nn.Embedding(vocab_size, embed_size) 
+        #对每个词embedding
+        self.rnn = nn.GRU(embed_size, num_hiddens, num_layers,
+                          dropout=dropout)
+        #numlayers是RNN的层数 numhiddens是隐藏层的层数
+    def forward(self, X, *args):
+        # 输出&#39;X&#39;的形状：(`batch_size`, `num_steps`, `embed_size`)
+        X = self.embedding(X)
+        # 在循环神经网络模型中，第一个轴对应于时间步，交换batchsize和numstep
+        X = X.permute(1, 0, 2)
+        # 如果未提及状态，则默认为0
+        output, state = self.rnn(X)
+        # `output`的形状: (`num_steps`, `batch_size`, `num_hiddens`)
+        # `state[0]`的形状: (`num_layers`, `batch_size`, `num_hiddens`)
+        return output, state
+
+encoder = Seq2SeqEncoder(vocab_size=10, embed_size=8, num_hiddens=16,
+                         num_layers=2)
+encoder.eval()
+X = torch.zeros((4, 7), dtype=torch.long)
+output, state = encoder(X)
+#output和state的形状torch.Size([7, 4, 16]) torch.Size([2, 4, 16])
+
+class Seq2SeqDecoder(d2l.Decoder):
+    &quot;&quot;&quot;用于序列到序列学习的循环神经网络解码器。&quot;&quot;&quot;
+    def __init__(self, vocab_size, embed_size, num_hiddens, num_layers,
+                 dropout=0, **kwargs):
+        super(Seq2SeqDecoder, self).__init__(**kwargs)
+        self.embedding = nn.Embedding(vocab_size, embed_size)
+        self.rnn = nn.GRU(embed_size + num_hiddens, num_hiddens, num_layers,
+                          dropout=dropout)
+        self.dense = nn.Linear(num_hiddens, vocab_size)
+        #分类
+
+    def init_state(self, enc_outputs, *args):
+        return enc_outputs[1] #enc_outputs[1]为state
+
+    def forward(self, X, state):
+        # 输出&#39;X&#39;的形状：(`batch_size`, `num_steps`, `embed_size`)
+        X = self.embedding(X).permute(1, 0, 2)
+        # 广播`context`，使其具有与`X`相同的`num_steps`
+        context = state[-1].repeat(X.shape[0], 1, 1)
+        X_and_context = torch.cat((X, context), 2)
+        output, state = self.rnn(X_and_context, state)
+        output = self.dense(output).permute(1, 0, 2)
+        # `output`的形状: (`batch_size`, `num_steps`, `vocab_size`)
+        # `state[0]`的形状: (`num_layers`, `batch_size`, `num_hiddens`)
+        return output, state
+decoder = Seq2SeqDecoder(vocab_size=10, embed_size=8, num_hiddens=16,
+                         num_layers=2)
+decoder.eval()
+state = decoder.init_state(encoder(X))
+output, state = decoder(X, state)
+# output和state的shape(torch.Size([4, 7, 10]), torch.Size([2, 4, 16]))</code></pre>
 
         </div>
 
@@ -279,19 +345,19 @@
     
 <nav class="article-nav">
   
-    <a href="/2022/05/27/%E6%9B%B4%E6%8D%A2Aomori%E4%B8%BB%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/05/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0Review%E3%80%90%E4%B8%89%E3%80%91%E5%BA%8F%E5%88%97%E3%80%81RNN%E3%80%81LSTM%EF%BC%88GRU%EF%BC%89%E3%80%81DRNN/" id="article-nav-newer" class="article-nav-link-wrap">
       <div class="article-nav-caption">下一篇</div>
       <div class="article-nav-title">
         
-          更换Aomori主题
+          Review【一】线性回归、Softmax、感知机、卷积
         
       </div>
     </a>
   
   
-    <a href="/2022/01/27/STL/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/05/27/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-caption">上一篇</div>
-      <div class="article-nav-title">STL</div>
+      <div class="article-nav-title">基础算法</div>
     </a>
   
 </nav>
@@ -300,11 +366,11 @@
     <section class="share">
         <div class="share-title">分享</div>
         <a class="share-item" target="_blank"
-            href="https://twitter.com/share?text=CLIP - Li Ting&url=https%3A%2F%2Fliting1024.github.io%2F2022%2F05%2F26%2FCLIP%2F">
+            href="https://twitter.com/share?text=Review【一】线性回归、Softmax、感知机、卷积 - Li Ting&url=https%3A%2F%2Fliting1024.github.io%2F2021%2F05%2F28%2F%25E6%25B7%25B1%25E5%25BA%25A6%25E5%25AD%25A6%25E4%25B9%25A0Review%25E3%2580%2590%25E5%259B%259B%25E3%2580%2591%25E7%25BC%2596%25E8%25A7%25A3%25E7%25A0%2581.md%2F">
             <box-icon type='logo' name='twitter'></box-icon>
         </a>
         <a class="share-item" target="_blank"
-            href="https://service.weibo.com/share/share.php?title=CLIP - Li Ting&url=https://liting1024.github.io/2022/05/26/CLIP/&pic=">
+            href="https://service.weibo.com/share/share.php?title=Review【一】线性回归、Softmax、感知机、卷积 - Li Ting&url=https://liting1024.github.io/2021/05/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0Review%E3%80%90%E5%9B%9B%E3%80%91%E7%BC%96%E8%A7%A3%E7%A0%81.md/&pic=">
             <div class="n-icon n-icon-weibo"></div>
         </a>
     </section>
