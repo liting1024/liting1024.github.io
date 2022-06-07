@@ -41,26 +41,6 @@
   </entry>
   
   <entry>
-    <title>Linux常见问题</title>
-    <link href="https://liting1024.github.io/2022/06/05/Linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"/>
-    <id>https://liting1024.github.io/2022/06/05/Linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</id>
-    <published>2022-06-05T08:25:55.000Z</published>
-    <updated>2022-06-05T08:25:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="bashrc和-bash-profile的区别"><a href="#bashrc和-bash-profile的区别" class="headerlink" title=".bashrc和.bash_profile的区别"></a>.bashrc和.bash_profile的区别</h2><p>.bash_profile是在登陆的时候才会执行的，也叫.bash_login，在命令行再运行bash命令的时候不执行这个文件里面的命令。</p><p>.bashrc恰好相反，是在执行子shell(sub-shell)的时候才会执行里面的命令，可以通过source ~/.bashrc执行。</p><p>在.bash_profile中加入下面的代码，可以在登录时执行.bashrc里的代码</p><pre><code class="bash"># Get the aliases and functionsif  [  - f  ~/ .bashrc ]; then        .  ~/ .bashrcfi</code></pre><h2 id="配pytorch"><a href="#配pytorch" class="headerlink" title="配pytorch"></a>配pytorch</h2><p>正常清华源为<a href="https://mirror.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">anaconda | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</a>，其中不包含pytorch</p><p>添加pytorch清华源如下</p><pre><code class="bash">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</code></pre><h2 id="vim无法保存"><a href="#vim无法保存" class="headerlink" title="vim无法保存"></a>vim无法保存</h2><p>1、由于权限不够，即未使用sudo</p><p>2、用vim打开了一个目录，可以继续选择进入文件，打开文件后再退出</p><p>qa!可以退出，不能保存</p><h2 id="CUDA命令"><a href="#CUDA命令" class="headerlink" title="CUDA命令"></a>CUDA命令</h2><pre><code class="bash">nvidia-smi</code></pre><h2 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h2><p>nvidia-smi</p><p>top 监视进程</p><h2 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h2><pre><code>yum install -y screen  # 安装screen -S 窗口名称  # 开启新的Ctrl+A+C  # 在当前窗口开启新的窗口Ctrl+A+D  # 非中断detached退出按住Ctrl，依次再按a,d 可重连按住Ctrl和a,放开a去按d 不可重连Ctrl+A+K  # 杀掉当前screen -r 窗口名称  # 恢复重连exit  # 退出窗口screen -X -S id号  # 杀死screen -wipe 　# 检查目前所有的screen作业，并删除已经无法使用的screen作业。</code></pre><h2 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h2><pre><code>conda create -n 环境名 python=版本号conda deactivateconda info -e</code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;bashrc和-bash-profile的区别&quot;&gt;&lt;a href=&quot;#bashrc和-bash-profile的区别&quot; class=&quot;headerlink&quot; title=&quot;.bashrc和.bash_profile的区别&quot;&gt;&lt;/a&gt;.bashrc和.bash_pr</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>【项目详情】解字</title>
     <link href="https://liting1024.github.io/2022/05/27/%E3%80%90%E9%A1%B9%E7%9B%AE%E8%AF%A6%E6%83%85%E3%80%91%E8%A7%A3%E5%AD%97/"/>
     <id>https://liting1024.github.io/2022/05/27/%E3%80%90%E9%A1%B9%E7%9B%AE%E8%AF%A6%E6%83%85%E3%80%91%E8%A7%A3%E5%AD%97/</id>
@@ -76,30 +56,6 @@
       
     
     
-    
-    
-  </entry>
-  
-  <entry>
-    <title>更换Aomori主题</title>
-    <link href="https://liting1024.github.io/2022/05/27/%E6%9B%B4%E6%8D%A2Aomori%E4%B8%BB%E9%A2%98/"/>
-    <id>https://liting1024.github.io/2022/05/27/%E6%9B%B4%E6%8D%A2Aomori%E4%B8%BB%E9%A2%98/</id>
-    <published>2022-05-27T01:01:34.000Z</published>
-    <updated>2022-05-27T01:01:34.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank" rel="noopener">Github地址</a></p><p>发布</p><pre><code class="Python">hexo algolia # 更改设置hexo ghexo d</code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/lh1me/hexo-theme-aomori&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Github地址&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;发布&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;Python&quot;&gt;</summary>
-      
-    
-    
-    
-    <category term="应用开发" scheme="https://liting1024.github.io/categories/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/"/>
     
     
   </entry>
@@ -198,6 +154,26 @@
     
     
     <category term="机器学习" scheme="https://liting1024.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux常见问题</title>
+    <link href="https://liting1024.github.io/2021/06/05/Linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"/>
+    <id>https://liting1024.github.io/2021/06/05/Linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</id>
+    <published>2021-06-05T08:25:55.000Z</published>
+    <updated>2021-06-05T08:25:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="bashrc和-bash-profile的区别"><a href="#bashrc和-bash-profile的区别" class="headerlink" title=".bashrc和.bash_profile的区别"></a>.bashrc和.bash_profile的区别</h2><p>.bash_profile是在登陆的时候才会执行的，也叫.bash_login，在命令行再运行bash命令的时候不执行这个文件里面的命令。</p><p>.bashrc恰好相反，是在执行子shell(sub-shell)的时候才会执行里面的命令，可以通过source ~/.bashrc执行。</p><p>在.bash_profile中加入下面的代码，可以在登录时执行.bashrc里的代码</p><pre><code class="bash"># Get the aliases and functionsif  [  - f  ~/ .bashrc ]; then        .  ~/ .bashrcfi</code></pre><h2 id="配pytorch"><a href="#配pytorch" class="headerlink" title="配pytorch"></a>配pytorch</h2><p>正常清华源为<a href="https://mirror.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">anaconda | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</a>，其中不包含pytorch</p><p>添加pytorch清华源如下</p><pre><code class="bash">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</code></pre><h2 id="vim无法保存"><a href="#vim无法保存" class="headerlink" title="vim无法保存"></a>vim无法保存</h2><p>1、由于权限不够，即未使用sudo</p><p>2、用vim打开了一个目录，可以继续选择进入文件，打开文件后再退出</p><p>qa!可以退出，不能保存</p><h2 id="CUDA命令"><a href="#CUDA命令" class="headerlink" title="CUDA命令"></a>CUDA命令</h2><pre><code class="bash">nvidia-smi</code></pre><h2 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h2><p>nvidia-smi</p><p>top 监视进程</p><h2 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h2><pre><code>yum install -y screen  # 安装screen -S 窗口名称  # 开启新的Ctrl+A+C  # 在当前窗口开启新的窗口Ctrl+A+D  # 非中断detached退出按住Ctrl，依次再按a,d 可重连按住Ctrl和a,放开a去按d 不可重连Ctrl+A+K  # 杀掉当前screen -r 窗口名称  # 恢复重连exit  # 退出窗口screen -X -S id号  # 杀死screen -wipe 　# 检查目前所有的screen作业，并删除已经无法使用的screen作业。</code></pre><h2 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h2><pre><code>conda create -n 环境名 python=版本号conda deactivateconda info -e</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;bashrc和-bash-profile的区别&quot;&gt;&lt;a href=&quot;#bashrc和-bash-profile的区别&quot; class=&quot;headerlink&quot; title=&quot;.bashrc和.bash_profile的区别&quot;&gt;&lt;/a&gt;.bashrc和.bash_pr</summary>
+      
+    
+    
     
     
   </entry>
@@ -366,6 +342,30 @@
     
     
     <category term="爬虫" scheme="https://liting1024.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>更换Aomori主题</title>
+    <link href="https://liting1024.github.io/2020/05/27/%E6%9B%B4%E6%8D%A2Aomori%E4%B8%BB%E9%A2%98/"/>
+    <id>https://liting1024.github.io/2020/05/27/%E6%9B%B4%E6%8D%A2Aomori%E4%B8%BB%E9%A2%98/</id>
+    <published>2020-05-27T01:01:34.000Z</published>
+    <updated>2020-05-27T01:01:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank" rel="noopener">Github地址</a></p><p>发布</p><pre><code class="Python">hexo algolia # 更改设置hexo ghexo d</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/lh1me/hexo-theme-aomori&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Github地址&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;发布&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;Python&quot;&gt;</summary>
+      
+    
+    
+    
+    <category term="应用开发" scheme="https://liting1024.github.io/categories/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/"/>
+    
     
   </entry>
   

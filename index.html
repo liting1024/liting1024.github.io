@@ -300,85 +300,6 @@ class="article article-type-post"
   
     
       <article
-id="post-Linux常见问题"
-class="article article-type-post"
->
-
-
-
-<div class="article-inner">
-    
-
-    <div class="article-body">
-    <header class="article-title">
-        <a href="/2022/06/05/Linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">Linux常见问题</a>
-    </header>
-    <div class="article-entry post-inner-html">
-        
-        <h2 id="bashrc和-bash-profile的区别"><a href="#bashrc和-bash-profile的区别" class="headerlink" title=".bashrc和.bash_profile的区别"></a>.bashrc和.bash_profile的区别</h2><p>.bash_profile是在登陆的时候才会执行的，也叫.bash_login，在命令行再运行bash命令的时候不执行这个文件里面的命令。</p>
-<p>.bashrc恰好相反，是在执行子shell(sub-shell)的时候才会执行里面的命令，可以通过source ~/.bashrc执行。</p>
-<p>在.bash_profile中加入下面的代码，可以在登录时执行.bashrc里的代码</p>
-<pre><code class="bash"># Get the aliases and functions
-if  [  - f  ~/ .bashrc ]; then
-        .  ~/ .bashrc
-fi</code></pre>
-<h2 id="配pytorch"><a href="#配pytorch" class="headerlink" title="配pytorch"></a>配pytorch</h2><p>正常清华源为<a href="https://mirror.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">anaconda | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</a>，其中不包含pytorch</p>
-<p>添加pytorch清华源如下</p>
-<pre><code class="bash">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</code></pre>
-<h2 id="vim无法保存"><a href="#vim无法保存" class="headerlink" title="vim无法保存"></a>vim无法保存</h2><p>1、由于权限不够，即未使用sudo</p>
-<p>2、用vim打开了一个目录，可以继续选择进入文件，打开文件后再退出</p>
-<p>qa!可以退出，不能保存</p>
-<h2 id="CUDA命令"><a href="#CUDA命令" class="headerlink" title="CUDA命令"></a>CUDA命令</h2><pre><code class="bash">nvidia-smi
-</code></pre>
-<h2 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h2><p>nvidia-smi</p>
-<p>top 监视进程</p>
-<h2 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h2><pre><code>yum install -y screen  # 安装
-
-screen -S 窗口名称  # 开启新的
-Ctrl+A+C  # 在当前窗口开启新的窗口
-
-Ctrl+A+D  # 非中断detached退出
-按住Ctrl，依次再按a,d 可重连
-按住Ctrl和a,放开a去按d 不可重连
-
-Ctrl+A+K  # 杀掉当前
-
-screen -r 窗口名称  # 恢复重连
-
-exit  # 退出窗口
-
-screen -X -S id号  # 杀死
-
-screen -wipe 　# 检查目前所有的screen作业，并删除已经无法使用的screen作业。</code></pre><h2 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h2><pre><code>conda create -n 环境名 python=版本号
-conda deactivate
-conda info -e</code></pre>
-        
-    </div>
-    </div>
-
-    <div class="article-badge">
-        
-        
-    </div>
-
-</div>
-
-<footer class="article-footer">
-    <div class="article-more-info">
-    <div class="article-date">
-  <time datetime="2022-06-05T08:25:55.000Z" itemprop="datePublished">2022-06-05</time>
-</div>
-    
-    
-    </div>
-</footer>
-
-</article>
-
-    
-  
-    
-      <article
 id="post-【项目详情】解字"
 class="article article-type-post"
 >
@@ -417,58 +338,6 @@ class="article article-type-post"
     <div class="article-date">
   <time datetime="2022-05-27T01:03:34.000Z" itemprop="datePublished">2022-05-27</time>
 </div>
-    
-    
-    </div>
-</footer>
-
-</article>
-
-    
-  
-    
-      <article
-id="post-更换Aomori主题"
-class="article article-type-post"
->
-
-
-
-<div class="article-inner">
-    
-
-    <div class="article-body">
-    <header class="article-title">
-        <a href="/2022/05/27/%E6%9B%B4%E6%8D%A2Aomori%E4%B8%BB%E9%A2%98/">更换Aomori主题</a>
-    </header>
-    <div class="article-entry post-inner-html">
-        
-        <p><a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank" rel="noopener">Github地址</a></p>
-<p>发布</p>
-<pre><code class="Python">hexo algolia # 更改设置
-hexo g
-hexo d</code></pre>
-
-        
-    </div>
-    </div>
-
-    <div class="article-badge">
-        
-        
-    </div>
-
-</div>
-
-<footer class="article-footer">
-    <div class="article-more-info">
-    <div class="article-date">
-  <time datetime="2022-05-27T01:01:34.000Z" itemprop="datePublished">2022-05-27</time>
-</div>
-    
-        <div class="article-category">
-        <a class="article-category-link" href="/categories/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">应用开发</a>
-        </div>
     
     
     </div>
@@ -987,6 +856,85 @@ if os.path.exists(OPTIM_PATH)
         <div class="article-category">
         <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
         </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-Linux常见问题"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2021/06/05/Linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">Linux常见问题</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h2 id="bashrc和-bash-profile的区别"><a href="#bashrc和-bash-profile的区别" class="headerlink" title=".bashrc和.bash_profile的区别"></a>.bashrc和.bash_profile的区别</h2><p>.bash_profile是在登陆的时候才会执行的，也叫.bash_login，在命令行再运行bash命令的时候不执行这个文件里面的命令。</p>
+<p>.bashrc恰好相反，是在执行子shell(sub-shell)的时候才会执行里面的命令，可以通过source ~/.bashrc执行。</p>
+<p>在.bash_profile中加入下面的代码，可以在登录时执行.bashrc里的代码</p>
+<pre><code class="bash"># Get the aliases and functions
+if  [  - f  ~/ .bashrc ]; then
+        .  ~/ .bashrc
+fi</code></pre>
+<h2 id="配pytorch"><a href="#配pytorch" class="headerlink" title="配pytorch"></a>配pytorch</h2><p>正常清华源为<a href="https://mirror.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">anaconda | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</a>，其中不包含pytorch</p>
+<p>添加pytorch清华源如下</p>
+<pre><code class="bash">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</code></pre>
+<h2 id="vim无法保存"><a href="#vim无法保存" class="headerlink" title="vim无法保存"></a>vim无法保存</h2><p>1、由于权限不够，即未使用sudo</p>
+<p>2、用vim打开了一个目录，可以继续选择进入文件，打开文件后再退出</p>
+<p>qa!可以退出，不能保存</p>
+<h2 id="CUDA命令"><a href="#CUDA命令" class="headerlink" title="CUDA命令"></a>CUDA命令</h2><pre><code class="bash">nvidia-smi
+</code></pre>
+<h2 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h2><p>nvidia-smi</p>
+<p>top 监视进程</p>
+<h2 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h2><pre><code>yum install -y screen  # 安装
+
+screen -S 窗口名称  # 开启新的
+Ctrl+A+C  # 在当前窗口开启新的窗口
+
+Ctrl+A+D  # 非中断detached退出
+按住Ctrl，依次再按a,d 可重连
+按住Ctrl和a,放开a去按d 不可重连
+
+Ctrl+A+K  # 杀掉当前
+
+screen -r 窗口名称  # 恢复重连
+
+exit  # 退出窗口
+
+screen -X -S id号  # 杀死
+
+screen -wipe 　# 检查目前所有的screen作业，并删除已经无法使用的screen作业。</code></pre><h2 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h2><pre><code>conda create -n 环境名 python=版本号
+conda deactivate
+conda info -e</code></pre>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-06-05T08:25:55.000Z" itemprop="datePublished">2021-06-05</time>
+</div>
     
     
     </div>
@@ -1652,6 +1600,154 @@ d2l.train_ch6(net, train_iter, test_iter, num_epochs, lr, d2l.try_gpu()) </code>
 
     
   
+    
+      <article
+id="post-深度学习Review【四】编解码"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2021/05/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0Review%E3%80%90%E5%9B%9B%E3%80%91%E7%BC%96%E8%A7%A3%E7%A0%81/">深度学习Review【三】序列、RNN、LSTM（GRU）、DRNN</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <blockquote>
+<p><a href="https://zh-v2.d2l.ai/chapter_multilayer-perceptrons/mlp-concise.html" target="_blank" rel="noopener">课程地址</a></p>
+</blockquote>
+<h1 id="一、编码-解码"><a href="#一、编码-解码" class="headerlink" title="一、编码-解码"></a>一、编码-解码</h1><p>编码（训练）：处理输出，把输入编程成中甲你表达形式（特征）<br>解码（预测）：生成输出，把特征解码成输出</p>
+<pre><code class="python">from torch import nn
+
+class Encoder(nn.Module):
+    &quot;&quot;&quot;编码器-解码器结构的基本编码器接口。&quot;&quot;&quot;
+    def __init__(self, **kwargs):
+        super(Encoder, self).__init__(**kwargs)
+
+    def forward(self, X, *args):
+        raise NotImplementedError
+class Decoder(nn.Module):
+    &quot;&quot;&quot;编码器-解码器结构的基本解码器接口。&quot;&quot;&quot;
+    def __init__(self, **kwargs):
+        super(Decoder, self).__init__(**kwargs)
+
+    def init_state(self, enc_outputs, *args):
+        raise NotImplementedError
+
+    def forward(self, X, state):
+        raise NotImplementedError
+class EncoderDecoder(nn.Module):
+    &quot;&quot;&quot;编码器-解码器结构的基类。&quot;&quot;&quot;
+    def __init__(self, encoder, decoder, **kwargs):
+        super(EncoderDecoder, self).__init__(**kwargs)
+        self.encoder = encoder
+        self.decoder = decoder
+
+    def forward(self, enc_X, dec_X, *args):
+        enc_outputs = self.encoder(enc_X, *args)
+        dec_state = self.decoder.init_state(enc_outputs, *args)
+        return self.decoder(dec_X, dec_state)</code></pre>
+<h1 id="二、Seq2seq"><a href="#二、Seq2seq" class="headerlink" title="二、Seq2seq"></a>二、Seq2seq</h1><p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215455572.png" alt="在这里插入图片描述"><br>训练过程，即Encode的过程（一个RNN)是双向的<br>解码器是单向的<br>RNN也不需要定长的序列作为输入输出</p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_Q1NETiBA6IiS5YWL5YS_5LiN5byA6aOe5py6,size_26,color_FFFFFF,t_70,g_se,x_16.png" alt="在这里插入图片描述"><br>把编码器的RNN最后一层的输出放在解码器里，作为初始隐状态 </p>
+<h2 id="torch"><a href="#torch" class="headerlink" title="torch"></a>torch</h2><pre><code class="python">import collections
+import math
+import torch
+from torch import nn
+from d2l import torch as d2l
+
+class Seq2SeqEncoder(d2l.Encoder):
+    &quot;&quot;&quot;用于序列到序列学习的循环神经网络编码器Encode&quot;&quot;&quot;
+    def __init__(self, vocab_size, embed_size, num_hiddens, num_layers,dropout=0, **kwargs):
+        super(Seq2SeqEncoder, self).__init__(**kwargs)
+        # 嵌入层
+        self.embedding = nn.Embedding(vocab_size, embed_size) 
+        #对每个词embedding
+        self.rnn = nn.GRU(embed_size, num_hiddens, num_layers,
+                          dropout=dropout)
+        #numlayers是RNN的层数 numhiddens是隐藏层的层数
+    def forward(self, X, *args):
+        # 输出&#39;X&#39;的形状：(`batch_size`, `num_steps`, `embed_size`)
+        X = self.embedding(X)
+        # 在循环神经网络模型中，第一个轴对应于时间步，交换batchsize和numstep
+        X = X.permute(1, 0, 2)
+        # 如果未提及状态，则默认为0
+        output, state = self.rnn(X)
+        # `output`的形状: (`num_steps`, `batch_size`, `num_hiddens`)
+        # `state[0]`的形状: (`num_layers`, `batch_size`, `num_hiddens`)
+        return output, state
+
+encoder = Seq2SeqEncoder(vocab_size=10, embed_size=8, num_hiddens=16,
+                         num_layers=2)
+encoder.eval()
+X = torch.zeros((4, 7), dtype=torch.long)
+output, state = encoder(X)
+#output和state的形状torch.Size([7, 4, 16]) torch.Size([2, 4, 16])
+
+class Seq2SeqDecoder(d2l.Decoder):
+    &quot;&quot;&quot;用于序列到序列学习的循环神经网络解码器。&quot;&quot;&quot;
+    def __init__(self, vocab_size, embed_size, num_hiddens, num_layers,
+                 dropout=0, **kwargs):
+        super(Seq2SeqDecoder, self).__init__(**kwargs)
+        self.embedding = nn.Embedding(vocab_size, embed_size)
+        self.rnn = nn.GRU(embed_size + num_hiddens, num_hiddens, num_layers,
+                          dropout=dropout)
+        self.dense = nn.Linear(num_hiddens, vocab_size)
+        #分类
+
+    def init_state(self, enc_outputs, *args):
+        return enc_outputs[1] #enc_outputs[1]为state
+
+    def forward(self, X, state):
+        # 输出&#39;X&#39;的形状：(`batch_size`, `num_steps`, `embed_size`)
+        X = self.embedding(X).permute(1, 0, 2)
+        # 广播`context`，使其具有与`X`相同的`num_steps`
+        context = state[-1].repeat(X.shape[0], 1, 1)
+        X_and_context = torch.cat((X, context), 2)
+        output, state = self.rnn(X_and_context, state)
+        output = self.dense(output).permute(1, 0, 2)
+        # `output`的形状: (`batch_size`, `num_steps`, `vocab_size`)
+        # `state[0]`的形状: (`num_layers`, `batch_size`, `num_hiddens`)
+        return output, state
+decoder = Seq2SeqDecoder(vocab_size=10, embed_size=8, num_hiddens=16,
+                         num_layers=2)
+decoder.eval()
+state = decoder.init_state(encoder(X))
+output, state = decoder(X, state)
+# output和state的shape(torch.Size([4, 7, 10]), torch.Size([2, 4, 16]))</code></pre>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2021-05-28T13:45:31.000Z" itemprop="datePublished">2021-05-28</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
 
   
     <nav class="pagination">
@@ -1693,19 +1789,19 @@ d2l.train_ch6(net, train_iter, test_iter, num_epochs, lr, d2l.try_gpu()) </code>
           </li>
         
           <li>
-            <a href="/2022/06/05/Linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">Linux常见问题</a>
-          </li>
-        
-          <li>
             <a href="/2022/05/27/%E3%80%90%E9%A1%B9%E7%9B%AE%E8%AF%A6%E6%83%85%E3%80%91%E8%A7%A3%E5%AD%97/">【项目详情】解字</a>
           </li>
         
           <li>
-            <a href="/2022/05/27/%E6%9B%B4%E6%8D%A2Aomori%E4%B8%BB%E9%A2%98/">更换Aomori主题</a>
+            <a href="/2022/05/26/CLIP/">CLIP</a>
           </li>
         
           <li>
-            <a href="/2022/05/26/CLIP/">CLIP</a>
+            <a href="/2022/01/27/STL/">STL</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/13/ACM%E7%BB%8F%E9%AA%8C/">ACM经验</a>
           </li>
         
       </ul>
