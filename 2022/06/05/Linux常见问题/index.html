@@ -180,7 +180,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-cl413v6vc0001i5vmae3t3q6f" class="article article-type-post" itemscope
+    <article id="post-cl4491lm30001rkvm91vl0c63" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -232,7 +232,33 @@ fi</code></pre>
 <h2 id="配pytorch"><a href="#配pytorch" class="headerlink" title="配pytorch"></a>配pytorch</h2><p>正常清华源为<a href="https://mirror.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">anaconda | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</a>，其中不包含pytorch</p>
 <p>添加pytorch清华源如下</p>
 <pre><code class="bash">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</code></pre>
+<h2 id="vim无法保存"><a href="#vim无法保存" class="headerlink" title="vim无法保存"></a>vim无法保存</h2><p>1、由于权限不够，即未使用sudo</p>
+<p>2、用vim打开了一个目录，可以继续选择进入文件，打开文件后再退出</p>
+<p>qa!可以退出，不能保存</p>
+<h2 id="CUDA命令"><a href="#CUDA命令" class="headerlink" title="CUDA命令"></a>CUDA命令</h2><pre><code class="bash">nvidia-smi
+</code></pre>
+<h2 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h2><p>nvidia-smi</p>
+<p>top 监视进程</p>
+<h2 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h2><pre><code>yum install -y screen  # 安装
 
+screen -S 窗口名称  # 开启新的
+Ctrl+A+C  # 在当前窗口开启新的窗口
+
+Ctrl+A+D  # 非中断detached退出
+按住Ctrl，依次再按a,d 可重连
+按住Ctrl和a,放开a去按d 不可重连
+
+Ctrl+A+K  # 杀掉当前
+
+screen -r 窗口名称  # 恢复重连
+
+exit  # 退出窗口
+
+screen -X -S id号  # 杀死
+
+screen -wipe 　# 检查目前所有的screen作业，并删除已经无法使用的screen作业。</code></pre><h2 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h2><pre><code>conda create -n 环境名 python=版本号
+conda deactivate
+conda info -e</code></pre>
         </div>
 
     </div>
@@ -249,6 +275,15 @@ fi</code></pre>
 
     
 <nav class="article-nav">
+  
+    <a href="/2022/06/07/DateMinder/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          DateMinder
+        
+      </div>
+    </a>
   
   
     <a href="/2022/05/27/%E3%80%90%E9%A1%B9%E7%9B%AE%E8%AF%A6%E6%83%85%E3%80%91%E8%A7%A3%E5%AD%97/" id="article-nav-older" class="article-nav-link-wrap">
@@ -330,6 +365,10 @@ fi</code></pre>
       <ul>
         
           <li>
+            <a href="/2022/06/07/DateMinder/">DateMinder</a>
+          </li>
+        
+          <li>
             <a href="/2022/06/05/Linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">Linux常见问题</a>
           </li>
         
@@ -343,10 +382,6 @@ fi</code></pre>
         
           <li>
             <a href="/2022/05/26/CLIP/">CLIP</a>
-          </li>
-        
-          <li>
-            <a href="/2022/01/27/STL/">STL</a>
           </li>
         
       </ul>

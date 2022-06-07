@@ -180,7 +180,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-cl413v6v40000i5vmdd512m7z" class="article article-type-post" itemscope
+    <article id="post-cl4491lme0006rkvm4nayc7p1" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -226,7 +226,51 @@
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            
+            <h2 id="加载数据类"><a href="#加载数据类" class="headerlink" title="加载数据类"></a>加载数据类</h2><p>获取数据和其对应的label值、总共有多少数据</p>
+<pre><code>from torch.utils.data import Dataset</code></pre><h2 id="GPU训练"><a href="#GPU训练" class="headerlink" title="GPU训练"></a>GPU训练</h2><p>将输入、输出、模型、损失函数都移到cuda上</p>
+<h3 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h3><p>必须在import torch之前键入以下代码</p>
+<pre><code class="python">import os
+os.environ[&#39;CUDA_VISIBLE_DEVICES&#39;] = &#39;3&#39;</code></pre>
+<p>然后都移动到cuda上</p>
+<pre><code class="python">x = x.cuda()
+y = y.cuda()
+model = model.cuda()
+loss_function = loss_function.cuda()</code></pre>
+<h3 id="使用todevice"><a href="#使用todevice" class="headerlink" title="使用todevice"></a>使用todevice</h3><pre><code class="python">device = torch.device(&quot;cuda:0&quot; if torch.cuda.is_available() else &quot;cpu&quot;)
+
+model.to(device)</code></pre>
+<h2 id="Tensorboard"><a href="#Tensorboard" class="headerlink" title="Tensorboard"></a>Tensorboard</h2><pre><code class="python">from torch.utils.tensorboard import SummaryWriter
+
+
+writer = SummaryWriter(&quot;logs&quot;)
+# y = x+1
+for i in range(100):
+    writer.add_scalar(&quot;y=x&quot;,i+1,i)
+writer.close()</code></pre>
+<p>生成一个logs文件夹，终端进入logs文件夹的同级目录，输入</p>
+<pre><code>tensroboard --logdir=logs --port 6007</code></pre><h2 id="计算模型体量"><a href="#计算模型体量" class="headerlink" title="计算模型体量"></a>计算模型体量</h2><h2 id="进度条"><a href="#进度条" class="headerlink" title="进度条"></a>进度条</h2><pre><code class="python">from tqdm import tqdm  # 直接import tqdm会报错
+
+loop = tqdm(enumerate(train_dataloader), total=train_data_size)
+for step, data in loop:
+  pass</code></pre>
+<h2 id="保存模型"><a href="#保存模型" class="headerlink" title="保存模型"></a>保存模型</h2><p>包含GPU tensors的模型，自动load到GPU上</p>
+<p>保存整个模型</p>
+<pre><code class="python">## 保存模型
+torch.save(model, MODEL_PATH)
+
+## 读取模型
+model = torch.load(MODEL_PATH)</code></pre>
+<p>只保存参数</p>
+<pre><code class="python">## 保存模型
+torch.save(model.state_dict(), MODEL_PATH)
+torch.save(optimizer.state_dict(), OPTIM_PATH)
+
+## 读取模型
+if os.path.exists(MODEL_PATH)
+    model.load_state_dict(torch.load(MODEL_PATH))
+if os.path.exists(OPTIM_PATH)
+  optimizer.load_state_dict(optimizer.state_dict(), OPTIM_PATH)</code></pre>
+
         </div>
 
     </div>
@@ -254,9 +298,9 @@
     </a>
   
   
-    <a href="/2021/05/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0Review%E3%80%90%E4%BA%8C%E3%80%91LeNet%E3%80%81AlexNet%E3%80%81VGG%E3%80%81NiN%E3%80%81GoogLeNet%E3%80%81ResNet%E3%80%81DenseNet/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/05/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0Review%E3%80%90%E4%B8%80%E3%80%91%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E3%80%81Softmax%E3%80%81%E6%84%9F%E7%9F%A5%E6%9C%BA%E3%80%81%E5%8D%B7%E7%A7%AF/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-caption">上一篇</div>
-      <div class="article-nav-title">深度学习Review【二】LeNet、AlexNet、VGG、NiN、GoogLeNet、ResNet、DenseNet</div>
+      <div class="article-nav-title">深度学习Review【一】线性回归、Softmax、感知机、卷积</div>
     </a>
   
 </nav>
@@ -333,6 +377,10 @@
       <ul>
         
           <li>
+            <a href="/2022/06/07/DateMinder/">DateMinder</a>
+          </li>
+        
+          <li>
             <a href="/2022/06/05/Linux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">Linux常见问题</a>
           </li>
         
@@ -346,10 +394,6 @@
         
           <li>
             <a href="/2022/05/26/CLIP/">CLIP</a>
-          </li>
-        
-          <li>
-            <a href="/2022/01/27/STL/">STL</a>
           </li>
         
       </ul>
