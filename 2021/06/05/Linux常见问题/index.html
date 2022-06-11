@@ -222,24 +222,46 @@
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <h2 id="bashrc和-bash-profile的区别"><a href="#bashrc和-bash-profile的区别" class="headerlink" title=".bashrc和.bash_profile的区别"></a>.bashrc和.bash_profile的区别</h2><p>.bash_profile是在登陆的时候才会执行的，也叫.bash_login，在命令行再运行bash命令的时候不执行这个文件里面的命令。</p>
+            <h2 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h2><pre><code class="bash">pip show 包名
+pip install 包名 -i 国内源</code></pre>
+<h2 id="bash脚本"><a href="#bash脚本" class="headerlink" title="bash脚本"></a>bash脚本</h2><p>等号两边无空格</p>
+<h3 id="bashrc和-bash-profile的区别"><a href="#bashrc和-bash-profile的区别" class="headerlink" title=".bashrc和.bash_profile的区别"></a>.bashrc和.bash_profile的区别</h3><p>.bash_profile是在登陆的时候才会执行的，也叫.bash_login，在命令行再运行bash命令的时候不执行这个文件里面的命令。</p>
 <p>.bashrc恰好相反，是在执行子shell(sub-shell)的时候才会执行里面的命令，可以通过source ~/.bashrc执行。</p>
-<p>在.bash_profile中加入下面的代码，可以在登录时执行.bashrc里的代码</p>
-<pre><code class="bash"># Get the aliases and functions
-if  [  - f  ~/ .bashrc ]; then
-        .  ~/ .bashrc
+<p>在.bash_profile中加入下面的代码，可以在登录时执行.bashrc里的代码，注意空格</p>
+<pre><code class="bash">if  [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+        echo &quot;.bash_profile call .bashrc&quot;
 fi</code></pre>
-<h2 id="配pytorch"><a href="#配pytorch" class="headerlink" title="配pytorch"></a>配pytorch</h2><p>正常清华源为<a href="https://mirror.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">anaconda | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</a>，其中不包含pytorch</p>
+<h2 id="安装pytorch"><a href="#安装pytorch" class="headerlink" title="安装pytorch"></a>安装pytorch</h2><p>正常清华源为<a href="https://mirror.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">anaconda | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</a>，其中不包含pytorch</p>
 <p>添加pytorch清华源如下</p>
 <pre><code class="bash">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</code></pre>
 <h2 id="vim无法保存"><a href="#vim无法保存" class="headerlink" title="vim无法保存"></a>vim无法保存</h2><p>1、由于权限不够，即未使用sudo</p>
 <p>2、用vim打开了一个目录，可以继续选择进入文件，打开文件后再退出</p>
 <p>qa!可以退出，不能保存</p>
-<h2 id="CUDA命令"><a href="#CUDA命令" class="headerlink" title="CUDA命令"></a>CUDA命令</h2><pre><code class="bash">nvidia-smi
-</code></pre>
+<h2 id="CUDA命令"><a href="#CUDA命令" class="headerlink" title="CUDA命令"></a>CUDA命令</h2><pre><code class="bash">nvidia-smi</code></pre>
+<table>
+<thead>
+<tr>
+<th align="center">Perf</th>
+<th align="center">Persistence-M</th>
+<th align="center">Compute M</th>
+<th>Disp.A</th>
+<th>Uncorr. ECC</th>
+<th>Compute M</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">性能模式（P0到P12）</td>
+<td align="center">持续模式</td>
+<td align="center">计算模式</td>
+<td>GPU的显示是否初始化</td>
+<td>错误检查与纠正</td>
+<td>计算模式</td>
+</tr>
+</tbody></table>
 <h2 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h2><p>nvidia-smi</p>
 <p>top 监视进程</p>
-<h2 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h2><pre><code>yum install -y screen  # 安装
+<h2 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h2><pre><code class="bash">yum install -y screen  # 安装
 
 screen -S 窗口名称  # 开启新的
 Ctrl+A+C  # 在当前窗口开启新的窗口
@@ -256,9 +278,31 @@ exit  # 退出窗口
 
 screen -X -S id号  # 杀死
 
-screen -wipe 　# 检查目前所有的screen作业，并删除已经无法使用的screen作业。</code></pre><h2 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h2><pre><code>conda create -n 环境名 python=版本号
+screen -wipe 　# 检查目前所有的screen作业，并删除已经无法使用的screen作业。</code></pre>
+<h2 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h2><pre><code class="bash">conda create -n 环境名 python=版本号
 conda deactivate
 conda info -e</code></pre>
+<pre><code class="python">def rotate(self, x0, y0, r):
+    if self.is_changed:
+        for i in range(len(self.vertex_float)):
+            x1 = self.vertex_float[i][0]
+            y1 = self.vertex_float[i][1]
+            self.vertex_float[i][0] = x0 + (x1 - x0) * math.cos(r / 180 * math.pi) - (y1 - y0) * math.sin(
+                r / 180 * math.pi)
+            self.vertex_float[i][1] = y0 + (x1 - x0) * math.sin(r / 180 * math.pi) + (y1 - y0) * math.cos(
+                r / 180 * math.pi)
+        self.vertex = [[int(p[0]), int(p[1])] for p in self.vertex_float]
+    else:
+        for i in range(len(self.vertex)):
+            x1 = self.vertex[i][0]
+            y1 = self.vertex[i][1]
+            self.vertex[i][0] = int(
+                x0 + (x1 - x0) * math.cos(r / 180 * math.pi) - (y1 - y0) * math.sin(r / 180 * math.pi))
+            self.vertex[i][1] = int(
+                y0 + (x1 - x0) * math.sin(r / 180 * math.pi) + (y1 - y0) * math.cos(r / 180 * math.pi))
+    self.rasterization()</code></pre>
+<pre><code class="python"></code></pre>
+
         </div>
 
     </div>
@@ -365,11 +409,11 @@ conda info -e</code></pre>
       <ul>
         
           <li>
-            <a href="/2022/06/07/DateMinder/">DateMinder</a>
+            <a href="/2022/06/07/DateMinder/">【项目详情】DateMinder</a>
           </li>
         
           <li>
-            <a href="/2022/05/27/%E3%80%90%E9%A1%B9%E7%9B%AE%E8%AF%A6%E6%83%85%E3%80%91%E8%A7%A3%E5%AD%97/">【项目详情】解字</a>
+            <a href="/2022/05/27/jiezi/">【项目详情】解字</a>
           </li>
         
           <li>

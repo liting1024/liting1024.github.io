@@ -17,7 +17,7 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>DateMinder</title>
+    <title>【项目详情】DateMinder</title>
     <link href="https://liting1024.github.io/2022/06/07/DateMinder/"/>
     <id>https://liting1024.github.io/2022/06/07/DateMinder/</id>
     <published>2022-06-07T14:02:06.000Z</published>
@@ -42,17 +42,18 @@
   
   <entry>
     <title>【项目详情】解字</title>
-    <link href="https://liting1024.github.io/2022/05/27/%E3%80%90%E9%A1%B9%E7%9B%AE%E8%AF%A6%E6%83%85%E3%80%91%E8%A7%A3%E5%AD%97/"/>
-    <id>https://liting1024.github.io/2022/05/27/%E3%80%90%E9%A1%B9%E7%9B%AE%E8%AF%A6%E6%83%85%E3%80%91%E8%A7%A3%E5%AD%97/</id>
+    <link href="https://liting1024.github.io/2022/05/27/jiezi/"/>
+    <id>https://liting1024.github.io/2022/05/27/jiezi/</id>
     <published>2022-05-27T01:03:34.000Z</published>
     <updated>2022-05-27T01:03:34.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="创作简介"><a href="#创作简介" class="headerlink" title="创作简介"></a>创作简介</h1><h2 id="作品简介"><a href="#作品简介" class="headerlink" title="作品简介"></a>作品简介</h2><p>​    汉字文化在当下如何利用数媒游戏阵地有效发挥其文化价值和影响力，是应对互联网发展带来的表达匮乏，如提笔忘字等现象的重要论题。</p><p>​    基于此，我们团队充分挖掘汉字的结构特点和文化底蕴，设计出一款基于Unity的汉字解密游戏，游戏分为三个篇章，分别是汉字冒险、汉字竞速和汉字识解。</p><p>​    我们自主设计了丰富的故事情节并融入古典诗歌与民间神话，充满了古典韵味，弘扬了古典文化，能激发玩家的兴趣，带给玩家沉浸式游戏体验。在保证趣味性的同时，具有深刻教育意义，宣扬积极向上的价值观，玩家可以在古典文化的氛围中更好的学习和理解汉字。</p><p>​    由于汉字的复杂结构和丰富的文化底蕴，如何在紧扣《送东阳马生序》的故事背景的基础上利用汉字的结构特性进行组合和拆分以表达具象的场景和物体成为游戏设计的一大难点。通过阅读相关期刊和《宋学士全集》，对汉字的结构演变、笔画之间的形态关系和《送东阳马生序》故事情节的研究总结，设计出七个以宋濂奔走还书为主线的关卡。</p><p>​    故事情节是激发玩家兴趣必不可少的部分，如何将汉字文化与民间神话、古典诗歌结合起来形成连贯、完整的情节是一大难点。经过团队的反复讨论和研磨，我们团队为每一关卡设计了不同的情节，增加游戏整体古典韵味的同时，为游戏关卡提供了一定的线索。</p><p>​    我们设计四大系统，训练基于CNN的中文OCR模型实现游戏基本功能，同时制作了一个框架，涵盖了汉字移动过程中所产生的所有的事件，有利于我们将游戏的场景做的更大更宏观。</p>]]></content>
+    <content type="html"><![CDATA[<p>作品现已上架TapTap，支持篝火计划 <a href="https://www.taptap.com/app/235522" target="_blank" rel="noopener">点击链接</a></p><h1 id="创作简介"><a href="#创作简介" class="headerlink" title="创作简介"></a>创作简介</h1><h2 id="作品简介"><a href="#作品简介" class="headerlink" title="作品简介"></a>作品简介</h2><p>​    汉字文化在当下如何利用数媒游戏阵地有效发挥其文化价值和影响力，是应对互联网发展带来的表达匮乏，如提笔忘字等现象的重要论题。</p><p>​    基于此，我们团队充分挖掘汉字的结构特点和文化底蕴，设计出一款基于Unity的汉字解密游戏，游戏分为三个篇章，分别是汉字冒险、汉字竞速和汉字识解。</p><p>​    我们自主设计了丰富的故事情节并融入古典诗歌与民间神话，充满了古典韵味，弘扬了古典文化，能激发玩家的兴趣，带给玩家沉浸式游戏体验。在保证趣味性的同时，具有深刻教育意义，宣扬积极向上的价值观，玩家可以在古典文化的氛围中更好的学习和理解汉字。</p><p>​    由于汉字的复杂结构和丰富的文化底蕴，如何在紧扣《送东阳马生序》的故事背景的基础上利用汉字的结构特性进行组合和拆分以表达具象的场景和物体成为游戏设计的一大难点。通过阅读相关期刊和《宋学士全集》，对汉字的结构演变、笔画之间的形态关系和《送东阳马生序》故事情节的研究总结，设计出七个以宋濂奔走还书为主线的关卡。</p><p>​    故事情节是激发玩家兴趣必不可少的部分，如何将汉字文化与民间神话、古典诗歌结合起来形成连贯、完整的情节是一大难点。经过团队的反复讨论和研磨，我们团队为每一关卡设计了不同的情节，增加游戏整体古典韵味的同时，为游戏关卡提供了一定的线索。</p><p>​    我们设计四大系统，训练基于CNN的中文OCR模型实现游戏基本功能，同时制作了一个框架，涵盖了汉字移动过程中所产生的所有的事件，有利于我们将游戏的场景做的更大更宏观。</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h1 id=&quot;创作简介&quot;&gt;&lt;a href=&quot;#创作简介&quot; class=&quot;headerlink&quot; title=&quot;创作简介&quot;&gt;&lt;/a&gt;创作简介&lt;/h1&gt;&lt;h2 id=&quot;作品简介&quot;&gt;&lt;a href=&quot;#作品简介&quot; class=&quot;headerlink&quot; title=&quot;作品简介&quot;&gt;&lt;/a</summary>
+    <summary type="html">&lt;p&gt;作品现已上架TapTap，支持篝火计划 &lt;a href=&quot;https://www.taptap.com/app/235522&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;点击链接&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;创作简介&quot;&gt;&lt;a href=&quot;#创作简介&quot;</summary>
       
     
     
@@ -165,12 +166,13 @@
     <published>2021-06-05T08:25:55.000Z</published>
     <updated>2021-06-05T08:25:55.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="bashrc和-bash-profile的区别"><a href="#bashrc和-bash-profile的区别" class="headerlink" title=".bashrc和.bash_profile的区别"></a>.bashrc和.bash_profile的区别</h2><p>.bash_profile是在登陆的时候才会执行的，也叫.bash_login，在命令行再运行bash命令的时候不执行这个文件里面的命令。</p><p>.bashrc恰好相反，是在执行子shell(sub-shell)的时候才会执行里面的命令，可以通过source ~/.bashrc执行。</p><p>在.bash_profile中加入下面的代码，可以在登录时执行.bashrc里的代码</p><pre><code class="bash"># Get the aliases and functionsif  [  - f  ~/ .bashrc ]; then        .  ~/ .bashrcfi</code></pre><h2 id="配pytorch"><a href="#配pytorch" class="headerlink" title="配pytorch"></a>配pytorch</h2><p>正常清华源为<a href="https://mirror.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">anaconda | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</a>，其中不包含pytorch</p><p>添加pytorch清华源如下</p><pre><code class="bash">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</code></pre><h2 id="vim无法保存"><a href="#vim无法保存" class="headerlink" title="vim无法保存"></a>vim无法保存</h2><p>1、由于权限不够，即未使用sudo</p><p>2、用vim打开了一个目录，可以继续选择进入文件，打开文件后再退出</p><p>qa!可以退出，不能保存</p><h2 id="CUDA命令"><a href="#CUDA命令" class="headerlink" title="CUDA命令"></a>CUDA命令</h2><pre><code class="bash">nvidia-smi</code></pre><h2 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h2><p>nvidia-smi</p><p>top 监视进程</p><h2 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h2><pre><code>yum install -y screen  # 安装screen -S 窗口名称  # 开启新的Ctrl+A+C  # 在当前窗口开启新的窗口Ctrl+A+D  # 非中断detached退出按住Ctrl，依次再按a,d 可重连按住Ctrl和a,放开a去按d 不可重连Ctrl+A+K  # 杀掉当前screen -r 窗口名称  # 恢复重连exit  # 退出窗口screen -X -S id号  # 杀死screen -wipe 　# 检查目前所有的screen作业，并删除已经无法使用的screen作业。</code></pre><h2 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h2><pre><code>conda create -n 环境名 python=版本号conda deactivateconda info -e</code></pre>]]></content>
+    <content type="html"><![CDATA[<h2 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h2><pre><code class="bash">pip show 包名pip install 包名 -i 国内源</code></pre><h2 id="bash脚本"><a href="#bash脚本" class="headerlink" title="bash脚本"></a>bash脚本</h2><p>等号两边无空格</p><h3 id="bashrc和-bash-profile的区别"><a href="#bashrc和-bash-profile的区别" class="headerlink" title=".bashrc和.bash_profile的区别"></a>.bashrc和.bash_profile的区别</h3><p>.bash_profile是在登陆的时候才会执行的，也叫.bash_login，在命令行再运行bash命令的时候不执行这个文件里面的命令。</p><p>.bashrc恰好相反，是在执行子shell(sub-shell)的时候才会执行里面的命令，可以通过source ~/.bashrc执行。</p><p>在.bash_profile中加入下面的代码，可以在登录时执行.bashrc里的代码，注意空格</p><pre><code class="bash">if  [ -f ~/.bashrc ]; then        . ~/.bashrc        echo &quot;.bash_profile call .bashrc&quot;fi</code></pre><h2 id="安装pytorch"><a href="#安装pytorch" class="headerlink" title="安装pytorch"></a>安装pytorch</h2><p>正常清华源为<a href="https://mirror.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">anaconda | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror</a>，其中不包含pytorch</p><p>添加pytorch清华源如下</p><pre><code class="bash">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</code></pre><h2 id="vim无法保存"><a href="#vim无法保存" class="headerlink" title="vim无法保存"></a>vim无法保存</h2><p>1、由于权限不够，即未使用sudo</p><p>2、用vim打开了一个目录，可以继续选择进入文件，打开文件后再退出</p><p>qa!可以退出，不能保存</p><h2 id="CUDA命令"><a href="#CUDA命令" class="headerlink" title="CUDA命令"></a>CUDA命令</h2><pre><code class="bash">nvidia-smi</code></pre><table><thead><tr><th align="center">Perf</th><th align="center">Persistence-M</th><th align="center">Compute M</th><th>Disp.A</th><th>Uncorr. ECC</th><th>Compute M</th></tr></thead><tbody><tr><td align="center">性能模式（P0到P12）</td><td align="center">持续模式</td><td align="center">计算模式</td><td>GPU的显示是否初始化</td><td>错误检查与纠正</td><td>计算模式</td></tr></tbody></table><h2 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h2><p>nvidia-smi</p><p>top 监视进程</p><h2 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h2><pre><code class="bash">yum install -y screen  # 安装screen -S 窗口名称  # 开启新的Ctrl+A+C  # 在当前窗口开启新的窗口Ctrl+A+D  # 非中断detached退出按住Ctrl，依次再按a,d 可重连按住Ctrl和a,放开a去按d 不可重连Ctrl+A+K  # 杀掉当前screen -r 窗口名称  # 恢复重连exit  # 退出窗口screen -X -S id号  # 杀死screen -wipe 　# 检查目前所有的screen作业，并删除已经无法使用的screen作业。</code></pre><h2 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h2><pre><code class="bash">conda create -n 环境名 python=版本号conda deactivateconda info -e</code></pre><pre><code class="python">def rotate(self, x0, y0, r):    if self.is_changed:        for i in range(len(self.vertex_float)):            x1 = self.vertex_float[i][0]            y1 = self.vertex_float[i][1]            self.vertex_float[i][0] = x0 + (x1 - x0) * math.cos(r / 180 * math.pi) - (y1 - y0) * math.sin(                r / 180 * math.pi)            self.vertex_float[i][1] = y0 + (x1 - x0) * math.sin(r / 180 * math.pi) + (y1 - y0) * math.cos(                r / 180 * math.pi)        self.vertex = [[int(p[0]), int(p[1])] for p in self.vertex_float]    else:        for i in range(len(self.vertex)):            x1 = self.vertex[i][0]            y1 = self.vertex[i][1]            self.vertex[i][0] = int(                x0 + (x1 - x0) * math.cos(r / 180 * math.pi) - (y1 - y0) * math.sin(r / 180 * math.pi))            self.vertex[i][1] = int(                y0 + (x1 - x0) * math.sin(r / 180 * math.pi) + (y1 - y0) * math.cos(r / 180 * math.pi))    self.rasterization()</code></pre><pre><code class="python"></code></pre>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;bashrc和-bash-profile的区别&quot;&gt;&lt;a href=&quot;#bashrc和-bash-profile的区别&quot; class=&quot;headerlink&quot; title=&quot;.bashrc和.bash_profile的区别&quot;&gt;&lt;/a&gt;.bashrc和.bash_pr</summary>
+    <summary type="html">&lt;h2 id=&quot;pip&quot;&gt;&lt;a href=&quot;#pip&quot; class=&quot;headerlink&quot; title=&quot;pip&quot;&gt;&lt;/a&gt;pip&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;pip show 包名
+pip install 包名 -i 国内源&lt;/code&gt;&lt;/pre</summary>
       
     
     
