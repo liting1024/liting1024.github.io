@@ -123,7 +123,7 @@
         <box-icon type='logo' name='github'></box-icon>
     </a>
 
-    <a class="social" target="_blank" href="jkliting@163.com">
+    <a class="social" target="_blank" href="mailto:jkliting@163.com">
         <box-icon type='solid' name='envelope'></box-icon>
     </a>
 
@@ -877,7 +877,13 @@ class="article article-type-post"
     </header>
     <div class="article-entry post-inner-html">
         
-        <h2 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h2><pre><code class="bash">pip show 包名
+        <h2 id="网络测试"><a href="#网络测试" class="headerlink" title="网络测试"></a>网络测试</h2><pre><code class="bash">curl &lt;url&gt;
+
+ping &lt;ip&gt;
+ping -i &lt;ip&gt; &lt;port&gt;
+
+lsof -i &lt;port&gt;</code></pre>
+<h2 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h2><pre><code class="bash">pip show 包名
 pip install 包名 -i 国内源</code></pre>
 <h2 id="bash脚本"><a href="#bash脚本" class="headerlink" title="bash脚本"></a>bash脚本</h2><p>等号两边无空格</p>
 <h3 id="bashrc和-bash-profile的区别"><a href="#bashrc和-bash-profile的区别" class="headerlink" title=".bashrc和.bash_profile的区别"></a>.bashrc和.bash_profile的区别</h3><p>.bash_profile是在登陆的时候才会执行的，也叫.bash_login，在命令行再运行bash命令的时候不执行这个文件里面的命令。</p>
@@ -932,30 +938,27 @@ screen -r 窗口名称  # 恢复重连
 exit  # 退出窗口
 
 screen -X -S id号  # 杀死
-
 screen -wipe 　# 检查目前所有的screen作业，并删除已经无法使用的screen作业。</code></pre>
 <h2 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h2><pre><code class="bash">conda create -n 环境名 python=版本号
 conda deactivate
 conda info -e</code></pre>
-<pre><code class="python">def rotate(self, x0, y0, r):
-    if self.is_changed:
-        for i in range(len(self.vertex_float)):
-            x1 = self.vertex_float[i][0]
-            y1 = self.vertex_float[i][1]
-            self.vertex_float[i][0] = x0 + (x1 - x0) * math.cos(r / 180 * math.pi) - (y1 - y0) * math.sin(
-                r / 180 * math.pi)
-            self.vertex_float[i][1] = y0 + (x1 - x0) * math.sin(r / 180 * math.pi) + (y1 - y0) * math.cos(
-                r / 180 * math.pi)
-        self.vertex = [[int(p[0]), int(p[1])] for p in self.vertex_float]
+<pre><code class="python">def scale(self, x0, y0, s):
+    if self.rx == self.ry:
+        self.rx = int(s * self.rx)
+        self.ry = int(s * self.ry)
+        x1 = self.vertex[0][0]
+        y1 = self.vertex[0][1]
+        self.vertex[0][0] = int((x1 - x0) * s + x0)
+        self.vertex[0][1] = int((y1 - y0) * s + y0)
+        self.vertex[1] = [self.rx, self.ry]
+        self.rasterization()
     else:
-        for i in range(len(self.vertex)):
-            x1 = self.vertex[i][0]
-            y1 = self.vertex[i][1]
-            self.vertex[i][0] = int(
-                x0 + (x1 - x0) * math.cos(r / 180 * math.pi) - (y1 - y0) * math.sin(r / 180 * math.pi))
-            self.vertex[i][1] = int(
-                y0 + (x1 - x0) * math.sin(r / 180 * math.pi) + (y1 - y0) * math.cos(r / 180 * math.pi))
-    self.rasterization()</code></pre>
+        self.vertex[1] = [int(p*s) for p in self.vertex[1]]
+        x1 = self.vertex[0][0]
+        y1 = self.vertex[0][1]
+        self.vertex[0][0] = int((x1 - x0) * s + x0)
+        self.vertex[0][1] = int((y1 - y0) * s + y0)
+        self.rasterization()</code></pre>
 <pre><code class="python"></code></pre>
 
         
@@ -1215,7 +1218,7 @@ pool2d(X)</code></pre>
   
     
       <article
-id="post-深度学习Review【二】LeNet、AlexNet、VGG、NiN、GoogLeNet、ResNet、DenseNet"
+id="post-深度学习Review【三】序列、RNN、LSTM（GRU）、DRNN"
 class="article article-type-post"
 >
 
@@ -1226,389 +1229,152 @@ class="article article-type-post"
 
     <div class="article-body">
     <header class="article-title">
-        <a href="/2021/05/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0Review%E3%80%90%E4%BA%8C%E3%80%91LeNet%E3%80%81AlexNet%E3%80%81VGG%E3%80%81NiN%E3%80%81GoogLeNet%E3%80%81ResNet%E3%80%81DenseNet/">深度学习Review【二】LeNet、AlexNet、VGG、NiN、GoogLeNet、ResNet、DenseNet</a>
+        <a href="/2021/05/28/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0Review%E3%80%90%E4%B8%89%E3%80%91%E5%BA%8F%E5%88%97%E3%80%81RNN%E3%80%81LSTM%EF%BC%88GRU%EF%BC%89%E3%80%81DRNN/">深度学习Review【三】序列、RNN、LSTM（GRU）、DRNN</a>
     </header>
     <div class="article-entry post-inner-html">
         
         <blockquote>
 <p><a href="https://zh-v2.d2l.ai/chapter_multilayer-perceptrons/mlp-concise.html" target="_blank" rel="noopener">课程地址</a></p>
 </blockquote>
-<h1 id="一、LeNet"><a href="#一、LeNet" class="headerlink" title="一、LeNet"></a>一、LeNet</h1><p>手写数字识别（MNIST）<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/512cd1b1e7c840acb4eabbffd3d6923a.png" alt="在这里插入图片描述"><br>使用了Conv2d、AvgPooling、Linear<br>高宽减半时通道数翻倍，保证信息能匹配更多的模式（将信息分配到多个通道）<br>输入超过100x100时MLP不如CNN，输入少时mlp更快</p>
+<h1 id="一、序列模型"><a href="#一、序列模型" class="headerlink" title="一、序列模型"></a>一、序列模型</h1><p>序列数据：实际中很多数据是随着时间变化而变化。</p>
+<p>根据条件概率一直x1到xT的概率可以算出x的概率。<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317525.png" alt="在这里插入图片描述"><br>自回归模型：用的数据，预测现在的数据</p>
+<h2 id="马尔科夫假设"><a href="#马尔科夫假设" class="headerlink" title="马尔科夫假设"></a>马尔科夫假设</h2><p>当前数据只和t个过去的数据相关<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317506.png" alt="在这里插入图片描述"></p>
+<h2 id="潜变量"><a href="#潜变量" class="headerlink" title="潜变量"></a>潜变量</h2><p>引入潜变量h来表示过去的信息<br>绿色代表不同的潜变量h，每次在改变x后计算新的潜变量h<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317616.png" alt="在这里插入图片描述"></p>
+<h1 id="二、RNN-循环神经网络"><a href="#二、RNN-循环神经网络" class="headerlink" title="二、RNN 循环神经网络"></a>二、RNN 循环神经网络</h1><p> 适用于100以内的序列<br> 用当前时刻的输入预测下一时刻的输出，“你好世界”，输出的“好”是由输入的“你”和“好”预测出来的。<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317481.png" alt="在这里插入图片描述"><br>W[hx]表示从x到h的权重</p>
+<h2 id="衡量语言模型"><a href="#衡量语言模型" class="headerlink" title="衡量语言模型"></a>衡量语言模型</h2><ul>
+<li>平均交叉熵<ul>
+<li>困惑度：指数（1表示完美，无穷表示垃）</li>
+</ul>
+</li>
+</ul>
+<h2 id="梯度剪裁"><a href="#梯度剪裁" class="headerlink" title="梯度剪裁"></a>梯度剪裁</h2><p>可以防止梯度爆炸，如果梯度长度超过某个值，就拖回到这个值。<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/91b5da51c44f458884862918ed0395fc.png" alt="在这里插入图片描述"></p>
 <h2 id="torch实现"><a href="#torch实现" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
 from torch import nn
+from torch.nn import functional as F
 from d2l import torch as d2l
-#使用类可以放在Sequential里
-class Reshape(torch.nn.Module):
-    def forward(self, x):
-        return x.view(-1, 1, 28, 28)
 
-net = torch.nn.Sequential(
-    Reshape(),
-    nn.Conv2d(1, 6, kernel_size=5, padding=2), nn.Sigmoid(),#窗口5x5，由于数据集是28x28和论文中32x32不同，所以padding了2
-    nn.AvgPool2d(kernel_size=2, stride=2),#stride=2防止2x2的窗口重叠
-    nn.Conv2d(6, 16, kernel_size=5), nn.Sigmoid(),
-    nn.AvgPool2d(kernel_size=2, stride=2),#输出为16*5*5
-    nn.Flatten(),#把16x5x5拉长变成1维的1x400
-    nn.Linear(16 * 5 * 5, 120), nn.Sigmoid(),
-    nn.Linear(120, 84), nn.Sigmoid(),nn.Linear(84, 10))#最后输出1*10的向量
-    #去掉了高斯层
-batch_size = 256
-train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size=batch_size)
+batch_size, num_steps = 32, 35 #句子长度为35
+train_iter, vocab = d2l.load_data_time_machine(batch_size, num_steps)
+#一个具有256个隐藏单元的单隐藏层的循环神经网络层 rnn_layer
+num_hiddens = 256
+rnn_layer = rnn.RNN(num_hiddens)
+rnn_layer.initialize()
 
-def evaluate_accuracy_gpu(net, data_iter, device=None):
-    &quot;&quot;&quot;使用GPU计算模型在数据集上的精度。&quot;&quot;&quot;
-    if isinstance(net, torch.nn.Module):
-        net.eval()  # 设置为评估模式
-        if not device: #未设置device就看net的第一个参数的device
-            device = next(iter(net.parameters())).device
-    # 正确预测的数量，总预测的数量
-    metric = d2l.Accumulator(2)
-    for X, y in data_iter:
-        if isinstance(X, list):
-            # BERT微调所需的（之后将介绍）
-            X = [x.to(device) for x in X]
+class RNNModel(nn.Module):
+    &quot;&quot;&quot;循环神经网络模型。&quot;&quot;&quot;
+    def __init__(self, rnn_layer, vocab_size, **kwargs):
+        super(RNNModel, self).__init__(**kwargs)
+        self.rnn = rnn_layer #不包括输出层
+        self.vocab_size = vocab_size
+        self.num_hiddens = self.rnn.hidden_size
+        # 如果RNN是双向的（之后将介绍），`num_directions`应该是2，否则应该是1。
+        # 构造输出层
+        if not self.rnn.bidirectional:
+            self.num_directions = 1
+            self.linear = nn.Linear(self.num_hiddens, self.vocab_size)
         else:
-            X = X.to(device)
-        y = y.to(device)
-        metric.add(d2l.accuracy(net(X), y), y.numel())
-    return metric[0] / metric[1] #分类正确的个数/所有
-#lr为学习率
-def train_ch6(net, train_iter, test_iter, num_epochs, lr, device):
-    &quot;&quot;&quot;用GPU训练模型(在第六章定义)&quot;&quot;&quot;
-    def init_weights(m): #初始化权重
-        if type(m) == nn.Linear or type(m) == nn.Conv2d:
-            nn.init.xavier_uniform_(m.weight) #线性回归和二维卷积自动初始化权重（卷积核）
-    net.apply(init_weights)
-    print(&#39;training on&#39;, device)
-    net.to(device)#搬入GPU
-    optimizer = torch.optim.SGD(net.parameters(), lr=lr)
+            self.num_directions = 2
+            self.linear = nn.Linear(self.num_hiddens * 2, self.vocab_size)
+
+    def forward(self, inputs, state):
+        X = F.one_hot(inputs.T.long(), self.vocab_size)
+        X = X.to(torch.float32)
+        Y, state = self.rnn(X, state) # 中间隐藏层的Y
+        # 全连接层首先将`Y`的形状改为(`时间步数`*`批量大小`, `隐藏单元数`)。
+        # 它的输出形状是 (`时间步数`*`批量大小`, `词表大小`)。
+        output = self.linear(Y.reshape((-1, Y.shape[-1])))#把时间和批量这两个维度和到一起
+        return output, state
+
+    def begin_state(self, device, batch_size=1):
+        if not isinstance(self.rnn, nn.LSTM):
+            # `nn.GRU` 以张量作为隐藏状态
+            return  torch.zeros((self.num_directions * self.rnn.num_layers,
+                                 batch_size, self.num_hiddens),
+                                device=device)
+        else:
+            # `nn.LSTM` 以张量作为隐藏状态
+            return (torch.zeros((
+                self.num_directions * self.rnn.num_layers,
+                batch_size, self.num_hiddens), device=device),
+                    torch.zeros((
+                        self.num_directions * self.rnn.num_layers,
+                        batch_size, self.num_hiddens), device=device))
+
+def train_ch8(net, train_iter, vocab, lr, num_epochs, device,
+              use_random_iter=False):
+    &quot;&quot;&quot;训练模型（定义见第8章）。&quot;&quot;&quot;
     loss = nn.CrossEntropyLoss()
-    #使用动画方便查看结果
-    animator = d2l.Animator(xlabel=&#39;epoch&#39;, xlim=[1, num_epochs],
-                            legend=[&#39;train loss&#39;, &#39;train acc&#39;, &#39;test acc&#39;])
-    timer, num_batches = d2l.Timer(), len(train_iter)
+    animator = d2l.Animator(xlabel=&#39;epoch&#39;, ylabel=&#39;perplexity&#39;,
+                            legend=[&#39;train&#39;], xlim=[10, num_epochs])
+    # 初始化
+    if isinstance(net, nn.Module):
+        updater = torch.optim.SGD(net.parameters(), lr)
+    else:
+        updater = lambda batch_size: d2l.sgd(net.params, lr, batch_size)
+    predict = lambda prefix: predict_ch8(prefix, 50, net, vocab, device)
+    # 训练和预测
     for epoch in range(num_epochs):
-        # 训练损失之和，训练准确率之和，范例数
-        metric = d2l.Accumulator(3)
-        net.train()
-        for i, (X, y) in enumerate(train_iter):
-            timer.start()
-            optimizer.zero_grad()
-            X, y = X.to(device), y.to(device)#把输入输出放在GPU上
-            y_hat = net(X)
-            l = loss(y_hat, y)
-            l.backward()
-            optimizer.step()
-            with torch.no_grad():
-                metric.add(l * X.shape[0], d2l.accuracy(y_hat, y), X.shape[0])
-            timer.stop()
-            train_l = metric[0] / metric[2]
-            train_acc = metric[1] / metric[2]
-            if (i + 1) % (num_batches // 5) == 0 or i == num_batches - 1:
-                animator.add(epoch + (i + 1) / num_batches,
-                             (train_l, train_acc, None))
-        test_acc = evaluate_accuracy_gpu(net, test_iter)
-        animator.add(epoch + 1, (None, None, test_acc))
-    print(f&#39;loss {train_l:.3f}, train acc {train_acc:.3f}, &#39;
-          f&#39;test acc {test_acc:.3f}&#39;)
-    print(f&#39;{metric[2] * num_epochs / timer.sum():.1f} examples/sec &#39;
-          f&#39;on {str(device)}&#39;)</code></pre>
-<p>图片的学习结果 <a href="http://poloclub.github.io/cnn-explainer/" target="_blank" rel="noopener">http://poloclub.github.io/cnn-explainer/</a></p>
-<h1 id="二、AlexNet"><a href="#二、AlexNet" class="headerlink" title="二、AlexNet"></a>二、AlexNet</h1><p>数据集：ImageNet 自然物体彩色图片</p>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>更深更大的LeNet<br>使用了丢弃法（正则化）、ReLU（减缓梯度消失）、MaxPooling（扩大梯度更容易训练）、隐藏全连接层后（Dense/FC 4096后）加入丢弃层<br> <img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030179.png" alt="在这里插入图片描述"></p>
-<h2 id="torch实现-1"><a href="#torch实现-1" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
-from torch import nn
-from d2l import torch as d2l
-
-net = nn.Sequential(
-    # 步幅为4，以减少输出的高度和宽度 输出通道 96
-    nn.Conv2d(1, 96, kernel_size=11, stride=4, padding=1), nn.ReLU(),
-    nn.MaxPool2d(kernel_size=3, stride=2),
-    # 减小卷积窗口，使用填充为2来使得输入与输出的高和宽一致，且增大输出通道数
-    nn.Conv2d(96, 256, kernel_size=5, padding=2), nn.ReLU(),
-    nn.MaxPool2d(kernel_size=3, stride=2),
-    # 使用三个连续的卷积层和较小的卷积窗口 除了最后的卷积层，输出通道的数量进一步增加。
-    # 在前两个卷积层之后，汇聚层不用于减少输入的高度和宽度
-    nn.Conv2d(256, 384, kernel_size=3, padding=1), nn.ReLU(),
-    nn.Conv2d(384, 384, kernel_size=3, padding=1), nn.ReLU(),
-    nn.Conv2d(384, 256, kernel_size=3, padding=1), nn.ReLU(),
-    nn.MaxPool2d(kernel_size=3, stride=2),
-    nn.Flatten(),
-    # 这里，全连接层的输出数量是LeNet中的好几倍。使用dropout层来减轻过度拟合
-    nn.Linear(6400, 4096), nn.ReLU(),
-    nn.Dropout(p=0.5),
-    nn.Linear(4096, 4096), nn.ReLU(),
-    nn.Dropout(p=0.5), # 丢弃了50%
-    # 最后是输出层。使用Fashion-MNIST，类别数为10，论文中是1000
-    nn.Linear(4096, 10))
-
-batch_size = 128
-train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=224)
-
-lr, num_epochs = 0.01, 10
-#train_ch6定义在上
-d2l.train_ch6(net, train_iter, test_iter, num_epochs, lr, d2l.try_gpu())</code></pre>
-<h1 id="三、VGG"><a href="#三、VGG" class="headerlink" title="三、VGG"></a>三、VGG</h1><p>为了让模型更深更大，使用更多的卷积层，将卷积层组成块，重复使用这些卷积块<br>更深的模型 窗口更小 效果更好<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030263.png" alt="在这里插入图片描述"></p>
-<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>原始 VGG 网络有 5 个卷积块，其中前两个块各有一个卷积层，后三个块各包含两个卷积层。<br>第一个模块有 64 个输出通道，每个后续模块将输出通道数量翻倍，直到该数字达到 512。由于该网络使用 8 个卷积层和 3 个全连接层，因此它被称为 VGG-11</p>
-<h2 id="torch实现-2"><a href="#torch实现-2" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
-from torch import nn
-from d2l import torch as d2l
-
-def vgg_block(num_convs, in_channels, out_channels):
-    layers = []
-    for _ in range(num_convs):
-        layers.append(nn.Conv2d(in_channels, out_channels,
-                                kernel_size=3, padding=1))
-        layers.append(nn.ReLU())
-        in_channels = out_channels
-    layers.append(nn.MaxPool2d(kernel_size=2,stride=2))
-    return nn.Sequential(*layers)
-
-conv_arch = ((1, 64), (1, 128), (2, 256), (2, 512), (2, 512))
-
-def vgg(conv_arch):
-    conv_blks = []
-    in_channels = 1
-    # 卷积层部分
-    for (num_convs, out_channels) in conv_arch:
-        conv_blks.append(vgg_block(num_convs, in_channels, out_channels))
-        in_channels = out_channels
-
-    return nn.Sequential(
-        *conv_blks, nn.Flatten(),
-        # 全连接层部分 224
-        nn.Linear(out_channels * 7 * 7, 4096), nn.ReLU(), nn.Dropout(0.5),
-        nn.Linear(4096, 4096), nn.ReLU(), nn.Dropout(0.5),
-        nn.Linear(4096, 10))
-
-net = vgg(conv_arch)
-
-ratio = 4 #将通道数除以4 以方便训练
-small_conv_arch = [(pair[0], pair[1] // ratio) for pair in conv_arch]
-net = vgg(small_conv_arch)
-
-lr, num_epochs, batch_size = 0.05, 10, 128
-train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=224)
-d2l.train_ch6(net, train_iter, test_iter, num_epochs, lr, d2l.try_gpu())</code></pre>
-<h1 id="四、NiN"><a href="#四、NiN" class="headerlink" title="四、NiN"></a>四、NiN</h1><p>网络中的网络</p>
-<h2 id="思路、结构"><a href="#思路、结构" class="headerlink" title="思路、结构"></a>思路、结构</h2><p>全连接层会导致过拟合，用卷积层替代全连接层<br>使用NiN块，一个卷积层+两个卷积层（卷积核为1x1、步幅为1、无填充、输出形状和卷积层输出一致（不改变输出和通道数）），来代替全连接层<br>交替使用NiN块和步幅为2的最大池化层（逐步减小高宽 增大通道数），最后用全局平均池化层替代非常大的全连接层得到输出<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030176.png" alt="在这里插入图片描述"></p>
+        ppl, speed = train_epoch_ch8(
+            net, train_iter, loss, updater, device, use_random_iter)
+        if (epoch + 1) % 10 == 0:
+            print(predict(&#39;time traveller&#39;))
+            animator.add(epoch + 1, [ppl])
+    print(f&#39;困惑度 {ppl:.1f}, {speed:.1f} 词元/秒 {str(device)}&#39;)
+    print(predict(&#39;time traveller&#39;))
+    print(predict(&#39;traveller&#39;))
+num_epochs, lr = 500, 1
+d2l.train_ch8(net, train_iter, vocab, lr, num_epochs, device)</code></pre>
+<h1 id="三、GRU-门控循环单元"><a href="#三、GRU-门控循环单元" class="headerlink" title="三、GRU 门控循环单元"></a>三、GRU 门控循环单元</h1><p>  是LSTM的简化，正常情况下效果差不多。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>由于并不是每个值都是同等重要的，所以设置更新门（关注的机制）和重置门（遗忘机制）来只记住相关的值（关键字、关键点、切换场景时的帧 ）。  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317525-3745997.png" alt="在这里插入图片描述"><br>R和Z本质是用sigmoid对全连接层做激活<br>R（重置门）：0到1之间的数，若为0表示之前的东西全不要<br>Z（更新门）：0到1之间的数，若为1表示不用之前的东西更新<br>改进：多了几个可以计算的权重<br><del>H是候选隐含状态：根据X、R和W、之前的H输出当前候选隐含状态<br>H是隐含状态：根据Z、</del>H、之前的H的值输出新的隐含状态<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317628.png" alt="在这里插入图片描述"></p>
+<h2 id="torch实现-1"><a href="#torch实现-1" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">num_inputs = vocab_size
+gru_layer = nn.GRU(num_inputs, num_hiddens)
+model = d2l.RNNModel(gru_layer, len(vocab))
+model = model.to(device)
+d2l.train_ch8(model, train_iter, vocab, lr, num_epochs, device)</code></pre>
+<h1 id="四、LSTM"><a href="#四、LSTM" class="headerlink" title="四、LSTM"></a>四、LSTM</h1><p>先于GRU提出，四套W权重</p>
+<p>遗忘门F：将值收缩为0<br>输入门I：决定是否忽略输入数据<br>输出门O：决定是否使用隐含状态（ 当前的C）<br>候选记忆单元~C：包括了 前一个状态的H（相当于GRU中的 当前状态的H）<br>记忆单元C：C的数值区间比较大，是否使用 之前的C 和 ~C<br>隐含状态H：将C的值稳定在1和-1之间，根据O控制要不要输出<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317553.png" alt="在这里插入图片描述"></p>
+<h2 id="torch实现-2"><a href="#torch实现-2" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">num_inputs = vocab_size
+lstm_layer = nn.LSTM(num_inputs, num_hiddens)
+model = d2l.RNNModel(lstm_layer, len(vocab))
+model = model.to(device)
+d2l.train_ch8(model, train_iter, vocab, lr, num_epochs, device)</code></pre>
+<h1 id="五、Deep-RNN-深度循环"><a href="#五、Deep-RNN-深度循环" class="headerlink" title="五、Deep RNN 深度循环"></a>五、Deep RNN 深度循环</h1><p>输入-隐藏层-输出<br>通过增加隐藏层的个数，来加深RNN，获得更多的非线性性，增大可处理的序列长度。<br>后一个隐藏层的输出是上一个隐藏层的输出，同时下一个时刻的输入是上一个时刻的输出。<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317501.png" alt="在这里插入图片描述"></p>
 <h2 id="torch实现-3"><a href="#torch实现-3" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
 from torch import nn
 from d2l import torch as d2l
 
-def nin_block(in_channels, out_channels, kernel_size, strides, padding):
-    return nn.Sequential(
-        nn.Conv2d(in_channels, out_channels, kernel_size, strides, padding),nn.ReLU(),
-        #输入输出通道数相同
-        nn.Conv2d(out_channels, out_channels, kernel_size=1), nn.ReLU(),
-        nn.Conv2d(out_channels, out_channels, kernel_size=1), nn.ReLU())
+batch_size, num_steps = 32, 35
+train_iter, vocab = d2l.load_data_time_machine(batch_size, num_steps)
+#num layers是隐藏层的个数
+vocab_size, num_hiddens, num_layers = len(vocab), 256, 2
+num_inputs = vocab_size
+device = d2l.try_gpu()
+# Pytorch的LSTM不带输出层
+lstm_layer = nn.LSTM(num_inputs, num_hiddens, num_layers)
+model = d2l.RNNModel(lstm_layer, len(vocab))
+model = model.to(device)
 
-net = nn.Sequential(
-    nin_block(1, 96, kernel_size=11, strides=4, padding=0),
-    nn.MaxPool2d(3, stride=2),
-    nin_block(96, 256, kernel_size=5, strides=1, padding=2),
-    nn.MaxPool2d(3, stride=2),
-    nin_block(256, 384, kernel_size=3, strides=1, padding=1),
-    nn.MaxPool2d(3, stride=2),
-    nn.Dropout(0.5),
-    # MNIST的类别数是10，输出降到10即可
-    nin_block(384, 10, kernel_size=3, strides=1, padding=1),
-    nn.AdaptiveAvgPool2d((1, 1)),
-    # 将四维的输出转成二维的输出，其形状为(批量大小, 10)
-    nn.Flatten())
-
-lr, num_epochs, batch_size = 0.1, 10, 128
-train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=224)
-#内含有Softmax
-d2l.train_ch6(net, train_iter, test_iter, num_epochs, lr, d2l.try_gpu())</code></pre>
-<h1 id="五、GoogLeNet"><a href="#五、GoogLeNet" class="headerlink" title="五、GoogLeNet"></a>五、GoogLeNet</h1><p>并行连接的网络</p>
-<h2 id="Inception块"><a href="#Inception块" class="headerlink" title="Inception块"></a>Inception块</h2><p>将输入的通道分为4份<br>为每个通道使用不同窗口大小和padding的卷积层<br>最后的输出高宽相同<br>减少计算量<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/e1aeffe2ab1243f0a52877f7c9d9242c.png" alt="在这里插入图片描述"></p>
-<h2 id="GoogLeNet"><a href="#GoogLeNet" class="headerlink" title="GoogLeNet"></a>GoogLeNet</h2><p>保留更多高宽<br>9个Inception块<br>每个Stage将高宽减半<br>使用全局平均池化<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030177.png" alt="在这里插入图片描述"><br>Stage1&amp;2：更小的核 更小的输出通道<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030148.png" alt="在这里插入图片描述"></p>
-<p>Stage3：输出通道增加<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030261.png" alt="在这里插入图片描述"></p>
-<p>Stage4&amp;5：增加通道数 最后输出1024维特征</p>
-<p><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030254.png" alt="在这里插入图片描述"></p>
-<h2 id="Inception变种"><a href="#Inception变种" class="headerlink" title="Inception变种"></a>Inception变种</h2><p>Inception-BN（V2） 加入batch normalization</p>
-<p>Inception-V3 替换卷积层，消耗内存较多，精度提升<br>把Inception块中的 5x5 替换为多个 3x3 的卷积层（或者1x7和7x1）、把 3x3 换为 1x3 和 3x1 的卷积层<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030261-3745830.png" alt="在这里插入图片描述"><br><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030260.png" alt="在这里插入图片描述"></p>
-<p>Inception-V4 添加残差块连接</p>
+num_epochs, lr = 500, 2
+d2l.train_ch8(model, train_iter, vocab, lr, num_epochs, device)</code></pre>
+<h1 id="六、BRNN双向循环网络"><a href="#六、BRNN双向循环网络" class="headerlink" title="六、BRNN双向循环网络"></a>六、BRNN双向循环网络</h1><p>一个词取决于过去和未来的上下文，所以不能用于推测下一个词，只能做完词填空，对一个句子做特征提取，Eg：翻译、改写。</p>
+<p>一个前向RNN隐藏层，一个后向RNN隐藏层，合并（concat）两个隐状态得到输出，两个隐藏层为一组，这两组隐藏层的权重不共享。<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215317587.png" alt="在这里插入图片描述"></p>
 <h2 id="torch实现-4"><a href="#torch实现-4" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
 from torch import nn
-from torch.nn import functional as F
 from d2l import torch as d2l
 
-class Inception(nn.Module):
-    # `c1`--`c4` 是每条路径的输出通道数
-    def __init__(self, in_channels, c1, c2, c3, c4, **kwargs):
-        super(Inception, self).__init__(**kwargs)
-        # 线路1，单1 x 1卷积层
-        self.p1_1 = nn.Conv2d(in_channels, c1, kernel_size=1)
-        # 线路2，1 x 1卷积层后接3 x 3卷积层
-        self.p2_1 = nn.Conv2d(in_channels, c2[0], kernel_size=1)
-        self.p2_2 = nn.Conv2d(c2[0], c2[1], kernel_size=3, padding=1)
-        # 线路3，1 x 1卷积层后接5 x 5卷积层
-        self.p3_1 = nn.Conv2d(in_channels, c3[0], kernel_size=1)
-        self.p3_2 = nn.Conv2d(c3[0], c3[1], kernel_size=5, padding=2)
-        # 线路4，3 x 3最大汇聚层后接1 x 1卷积层
-        self.p4_1 = nn.MaxPool2d(kernel_size=3, stride=1, padding=1)
-        self.p4_2 = nn.Conv2d(in_channels, c4, kernel_size=1)
-    def forward(self, x):
-        p1 = F.relu(self.p1_1(x))
-        p2 = F.relu(self.p2_2(F.relu(self.p2_1(x))))
-        p3 = F.relu(self.p3_2(F.relu(self.p3_1(x))))
-        p4 = F.relu(self.p4_2(self.p4_1(x)))
-        # 在通道维度上拼接输出
-        return torch.cat((p1, p2, p3, p4), dim=1)
-
-b1 = nn.Sequential(nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3),
-                   nn.ReLU(),
-                   nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
-b2 = nn.Sequential(nn.Conv2d(64, 64, kernel_size=1),
-                   nn.ReLU(),
-                   nn.Conv2d(64, 192, kernel_size=3, padding=1),
-                   nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
-b3 = nn.Sequential(Inception(192, 64, (96, 128), (16, 32), 32),
-                   Inception(256, 128, (128, 192), (32, 96), 64),
-                   nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
-b4 = nn.Sequential(Inception(480, 192, (96, 208), (16, 48), 64),
-                   Inception(512, 160, (112, 224), (24, 64), 64),
-                   Inception(512, 128, (128, 256), (24, 64), 64),
-                   Inception(512, 112, (144, 288), (32, 64), 64),
-                   Inception(528, 256, (160, 320), (32, 128), 128),
-                   nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
-b5 = nn.Sequential(Inception(832, 256, (160, 320), (32, 128), 128),
-                   Inception(832, 384, (192, 384), (48, 128), 128),
-                   nn.AdaptiveAvgPool2d((1,1)),
-                   nn.Flatten())
-
-net = nn.Sequential(b1, b2, b3, b4, b5, nn.Linear(1024, 10))
-lr, num_epochs, batch_size = 0.1, 10, 128
-train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=96)
-d2l.train_ch6(net, train_iter, test_iter, num_epochs, lr, d2l.try_gpu())</code></pre>
-<h1 id="六、批量归一化"><a href="#六、批量归一化" class="headerlink" title="六、批量归一化"></a>六、批量归一化</h1><p>对于很深的神经网络，损失出现在最后，但数据在底部；当底部层发生变化所有层都要跟着改变，因此最后的那些层会重新学习很多次，导致loss收敛变慢。<br>一般作用在全连接层和卷积层的输出上，激活函数之前；全连接层和卷积层输入上<br>对于全连接层，作用在特征维；对于卷积层，作用在通道维。<br>由于是在每个小批量里加入噪音控制模型复杂度，因此不必和Dropout混用。 </p>
-<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>固定小批量里的均值和方差，然后学习出适合的偏移和缩放，以加快收敛<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/3524edcea5e443bb9a103cb17ac75a4c.png" alt="在这里插入图片描述"><br>方差和均值是可学习的参数，控制着做小量的调整（线性变换）<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030304.png" alt="在这里插入图片描述"></p>
-<h1 id="七、残差网络ResNet"><a href="#七、残差网络ResNet" class="headerlink" title="七、残差网络ResNet"></a>七、残差网络ResNet</h1><p>加更多的层不一定能距离最优点更近</p>
-<h2 id="残差块"><a href="#残差块" class="headerlink" title="残差块"></a>残差块</h2><p>加入快速通道来得到 f(x) = x + g(x)，由于g(x)在反向传播，层层求梯度之后可能变得非常小，所有将x加在这里，防止变成0而消失。<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030342.png" alt="在这里插入图片描述"><br>也可以用1x1的Conv调整通道和分辨率<br><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030347.png" alt="在这里插入图片描述"></p>
-<p>可以有各种各样的排列形式<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030318.png" alt="在这里插入图片描述"><br>多个块拼接成ResNet，每个块高宽减半（strides = 2）<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0phbWVzU2h1a2Vy,size_16,color_FFFFFF,t_70-20220528215030365.png" alt="在这里插入图片描述"></p>
-<h2 id="torch实现-5"><a href="#torch实现-5" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
-from torch import nn
-from torch.nn import functional as F
-from d2l import torch as d2l
-
-
-class Residual(nn.Module):  #@save
-    def __init__(self, input_channels, num_channels,
-                 use_1x1conv=False, strides=1):
-        #use1x1是否使用1x1的卷积层
-        super().__init__()
-        self.conv1 = nn.Conv2d(input_channels, num_channels,
-                               kernel_size=3, padding=1, stride=strides)
-        self.conv2 = nn.Conv2d(num_channels, num_channels,
-                               kernel_size=3, padding=1)
-        if use_1x1conv:
-            self.conv3 = nn.Conv2d(input_channels, num_channels,
-                                   kernel_size=1, stride=strides)
-        else:
-            self.conv3 = None
-        self.bn1 = nn.BatchNorm2d(num_channels)
-        self.bn2 = nn.BatchNorm2d(num_channels)
-        self.relu = nn.ReLU(inplace=True)
-
-    def forward(self, X):
-        Y = F.relu(self.bn1(self.conv1(X)))
-        Y = self.bn2(self.conv2(Y))
-        if self.conv3:
-            X = self.conv3(X)
-        Y += X
-        return F.relu(Y)
-b1 = nn.Sequential(nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3),
-                   nn.BatchNorm2d(64), nn.ReLU(),
-                   nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
-#num residuals是表示使用几个block组成一个Stage
-def resnet_block(input_channels, num_channels, num_residuals,
-                 first_block=False):
-    blk = []
-    for i in range(num_residuals):
-        if i == 0 and not first_block:
-            blk.append(Residual(input_channels, num_channels,
-                                use_1x1conv=True, strides=2))
-        else:
-            blk.append(Residual(num_channels, num_channels))
-    return blk
-b2 = nn.Sequential(*resnet_block(64, 64, 2, first_block=True))
-b3 = nn.Sequential(*resnet_block(64, 128, 2))
-b4 = nn.Sequential(*resnet_block(128, 256, 2))
-b5 = nn.Sequential(*resnet_block(256, 512, 2))
-net = nn.Sequential(b1, b2, b3, b4, b5,
-                    nn.AdaptiveAvgPool2d((1,1)),
-                    nn.Flatten(), nn.Linear(512, 10))</code></pre>
-<p>各块输出的Shape<br>Sequential output shape:     torch.Size([1, 64, 56, 56])<br>Sequential output shape:     torch.Size([1, 64, 56, 56])<br>Sequential output shape:     torch.Size([1, 128, 28, 28])<br>Sequential output shape:     torch.Size([1, 256, 14, 14])<br>Sequential output shape:     torch.Size([1, 512, 7, 7])<br>AdaptiveAvgPool2d output shape:      torch.Size([1, 512, 1, 1])<br>Flatten output shape:        torch.Size([1, 512])<br>Linear output shape:         torch.Size([1, 10])</p>
-<pre><code class="python">lr, num_epochs, batch_size = 0.05, 10, 256
-train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=96)
-d2l.train_ch6(net, train_iter, test_iter, num_epochs, lr, d2l.try_gpu())</code></pre>
-<h1 id="DenseNet-稠密连接网络"><a href="#DenseNet-稠密连接网络" class="headerlink" title="DenseNet 稠密连接网络"></a>DenseNet 稠密连接网络</h1><p>用更高阶的泰勒展开，每一层都加上x<br><img src="https://cdn.jsdelivr.net/gh/liting1024/PicImage/PicgoGithub/f7ac3960291949338e7370cfe6832566.png" alt="在这里插入图片描述"></p>
-<h2 id="结构-1"><a href="#结构-1" class="headerlink" title="结构"></a>结构</h2><p>由 稠密块（dense block）和 过渡层 （transition layer）构成。 前者定义如何连接输入和输出，而后者则通过  1×1  的卷积层来减小通道数，并使用步幅为 2 的平均池化层减半高和宽，控制通道数量。</p>
-<h2 id="torch实现-6"><a href="#torch实现-6" class="headerlink" title="torch实现"></a>torch实现</h2><pre><code class="python">import torch
-from torch import nn
-from d2l import torch as d2l
-
-def conv_block(input_channels, num_channels):
-    return nn.Sequential(
-        nn.BatchNorm2d(input_channels), nn.ReLU(),
-        nn.Conv2d(input_channels, num_channels, kernel_size=3, padding=1))
-# 稠密层        
-class DenseBlock(nn.Module):
-    def __init__(self, num_convs, input_channels, num_channels):
-        super(DenseBlock, self).__init__()
-        layer = []
-        for i in range(num_convs):
-            layer.append(conv_block(
-                num_channels * i + input_channels, num_channels))
-        self.net = nn.Sequential(*layer)
-
-    def forward(self, X):
-        for blk in self.net:
-            Y = blk(X)
-            # 连接通道维度上每个块的输入和输出
-            X = torch.cat((X, Y), dim=1)
-        return X
-blk = DenseBlock(2, 3, 10)
-X = torch.randn(4, 3, 8, 8)
-Y = blk(X)
-Y.shape
-# 过渡层
-def transition_block(input_channels, num_channels):
-    return nn.Sequential(
-        nn.BatchNorm2d(input_channels), nn.ReLU(),
-        nn.Conv2d(input_channels, num_channels, kernel_size=1),
-        nn.AvgPool2d(kernel_size=2, stride=2))
-blk = transition_block(23, 10)
-blk(Y).shape
-# DenseNet
-b1 = nn.Sequential(
-    nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3),
-    nn.BatchNorm2d(64), nn.ReLU(),
-    nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
-
-num_channels, growth_rate = 64, 32
-num_convs_in_dense_blocks = [4, 4, 4, 4]
-blks = []
-for i, num_convs in enumerate(num_convs_in_dense_blocks):
-    blks.append(DenseBlock(num_convs, num_channels, growth_rate))
-    # 上一个稠密块的输出通道数
-    num_channels += num_convs * growth_rate
-    # 在稠密块之间添加一个转换层，使通道数量减半
-    if i != len(num_convs_in_dense_blocks) - 1:
-        blks.append(transition_block(num_channels, num_channels // 2))
-        num_channels = num_channels // 2
-#最后加上池化和全连接
-net = nn.Sequential(
-    b1, *blks,
-    nn.BatchNorm2d(num_channels), nn.ReLU(),
-    nn.AdaptiveMaxPool2d((1, 1)),
-    nn.Flatten(),
-    nn.Linear(num_channels, 10))
-lr, num_epochs, batch_size = 0.1, 10, 256
-train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size, resize=96)
-d2l.train_ch6(net, train_iter, test_iter, num_epochs, lr, d2l.try_gpu()) </code></pre>
+# 加载数据
+batch_size, num_steps, device = 32, 35, d2l.try_gpu()
+train_iter, vocab = d2l.load_data_time_machine(batch_size, num_steps)
+# 通过设置&#39;bidirective=True&#39;来定义双向LSTM模型
+vocab_size, num_hiddens, num_layers = len(vocab), 256, 2
+num_inputs = vocab_size
+lstm_layer = nn.LSTM(num_inputs, num_hiddens, num_layers, bidirectional=True)
+model = d2l.RNNModel(lstm_layer, len(vocab))
+model = model.to(device)
+# 训练模型
+num_epochs, lr = 500, 1
+d2l.train_ch8(model, train_iter, vocab, lr, num_epochs, device)</code></pre>
 
         
     </div>

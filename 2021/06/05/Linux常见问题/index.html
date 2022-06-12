@@ -137,7 +137,7 @@
         <box-icon type='logo' name='github'></box-icon>
     </a>
 
-    <a class="social" target="_blank" href="jkliting@163.com">
+    <a class="social" target="_blank" href="mailto:jkliting@163.com">
         <box-icon type='solid' name='envelope'></box-icon>
     </a>
 
@@ -180,7 +180,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-cl44991em0001ouvm6h0u2uol" class="article article-type-post" itemscope
+    <article id="post-cl4ba4tuz000556vmcp3a5gco" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -222,7 +222,13 @@
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <h2 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h2><pre><code class="bash">pip show 包名
+            <h2 id="网络测试"><a href="#网络测试" class="headerlink" title="网络测试"></a>网络测试</h2><pre><code class="bash">curl &lt;url&gt;
+
+ping &lt;ip&gt;
+ping -i &lt;ip&gt; &lt;port&gt;
+
+lsof -i &lt;port&gt;</code></pre>
+<h2 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h2><pre><code class="bash">pip show 包名
 pip install 包名 -i 国内源</code></pre>
 <h2 id="bash脚本"><a href="#bash脚本" class="headerlink" title="bash脚本"></a>bash脚本</h2><p>等号两边无空格</p>
 <h3 id="bashrc和-bash-profile的区别"><a href="#bashrc和-bash-profile的区别" class="headerlink" title=".bashrc和.bash_profile的区别"></a>.bashrc和.bash_profile的区别</h3><p>.bash_profile是在登陆的时候才会执行的，也叫.bash_login，在命令行再运行bash命令的时候不执行这个文件里面的命令。</p>
@@ -277,30 +283,27 @@ screen -r 窗口名称  # 恢复重连
 exit  # 退出窗口
 
 screen -X -S id号  # 杀死
-
 screen -wipe 　# 检查目前所有的screen作业，并删除已经无法使用的screen作业。</code></pre>
 <h2 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h2><pre><code class="bash">conda create -n 环境名 python=版本号
 conda deactivate
 conda info -e</code></pre>
-<pre><code class="python">def rotate(self, x0, y0, r):
-    if self.is_changed:
-        for i in range(len(self.vertex_float)):
-            x1 = self.vertex_float[i][0]
-            y1 = self.vertex_float[i][1]
-            self.vertex_float[i][0] = x0 + (x1 - x0) * math.cos(r / 180 * math.pi) - (y1 - y0) * math.sin(
-                r / 180 * math.pi)
-            self.vertex_float[i][1] = y0 + (x1 - x0) * math.sin(r / 180 * math.pi) + (y1 - y0) * math.cos(
-                r / 180 * math.pi)
-        self.vertex = [[int(p[0]), int(p[1])] for p in self.vertex_float]
+<pre><code class="python">def scale(self, x0, y0, s):
+    if self.rx == self.ry:
+        self.rx = int(s * self.rx)
+        self.ry = int(s * self.ry)
+        x1 = self.vertex[0][0]
+        y1 = self.vertex[0][1]
+        self.vertex[0][0] = int((x1 - x0) * s + x0)
+        self.vertex[0][1] = int((y1 - y0) * s + y0)
+        self.vertex[1] = [self.rx, self.ry]
+        self.rasterization()
     else:
-        for i in range(len(self.vertex)):
-            x1 = self.vertex[i][0]
-            y1 = self.vertex[i][1]
-            self.vertex[i][0] = int(
-                x0 + (x1 - x0) * math.cos(r / 180 * math.pi) - (y1 - y0) * math.sin(r / 180 * math.pi))
-            self.vertex[i][1] = int(
-                y0 + (x1 - x0) * math.sin(r / 180 * math.pi) + (y1 - y0) * math.cos(r / 180 * math.pi))
-    self.rasterization()</code></pre>
+        self.vertex[1] = [int(p*s) for p in self.vertex[1]]
+        x1 = self.vertex[0][0]
+        y1 = self.vertex[0][1]
+        self.vertex[0][0] = int((x1 - x0) * s + x0)
+        self.vertex[0][1] = int((y1 - y0) * s + y0)
+        self.rasterization()</code></pre>
 <pre><code class="python"></code></pre>
 
         </div>
