@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>C++常用函数 | Li Ting</title>
+
+    <meta name="description" content="Li Ting">
+    <meta name="keywords" content="">
+
+    
+
+    <meta property="og:locale" content="cn" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "C++常用函数 | Li Ting"  />
+    <meta property="og:description" content= "Li Ting" />
+    <meta property="og:url" content="https://liting1024.github.io/2020/04/15/C-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="李挺" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="Li Ting" />
+    <meta name="twitter:title" content="C++常用函数 | Li Ting"/>
+    <meta name="twitter:description" content="Li Ting"/>
+    <script type="application/ld+json">
+        {
+            "description": "Li Ting",
+            "author": { "@type": "Person", "name": "李挺" },
+            "@type": "BlogPosting",
+            "url": "https://liting1024.github.io/2020/04/15/C-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://liting1024.github.ioundefined"
+            },
+            "name": "李挺"
+            },
+            "headline": "C++常用函数 | Li Ting",
+            "datePublished": "2020-04-15T15:12:59.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://liting1024.github.io/2020/04/15/C-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
+
+
+
+
+    
+
+    
+    <meta property="algolia:search" data-application-id="ISC1J3PZW8" data-api-key="8ca1e8ef1083d2f2d2acee1b617e3850" data-index-name="liting_homepage">
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    
+
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1651727875408.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1651727875408.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            gitalk: {
+                enable: true,
+                clientID: "6d0cedf1b471cbc3fb0d",
+                clientSecret: "397c8d7ca7ab800dba9e60fd593649b23b6059b8",
+                repo: "comments-section",
+                owner: "liting1024",
+                admin: ["liting1024",],
+                distractionFreeMode: true  // Facebook-like distraction free mode
+            },
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = true
+
+    </script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Li Ting" type="application/atom+xml">
+</head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>Li Ting</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">首页</a>
+                
+                <a href="/archives">存档</a>
+                
+                <a href="/collection">收藏</a>
+                
+                <a href="/about">关于</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/liting1024">
+        <box-icon type='logo' name='github'></box-icon>
+    </a>
+
+    <a class="social" target="_blank" href="mailto:jkliting@163.com">
+        <box-icon type='solid' name='envelope'></box-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">首页</a>
+                    
+                    <a href="/archives">存档</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                    <a href="/about">关于</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cl9c4r8aw0002h3vmatcgbgaq" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      C++常用函数
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2020-04-15T15:12:59.000Z" itemprop="datePublished">2020-04-15</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a>
+            </div>
+            
+
+            
+            <div class="article-tag">
+                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+            </div>
+            
+
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <h1 id="cstring类型"><a href="#cstring类型" class="headerlink" title="cstring类型"></a>cstring类型</h1><h3 id="比较和计算"><a href="#比较和计算" class="headerlink" title="比较和计算"></a>比较和计算</h3><h4 id="strcmp-a-b"><a href="#strcmp-a-b" class="headerlink" title="strcmp(a,b);"></a>strcmp(a,b);</h4><p>比较返回两个char数组的差异度（-2表示有一个char不同）</p>
+<h4 id="strlen-a"><a href="#strlen-a" class="headerlink" title="strlen(a);"></a>strlen(a);</h4><p>计算string或char数组的长度</p>
+<h4 id="size"><a href="#size" class="headerlink" title="size();"></a>size();</h4><h4 id="lenth"><a href="#lenth" class="headerlink" title="lenth();"></a>lenth();</h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能 是为1 否为0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>isalpha</td>
+<td>判断是否为字母</td>
+</tr>
+<tr>
+<td>islower/isupper</td>
+<td>小/大写字母</td>
+</tr>
+<tr>
+<td>isdigit</td>
+<td>数字</td>
+</tr>
+<tr>
+<td>isalnum</td>
+<td>字母或数字</td>
+</tr>
+<tr>
+<td>tolower/toupper</td>
+<td>转换为小/大写字母</td>
+</tr>
+</tbody></table>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h4 id="memset-s-c-n"><a href="#memset-s-c-n" class="headerlink" title="memset(s, c, n);"></a>memset(s, c, n);</h4><p>将以开辟内存s的前n个直接初始化为c</p>
+<p>n可以用sizeof(s)</p>
+<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><h4 id="memcpy-b-a-n"><a href="#memcpy-b-a-n" class="headerlink" title="memcpy(b, a, n);"></a>memcpy(b, a, n);</h4><p>以a开头，长度为n的内存，拷贝到b中</p>
+<h4 id="strncpy-b-a-n"><a href="#strncpy-b-a-n" class="headerlink" title="strncpy(b,a,n);"></a>strncpy(b,a,n);</h4><p>以a开头，长度为n的内存，拷贝到b中，<strong>并返回b</strong></p>
+<h4 id="strcpy-b-a"><a href="#strcpy-b-a" class="headerlink" title="strcpy(b,a);"></a>strcpy(b,a);</h4><p>从a开始复制给b，遇到NULL ‘/0’结束</p>
+<h4 id="strcat-b-a"><a href="#strcat-b-a" class="headerlink" title="strcat(b,a);"></a>strcat(b,a);</h4><p>把a连接到b后</p>
+<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><h4 id="getline-cin-a-n"><a href="#getline-cin-a-n" class="headerlink" title="getline(cin,a,n);"></a>getline(cin,a,n);</h4><p>将流中的字符存在a中，</p>
+<p>遇到n结束，没有默认为‘/n’</p>
+<h2 id="cctype"><a href="#cctype" class="headerlink" title="cctype"></a>cctype</h2><h4 id="tolower-toupper"><a href="#tolower-toupper" class="headerlink" title="tolower(); toupper();"></a>tolower(); toupper();</h4><p>改变字母大小写</p>
+<h4 id="isalpha-isdigit-isprint"><a href="#isalpha-isdigit-isprint" class="headerlink" title="isalpha(); isdigit(); isprint();"></a>isalpha(); isdigit(); isprint();</h4><p>判断是否是字母，数字，可打印字符（非控制字符）</p>
+<h2 id="algorithm"><a href="#algorithm" class="headerlink" title="algorithm"></a>algorithm</h2><h4 id="min-max"><a href="#min-max" class="headerlink" title="min(); max()"></a>min(); max()</h4><p>返回两个元素中最小（最大）的一个</p>
+<h4 id="upper-bound-first-last-n"><a href="#upper-bound-first-last-n" class="headerlink" title="upper_bound(first, last, n);"></a>upper_bound(first, last, n);</h4><p>查找区间中第一个大于n的位置，返回的是地址</p>
+<h4 id="lower-bound-first-last-n"><a href="#lower-bound-first-last-n" class="headerlink" title="lower_bound(first, last, n);"></a>lower_bound(first, last, n);</h4><p>查找区间中第一个大于<strong>等于</strong>n的位置，返回的是地址</p>
+<h4 id="next-permutation-first-last-prev-permutation"><a href="#next-permutation-first-last-prev-permutation" class="headerlink" title="next_permutation(first, last); prev_permutation();"></a>next_permutation(first, last); prev_permutation();</h4><p>将数组中的元素全排列</p>
+<p><strong>需要将数组进行升序排列</strong>，否则只能找出该序列之后的全排列数。</p>
+<pre><code>char a[4]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;};
+    do{
+        for(int i=0;i&lt;4;++i)
+            cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
+        cout&lt;&lt;endl;
+    }while(next_permutation(a,a+4));</code></pre><h4 id="sort-first-last-greater-lt-gt"><a href="#sort-first-last-greater-lt-gt" class="headerlink" title="sort(first, last, greater&lt;&gt;());"></a>sort(first, last, greater&lt;&gt;());</h4><pre><code>int a[5]={5,2,4,3,1},b[3]=&quot;cba&quot;;
+sort(a,a+5);//正序排列
+sort(a,a+5,greater&lt;&gt;());//逆序排列数字
+sort(b,b+3,greater&lt;char&gt;());//逆序排列char</code></pre><h4 id="fill-first-last-a"><a href="#fill-first-last-a" class="headerlink" title="fill(first, last, a);"></a>fill(first, last, a);</h4><p>可将数组的值初始化成a</p>
+<h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p>一个动态申请空间的数组</p>
+<h3 id="定义-vector-lt-typename-gt-name"><a href="#定义-vector-lt-typename-gt-name" class="headerlink" title="定义 vector &lt; typename &gt; name;"></a>定义 vector &lt; typename &gt; name;</h3><p>typename可以是任何基本类型 结构体,STL容器vector,set,queue等。</p>
+<pre><code class="C++">vector&lt;int&gt; stu;
+vector&lt;double&gt; stu;
+vector&lt;char&gt; stu;
+vector&lt;node&gt; stu;//node是结构体类型
+vector&lt;vector&lt;int&gt;&gt; name;
+vector&lt;typename&gt; a[arraySize];//申请一个二维数组</code></pre>
+<h3 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h3><pre><code class="c++">//初始化了10个默认值为0的元素
+vector&lt;int&gt; abc(10);
+//初始化了10个值为1的元素
+vector&lt;int&gt; cde(10，1); 
+
+int a[5] = {1,2,3,4,5};
+//通过数组a的地址初始化，注意地址是从0到5（左闭右开区间）
+vector&lt;int&gt; b(a, a+5);
+
+vector&lt;int&gt; a(5,1);
+//通过a初始化
+vector&lt;int&gt; b(a);
+
+//insert初始化方式将同类型的迭代器对应的始末区间（左闭右开区间）内的值插入到vector中
+vector&lt;int&gt; a(6,6);
+vecot&lt;int&gt; b;
+//将a[0]~a[2]插入到b中，b.size()由0变为3
+b.insert(b.begin(), a.begin(), a.begin() + 3);
+//在b开始位置处插入6个6
+b.insert(b.begin(), 6, 6);
+
+vector&lt;int&gt; a(5,1);
+int a1[5] = {2,2,2,2,2};
+vector&lt;int&gt; b(10);
+
+ /*将a中元素全部拷贝到b开始的位置中,注意拷贝的区间为a.begin() ~ a.end()的左闭右开的区间*/
+copy(a.begin(), a.end(), b.begin());
+
+//拷贝区间也可以是数组地址构成的区间
+copy(a1, a1+5, b.begin() + 5);</code></pre>
+<h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><h4 id="下标访问"><a href="#下标访问" class="headerlink" title="下标访问"></a>下标访问</h4><p>从0开始</p>
+<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>vector<typename>::iterator it;//it是一个迭代器变量</p>
+<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="push-back-a"><a href="#push-back-a" class="headerlink" title="push_back(a)"></a>push_back(a)</h4><p>在vector最后面添加一个元素a</p>
+<h4 id="pop-back-x"><a href="#pop-back-x" class="headerlink" title="pop_back(x)"></a>pop_back(x)</h4><p>删除vector的尾元素x</p>
+<h4 id="size-1"><a href="#size-1" class="headerlink" title="size()"></a>size()</h4><h4 id="clear"><a href="#clear" class="headerlink" title="clear()"></a>clear()</h4><p>清空vector所有的元素</p>
+<h4 id="insert"><a href="#insert" class="headerlink" title="insert();"></a>insert();</h4><p>insert(it,x);向vector的任意迭代器it初传入一个元素x</p>
+<p>a.insert(a.begin()+1, 5);在a的第1个元素（从第0个算起）的位置插入数值5，如a为1,2,3,4，插入元素后为1,5,2,3,4<br>a.insert(a.begin()+1, 3,5);在a的第1个元素（从第0个算起）的位置插入3个数，其值都为5<br>a.insert(a.begin()+1,b+3, b+6);b为数组，在a的第1个元素（从第0个算起）的位置插入b的第3个元素到第5个元素（不包括b+6），如b为1,2,3,4,5,9,8，插入元素后为1,4,5,9,2,3,4,5,9,8</p>
+<h4 id="erase"><a href="#erase" class="headerlink" title="erase()"></a>erase()</h4><p>erase(x); 删除单个元素</p>
+<p>erase(a,b); 删除左闭右开区间内[a,b)的元素</p>
+<h4 id="copy-a-begin-a-end-b-begin-1"><a href="#copy-a-begin-a-end-b-begin-1" class="headerlink" title="copy(a.begin(),a.end(),b.begin()+1);"></a>copy(a.begin(),a.end(),b.begin()+1);</h4><p>把a中的从a.begin()（包括它）到a.end()（不包括它）的元素复制到b中，从b.begin()+1的位置（包括它）开始复制，覆盖掉原有元素</p>
+<h4 id="find-a-begin-a-end-10"><a href="#find-a-begin-a-end-10" class="headerlink" title="find(a.begin(),a.end(),10);"></a>find(a.begin(),a.end(),10);</h4><p>在a中的从a.begin()（包括它）到a.end()（不包括它）的元素中查找10，若存在返回其在向量中的位置</p>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>一个内部自动升序而且不重复元素的容器</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>操作</strong></th>
+<th align="center"><strong>效果</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><em>set</em> c</td>
+<td align="center">产生一个空的set/multiset，不含任何元素</td>
+</tr>
+<tr>
+<td align="center">set c(op)</td>
+<td align="center">以op为排序准则，产生一个空的set/multiset</td>
+</tr>
+</tbody></table>
+<h3 id="访问-1"><a href="#访问-1" class="headerlink" title="访问"></a>访问</h3><p>只能通过迭代器</p>
+<p>set<typename>::iterator it;//typename对应定义set时的类型，auto自动推断定义类型</p>
+<h3 id="常用函数-1"><a href="#常用函数-1" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="insert-x"><a href="#insert-x" class="headerlink" title="insert(x)"></a>insert(x)</h4><p>将x插入set容器中，并且自动递增排序和去重</p>
+<h4 id="size-2"><a href="#size-2" class="headerlink" title="size()"></a>size()</h4><h4 id="clear-1"><a href="#clear-1" class="headerlink" title="clear()"></a>clear()</h4><h3 id="end"><a href="#end" class="headerlink" title="end()"></a>end()</h3><p>返回最后一个的迭代器</p>
+<h4 id="find-x"><a href="#find-x" class="headerlink" title="find(x)"></a>find(x)</h4><p>查找值为x的元素，返回它的迭代器</p>
+<h4 id="erase-1"><a href="#erase-1" class="headerlink" title="erase()"></a>erase()</h4><p>erase(x); 删除单个元素</p>
+<p>erase(a,b); 删除左闭右开区间内[a,b)的元素</p>
+<h3 id="multiset"><a href="#multiset" class="headerlink" title="multiset"></a>multiset</h3><p>有序可重复的容器</p>
+<p>通过重载确定排序规则</p>
+<pre><code class="C++">struct rec{
+    int x,y;
+};
+struct cmp{
+    bool operator()(const rec&amp;a,const rec&amp;b){
+        return a.x&lt;b.x||a.x==b.x&amp;&amp;a.y&lt;b.y;
+    }
+};
+multiset&lt;rec,cmp&gt;h;</code></pre>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>建立key（第一个值）和value（第二个值） 的对应，以key为标准有序</p>
+<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>map&lt;int , int&gt; maps;</p>
+<h3 id="访问-2"><a href="#访问-2" class="headerlink" title="访问"></a>访问</h3><p>maps[key] = value; //给key赋值，key有对应的value就覆盖</p>
+<p>It-&gt;first = 1;</p>
+<h3 id="常用函数-2"><a href="#常用函数-2" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="insert-1"><a href="#insert-1" class="headerlink" title="insert()"></a>insert()</h4><p>maps.insert(pair&lt;type,type&gt;(1,1)); //maps[1] = 1;</p>
+<h4 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h4><p>map&lt;type,type&gt;::iterator it = maps.find(x); //auto代替map&lt;type,type&gt;::iterator 自动推断值的类型</p>
+<h4 id="长度"><a href="#长度" class="headerlink" title="长度"></a>长度</h4><p>maps.empty(); //空返回1</p>
+<p>maps.size(); </p>
+<p>maps.count(x); //返回指定元素出现的次数</p>
+<h4 id="逆向迭代器"><a href="#逆向迭代器" class="headerlink" title="逆向迭代器"></a>逆向迭代器</h4><p>maps.rbegin(); //返回指向maps尾部的逆向迭代器  </p>
+<p>maps.rend(); //返回指向maps头部的逆向迭代器</p>
+<h4 id="bound"><a href="#bound" class="headerlink" title="bound"></a>bound</h4><p>maps.lower_bound(); //返回键值&gt;=给定元素的第一个迭代器</p>
+<p>maps.upper_bound(); //返回键值&gt;给定元素的第一个迭代器</p>
+<h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4><p>for(map&lt;type,type&gt;::iterator it = maps.begin(); it != maps.end(); it++) </p>
+<h4 id="erase-2"><a href="#erase-2" class="headerlink" title="erase()"></a>erase()</h4><p>maps.erase(iterator)</p>
+<p>maps.erase(type)</p>
+<h2 id="哈希hashtable"><a href="#哈希hashtable" class="headerlink" title="哈希hashtable"></a>哈希hashtable</h2><p>unordered_set 不存储重复元素</p>
+<p>unordered_map 实现key和value的映射</p>
+<h3 id="对比set和unordered-set"><a href="#对比set和unordered-set" class="headerlink" title="对比set和unordered_set"></a>对比set和unordered_set</h3><p>map和unordered_set也相同</p>
+<table>
+<thead>
+<tr>
+<th>对比</th>
+<th>set</th>
+<th>unordered_set</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>有序</td>
+<td>有序</td>
+<td>无序</td>
+</tr>
+<tr>
+<td>实现</td>
+<td>BST或RBT</td>
+<td>Hash Table</td>
+</tr>
+<tr>
+<td>插入、删除</td>
+<td>log n</td>
+<td>平均O(1)，最坏O(n)</td>
+</tr>
+</tbody></table>
+<h3 id="unordered-map的成员"><a href="#unordered-map的成员" class="headerlink" title="unordered_map的成员"></a>unordered_map的成员</h3><table>
+<thead>
+<tr>
+<th>成员方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>begin()</td>
+<td>返回指向容器中第一个键值对的正向迭代器。</td>
+</tr>
+<tr>
+<td>end()</td>
+<td>返回指向容器中最后一个键值对之后位置的正向迭代器。</td>
+</tr>
+<tr>
+<td>cbegin()</td>
+<td>和 begin() 功能相同，只不过在其基础上增加了 const 属性，即该方法返回的迭代器不能用于修改容器内存储的键值对。</td>
+</tr>
+<tr>
+<td>cend()</td>
+<td>和 end() 功能相同，只不过在其基础上，增加了 const 属性，即该方法返回的迭代器不能用于修改容器内存储的键值对。</td>
+</tr>
+<tr>
+<td>empty()</td>
+<td>若容器为空，则返回 true；否则 false。</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>返回当前容器中存有键值对的个数。</td>
+</tr>
+<tr>
+<td>max_size()</td>
+<td>返回容器所能容纳键值对的最大个数，不同的操作系统，其返回值亦不相同。</td>
+</tr>
+<tr>
+<td>operator[key]</td>
+<td>该模板类中重载了 [] 运算符，其功能是可以向访问数组中元素那样，只要给定某个键值对的键 key，就可以获取该键对应的值。注意，如果当前容器中没有以 key 为键的键值对，则其会使用该键向当前容器中插入一个新键值对。</td>
+</tr>
+<tr>
+<td>at(key)</td>
+<td>返回容器中存储的键 key 对应的值，如果 key 不存在，则会抛出 out_of_range 异常。</td>
+</tr>
+<tr>
+<td>find(key)</td>
+<td>查找以 key 为键的键值对，如果找到，则返回一个指向该键值对的正向迭代器；反之，则返回一个指向容器中最后一个键值对之后位置的迭代器（如果 end() 方法返回的迭代器）。</td>
+</tr>
+<tr>
+<td>count(key)</td>
+<td>在容器中查找以 key 键的键值对的个数。</td>
+</tr>
+<tr>
+<td>equal_range(key)</td>
+<td>返回一个 pair 对象，其包含 2 个迭代器，用于表明当前容器中键为 key 的键值对所在的范围。</td>
+</tr>
+<tr>
+<td>emplace()</td>
+<td>向容器中添加新键值对，效率比 insert() 方法高。</td>
+</tr>
+<tr>
+<td>emplace_hint()</td>
+<td>向容器中添加新键值对，效率比 insert() 方法高。</td>
+</tr>
+<tr>
+<td>insert()</td>
+<td>向容器中添加新键值对。</td>
+</tr>
+<tr>
+<td>erase()</td>
+<td>删除指定键值对。</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>清空容器，即删除容器中存储的所有键值对。</td>
+</tr>
+<tr>
+<td>swap()</td>
+<td>交换 2 个 unordered_map 容器存储的键值对，前提是必须保证这 2 个容器的类型完全相等。</td>
+</tr>
+<tr>
+<td>bucket_count()</td>
+<td>返回当前容器底层存储键值对时，使用桶（一个线性链表代表一个桶）的数量。</td>
+</tr>
+<tr>
+<td>max_bucket_count()</td>
+<td>返回当前系统中，unordered_map 容器底层最多可以使用多少桶。</td>
+</tr>
+<tr>
+<td>bucket_size(n)</td>
+<td>返回第 n 个桶中存储键值对的数量。</td>
+</tr>
+<tr>
+<td>bucket(key)</td>
+<td>返回以 key 为键的键值对所在桶的编号。</td>
+</tr>
+<tr>
+<td>load_factor()</td>
+<td>返回 unordered_map 容器中当前的负载因子。负载因子，指的是的当前容器中存储键值对的数量（size()）和使用桶数（bucket_count()）的比值，即 load_factor() = size() / bucket_count()。</td>
+</tr>
+<tr>
+<td>max_load_factor()</td>
+<td>返回或者设置当前 unordered_map 容器的负载因子。</td>
+</tr>
+<tr>
+<td>rehash(n)</td>
+<td>将当前容器底层使用桶的数量设置为 n。</td>
+</tr>
+<tr>
+<td>reserve()</td>
+<td>将存储桶的数量（也就是 bucket_count() 方法的返回值）设置为至少容纳count个元（不超过最大负载因子）所需的数量，并重新整理容器。</td>
+</tr>
+<tr>
+<td>hash_function()</td>
+<td>返回当前容器使用的哈希函数对象。</td>
+</tr>
+</tbody></table>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/2020/05/27/%E6%9B%B4%E6%8D%A2Aomori%E4%B8%BB%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          更换Aomori主题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/02/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%A4%9A%E7%A7%8D%E7%AE%97%E6%B3%95%E5%8F%8A%E6%AF%94%E8%BE%83/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">求最大公约数的多种算法及比较</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=C++常用函数 - Li Ting&url=https%3A%2F%2Fliting1024.github.io%2F2020%2F04%2F15%2FC-%25E5%25B8%25B8%25E7%2594%25A8%25E5%2587%25BD%25E6%2595%25B0%2F">
+            <box-icon type='logo' name='twitter'></box-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=C++常用函数 - Li Ting&url=https://liting1024.github.io/2020/04/15/C-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a>
+    </section>
+
+</article>
+
+
+
+
+
+
+
+
+<section class="comments">
+    <div id="gitalk-container"></div>
+</section>
+
+
+
+
+
+
+
+
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar sidebar-search-fix">
+                
+
+    <div class="search">
+    <div class="has-icon-right">
+        <input type="text" class="form-input" id="search" placeholder="SEARCH" autocomplete="off">
+        <div class="form-icon">
+            <box-icon name='search' color="#3c4859"></box-icon>
+        </div>
+    </div>
+    <div class="search-result" id="search-ps"></div>
+</div>
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/05/VisTransformer/">VisTransformer</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/10/Bert/">Bert</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/09/GCN/">GCN</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/09/ResNet/">ResNet</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/01/%E5%86%99%E4%BD%9C%E7%9A%84%E8%89%BA%E6%9C%AF/">研究写作的艺术</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag">读论文</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Debug/">Debug</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">应用开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            Li Ting &copy; 2022<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+
+
+
+<script src="/dist/build.js?1651727875408.js"></script>
+
+
+<script src="/dist/custom.js?1651727875408.js"></script>
+
+
+
+<!-- 百度链接提交 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
