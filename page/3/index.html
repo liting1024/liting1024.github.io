@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>Li Ting</title>
+
+    <meta name="description" content="Li Ting">
+    <meta name="keywords" content="">
+
+    
+
+
+
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content=""/>
+    <meta property="og:description" content=""/>
+    <meta property="og:locale" content="cn" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://liting1024.github.io/page/3/index.html" />
+    <meta property="og:site_name" content="李挺" />
+    <meta property="article:publisher" content="" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "",
+            "description": "",
+            "publisher": {
+                "@type": "Organization",
+                "name": "李挺"
+            },
+        }
+    </script>
+
+
+    
+
+    
+    <meta property="algolia:search" data-application-id="ISC1J3PZW8" data-api-key="8ca1e8ef1083d2f2d2acee1b617e3850" data-index-name="liting_homepage">
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    
+
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1651727875408.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1651727875408.css">
+
+
+    <script>
+        window.isPost = false
+        window.aomori = {
+            
+            gitalk: {
+                enable: true,
+                clientID: "6d0cedf1b471cbc3fb0d",
+                clientSecret: "397c8d7ca7ab800dba9e60fd593649b23b6059b8",
+                repo: "comments-section",
+                owner: "liting1024",
+                admin: ["liting1024",],
+                distractionFreeMode: true  // Facebook-like distraction free mode
+            },
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = true
+
+    </script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Li Ting" type="application/atom+xml">
+</head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>Li Ting</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">首页</a>
+                
+                <a href="/archives">存档</a>
+                
+                <a href="/collection">收藏</a>
+                
+                <a href="/about">关于</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/liting1024">
+        <box-icon type='logo' name='github'></box-icon>
+    </a>
+
+    <a class="social" target="_blank" href="mailto:jkliting@163.com">
+        <box-icon type='solid' name='envelope'></box-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">首页</a>
+                    
+                    <a href="/archives">存档</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                    <a href="/about">关于</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="index">
+  
+    
+      <article
+id="post-爬虫"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2020/07/08/%E7%88%AC%E8%99%AB/">爬虫</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h2 id="爬取有道翻译（POST后下载）"><a href="#爬取有道翻译（POST后下载）" class="headerlink" title="爬取有道翻译（POST后下载）"></a>爬取有道翻译（POST后下载）</h2><pre><code>import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+# 取消SSL证书检测
+import urllib.request
+import urllib.parse
+import json
+import time
+while True:
+    url = &#39;http://fanyi.youdao.com/translate?smartresult=dict&amp;smartresult=rule&#39;
+    data = {}
+    data[&#39;i&#39;] = input(&quot;请输入翻译内容：\n&quot;)
+    data[&#39;doctype&#39;] = &#39;json&#39;
+    data[&#39;keyfrom&#39;] = &#39;fanyi.web&#39;
+    data = urllib.parse.urlencode(data).encode(&#39;utf-8&#39;)
+
+    response = urllib.request.Request(url, data) #POST给网站要翻译的句子
+    response.add_header(&#39;User-Agent&#39;, &#39;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36&#39;) # 伪装访问方式
+    response = urllib.request.urlopen(response)
+    html = response.read().decode(&#39;utf-8&#39;)
+    target = json.loads(html)
+    print(target[&#39;translateResult&#39;][0][0][&#39;tgt&#39;])
+    time.sleep(2)</code></pre><h2 id="BeautifulSoup爬HTML"><a href="#BeautifulSoup爬HTML" class="headerlink" title="BeautifulSoup爬HTML"></a>BeautifulSoup爬HTML</h2><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>find_all(self, name=None, attrs={‘ ‘:’ ‘}, recursive=True, text=None, limit=None, **kwargs)</p>
+<p>查找所有</p>
+<p>self要查找的元素</p>
+<p>name目标元素的名称</p>
+<p>attrs元素的属性</p>
+<p>recursive查找是否在节点子树下展开</p>
+<p>支持自己定义函数查找</p>
+<p>find(self, name=None, attrs={‘ ‘:’ ‘}, recursive=True, text=None, limit=None, **kwargs)</p>
+<p>查找第一个</p>
+<pre><code>import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+import urllib.request
+from bs4 import BeautifulSoup
+
+try:
+    url = &#39;https://liting1024.github.io/2020/02/20/Python/&#39;
+    response=urllib.request.urlopen(url)
+    html=response.read().decode()
+    soup=BeautifulSoup(html,&#39;lxml&#39;)
+
+    def endsWith(s,t):
+        if len(s)&gt;=len(t):
+            return s[len(s)-len(t):]==t
+        return False
+    def myFilter(tag):
+        return (tag.name==&#39;a&#39; and tag.has_attr(&#39;href&#39;) and tag[&#39;href&#39;]==&#39;/category&#39; and endsWith(tag.text,&#39;ies&#39;))
+    # 元素类型为a，有超链接，且超链接为/category，内容以ies结尾
+
+    tag1=soup.find(&#39;h1&#39;)
+    tag2=soup.find_all(&#39;a&#39;,attrs={&#39;class&#39;:&#39;menu-item&#39;})
+    tag3=soup.find_all(myFilter)
+    print(tag1,&#39;\n&#39;,tag2,&#39;\n&#39;,tag3)
+    for tag in tag2:
+        print(tag[&#39;href&#39;])
+    for tag in tag2:
+        print(tag.text)
+except Exception as err:
+    print(err)</code></pre><h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><p>tag.parent 父类树节点</p>
+<p>tag.children 子节点</p>
+<p>tag.descendants 所有子孙节点</p>
+<p>tag.next_sibling 最近的下一个兄弟节点</p>
+<p>tag.previous_sibling 上一个兄弟节点</p>
+<h3 id="CSS语法查找"><a href="#CSS语法查找" class="headerlink" title="CSS语法查找"></a>CSS语法查找</h3><p>soup.select(tagName, attName=value)</p>
+<table>
+<thead>
+<tr>
+<th align="left">attName</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">attName^=value</td>
+<td>以value开头匹配属性</td>
+</tr>
+<tr>
+<td align="left">attName$=value</td>
+<td>以value结尾</td>
+</tr>
+<tr>
+<td align="left">attName*=value</td>
+<td>包含指定值</td>
+</tr>
+</tbody></table>
+<pre><code>soup.select(&quot;p a[rel=&#39;noopener&#39;]&quot;))
+# 查找p下的具有rel=‘noopenner’属性的a
+soup.select(&quot;p &gt; a&quot;)
+# 查找p下的子节点a，不包含孙节点
+soup.select(&quot;p ~ a&quot;)
+# 查到p后面同级别的a</code></pre><h3 id="爬天气预报"><a href="#爬天气预报" class="headerlink" title="爬天气预报"></a>爬天气预报</h3><pre><code>import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+import urllib.request
+from bs4 import BeautifulSoup
+from bs4 import UnicodeDammit
+
+try:
+    url = &#39;http://www.weather.com.cn/weather/101080101.shtml&#39;
+    headers={&quot;User-Agent&quot;:&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36&quot;}
+    req=urllib.request.Request(url,headers=headers)
+    data=urllib.request.urlopen(req)
+    data=data.read()
+    dammit=UnicodeDammit(data,[&#39;utf-8&#39;,&#39;gdk&#39;])
+    html=dammit.unicode_markup
+    # 自动选择解码
+    soup=BeautifulSoup(html, &#39;lxml&#39;)
+    lis=soup.select(&quot;ul[class=&#39;t clearfix&#39;] li&quot;)
+    for li in lis:
+        date = li.select(&#39;h1&#39;)[0].text
+        weather = li.select(&quot;p[class=&#39;wea&#39;]&quot;)[0].text
+        temp1 = li.select(&quot;p[class=&#39;tem&#39;] i&quot;)[0].text
+        if li.select(&quot;p[class=&#39;tem&#39;] span&quot;)==[]:
+            temp=temp1
+            # temp2和temp1相等是无法搜索到temp2
+        else:
+            temp2=li.select(&quot;p[class=&#39;tem&#39;] span&quot;)[0].text
+            temp=temp1+&#39;/&#39;+temp2
+        print(date, weather, temp)
+except Exception as err:
+    print(err)</code></pre><h2 id="爬树"><a href="#爬树" class="headerlink" title="爬树"></a>爬树</h2><h3 id="深度和广度类"><a href="#深度和广度类" class="headerlink" title="深度和广度类"></a>深度和广度类</h3><pre><code>class Stack: # 列表栈，深度
+    def __init__(self):
+        self.st=[]
+    def pop(self):
+        return self.st.pop()
+    def push(self,obj):
+        return self.st.append(obj)
+    def isempty(self):
+        return len(self.st)==0
+
+class Queue: # 队列，广度
+    def __init__(self):
+        self.st=[]
+    def fetch(self):
+        return self.st.pop(0)
+    def enter(self,obj):
+        return self.st.append(obj)
+    def isempty(self):
+        return len(self.st)==0</code></pre><h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>t = Thread(target=,args=)</p>
+<p>target：要执行的函数</p>
+<p>args：一个元组或列表</p>
+<pre><code>from threading import Thread
+
+t.setDaemon(False)
+# 设定为后台线程
+t.start()
+# 启动线程
+t.join()
+# 阻塞当前线程，等t执行后继续执行
+lock=threading._RLock()
+# 设定一个锁
+lock.acquire()
+# lock获取线程锁，如果另一个线程调用了acquire而没有release则阻塞当前线程等待别的线程释放锁
+lock.release()
+# 释放锁</code></pre><h3 id="多线程爬天气网图片"><a href="#多线程爬天气网图片" class="headerlink" title="多线程爬天气网图片"></a>多线程爬天气网图片</h3><pre><code>import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+from bs4 import BeautifulSoup
+from bs4 import UnicodeDammit
+from urllib import parse
+import urllib.request
+import threading
+
+def imageSpider(start_url):
+    global threads
+    global count
+    try:
+        urls=[]
+        req=urllib.request.Request(start_url,headers=headers)
+        data=urllib.request.urlopen(req)
+        data=data.read()
+        dammit=UnicodeDammit(data, [&quot;utf-8&quot;,&quot;gdk&quot;])
+        data=dammit.unicode_markup
+        soup=BeautifulSoup(data,&#39;lxml&#39;)
+        images=soup.select(&#39;img&#39;)
+        for image in images:
+            src=image[&#39;src&#39;]
+            url=parse.urljoin(start_url, src)
+            if url not in urls:
+                print(url)
+                urls.append(url)
+                count=count+1
+                T=threading.Thread(target=download,args=(url,count))
+                # 多线程运行download函数
+                T.setDaemon(False)
+                T.start()
+                threads.append(T)
+    except Exception as err:
+        print(err)
+
+def download(url,count):
+    if url[len(url)-4]==&#39;.&#39;:
+        ext=url[len(url)-4:]
+    else:
+        ext=&#39;&#39;
+    req=urllib.request.Request(url, headers=headers)
+    data=urllib.request.urlopen(req,timeout=100)
+    data=data.read()
+    fobj=open(&#39;image\\&#39;+str(count)+ext,&#39;wb&#39;)
+    fobj.write(data)
+    fobj.close()
+    print(&#39;downloaded&#39;+str(count)+ext)
+
+start_url=&#39;http://www.weather.com.cn/weather1d/101080101.shtml&#39;
+headers={&#39;User-Agent&#39;:&#39;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36&#39;}
+count=0
+threads=[]
+imageSpider(start_url)
+for t in threads: #多线程等待后结束主程序
+    t.join()
+print(&#39;END&#39;)</code></pre><h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a><a href="https://www.jianshu.com/p/a87dee628cc2" target="_blank" rel="noopener">Scrapy</a></h2><h3 id="创建简单爬虫"><a href="#创建简单爬虫" class="headerlink" title="创建简单爬虫"></a>创建简单爬虫</h3><p>在虚拟python环境中pip install scrapy</p>
+<p>scrapy startproject XXX</p>
+<p>生成爬虫名字为itcast，地址为itcast.cn </p>
+<p>scrapy genspider itcast itcast.cn</p>
+<p>启动爬虫不打印日志</p>
+<p>scrapy crawl 爬虫名字 –nolog </p>
+<p>在spider文件夹中建立py文件</p>
+<pre><code>import scrapy
+
+class MySpider(scrapy.Spider):
+    name=&quot;mySpider&quot;
+
+    def start_requests(self):
+    # 整个函数可以用start_urls = [&#39;https://www.baidu.com&#39;]代替
+        url=&#39;https://www.baidu.com&#39;
+        yield scrapy.Request(url=url, callback=self.parse)
+        # 访问网页回调callback函数，yield返回数据但可以不结束函数
+    def parse(self, response):
+        print(response.url)
+        data=response.body.decode()
+        print(data)</code></pre><p>在XXX文件中建立py文件</p>
+<pre><code>from scrapy import cmdline
+
+cmdline.execute(&#39;scrapy crawl mySpider -s LOG_ENABLED=False&#39;.split())</code></pre><h3 id="查找HTML元素"><a href="#查找HTML元素" class="headerlink" title="查找HTML元素"></a>查找HTML元素</h3><pre><code>from scrapy.selector import Selector
+
+selector=Selector(text=html)
+s=selector.xpath(&#39;//title&#39;)
+# //表示在任何位置，/表示下一级，&#39;//body/book&#39;搜索body下一级的book
+# selector.xpath(&#39;//book&#39;).xpath(&#39;/title&#39;)
+# .xpath(&#39;//book&#39;).xpath(&#39;//title&#39;) 对每个book查找title
+print(s)</code></pre><h4 id="解析为列表"><a href="#解析为列表" class="headerlink" title="解析为列表"></a>解析为列表</h4><p>s=selector.xpath(‘//title’).extract()</p>
+<p>得到title组成的list，.extract_first()得到第一个元素</p>
+<h4 id="获取属性、文本"><a href="#获取属性、文本" class="headerlink" title="获取属性、文本"></a>获取属性、文本</h4><p>s=selector.xpath(‘//title/@id’).extract()</p>
+<p>获取属性值</p>
+<p>s=selector.xpath(“”//title[@id=’chinese’]/text()”).extract()</p>
+<p>限定id属性的值筛选</p>
+<p>s=selector.xpath(‘//title/text()’).extract()</p>
+<p>获取title的文本</p>
+<h4 id="用-代表任何"><a href="#用-代表任何" class="headerlink" title="用*代表任何"></a>用*代表任何</h4><p>用*代替任何节点，不包括Text、Comment节点</p>
+<p>s=selector.xpath(“”//title[@*]”)</p>
+<p>任何属性</p>
+<h4 id="position下角标"><a href="#position下角标" class="headerlink" title="position下角标"></a>position下角标</h4><p>从1开始编号</p>
+<p>//body/title[position( )&gt;2] [position( )&lt;5]</p>
+<p>取第三到六个title</p>
+<h4 id="兄弟节点父节点"><a href="#兄弟节点父节点" class="headerlink" title="兄弟节点父节点"></a>兄弟节点父节点</h4><p>s= selector.xpath( //title[ @lang = ‘chinese ]/parent::*”)</p>
+<p>查找属性为lang= chinese’的title的父节点</p>
+<p>s=sclector.xpathC(“//b[position()= 1]following-sibling::* [position()=1]”)<br>搜索第一个b节点后面的第一个兄弟节点</p>
+<p>“element/ollowing-sibling::*”搜索element后面的同级的所有兄弟节点</p>
+<p>“element/preceding-sibling::*“搜索element 前面的同级的所有兄弟节点<br>“element/preceding-sibling::*[position()=1]”搜索element 前面的同级的第一个兄弟节<br>点</p>
+<h3 id="其他py文件"><a href="#其他py文件" class="headerlink" title="其他py文件"></a>其他py文件</h3><h4 id="items-py储存数据"><a href="#items-py储存数据" class="headerlink" title="items.py储存数据"></a>items.py储存数据</h4><p>items中建立用于储存数据的类</p>
+<pre><code>class YourprojectItem(scrapy.Item): # 继承scrapy.Item
+    # define the fields for your item here like:
+    # name = scrapy.Field()
+    title=scrapy.Field()</code></pre><p>在spiders中的爬虫中应用这个类</p>
+<pre><code>from yourProject.items import YourprojectItem
+
+class MySpider(scrapy.Spider):
+    name=&quot;mySpider&quot;
+    start_urls = [&#39;https://www.baidu.com&#39;]
+
+    def parse(self, response):
+        data=response.body.decode()
+        selector=scrapy.Selector(text=data)
+        books=selector.xpath(&quot;//book&quot;)
+        for book in books:
+            item=YourprojectItem()
+            item[&quot;title&quot;]=book.xpath(&quot;./title/text()&quot;).extract_first()
+            yield item</code></pre><h4 id="pipelines-py数据管道处理类"><a href="#pipelines-py数据管道处理类" class="headerlink" title="pipelines.py数据管道处理类"></a>pipelines.py数据管道处理类</h4><p>在settings.py中取消注释</p>
+<p>ITEM_PIPELINES = {</p>
+<p>​    ‘yourProject.pipelines.YourprojectPipeline’: 300,</p>
+<p>}</p>
+<p>爬取一次数据，调用一次process_item函数</p>
+<pre><code>from itemadapter import ItemAdapter
+
+class YourprojectPipeline(object):
+    count = 0
+    def process_item(self, item, spider):
+        YourprojectPipeline.count+=1
+        if YourprojectPipeline.count==1:
+            fobj=open(&quot;book.txt&quot;,&quot;wb&quot;)
+        else:
+            fobj=open(&quot;book.txt&quot;,&quot;at&quot;)
+        print(item[&quot;title&quot;])
+        fobj.write(item[&#39;title&#39;])
+        fobj.close()
+        return item</code></pre><h3 id="爬取当当网图书数据"><a href="#爬取当当网图书数据" class="headerlink" title="爬取当当网图书数据"></a>爬取当当网图书数据</h3>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2020-07-08T15:58:00.000Z" itemprop="datePublished">2020-07-08</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-更换Aomori主题"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2020/05/27/%E6%9B%B4%E6%8D%A2Aomori%E4%B8%BB%E9%A2%98/">更换Aomori主题</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p><a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank" rel="noopener">Github地址</a></p>
+<p>发布</p>
+<pre><code class="Python">hexo algolia # 更改设置
+hexo g
+hexo d</code></pre>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2020-05-27T01:01:34.000Z" itemprop="datePublished">2020-05-27</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">应用开发</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-C-常用函数"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2020/04/15/C-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">C++常用函数</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h1 id="cstring类型"><a href="#cstring类型" class="headerlink" title="cstring类型"></a>cstring类型</h1><h3 id="比较和计算"><a href="#比较和计算" class="headerlink" title="比较和计算"></a>比较和计算</h3><h4 id="strcmp-a-b"><a href="#strcmp-a-b" class="headerlink" title="strcmp(a,b);"></a>strcmp(a,b);</h4><p>比较返回两个char数组的差异度（-2表示有一个char不同）</p>
+<h4 id="strlen-a"><a href="#strlen-a" class="headerlink" title="strlen(a);"></a>strlen(a);</h4><p>计算string或char数组的长度</p>
+<h4 id="size"><a href="#size" class="headerlink" title="size();"></a>size();</h4><h4 id="lenth"><a href="#lenth" class="headerlink" title="lenth();"></a>lenth();</h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能 是为1 否为0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>isalpha</td>
+<td>判断是否为字母</td>
+</tr>
+<tr>
+<td>islower/isupper</td>
+<td>小/大写字母</td>
+</tr>
+<tr>
+<td>isdigit</td>
+<td>数字</td>
+</tr>
+<tr>
+<td>isalnum</td>
+<td>字母或数字</td>
+</tr>
+<tr>
+<td>tolower/toupper</td>
+<td>转换为小/大写字母</td>
+</tr>
+</tbody></table>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><h4 id="memset-s-c-n"><a href="#memset-s-c-n" class="headerlink" title="memset(s, c, n);"></a>memset(s, c, n);</h4><p>将以开辟内存s的前n个直接初始化为c</p>
+<p>n可以用sizeof(s)</p>
+<h3 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h3><h4 id="memcpy-b-a-n"><a href="#memcpy-b-a-n" class="headerlink" title="memcpy(b, a, n);"></a>memcpy(b, a, n);</h4><p>以a开头，长度为n的内存，拷贝到b中</p>
+<h4 id="strncpy-b-a-n"><a href="#strncpy-b-a-n" class="headerlink" title="strncpy(b,a,n);"></a>strncpy(b,a,n);</h4><p>以a开头，长度为n的内存，拷贝到b中，<strong>并返回b</strong></p>
+<h4 id="strcpy-b-a"><a href="#strcpy-b-a" class="headerlink" title="strcpy(b,a);"></a>strcpy(b,a);</h4><p>从a开始复制给b，遇到NULL ‘/0’结束</p>
+<h4 id="strcat-b-a"><a href="#strcat-b-a" class="headerlink" title="strcat(b,a);"></a>strcat(b,a);</h4><p>把a连接到b后</p>
+<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><h4 id="getline-cin-a-n"><a href="#getline-cin-a-n" class="headerlink" title="getline(cin,a,n);"></a>getline(cin,a,n);</h4><p>将流中的字符存在a中，</p>
+<p>遇到n结束，没有默认为‘/n’</p>
+<h2 id="cctype"><a href="#cctype" class="headerlink" title="cctype"></a>cctype</h2><h4 id="tolower-toupper"><a href="#tolower-toupper" class="headerlink" title="tolower(); toupper();"></a>tolower(); toupper();</h4><p>改变字母大小写</p>
+<h4 id="isalpha-isdigit-isprint"><a href="#isalpha-isdigit-isprint" class="headerlink" title="isalpha(); isdigit(); isprint();"></a>isalpha(); isdigit(); isprint();</h4><p>判断是否是字母，数字，可打印字符（非控制字符）</p>
+<h2 id="algorithm"><a href="#algorithm" class="headerlink" title="algorithm"></a>algorithm</h2><h4 id="min-max"><a href="#min-max" class="headerlink" title="min(); max()"></a>min(); max()</h4><p>返回两个元素中最小（最大）的一个</p>
+<h4 id="upper-bound-first-last-n"><a href="#upper-bound-first-last-n" class="headerlink" title="upper_bound(first, last, n);"></a>upper_bound(first, last, n);</h4><p>查找区间中第一个大于n的位置，返回的是地址</p>
+<h4 id="lower-bound-first-last-n"><a href="#lower-bound-first-last-n" class="headerlink" title="lower_bound(first, last, n);"></a>lower_bound(first, last, n);</h4><p>查找区间中第一个大于<strong>等于</strong>n的位置，返回的是地址</p>
+<h4 id="next-permutation-first-last-prev-permutation"><a href="#next-permutation-first-last-prev-permutation" class="headerlink" title="next_permutation(first, last); prev_permutation();"></a>next_permutation(first, last); prev_permutation();</h4><p>将数组中的元素全排列</p>
+<p><strong>需要将数组进行升序排列</strong>，否则只能找出该序列之后的全排列数。</p>
+<pre><code>char a[4]={&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;};
+    do{
+        for(int i=0;i&lt;4;++i)
+            cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
+        cout&lt;&lt;endl;
+    }while(next_permutation(a,a+4));</code></pre><h4 id="sort-first-last-greater-lt-gt"><a href="#sort-first-last-greater-lt-gt" class="headerlink" title="sort(first, last, greater&lt;&gt;());"></a>sort(first, last, greater&lt;&gt;());</h4><pre><code>int a[5]={5,2,4,3,1},b[3]=&quot;cba&quot;;
+sort(a,a+5);//正序排列
+sort(a,a+5,greater&lt;&gt;());//逆序排列数字
+sort(b,b+3,greater&lt;char&gt;());//逆序排列char</code></pre><h4 id="fill-first-last-a"><a href="#fill-first-last-a" class="headerlink" title="fill(first, last, a);"></a>fill(first, last, a);</h4><p>可将数组的值初始化成a</p>
+<h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p>一个动态申请空间的数组</p>
+<h3 id="定义-vector-lt-typename-gt-name"><a href="#定义-vector-lt-typename-gt-name" class="headerlink" title="定义 vector &lt; typename &gt; name;"></a>定义 vector &lt; typename &gt; name;</h3><p>typename可以是任何基本类型 结构体,STL容器vector,set,queue等。</p>
+<pre><code class="C++">vector&lt;int&gt; stu;
+vector&lt;double&gt; stu;
+vector&lt;char&gt; stu;
+vector&lt;node&gt; stu;//node是结构体类型
+vector&lt;vector&lt;int&gt;&gt; name;
+vector&lt;typename&gt; a[arraySize];//申请一个二维数组</code></pre>
+<h3 id="初始化-1"><a href="#初始化-1" class="headerlink" title="初始化"></a>初始化</h3><pre><code class="c++">//初始化了10个默认值为0的元素
+vector&lt;int&gt; abc(10);
+//初始化了10个值为1的元素
+vector&lt;int&gt; cde(10，1); 
+
+int a[5] = {1,2,3,4,5};
+//通过数组a的地址初始化，注意地址是从0到5（左闭右开区间）
+vector&lt;int&gt; b(a, a+5);
+
+vector&lt;int&gt; a(5,1);
+//通过a初始化
+vector&lt;int&gt; b(a);
+
+//insert初始化方式将同类型的迭代器对应的始末区间（左闭右开区间）内的值插入到vector中
+vector&lt;int&gt; a(6,6);
+vecot&lt;int&gt; b;
+//将a[0]~a[2]插入到b中，b.size()由0变为3
+b.insert(b.begin(), a.begin(), a.begin() + 3);
+//在b开始位置处插入6个6
+b.insert(b.begin(), 6, 6);
+
+vector&lt;int&gt; a(5,1);
+int a1[5] = {2,2,2,2,2};
+vector&lt;int&gt; b(10);
+
+ /*将a中元素全部拷贝到b开始的位置中,注意拷贝的区间为a.begin() ~ a.end()的左闭右开的区间*/
+copy(a.begin(), a.end(), b.begin());
+
+//拷贝区间也可以是数组地址构成的区间
+copy(a1, a1+5, b.begin() + 5);</code></pre>
+<h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><h4 id="下标访问"><a href="#下标访问" class="headerlink" title="下标访问"></a>下标访问</h4><p>从0开始</p>
+<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>vector<typename>::iterator it;//it是一个迭代器变量</p>
+<h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="push-back-a"><a href="#push-back-a" class="headerlink" title="push_back(a)"></a>push_back(a)</h4><p>在vector最后面添加一个元素a</p>
+<h4 id="pop-back-x"><a href="#pop-back-x" class="headerlink" title="pop_back(x)"></a>pop_back(x)</h4><p>删除vector的尾元素x</p>
+<h4 id="size-1"><a href="#size-1" class="headerlink" title="size()"></a>size()</h4><h4 id="clear"><a href="#clear" class="headerlink" title="clear()"></a>clear()</h4><p>清空vector所有的元素</p>
+<h4 id="insert"><a href="#insert" class="headerlink" title="insert();"></a>insert();</h4><p>insert(it,x);向vector的任意迭代器it初传入一个元素x</p>
+<p>a.insert(a.begin()+1, 5);在a的第1个元素（从第0个算起）的位置插入数值5，如a为1,2,3,4，插入元素后为1,5,2,3,4<br>a.insert(a.begin()+1, 3,5);在a的第1个元素（从第0个算起）的位置插入3个数，其值都为5<br>a.insert(a.begin()+1,b+3, b+6);b为数组，在a的第1个元素（从第0个算起）的位置插入b的第3个元素到第5个元素（不包括b+6），如b为1,2,3,4,5,9,8，插入元素后为1,4,5,9,2,3,4,5,9,8</p>
+<h4 id="erase"><a href="#erase" class="headerlink" title="erase()"></a>erase()</h4><p>erase(x); 删除单个元素</p>
+<p>erase(a,b); 删除左闭右开区间内[a,b)的元素</p>
+<h4 id="copy-a-begin-a-end-b-begin-1"><a href="#copy-a-begin-a-end-b-begin-1" class="headerlink" title="copy(a.begin(),a.end(),b.begin()+1);"></a>copy(a.begin(),a.end(),b.begin()+1);</h4><p>把a中的从a.begin()（包括它）到a.end()（不包括它）的元素复制到b中，从b.begin()+1的位置（包括它）开始复制，覆盖掉原有元素</p>
+<h4 id="find-a-begin-a-end-10"><a href="#find-a-begin-a-end-10" class="headerlink" title="find(a.begin(),a.end(),10);"></a>find(a.begin(),a.end(),10);</h4><p>在a中的从a.begin()（包括它）到a.end()（不包括它）的元素中查找10，若存在返回其在向量中的位置</p>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>一个内部自动升序而且不重复元素的容器</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>操作</strong></th>
+<th align="center"><strong>效果</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><em>set</em> c</td>
+<td align="center">产生一个空的set/multiset，不含任何元素</td>
+</tr>
+<tr>
+<td align="center">set c(op)</td>
+<td align="center">以op为排序准则，产生一个空的set/multiset</td>
+</tr>
+</tbody></table>
+<h3 id="访问-1"><a href="#访问-1" class="headerlink" title="访问"></a>访问</h3><p>只能通过迭代器</p>
+<p>set<typename>::iterator it;//typename对应定义set时的类型，auto自动推断定义类型</p>
+<h3 id="常用函数-1"><a href="#常用函数-1" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="insert-x"><a href="#insert-x" class="headerlink" title="insert(x)"></a>insert(x)</h4><p>将x插入set容器中，并且自动递增排序和去重</p>
+<h4 id="size-2"><a href="#size-2" class="headerlink" title="size()"></a>size()</h4><h4 id="clear-1"><a href="#clear-1" class="headerlink" title="clear()"></a>clear()</h4><h3 id="end"><a href="#end" class="headerlink" title="end()"></a>end()</h3><p>返回最后一个的迭代器</p>
+<h4 id="find-x"><a href="#find-x" class="headerlink" title="find(x)"></a>find(x)</h4><p>查找值为x的元素，返回它的迭代器</p>
+<h4 id="erase-1"><a href="#erase-1" class="headerlink" title="erase()"></a>erase()</h4><p>erase(x); 删除单个元素</p>
+<p>erase(a,b); 删除左闭右开区间内[a,b)的元素</p>
+<h3 id="multiset"><a href="#multiset" class="headerlink" title="multiset"></a>multiset</h3><p>有序可重复的容器</p>
+<p>通过重载确定排序规则</p>
+<pre><code class="C++">struct rec{
+    int x,y;
+};
+struct cmp{
+    bool operator()(const rec&amp;a,const rec&amp;b){
+        return a.x&lt;b.x||a.x==b.x&amp;&amp;a.y&lt;b.y;
+    }
+};
+multiset&lt;rec,cmp&gt;h;</code></pre>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>建立key（第一个值）和value（第二个值） 的对应，以key为标准有序</p>
+<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>map&lt;int , int&gt; maps;</p>
+<h3 id="访问-2"><a href="#访问-2" class="headerlink" title="访问"></a>访问</h3><p>maps[key] = value; //给key赋值，key有对应的value就覆盖</p>
+<p>It-&gt;first = 1;</p>
+<h3 id="常用函数-2"><a href="#常用函数-2" class="headerlink" title="常用函数"></a>常用函数</h3><h4 id="insert-1"><a href="#insert-1" class="headerlink" title="insert()"></a>insert()</h4><p>maps.insert(pair&lt;type,type&gt;(1,1)); //maps[1] = 1;</p>
+<h4 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h4><p>map&lt;type,type&gt;::iterator it = maps.find(x); //auto代替map&lt;type,type&gt;::iterator 自动推断值的类型</p>
+<h4 id="长度"><a href="#长度" class="headerlink" title="长度"></a>长度</h4><p>maps.empty(); //空返回1</p>
+<p>maps.size(); </p>
+<p>maps.count(x); //返回指定元素出现的次数</p>
+<h4 id="逆向迭代器"><a href="#逆向迭代器" class="headerlink" title="逆向迭代器"></a>逆向迭代器</h4><p>maps.rbegin(); //返回指向maps尾部的逆向迭代器  </p>
+<p>maps.rend(); //返回指向maps头部的逆向迭代器</p>
+<h4 id="bound"><a href="#bound" class="headerlink" title="bound"></a>bound</h4><p>maps.lower_bound(); //返回键值&gt;=给定元素的第一个迭代器</p>
+<p>maps.upper_bound(); //返回键值&gt;给定元素的第一个迭代器</p>
+<h4 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h4><p>for(map&lt;type,type&gt;::iterator it = maps.begin(); it != maps.end(); it++) </p>
+<h4 id="erase-2"><a href="#erase-2" class="headerlink" title="erase()"></a>erase()</h4><p>maps.erase(iterator)</p>
+<p>maps.erase(type)</p>
+<h2 id="哈希hashtable"><a href="#哈希hashtable" class="headerlink" title="哈希hashtable"></a>哈希hashtable</h2><p>unordered_set 不存储重复元素</p>
+<p>unordered_map 实现key和value的映射</p>
+<h3 id="对比set和unordered-set"><a href="#对比set和unordered-set" class="headerlink" title="对比set和unordered_set"></a>对比set和unordered_set</h3><p>map和unordered_set也相同</p>
+<table>
+<thead>
+<tr>
+<th>对比</th>
+<th>set</th>
+<th>unordered_set</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>有序</td>
+<td>有序</td>
+<td>无序</td>
+</tr>
+<tr>
+<td>实现</td>
+<td>BST或RBT</td>
+<td>Hash Table</td>
+</tr>
+<tr>
+<td>插入、删除</td>
+<td>log n</td>
+<td>平均O(1)，最坏O(n)</td>
+</tr>
+</tbody></table>
+<h3 id="unordered-map的成员"><a href="#unordered-map的成员" class="headerlink" title="unordered_map的成员"></a>unordered_map的成员</h3><table>
+<thead>
+<tr>
+<th>成员方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>begin()</td>
+<td>返回指向容器中第一个键值对的正向迭代器。</td>
+</tr>
+<tr>
+<td>end()</td>
+<td>返回指向容器中最后一个键值对之后位置的正向迭代器。</td>
+</tr>
+<tr>
+<td>cbegin()</td>
+<td>和 begin() 功能相同，只不过在其基础上增加了 const 属性，即该方法返回的迭代器不能用于修改容器内存储的键值对。</td>
+</tr>
+<tr>
+<td>cend()</td>
+<td>和 end() 功能相同，只不过在其基础上，增加了 const 属性，即该方法返回的迭代器不能用于修改容器内存储的键值对。</td>
+</tr>
+<tr>
+<td>empty()</td>
+<td>若容器为空，则返回 true；否则 false。</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>返回当前容器中存有键值对的个数。</td>
+</tr>
+<tr>
+<td>max_size()</td>
+<td>返回容器所能容纳键值对的最大个数，不同的操作系统，其返回值亦不相同。</td>
+</tr>
+<tr>
+<td>operator[key]</td>
+<td>该模板类中重载了 [] 运算符，其功能是可以向访问数组中元素那样，只要给定某个键值对的键 key，就可以获取该键对应的值。注意，如果当前容器中没有以 key 为键的键值对，则其会使用该键向当前容器中插入一个新键值对。</td>
+</tr>
+<tr>
+<td>at(key)</td>
+<td>返回容器中存储的键 key 对应的值，如果 key 不存在，则会抛出 out_of_range 异常。</td>
+</tr>
+<tr>
+<td>find(key)</td>
+<td>查找以 key 为键的键值对，如果找到，则返回一个指向该键值对的正向迭代器；反之，则返回一个指向容器中最后一个键值对之后位置的迭代器（如果 end() 方法返回的迭代器）。</td>
+</tr>
+<tr>
+<td>count(key)</td>
+<td>在容器中查找以 key 键的键值对的个数。</td>
+</tr>
+<tr>
+<td>equal_range(key)</td>
+<td>返回一个 pair 对象，其包含 2 个迭代器，用于表明当前容器中键为 key 的键值对所在的范围。</td>
+</tr>
+<tr>
+<td>emplace()</td>
+<td>向容器中添加新键值对，效率比 insert() 方法高。</td>
+</tr>
+<tr>
+<td>emplace_hint()</td>
+<td>向容器中添加新键值对，效率比 insert() 方法高。</td>
+</tr>
+<tr>
+<td>insert()</td>
+<td>向容器中添加新键值对。</td>
+</tr>
+<tr>
+<td>erase()</td>
+<td>删除指定键值对。</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>清空容器，即删除容器中存储的所有键值对。</td>
+</tr>
+<tr>
+<td>swap()</td>
+<td>交换 2 个 unordered_map 容器存储的键值对，前提是必须保证这 2 个容器的类型完全相等。</td>
+</tr>
+<tr>
+<td>bucket_count()</td>
+<td>返回当前容器底层存储键值对时，使用桶（一个线性链表代表一个桶）的数量。</td>
+</tr>
+<tr>
+<td>max_bucket_count()</td>
+<td>返回当前系统中，unordered_map 容器底层最多可以使用多少桶。</td>
+</tr>
+<tr>
+<td>bucket_size(n)</td>
+<td>返回第 n 个桶中存储键值对的数量。</td>
+</tr>
+<tr>
+<td>bucket(key)</td>
+<td>返回以 key 为键的键值对所在桶的编号。</td>
+</tr>
+<tr>
+<td>load_factor()</td>
+<td>返回 unordered_map 容器中当前的负载因子。负载因子，指的是的当前容器中存储键值对的数量（size()）和使用桶数（bucket_count()）的比值，即 load_factor() = size() / bucket_count()。</td>
+</tr>
+<tr>
+<td>max_load_factor()</td>
+<td>返回或者设置当前 unordered_map 容器的负载因子。</td>
+</tr>
+<tr>
+<td>rehash(n)</td>
+<td>将当前容器底层使用桶的数量设置为 n。</td>
+</tr>
+<tr>
+<td>reserve()</td>
+<td>将存储桶的数量（也就是 bucket_count() 方法的返回值）设置为至少容纳count个元（不超过最大负载因子）所需的数量，并重新整理容器。</td>
+</tr>
+<tr>
+<td>hash_function()</td>
+<td>返回当前容器使用的哈希函数对象。</td>
+</tr>
+</tbody></table>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2020-04-15T15:12:59.000Z" itemprop="datePublished">2020-04-15</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-求最大公约数的多种算法及比较"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2020/02/02/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%A4%9A%E7%A7%8D%E7%AE%97%E6%B3%95%E5%8F%8A%E6%AF%94%E8%BE%83/">求最大公约数的多种算法及比较</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h2 id="公约数的性质"><a href="#公约数的性质" class="headerlink" title="公约数的性质"></a>公约数的性质</h2><p>gcd(-a,b)=gcd(a,b)<br>gcd(a,0)=|a|<br>gcd(a,1)=1<br>gcd(a,b)=gcd(b, a-b)<br>gcd(ma,mb)=m * gcd(a,b)</p>
+<p>⚠️注：两数必须为正整数</p>
+<h2 id="辗转相除法（欧几里得）"><a href="#辗转相除法（欧几里得）" class="headerlink" title="辗转相除法（欧几里得）"></a>辗转相除法（欧几里得）</h2><p>时间效率： ⭐️<br>素数较大时运算耗时</p>
+<pre><code class="bash">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    if (a &lt; b) swap(a, b);//保证a大于b
+    int t = a % b;
+    while (t) {
+        a = b;
+        b = t;
+        t = a % b;
+    }
+    cout &lt;&lt; b;
+}</code></pre>
+<h2 id="穷举法"><a href="#穷举法" class="headerlink" title="穷举法"></a>穷举法</h2><p>时间效率： ⭐️⭐️⭐️</p>
+<pre><code class="bash">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    int t = a &gt; b ? b : a;//t为min
+    while (t) {
+        if (a % t == 0 &amp;&amp; b % t == 0)
+            break;
+        t--;
+    }
+    cout &lt;&lt; t;
+}</code></pre>
+<h2 id="更相减损术"><a href="#更相减损术" class="headerlink" title="更相减损术"></a>更相减损术</h2><p>时间效率： ⭐️⭐️⭐️<br>两数相差大时运算次数多</p>
+<pre><code class="bash">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main() {
+    int a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    int l = 0;
+    while (a % 2 == 0 &amp;&amp; b % 2 == 0) {//都是偶数则除二
+        a /= 2;
+        b /= 2;
+        l++;
+    }
+    if (a &lt; b) swap(a, b);//保证a大于b
+    int t = 1;
+    while (t) {
+        t = a - b;
+        a = b &gt; t ? b : t;//保证a大于b
+        b = b &gt; t ? t : b;
+        if (a == b)//直到两数相等
+            break;
+    }
+    cout &lt;&lt; pow(2, l) * b;
+}</code></pre>
+<h2 id="Stein算法"><a href="#Stein算法" class="headerlink" title="Stein算法"></a><a href="https://blog.csdn.net/Zhao_Xinhao/article/details/76060119" target="_blank" rel="noopener">Stein算法</a></h2><p>时间效率： ⭐️⭐️<br>对于辗转相除法的改进</p>
+<pre><code class="bash">//递归
+int Stein(int u, int v) {
+    if (u == 0) {
+        return v;
+    }
+    if (v == 0) {
+        return u;
+    }
+    if (~u &amp; 1) {
+        if (v &amp; 1) {
+            return Stein(u &gt;&gt; 1, v);
+        }
+        else {
+            return Stein(u &gt;&gt; 1, v &gt;&gt; 1) &lt;&lt; 1;
+        }
+    }
+    if (~v &amp; 1) {
+        return gcd2(u, v &gt;&gt; 1);
+    }
+    if (u &gt; v) {
+        return gcd2((u - v) &gt;&gt; 1, v);
+    }
+    return gcd2((v - u) &gt;&gt; 1, u);
+}
+//非递归
+int Stein(unsigned int x, unsigned int y) {
+    int factor = 0;   //计数器
+    int temp;
+
+    //大数赋给x，小数赋给y
+    if (x &lt; y) {
+        temp = x;
+        x = y;
+        y = temp;
+    }
+    if (0 == y) {
+        return 0;
+    }
+    while (x != y) {
+        if (x &amp; 0x1) {
+            if (y &amp; 0x1) {   //x,y都为奇数
+                y = (x - y) &gt;&gt; 1;
+                x -= y;
+            }
+            else {    // x为奇数，y为偶数
+                y &gt;&gt;= 1;
+            }
+        }
+        else {
+            if (y &amp; 0x1) {   // x为偶数，y为奇数
+                x &gt;&gt;= 1;
+                if (x &lt; y) {
+                    temp = x;
+                    x = y;
+                    y = temp;
+                }
+            }
+            else {   //x,y均为偶数
+                x &gt;&gt;= 1;
+                y &gt;&gt;= 1;
+                ++factor;
+            }
+        }
+    }
+    return (x &lt;&lt; factor);
+}</code></pre>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2020-02-02T05:10:15.000Z" itemprop="datePublished">2020-02-02</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a>
+        </div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-SwiftUI"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2020/01/28/SwiftUI/">SwiftUI</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p>ESE 提示可用的修饰</p>
+<h1 id="网站资源"><a href="#网站资源" class="headerlink" title="网站资源"></a>网站资源</h1><h3 id="点击这个-调色网站"><a href="#点击这个-调色网站" class="headerlink" title="点击这个 调色网站"></a>点击这个 <a href="https://flatuicolors.com" target="_blank" rel="noopener">调色网站</a></h3><h3 id="点击这个-图像尺寸变更"><a href="#点击这个-图像尺寸变更" class="headerlink" title="点击这个 图像尺寸变更"></a>点击这个 <a href="https://appicon.co" target="_blank" rel="noopener">图像尺寸变更</a></h3><h3 id="点击这个-图标设计：（选择1024x1024像素）"><a href="#点击这个-图标设计：（选择1024x1024像素）" class="headerlink" title="点击这个 图标设计：（选择1024x1024像素）"></a>点击这个 <a href="https://www.canva.cn" target="_blank" rel="noopener">图标设计：（选择1024x1024像素）</a></h3><h3 id="点击这个阿里巴巴图标库"><a href="#点击这个阿里巴巴图标库" class="headerlink" title="点击这个阿里巴巴图标库"></a>点击这个<a href="https://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.2" target="_blank" rel="noopener">阿里巴巴图标库</a></h3><h1 id="SwiftUI内置控件"><a href="#SwiftUI内置控件" class="headerlink" title="SwiftUI内置控件"></a>SwiftUI内置控件</h1><h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>HStack(alignment: .leading对齐方式，spacing：10该stack中控件之间的距离) 水平摆放<br>VStack 竖直摆放<br>ZStack 叠加摆放<br>Group 多屏幕展示（多在预览时使用，支持frame）</p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="List（与ForEach用法相同，ForEach放在List里）"><a href="#List（与ForEach用法相同，ForEach放在List里）" class="headerlink" title="List（与ForEach用法相同，ForEach放在List里）"></a>List（与ForEach用法相同，ForEach放在List里）</h3><p>数组是继承Identifiable<br>List(0..&lt;5可放置数组）){ i in<br>}  列表<br>如果没有继承Identifiable的话，需要手动写id<br>List(数组.identified(by：.id)) {}<br>简单数组就可以用自身作为id<br>List([1,2,3].identified(by：.self)){}</p>
+<h3 id="ScrollView-可滑动的列表，一般放在NavigitionView内"><a href="#ScrollView-可滑动的列表，一般放在NavigitionView内" class="headerlink" title="ScrollView 可滑动的列表，一般放在NavigitionView内"></a>ScrollView 可滑动的列表，一般放在NavigitionView内</h3><h3 id="NavigitionView-导航栏组件"><a href="#NavigitionView-导航栏组件" class="headerlink" title="NavigitionView 导航栏组件"></a>NavigitionView 导航栏组件</h3><p>NavigationLink(destination：跳转后的页面){ } 点击可跳转，写在NavigitionView里</p>
+<pre><code class="bash">//Navigition头部分，修饰写在NavigitionView里面
+.navigationBarTitle(Text(&quot;&quot;)，displayMode：.inline)字体的大小
+.navigationBarItems(trailing: Image( ))//可以放另一视图</code></pre>
+<p>Form{<br>    Section(header:  小节题目内容){<br>    //小节内的内容<br>    }<br>    Section(header:  小节题目内容){<br>    //小节内的内容<br>    }<br>}</p>
+<h2 id="文字、图片"><a href="#文字、图片" class="headerlink" title="文字、图片"></a>文字、图片</h2><p>Text(“”)</p>
+<p>TextField(“”, text: $name) //@State private var name = “”</p>
+<h4 id="修饰"><a href="#修饰" class="headerlink" title="修饰"></a>修饰</h4><p>.keyboardType() 弹出键盘类型<br>.numberPad和.decimalPad 两种键盘类型</p>
+<p>SecureField</p>
+<p>Image(system name: “ SF中的图标名称”)</p>
+<h4 id="修饰语句："><a href="#修饰语句：" class="headerlink" title="修饰语句："></a>修饰语句：</h4><pre><code class="bash">.font( ) 字体样式
+.font(,system(size: )) 自定义字体大小
+.frame(width: ,height: ) 尺寸
+.foregroundColor(color: ) 颜色
+.offset(x: ,y: ) 偏移量（UIScreen.main.bounds.height屏幕的高度）
+.toggle( ) 在真假之间转换
+.imageScale(.large) 调整图片大小
+.aspectRatio(contentMode: .fit) 图片大小自适应屏幕，.fill是占满屏幕
+.frame(minWidth: 0,maxWidth: .infinith) 图片最小宽度为0，最大为无穷
+.cornerRadius( ) 圆角
+.clipShape(Circle()形状) 裁剪
+.overlay(Circle().stroke(Color.black, llineWidth: 5)描边的线) 覆盖的图案
+.shadow(radius: ) 阴影
+.tapAction{
+点击后实现的代码，回调函数
+} 轻触手势</code></pre>
+<h2 id="动画类"><a href="#动画类" class="headerlink" title="动画类"></a>动画类</h2><h4 id="单个的动画（俩种同时都有时，单个动画优先展示）"><a href="#单个的动画（俩种同时都有时，单个动画优先展示）" class="headerlink" title="单个的动画（俩种同时都有时，单个动画优先展示）"></a>单个的动画（俩种同时都有时，单个动画优先展示）</h4><p>.transitiooon(.move(edge: .trailing)) 从边缘滑出<br>.rotationEffect 旋转<br>.rotation3DEffect(Angle(degrees: ), axis: (x: , y: , z: ))3D旋转<br>.animation(.spring()) 反弹动画<br>.animation(.basic(duration: 动画时间, curve: <u>.easeInoOut</u>)) 延迟动画  </p>
+<h4 id="统一的动画"><a href="#统一的动画" class="headerlink" title="统一的动画"></a>统一的动画</h4><p>withAnimation(.basic基本动画(duration: 1动画时间)){<br>这里的值发生改变时，所有包含这个值的视图都加上了动画<br>}</p>
+<h2 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h2><p>Button(action: {<br>  //点击后实现的代码<br>}) {<br>  //按钮样式<br>} </p>
+<p>EditButton() 启用或禁用列表中项目的编辑模式<br>Toggle(isOn: $布尔值) {<br>Text(“ “)<br>} 开关按钮</p>
+<h2 id="提示框"><a href="#提示框" class="headerlink" title="提示框"></a>提示框</h2><p>Alert </p>
+<pre><code class="bash">struct test: View {
+    @State private var editing = false
+    var body: some View {
+        Button(action: {
+            self.editing = true
+        }){
+            Text(&quot;show it&quot;)
+        }
+        .alert(isPresented: $editing){
+        Alert(title: Text(&quot;alert&quot;), message: Text(&quot;easy&quot;),  primaryButton: .default(Text(&quot;yes&quot;) ,action: {
+                print(&quot;点了yes欧&quot;)
+                }),  secondaryButton: .destructive(Text(&quot;no&quot;)))
+        }
+    }
+}</code></pre>
+<p>Modal<br>Popovers</p>
+<pre><code class="bash">struct test: View {
+    @State private var editing = false
+    var body: some View {
+        Button(&quot;show it&quot;){
+            self.editing = true
+        }.popover(isPresented: self.$editing, arrowEdge: .bottom) {
+            Text(&quot;hello, this is a new world&quot;)
+        }
+    }
+}</code></pre>
+<p>Sheet(和Popovers一模一样)</p>
+<pre><code class="bash">struct test: View {
+    @State private var showingSheet = false
+    var body: some View {
+        Button(&quot;Show Sheet&quot;) {
+            self.showingSheet.toggle()
+        }
+        .sheet(isPresented: $showingSheet) {
+            Text(&quot;6&quot;)//也可以写成一个页面
+        }
+    }
+}</code></pre>
+<p>ActionSheet</p>
+<pre><code class="bash">struct test: View {
+    @State private var editing = false
+    var body: some View {
+        Button(action: {
+            self.editing = true
+        }){
+            Text(&quot;show it&quot;)
+        }
+        .actionSheet(isPresented: $editing) {
+            ActionSheet(title: Text(&quot;确定吗?&quot;), message: Text(&quot;此操作会。。。&quot;), buttons: [.destructive(Text(&quot;确定&quot;)), .cancel(Text(&quot;撤销&quot;))])
+        }
+    }
+}</code></pre>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><h4 id="DatePicker-“选择器的标题”-selection-选择器的值-displayedComponents-时间选择器"><a href="#DatePicker-“选择器的标题”-selection-选择器的值-displayedComponents-时间选择器" class="headerlink" title="DatePicker(“选择器的标题”,selection: 选择器的值, displayedComponents: ) 时间选择器"></a>DatePicker(“选择器的标题”,selection: 选择器的值, displayedComponents: ) 时间选择器</h4><h5 id="displayedComponents用来决定用户应该看到哪种选项："><a href="#displayedComponents用来决定用户应该看到哪种选项：" class="headerlink" title="displayedComponents用来决定用户应该看到哪种选项："></a>displayedComponents用来决定用户应该看到哪种选项：</h5><p>默认为月-日-星期-小时-分钟<br>.date 显示年-月-日<br>.hourAndMinute 显示小时-分钟</p>
+<h4 id="Picker-“”-selection-选择器"><a href="#Picker-“”-selection-选择器" class="headerlink" title="Picker(“”,selection: ) 选择器"></a>Picker(“”,selection: ) 选择器</h4><p>.pickerStyle(SegmentedPickerStyle( )) 另一种风格的选择器<br>单个选择滚轮</p>
+<pre><code class="bash">struct test: View {
+    var choice = [&quot;food&quot;,&quot;medicine&quot;,&quot;cosmetics&quot;]
+    @State private var index = 0
+    var body: some View {
+        Picker(selection: $index, label: Text(&quot;choose&quot;)) {
+            ForEach (0..&lt;choice.count) { i in
+                Text(self.choice[i])
+            }
+        }
+    }
+}</code></pre>
+<p>多个选择滚轮</p>
+<pre><code class="bash">struct test: View {
+
+    @State var data: [(String, [String])] = [
+        (&quot;One&quot;, Array(0...5).map { &quot;\($0)&quot; }),
+        (&quot;Two&quot;, Array(0...36).map { &quot;\($0)&quot; }),
+        (&quot;Three&quot;, Array(0...365).map { &quot;\($0)&quot; })
+    ]
+    @State var selection: [String] = [0, 0, 21].map { &quot;\($0)&quot; }
+
+    var body: some View {
+        VStack{
+            Text(verbatim: &quot;Selection: \(selection)&quot;)
+            MultiPicker(data: data, selection: $selection)
+            .frame(height: 300)
+        }
+    }
+
+}
+struct MultiPicker: View  {
+
+    typealias Label = String
+    typealias Entry = String
+
+    let data: [ (Label, [Entry]) ]
+    @Binding var selection: [Entry]
+
+    var body: some View {
+        GeometryReader { geometry in
+            HStack {
+                ForEach(0..&lt;self.data.count) { column in
+                    Picker(self.data[column].0, selection: self.$selection[column]) {
+                        ForEach(0..&lt;self.data[column].1.count) { row in
+                            Text(verbatim: self.data[column].1[row])
+                            .tag(self.data[column].1[row])
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    .frame(width: geometry.size.width / CGFloat(self.data.count), height: geometry.size.height)
+                    .clipped()
+                }
+            }
+        }
+    }
+}</code></pre>
+<p>cornerRadius shadow foregroundColor background frame 都可以修饰选择器<br>.pickerStyle(SegmentedPickerStyle()) 可以把滚轮换成按钮<br>按钮也可以是图片</p>
+<h2 id="图案形状"><a href="#图案形状" class="headerlink" title="图案形状"></a>图案形状</h2><p>Circle 圆形<br>Edge<br>Rectangle 好看的小方块<br>Path<br>RoundedRectangle </p>
+<p>GeometryReader {  geometry in<br>   Text(“hello”)<br>       .frame(width: geometry.size.width)<br>}  计算屏幕大小的容器</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="属性包装器"><a href="#属性包装器" class="headerlink" title="属性包装器"></a>属性包装器</h2><p>未绑定属性就是公用状态<br>带上private表示只能在本结构体中使用，防止重名导致的崩溃<br>@State 值改变时，body内的内容重新刷新（双向绑定）<br>@Binding 将一个视图的属性链接到一些基础的模型数据<br>@ObservedObject 提取ObservableObject中储存的数据，所有页面共享数据<br>@Published 每当修改值时都会报告，willset{}可查看报告<br>@Environment(.Value) var Value 回到主页面<br>@EnvironmentObject 通过应用程序本身提供给视图，每个视图都可以读取的共享数据<br>.default 只实例化一次</p>
+<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p>Identifiable 可以自动生成一个唯一标识符var id = UUID()</p>
+<h2 id="有用的View"><a href="#有用的View" class="headerlink" title="有用的View"></a>有用的View</h2><h3 id="地图View"><a href="#地图View" class="headerlink" title="地图View"></a>地图View</h3><pre><code class="bash">import SwiftUI
+import MapKit
+
+struct MapView: UIViewRepresentable {
+
+    func makeUIView(context: Context) -&gt; MKMapView{
+        MKMapView()
+    }
+
+    func updateUIView(_ uiView: MKMapView,context: Context)   {
+        uiView.setRegion(MKCoordinateRegion(
+            center: CLLocationCoordinate2D( //经度纬度
+                latitude: 39.9087243,
+                longitude: 116.3952859
+                ),
+            span: MKCoordinateSpan(
+                latitudeDelta: 0.02,
+                longitudeDelta: 0.02)),//地图区域大小（比例尺大小）
+        animated: true)
+    }
+}
+
+struct MapView_Previews: PreviewProvider {
+    static var previews: some View {
+        MapView()
+    }
+}</code></pre>
+<h1 id="使用第三方库"><a href="#使用第三方库" class="headerlink" title="使用第三方库"></a>使用<a href="https://cocoapods.org" target="_blank" rel="noopener">第三方库</a></h1><h3 id="下载并安装Cocoapods的教程"><a href="#下载并安装Cocoapods的教程" class="headerlink" title="下载并安装Cocoapods的教程"></a><a href="https://juejin.im/post/5d8891a06fb9a06ad16fafba" target="_blank" rel="noopener">下载并安装Cocoapods</a>的教程</h3><h3 id="在APP中打开Podfile文件"><a href="#在APP中打开Podfile文件" class="headerlink" title="在APP中打开Podfile文件"></a>在APP中打开Podfile文件</h3><p>在end上一行，写pod ‘第三方库的名字’<br>点install<br><a href="https://juejin.im/post/5cbd44a85188250a8c22aae8" target="_blank" rel="noopener">库安装慢</a>的教程</p>
+<h3 id="可以在Xcode中直接使用了"><a href="#可以在Xcode中直接使用了" class="headerlink" title="可以在Xcode中直接使用了"></a>可以在Xcode中直接使用了</h3><h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><h4 id="CocoaPods-could-not-find-compatible-versions-for-pod-“URLImage”"><a href="#CocoaPods-could-not-find-compatible-versions-for-pod-“URLImage”" class="headerlink" title="[!] CocoaPods could not find compatible versions for pod “URLImage”:"></a>[!] CocoaPods could not find compatible versions for pod “URLImage”:</h4><p>解决方法：把.xcworkspace和Podfile.lock文件删除，重新pod install一下</p>
+<h4 id="装库的速度慢"><a href="#装库的速度慢" class="headerlink" title="装库的速度慢"></a>装库的速度慢</h4><p>给终端挂上梯子，在ssr里找到HTTP代理设置<br>在终端任意文件夹中输入HTTP的监听地址和监听端口</p>
+<pre><code>export https_proxy=http://127.0.0.1:1087
+export http_proxy=http://127.0.0.1:1087 </code></pre>
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2020-01-28T09:25:41.000Z" itemprop="datePublished">2020-01-28</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">应用开发</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
+id="post-mac搭建个人blog"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2020/01/28/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/">Mac搭建个人Blog</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <h1 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h1><h2 id="hexo创建一个blog"><a href="#hexo创建一个blog" class="headerlink" title="hexo创建一个blog"></a>hexo创建一个blog</h2><h3 id="终端的一些命令"><a href="#终端的一些命令" class="headerlink" title="终端的一些命令"></a>终端的一些命令</h3><p>注：终端中输入密码时不会显示<br><img src="../img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/1.png" alt="1"></p>
+<pre><code class="bash">pwd
+//查看此时所在位置
+mkdir blog
+//创建blog文件夹
+cd ..
+//返回上一层目录
+cd blog
+//进入blog文件夹</code></pre>
+<p><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/2.png" alt="2"></p>
+<h3 id="输入sudo-hexo-init-创建博客"><a href="#输入sudo-hexo-init-创建博客" class="headerlink" title="输入sudo hexo init 创建博客"></a>输入sudo hexo init 创建博客</h3><p><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/3.png" alt="3"></p>
+<h2 id="如何使用hexo"><a href="#如何使用hexo" class="headerlink" title="如何使用hexo"></a>如何使用hexo</h2><h3 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h3><pre><code class="bash">hexo new post XXX</code></pre>
+<h3 id="创建新目录"><a href="#创建新目录" class="headerlink" title="创建新目录"></a>创建新目录</h3><pre><code class="bash">hexo new page tag</code></pre>
+<p>前往blog/source/tag文件夹中更改</p>
+<pre><code class="bash">---
+title: XXX
+lyout: tag
+date: 2020-02-02 13:07:16
+---
+</code></pre>
+<h3 id="创建新标签"><a href="#创建新标签" class="headerlink" title="创建新标签"></a>创建新标签</h3><pre><code class="bash">hexo new page category</code></pre>
+<p>同理把tag改为category即可</p>
+<h3 id="about页面"><a href="#about页面" class="headerlink" title="about页面"></a>about页面</h3><p>除了不支持Categories和Tags外和写文章的格式一样<br>一般不需要新建页面，只更改blog/source/about/index.md即可</p>
+<pre><code class="bash">hexo new page about</code></pre>
+<h2 id="推送至github和coding-net"><a href="#推送至github和coding-net" class="headerlink" title="推送至github和coding.net"></a>推送至github和coding.net</h2><h4 id="比较github（国外）和coding（腾讯）"><a href="#比较github（国外）和coding（腾讯）" class="headerlink" title="比较github（国外）和coding（腾讯）"></a>比较github（国外）和coding（腾讯）</h4><table>
+<thead>
+<tr>
+<th></th>
+<th>github</th>
+<th>coding.net</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>域名</td>
+<td>自定义</td>
+<td>随机生成</td>
+</tr>
+<tr>
+<td>加载速度</td>
+<td>慢</td>
+<td>快一些</td>
+</tr>
+<tr>
+<td>方便的clone方式</td>
+<td>HTTPS</td>
+<td>SSH</td>
+</tr>
+</tbody></table>
+<h2 id="如何使用hexo-1"><a href="#如何使用hexo-1" class="headerlink" title="如何使用hexo"></a>如何使用hexo</h2><h3 id="创建新文章-1"><a href="#创建新文章-1" class="headerlink" title="创建新文章"></a>创建新文章</h3><pre><code class="bash">hexo new post XXX</code></pre>
+<h3 id="创建新目录-1"><a href="#创建新目录-1" class="headerlink" title="创建新目录"></a>创建新目录</h3><pre><code class="bash">hexo new page tag</code></pre>
+<p>前往blog/source/tag文件夹中更改</p>
+<pre><code class="bash">---
+title: XXX
+lyout: tag
+date: 2020-02-02 13:07:16
+---
+</code></pre>
+<h3 id="创建新标签-1"><a href="#创建新标签-1" class="headerlink" title="创建新标签"></a>创建新标签</h3><pre><code class="bash">hexo new page category</code></pre>
+<p>同理把tag改为category即可</p>
+<h3 id="about页面-1"><a href="#about页面-1" class="headerlink" title="about页面"></a>about页面</h3><p>除了不支持Categories和Tags外和写文章的格式一样<br>一般不需要新建页面，只更改blog/source/about/index.md即可</p>
+<pre><code class="bash">hexo new page about</code></pre>
+<h1 id="进阶部分"><a href="#进阶部分" class="headerlink" title="进阶部分"></a>进阶部分</h1><h2 id="如何在百度中搜索到自己写的博客内容"><a href="#如何在百度中搜索到自己写的博客内容" class="headerlink" title="如何在百度中搜索到自己写的博客内容"></a>如何在百度中搜索到自己写的博客内容</h2><p>必须在<a href="https://ziyuan.baidu.com/linksubmit/url" target="_blank" rel="noopener">这里提交</a>自己的博客链接才能在百度引擎中搜索到的</p>
+<h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><h3 id="在-Hexo-中下载主题"><a href="#在-Hexo-中下载主题" class="headerlink" title="在 Hexo  中下载主题"></a>在<a href="https://hexo.io/" target="_blank" rel="noopener"> Hexo </a> 中下载主题</h3><pre><code class="bash">git clone https://github.com.....主题地址 themes/主题名字
+//将主题下载到themes中</code></pre>
+<h3 id="更改theme中的-config-yml"><a href="#更改theme中的-config-yml" class="headerlink" title="更改theme中的_config.yml"></a>更改theme中的_config.yml</h3><pre><code class="bash">vim _config.yml 进入编辑模式（注意空格）
+按 A 开始编辑
+按 esc 退出编辑
+输入 :wq 保存并退出</code></pre>
+<p><img src="/img/mac%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAblog/4.png" alt="4"></p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><pre><code class="bash">hexo clean 清除缓存
+hexo g 搭建   
+hexo d 提交到github</code></pre>
+<h1 id="bug"><a href="#bug" class="headerlink" title="bug"></a>bug</h1><h2 id="hexo-g-失败"><a href="#hexo-g-失败" class="headerlink" title="hexo g 失败"></a>hexo g 失败</h2><p>TypeError [ERR_INVALID_URL]: Invalid URL: http: //127.0.0.1:1085;export<br>    at onParseError (internal/url.js:243:9)</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>这个原因呢也很简单，就是hexo升级到4.2后，对于文章内的url自动变成html的A标签的解析引擎有点小bug，这是我在一个github的issue中看到的，issue链接我就不贴出来了,有兴趣的自行用英文关键字进行Google吧。</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><ul>
+<li>把http://这个协议头去掉，不过经过测试发现hexo自动生成的链接会有点其它的小bug，大家可以自行测试一下</li>
+<li>在http://的冒号后面加个空格</li>
+<li>把这个url用两个``给引起来，这种方法我感觉最好</li>
+</ul>
+<p>本博客主题为<a href="https://github.com/Siricee/hexo-theme-Chic/blob/master/README-CN.md" target="_blank" rel="noopener">Chic</a></p>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2020-01-28T07:32:31.000Z" itemprop="datePublished">2020-01-28</time>
+</div>
+    
+        <div class="article-category">
+        <a class="article-category-link" href="/categories/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">应用开发</a>
+        </div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+
+  
+    <nav class="pagination">
+        <a class="extend prev" rel="prev" href="/page/2/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
+  
+</div>
+
+                </section>
+            </section>
+
+            
+            <aside class="sidebar sidebar-search-fix">
+                
+
+    <div class="search">
+    <div class="has-icon-right">
+        <input type="text" class="form-input" id="search" placeholder="SEARCH" autocomplete="off">
+        <div class="form-icon">
+            <box-icon name='search' color="#3c4859"></box-icon>
+        </div>
+    </div>
+    <div class="search-result" id="search-ps"></div>
+</div>
+
+
+<div class="widget" id="widget">
+    
+      
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/05/VisTransformer/">VisTransformer</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/10/Bert/">Bert</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/09/GCN/">GCN</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/09/ResNet/">ResNet</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/01/%E5%86%99%E4%BD%9C%E7%9A%84%E8%89%BA%E6%9C%AF/">研究写作的艺术</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag">读论文</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Debug/">Debug</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">应用开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            Li Ting &copy; 2022<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+
+
+
+<script src="/dist/build.js?1651727875408.js"></script>
+
+
+<script src="/dist/custom.js?1651727875408.js"></script>
+
+
+
+<!-- 百度链接提交 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
