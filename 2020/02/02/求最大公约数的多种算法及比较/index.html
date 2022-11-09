@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>求最大公约数的多种算法及比较 | Li Ting</title>
+
+    <meta name="description" content="Li Ting">
+    <meta name="keywords" content="">
+
+    
+
+    <meta property="og:locale" content="cn" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "求最大公约数的多种算法及比较 | Li Ting"  />
+    <meta property="og:description" content= "Li Ting" />
+    <meta property="og:url" content="https://liting1024.github.io/2020/02/02/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%A4%9A%E7%A7%8D%E7%AE%97%E6%B3%95%E5%8F%8A%E6%AF%94%E8%BE%83/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="李挺" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="Li Ting" />
+    <meta name="twitter:title" content="求最大公约数的多种算法及比较 | Li Ting"/>
+    <meta name="twitter:description" content="Li Ting"/>
+    <script type="application/ld+json">
+        {
+            "description": "Li Ting",
+            "author": { "@type": "Person", "name": "李挺" },
+            "@type": "BlogPosting",
+            "url": "https://liting1024.github.io/2020/02/02/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%A4%9A%E7%A7%8D%E7%AE%97%E6%B3%95%E5%8F%8A%E6%AF%94%E8%BE%83/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://liting1024.github.ioundefined"
+            },
+            "name": "李挺"
+            },
+            "headline": "求最大公约数的多种算法及比较 | Li Ting",
+            "datePublished": "2020-02-02T05:10:15.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://liting1024.github.io/2020/02/02/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%A4%9A%E7%A7%8D%E7%AE%97%E6%B3%95%E5%8F%8A%E6%AF%94%E8%BE%83/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
+
+
+
+
+    
+
+    
+    <meta property="algolia:search" data-application-id="ISC1J3PZW8" data-api-key="8ca1e8ef1083d2f2d2acee1b617e3850" data-index-name="liting_homepage">
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    
+
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1651727875408.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1651727875408.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            gitalk: {
+                enable: true,
+                clientID: "6d0cedf1b471cbc3fb0d",
+                clientSecret: "397c8d7ca7ab800dba9e60fd593649b23b6059b8",
+                repo: "comments-section",
+                owner: "liting1024",
+                admin: ["liting1024",],
+                distractionFreeMode: true  // Facebook-like distraction free mode
+            },
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = true
+
+    </script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Li Ting" type="application/atom+xml">
+</head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>Li Ting</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">首页</a>
+                
+                <a href="/archives">存档</a>
+                
+                <a href="/collection">收藏</a>
+                
+                <a href="/about">关于</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/liting1024">
+        <box-icon type='logo' name='github'></box-icon>
+    </a>
+
+    <a class="social" target="_blank" href="mailto:jkliting@163.com">
+        <box-icon type='solid' name='envelope'></box-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">首页</a>
+                    
+                    <a href="/archives">存档</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                    <a href="/about">关于</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cla9j39u7001f4qvmd1iwf1h3" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      求最大公约数的多种算法及比较
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2020-02-02T05:10:15.000Z" itemprop="datePublished">2020-02-02</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a>
+            </div>
+            
+
+            
+            <div class="article-tag">
+                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li></ul>
+            </div>
+            
+
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <h2 id="公约数的性质"><a href="#公约数的性质" class="headerlink" title="公约数的性质"></a>公约数的性质</h2><p>gcd(-a,b)=gcd(a,b)<br>gcd(a,0)=|a|<br>gcd(a,1)=1<br>gcd(a,b)=gcd(b, a-b)<br>gcd(ma,mb)=m * gcd(a,b)</p>
+<p>⚠️注：两数必须为正整数</p>
+<h2 id="辗转相除法（欧几里得）"><a href="#辗转相除法（欧几里得）" class="headerlink" title="辗转相除法（欧几里得）"></a>辗转相除法（欧几里得）</h2><p>时间效率： ⭐️<br>素数较大时运算耗时</p>
+<pre><code class="bash">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    if (a &lt; b) swap(a, b);//保证a大于b
+    int t = a % b;
+    while (t) {
+        a = b;
+        b = t;
+        t = a % b;
+    }
+    cout &lt;&lt; b;
+}</code></pre>
+<h2 id="穷举法"><a href="#穷举法" class="headerlink" title="穷举法"></a>穷举法</h2><p>时间效率： ⭐️⭐️⭐️</p>
+<pre><code class="bash">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    int t = a &gt; b ? b : a;//t为min
+    while (t) {
+        if (a % t == 0 &amp;&amp; b % t == 0)
+            break;
+        t--;
+    }
+    cout &lt;&lt; t;
+}</code></pre>
+<h2 id="更相减损术"><a href="#更相减损术" class="headerlink" title="更相减损术"></a>更相减损术</h2><p>时间效率： ⭐️⭐️⭐️<br>两数相差大时运算次数多</p>
+<pre><code class="bash">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int main() {
+    int a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    int l = 0;
+    while (a % 2 == 0 &amp;&amp; b % 2 == 0) {//都是偶数则除二
+        a /= 2;
+        b /= 2;
+        l++;
+    }
+    if (a &lt; b) swap(a, b);//保证a大于b
+    int t = 1;
+    while (t) {
+        t = a - b;
+        a = b &gt; t ? b : t;//保证a大于b
+        b = b &gt; t ? t : b;
+        if (a == b)//直到两数相等
+            break;
+    }
+    cout &lt;&lt; pow(2, l) * b;
+}</code></pre>
+<h2 id="Stein算法"><a href="#Stein算法" class="headerlink" title="Stein算法"></a><a href="https://blog.csdn.net/Zhao_Xinhao/article/details/76060119" target="_blank" rel="noopener">Stein算法</a></h2><p>时间效率： ⭐️⭐️<br>对于辗转相除法的改进</p>
+<pre><code class="bash">//递归
+int Stein(int u, int v) {
+    if (u == 0) {
+        return v;
+    }
+    if (v == 0) {
+        return u;
+    }
+    if (~u &amp; 1) {
+        if (v &amp; 1) {
+            return Stein(u &gt;&gt; 1, v);
+        }
+        else {
+            return Stein(u &gt;&gt; 1, v &gt;&gt; 1) &lt;&lt; 1;
+        }
+    }
+    if (~v &amp; 1) {
+        return gcd2(u, v &gt;&gt; 1);
+    }
+    if (u &gt; v) {
+        return gcd2((u - v) &gt;&gt; 1, v);
+    }
+    return gcd2((v - u) &gt;&gt; 1, u);
+}
+//非递归
+int Stein(unsigned int x, unsigned int y) {
+    int factor = 0;   //计数器
+    int temp;
+
+    //大数赋给x，小数赋给y
+    if (x &lt; y) {
+        temp = x;
+        x = y;
+        y = temp;
+    }
+    if (0 == y) {
+        return 0;
+    }
+    while (x != y) {
+        if (x &amp; 0x1) {
+            if (y &amp; 0x1) {   //x,y都为奇数
+                y = (x - y) &gt;&gt; 1;
+                x -= y;
+            }
+            else {    // x为奇数，y为偶数
+                y &gt;&gt;= 1;
+            }
+        }
+        else {
+            if (y &amp; 0x1) {   // x为偶数，y为奇数
+                x &gt;&gt;= 1;
+                if (x &lt; y) {
+                    temp = x;
+                    x = y;
+                    y = temp;
+                }
+            }
+            else {   //x,y均为偶数
+                x &gt;&gt;= 1;
+                y &gt;&gt;= 1;
+                ++factor;
+            }
+        }
+    }
+    return (x &lt;&lt; factor);
+}</code></pre>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/2020/04/15/C-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          C++常用函数
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/28/SwiftUI/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">SwiftUI</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=求最大公约数的多种算法及比较 - Li Ting&url=https%3A%2F%2Fliting1024.github.io%2F2020%2F02%2F02%2F%25E6%25B1%2582%25E6%259C%2580%25E5%25A4%25A7%25E5%2585%25AC%25E7%25BA%25A6%25E6%2595%25B0%25E7%259A%2584%25E5%25A4%259A%25E7%25A7%258D%25E7%25AE%2597%25E6%25B3%2595%25E5%258F%258A%25E6%25AF%2594%25E8%25BE%2583%2F">
+            <box-icon type='logo' name='twitter'></box-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=求最大公约数的多种算法及比较 - Li Ting&url=https://liting1024.github.io/2020/02/02/%E6%B1%82%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E7%9A%84%E5%A4%9A%E7%A7%8D%E7%AE%97%E6%B3%95%E5%8F%8A%E6%AF%94%E8%BE%83/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a>
+    </section>
+
+</article>
+
+
+
+
+
+
+
+
+<section class="comments">
+    <div id="gitalk-container"></div>
+</section>
+
+
+
+
+
+
+
+
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar sidebar-search-fix">
+                
+
+    <div class="search">
+    <div class="has-icon-right">
+        <input type="text" class="form-input" id="search" placeholder="SEARCH" autocomplete="off">
+        <div class="form-icon">
+            <box-icon name='search' color="#3c4859"></box-icon>
+        </div>
+    </div>
+    <div class="search-result" id="search-ps"></div>
+</div>
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/05/VisTransformer/">VisTransformer</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/10/Bert/">Bert</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/09/GCN/">GCN</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/09/ResNet/">ResNet</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/01/%E5%86%99%E4%BD%9C%E7%9A%84%E8%89%BA%E6%9C%AF/">研究写作的艺术</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag">读论文</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Debug/">Debug</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">应用开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            Li Ting &copy; 2022<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+
+
+
+<script src="/dist/build.js?1651727875408.js"></script>
+
+
+<script src="/dist/custom.js?1651727875408.js"></script>
+
+
+
+<!-- 百度链接提交 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

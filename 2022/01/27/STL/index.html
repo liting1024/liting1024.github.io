@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    
+    <title>STL | Li Ting</title>
+
+    <meta name="description" content="Li Ting">
+    <meta name="keywords" content="">
+
+    
+
+    <meta property="og:locale" content="cn" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content= "STL | Li Ting"  />
+    <meta property="og:description" content= "Li Ting" />
+    <meta property="og:url" content="https://liting1024.github.io/2022/01/27/STL/index.html" />
+    <meta property="og:site_name" content="" />
+    <meta property="article:author" content="李挺" />
+    <meta property="article:publisher" content="" />
+    <meta property="og:description" content="Li Ting" />
+    <meta name="twitter:title" content="STL | Li Ting"/>
+    <meta name="twitter:description" content="Li Ting"/>
+    <script type="application/ld+json">
+        {
+            "description": "Li Ting",
+            "author": { "@type": "Person", "name": "李挺" },
+            "@type": "BlogPosting",
+            "url": "https://liting1024.github.io/2022/01/27/STL/index.html",
+            "publisher": {
+            "@type": "Organization",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://liting1024.github.ioundefined"
+            },
+            "name": "李挺"
+            },
+            "headline": "STL | Li Ting",
+            "datePublished": "2022-01-27T09:25:45.000Z",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://liting1024.github.io/2022/01/27/STL/index.html"
+            },
+            "@context": "http://schema.org"
+        }
+    </script>
+
+
+
+
+    
+
+    
+    <meta property="algolia:search" data-application-id="ISC1J3PZW8" data-api-key="8ca1e8ef1083d2f2d2acee1b617e3850" data-index-name="liting_homepage">
+    
+
+    
+
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    
+
+    
+
+    
+<link rel="stylesheet" href="/dist/build.css?v=1651727875408.css">
+
+
+    
+<link rel="stylesheet" href="/dist/custom.css?v=1651727875408.css">
+
+
+    <script>
+        window.isPost = true
+        window.aomori = {
+            
+            gitalk: {
+                enable: true,
+                clientID: "6d0cedf1b471cbc3fb0d",
+                clientSecret: "397c8d7ca7ab800dba9e60fd593649b23b6059b8",
+                repo: "comments-section",
+                owner: "liting1024",
+                admin: ["liting1024",],
+                distractionFreeMode: true  // Facebook-like distraction free mode
+            },
+            
+            
+            
+        }
+        window.aomori_logo_typed_animated = true
+        window.aomori_search_algolia = true
+
+    </script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Li Ting" type="application/atom+xml">
+</head>
+
+<body>
+
+    <div class="container">
+    <header class="header">
+        <div class="header-type">
+            
+            <div class="header-type-inner">
+                
+                    <div id="typed-strings" style="display:none">
+                        <p>Li Ting</p>
+                    </div>
+                    <a class="header-type-title" id="typed" href="/"></a>
+                
+    
+                
+            </div>
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inner">
+                
+                <a href="/">首页</a>
+                
+                <a href="/archives">存档</a>
+                
+                <a href="/collection">收藏</a>
+                
+                <a href="/about">关于</a>
+                
+            </div>
+            <div class="header-menu-social">
+                
+    <a class="social" target="_blank" href="https://github.com/liting1024">
+        <box-icon type='logo' name='github'></box-icon>
+    </a>
+
+    <a class="social" target="_blank" href="mailto:jkliting@163.com">
+        <box-icon type='solid' name='envelope'></box-icon>
+    </a>
+
+            </div>
+        </div>
+
+        <div class="header-menu-mobile">
+            <div class="header-menu-mobile-inner" id="mobile-menu-open">
+                <i class="icon icon-menu"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="header-menu-mobile-menu">
+        <div class="header-menu-mobile-menu-bg"></div>
+        <div class="header-menu-mobile-menu-wrap">
+            <div class="header-menu-mobile-menu-inner">
+                <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+                    <i class="icon icon-cross"></i>
+                </div>
+                <div class="header-menu-mobile-menu-list">
+                    
+                    <a href="/">首页</a>
+                    
+                    <a href="/archives">存档</a>
+                    
+                    <a href="/collection">收藏</a>
+                    
+                    <a href="/about">关于</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div class="container">
+        <div class="main">
+            <section class="inner">
+                <section class="inner-main">
+                    <div class="post">
+    <article id="post-cla9j39tx000l4qvm7awggpuu" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
+        
+          
+        
+        
+        
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      STL
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+
+            <div class="article-date">
+  <time datetime="2022-01-27T09:25:45.000Z" itemprop="datePublished">2022-01-27</time>
+</div>
+
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a>
+            </div>
+            
+
+            
+            <div class="article-tag">
+                <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+            </div>
+            
+
+            
+            <div class="article-busuanzi">
+                <span id="busuanzi_value_page_pv">N</span> 人看过
+            </div>
+            
+
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <p>[TOC]</p>
+<h3 id="priority-queue"><a href="#priority-queue" class="headerlink" title="priority_queue"></a>priority_queue</h3><p>大根堆（top是max）优先队列</p>
+<pre><code class="C++">priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; q; // 小根堆
+
+top
+push 和 pop
+empty size
+emplace(1,1) // priority_queue&lt;PII&gt; q;
+// 相当于 push({1,1}) </code></pre>
+<h3 id="deque"><a href="#deque" class="headerlink" title="deque"></a>deque</h3><p>双端队列：首尾都可以插入删除</p>
+<p>应用：二叉树层次遍历</p>
+<pre><code>empty()
+size()
+front() 和 back()
+push_front(x) 和 push_back(x)
+pop_front() 和 pop_back()</code></pre><h2 id="unordered"><a href="#unordered" class="headerlink" title="unordered"></a>unordered</h2><p>unordered_set, unordered_map, unordered_multiset, unordered_multimap, 哈希表</p>
+<p>不支持 lower_bound()/upper_bound()， 迭代器的++，–</p>
+<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><p>不允许重复，升序</p>
+<pre><code class="C++">erase(x) // 删除所有x或迭代器it
+count() 
+find() // set.find(1) == set.end() 没找到
+lower_bound(x) 大于等于x的最小的数的it
+upper_bound(x) 大于x的最下的数的it</code></pre>
+<h3 id="multiset"><a href="#multiset" class="headerlink" title="multiset"></a>multiset</h3><p>允许重复，升序</p>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>&lt;key, value&gt; 根据key升序，key不允许重复</p>
+<pre><code>find
+erase(pair)
+[]
+lower_bound 和 upper_bound</code></pre><h3 id="multimap"><a href="#multimap" class="headerlink" title="multimap"></a>multimap</h3><p>&lt;key, value&gt; 根据key升序，key允许重复</p>
+<h2 id="bitset"><a href="#bitset" class="headerlink" title="bitset"></a>bitset</h2><pre><code class="C++">bitset&lt;10000&gt; s;
+~, &amp;, |, ^
+&gt;&gt;, &lt;&lt;
+==, !=
+[]
+
+count()  返回有多少个1
+
+any()  判断是否至少有一个1
+none()  判断是否全为0
+
+set()  把所有位置成1
+set(k, v)  将第k位变成v
+reset()  把所有位变成0
+flip()  等价于~
+flip(k) 把第k位取反</code></pre>
+<h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p>支持按字典序比较运算</p>
+<pre><code class="C++">size
+empty
+clear
+front 和 back
+push_back 和 pop_back
+insert emplace
+[]
+</code></pre>
+<p>二维</p>
+<pre><code>vector&lt;vector&lt;int&gt;&gt; g(N,vector&lt;int&gt;(N,-1)); // 初始化为-1（N*N大小）</code></pre><h2 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h2><pre><code>top
+push 和 pop</code></pre><h2 id="queue"><a href="#queue" class="headerlink" title="queue"></a>queue</h2><pre><code>front 和 back
+push 和 pop</code></pre><h2 id="pair"><a href="#pair" class="headerlink" title="pair"></a>pair</h2><p>升序？</p>
+<h2 id="unique"><a href="#unique" class="headerlink" title="unique"></a>unique</h2><p>将<strong>序列中不重复的相邻元素（即与前一个数不同）</strong>放在前面，需要先排序</p>
+<pre><code class="C++">int arr[] = {3,2,2,1,4}, n = sizeof arr/ sizeof 1;
+for (int a : arr) cout&lt;&lt;a&lt;&lt;&#39; &#39;;
+// 3 2 2 1 4 
+sort(arr, arr+n);
+// 1 2 2 3 4
+n = unique(arr, arr+n) - arr;
+for (int a : arr) cout&lt;&lt;a&lt;&lt;&#39; &#39;;
+// 1 2 3 4 4
+for (int i = 0; i &lt; n; i++) cout&lt;&lt;arr[i]&lt;&lt;&#39; &#39;;
+// 1 2 3 4 </code></pre>
+<h2 id="greater"><a href="#greater" class="headerlink" title="greater"></a>greater</h2><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">sort</th>
+<th align="center">priority_queue</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">greater</td>
+<td align="center">从大到小</td>
+<td align="center">小顶堆</td>
+</tr>
+<tr>
+<td align="center">less</td>
+<td align="center">从小到大</td>
+<td align="center">大顶堆</td>
+</tr>
+</tbody></table>
+
+        </div>
+
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/2022/05/26/CLIP/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          CLIP
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/01/13/ACM%E7%BB%8F%E9%AA%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">ACM经验</div>
+    </a>
+  
+</nav>
+
+
+    <section class="share">
+        <div class="share-title">分享</div>
+        <a class="share-item" target="_blank"
+            href="https://twitter.com/share?text=STL - Li Ting&url=https%3A%2F%2Fliting1024.github.io%2F2022%2F01%2F27%2FSTL%2F">
+            <box-icon type='logo' name='twitter'></box-icon>
+        </a>
+        <a class="share-item" target="_blank"
+            href="https://service.weibo.com/share/share.php?title=STL - Li Ting&url=https://liting1024.github.io/2022/01/27/STL/&pic=">
+            <div class="n-icon n-icon-weibo"></div>
+        </a>
+    </section>
+
+</article>
+
+
+
+
+
+
+
+
+<section class="comments">
+    <div id="gitalk-container"></div>
+</section>
+
+
+
+
+
+
+
+
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</div>
+                </section>
+            </section>
+
+            
+            <aside class="sidebar sidebar-search-fix">
+                
+
+    <div class="search">
+    <div class="has-icon-right">
+        <input type="text" class="form-input" id="search" placeholder="SEARCH" autocomplete="off">
+        <div class="form-icon">
+            <box-icon name='search' color="#3c4859"></box-icon>
+        </div>
+    </div>
+    <div class="search-result" id="search-ps"></div>
+</div>
+
+
+<div class="widget" id="widget">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-recent-posts">
+    <div class="widget-title"><span>Recent Posts</span></div>
+    <div class="widget-inner">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/05/VisTransformer/">VisTransformer</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/10/Bert/">Bert</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/09/GCN/">GCN</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/09/ResNet/">ResNet</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/01/%E5%86%99%E4%BD%9C%E7%9A%84%E8%89%BA%E6%9C%AF/">研究写作的艺术</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-archive">
+    <div class="widget-title"><span>Archive</span></div>
+    <div class="widget-inner">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-tags">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ACM/" rel="tag">ACM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag">读论文</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Categories</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Debug/">Debug</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/">应用开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">程序设计</a></li></ul>
+    </div>
+  </div>
+
+
+    
+</div>
+
+<div id="backtop"><i class="icon icon-arrow-up"></i></div>
+            </aside>
+            
+        </div>
+    </div>
+
+    <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3c4859" fill-opacity="1" d="M0,160L60,181.3C120,203,240,245,360,240C480,235,600,181,720,186.7C840,192,960,256,1080,261.3C1200,267,1320,213,1380,186.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+    </div>
+
+    <!-- Please do not remove this -->
+    <!-- 开源不易，请勿删除 -->
+    <div class="footer-wrap">
+        <div class="footer-inner"> 
+            Li Ting &copy; 2022<br>
+            Powered By Hexo · Theme By <a href="https://linhong.me/" target="_blank">Aomori</a> · <a href="https://github.com/lh1me/hexo-theme-aomori" target="_blank">Github</a>
+        </div>
+    </div>
+
+</footer>
+
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+
+
+
+<script src="/dist/build.js?1651727875408.js"></script>
+
+
+<script src="/dist/custom.js?1651727875408.js"></script>
+
+
+
+<!-- 百度链接提交 -->
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
